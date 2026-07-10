@@ -477,6 +477,9 @@ watch(selectedDap, (dap) => {
         <a href="https://github.com/jrequiroso/dap-database#sourcedata-notes" target="_blank" rel="noopener noreferrer">
           Source/data notes
         </a>
+        <a href="https://github.com/jrequiroso/dap-database/blob/main/ROADMAP.md" target="_blank" rel="noopener noreferrer">
+          Roadmap
+        </a>
       </nav>
     </div>
 

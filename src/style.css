@@ -1644,6 +1644,59 @@ dd {
   gap: 6px;
 }
 
+.buy-groups {
+  display: grid;
+  gap: 12px;
+}
+
+.buy-group {
+  display: grid;
+  gap: 6px;
+}
+
+.buy-group__label {
+  margin: 0;
+  color: #5c6f7b;
+  font-size: 0.82rem;
+  font-weight: 850;
+}
+
+.buy-link-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.buy-link-list li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.affiliate-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 20px;
+  border: 1px solid #dec889;
+  border-radius: 999px;
+  background: #fff7df;
+  color: #71500a;
+  padding: 0 7px;
+  font-size: 0.72rem;
+  font-weight: 850;
+  line-height: 1;
+}
+
+.buy-notes {
+  margin: 0;
+  color: #536672;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
 .details-photo-panel .source-link,
 .details-photo-panel .muted-block {
   color: #6d7d87;

@@ -22,6 +22,11 @@ export interface DapImage {
   type: 'official' | 'user-owned' | 'press' | 'permission-granted' | 'placeholder' | string;
 }
 
+export interface BuyLink {
+  label: string;
+  url: string;
+}
+
 export interface Dap {
   id: string;
   brand: string;
@@ -70,6 +75,10 @@ export interface Dap {
   batteryLifeHours: string;
   storageExpansionMax: string;
   officialUrl: string;
+  officialStoreUrl: string;
+  buyLinks: BuyLink[];
+  affiliateLinks: BuyLink[];
+  buyNotes: string;
   sourceUrl: string;
   sourceType: string;
   verificationStatus: VerificationStatus;

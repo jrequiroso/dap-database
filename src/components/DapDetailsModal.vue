@@ -19,6 +19,11 @@ interface DetailRow {
   value: string;
 }
 
+interface BuyGroup {
+  label: string;
+  links: Array<{ label: string; url: string; affiliate?: boolean }>;
+}
+
 function handleKeydown(event: KeyboardEvent) {
   if (event.key === 'Escape' && props.dap) emit('close');
 }
@@ -156,6 +161,37 @@ const sourceTypeLabel = computed(() => {
   return sourceType || 'Source not listed';
 });
 
+const buyGroups = computed<BuyGroup[]>(() => {
+  if (!props.dap) return [];
+  const dap = props.dap;
+  const groups: BuyGroup[] = [];
+
+  if (dap.officialStoreUrl) {
+    groups.push({
+      label: 'Official',
+      links: [{ label: 'Official Store', url: dap.officialStoreUrl }],
+    });
+  }
+
+  if (dap.buyLinks.length) {
+    groups.push({ label: 'Retailers', links: dap.buyLinks });
+  }
+
+  if (dap.affiliateLinks.length) {
+    groups.push({
+      label: 'Affiliate',
+      links: dap.affiliateLinks.map((link) => ({ ...link, affiliate: true })),
+    });
+  }
+
+  return groups;
+});
+
+const hasBuyInfo = computed(() => {
+  if (!props.dap) return false;
+  return Boolean(buyGroups.value.length || props.dap.buyNotes.trim());
+});
+
 onMounted(() => {
   window.addEventListener('keydown', handleKeydown);
 });
@@ -258,6 +294,27 @@ onBeforeUnmount(() => {
                   </dd>
                 </div>
               </dl>
+            </section>
+
+            <section v-if="hasBuyInfo" class="details-section buy-section">
+              <h3>Buy / Availability</h3>
+              <div class="buy-groups">
+                <div v-for="group in buyGroups" :key="group.label" class="buy-group">
+                  <p class="buy-group__label">{{ group.label }}</p>
+                  <ul class="buy-link-list">
+                    <li v-for="link in group.links" :key="`${group.label}-${link.url}`">
+                      <a class="source-link" :href="link.url" target="_blank" rel="noopener noreferrer">
+                        <ExternalLink :size="15" aria-hidden="true" />
+                        <span>{{ link.label }}</span>
+                      </a>
+                      <span v-if="link.affiliate" class="affiliate-badge">Affiliate</span>
+                    </li>
+                  </ul>
+                </div>
+                <p v-if="dap.buyNotes" class="buy-notes">
+                  <strong>Notes:</strong> {{ dap.buyNotes }}
+                </p>
+              </div>
             </section>
 
             <details class="details-section notes-panel">

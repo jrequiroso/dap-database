@@ -479,6 +479,10 @@ watch([filters, sortState], resetCardLimit, { deep: true });
         Specs are best-effort and source-backed where possible. Values may vary by region, firmware, revision, gain
         setting, output mode, or measurement method.
       </p>
+      <p class="footer-disclaimer">
+        Some buying links may be affiliate links. I may earn a small commission if you buy through them, at no extra
+        cost to you. Specs, review links, and source references are kept separate from affiliate links.
+      </p>
       <p class="footer-contribute">Found an error or missing model? Submit a correction or request a DAP on GitHub.</p>
       <nav class="footer-actions" aria-label="Project links">
         <a href="https://github.com/jrequiroso/dap-database" target="_blank" rel="noopener noreferrer">GitHub</a>
@@ -496,7 +500,7 @@ watch([filters, sortState], resetCardLimit, { deep: true });
         >
           Report a correction
         </a>
-        <a href="https://github.com/jrequiroso/dap-database#sourcedata-notes" target="_blank" rel="noopener noreferrer">
+        <a href="https://github.com/jrequiroso/dap-database/blob/main/docs/source-data-notes.md" target="_blank" rel="noopener noreferrer">
           Source/data notes
         </a>
         <a href="https://github.com/jrequiroso/dap-database/blob/main/ROADMAP.md" target="_blank" rel="noopener noreferrer">

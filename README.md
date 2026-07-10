@@ -9,25 +9,33 @@ A community-friendly digital audio player database with specs, sources, and vali
 - Request a missing DAP: https://github.com/jrequiroso/dap-database/issues/new?template=missing-dap.yml
 - Report a correction: https://github.com/jrequiroso/dap-database/issues/new?template=correction.yml
 
+## License And Attribution
+
+- Application code is licensed under the [MIT License](LICENSE).
+- Curated database content maintained by JReqTech is licensed under [Creative Commons Attribution-NonCommercial 4.0 International](DATA_LICENSE.md), unless otherwise stated.
+- Product images, trademarks, brand names, and manufacturer-owned materials remain owned by their respective rights holders.
+- If you reference, adapt, or reuse the database data for non-commercial purposes, please credit JReqTech and link back to this project.
+
 ## Goals
 
 - Make DAP specs easier to compare.
 - Keep sources visible.
 - Separate official, official screenshot, review, retail, and web-verified data.
+- Keep spec sources, review links, and buy links separate.
 - Avoid unsourced claims where possible.
 - Keep the project static and easy to host on GitHub Pages.
 
 ## Current MVP Features
 
-- Browse DAP database.
+- Browse the DAP catalog in card view.
 - Search by brand, model, variant, DAC, SoC, OS, or colors.
-- Filter by brand, status, verification status, Android-based devices, and 4.4mm output.
+- Filter by brand, status, source quality, Android-based devices, 4.4mm output, price, year, audio features, and connectivity.
 - Sort by brand, model, release year, MSRP, battery, SE power, and balanced power.
-- View official product links when available.
-- View source links and notes.
+- Open linkable detail modals for each DAP.
+- View official product links, source links, and notes when available.
 - View color variants when available.
-- Optional image support.
-- Mobile card view and desktop table view.
+- Local product image support.
+- Mobile-friendly card view and optional power-user table view.
 
 ## Verification Status Meanings
 
@@ -44,6 +52,12 @@ A community-friendly digital audio player database with specs, sources, and vali
 
 "Rows with sources" means each row has at least one source link. Verification quality may still vary by model. Official, Review, Web, Partial, and Unverified labels indicate source confidence.
 
+Specs are best-effort and source-backed where possible. Values may vary by region, firmware, revision, gain setting, output mode, or measurement method.
+
+Some buying links may be affiliate links. I may earn a small commission if you buy through them, at no extra cost to you. Specs, review links, and source references are kept separate from affiliate links.
+
+See [docs/source-data-notes.md](docs/source-data-notes.md) for source, review, buy-link, and affiliate-link separation notes.
+
 ## Data Workflow
 
 - Edit `src/data/daps.csv`.
@@ -55,6 +69,21 @@ A community-friendly digital audio player database with specs, sources, and vali
 ## Data Location
 
 The editable source is `src/data/daps.csv`. Generated application data is `src/data/daps.json`.
+
+Optional buying-link CSV fields are supported but intentionally blank unless populated manually:
+
+- `official_store_url`
+- `buy_links`
+- `affiliate_links`
+- `buy_notes`
+
+Buying links use this format:
+
+```text
+Label|URL; Label|URL
+```
+
+Do not use buy links or affiliate links as spec sources.
 
 ## Local Development
 
@@ -84,6 +113,7 @@ npm run preview
 - Image fields are optional.
 - Do not hotlink random review images.
 - Prefer official product image URLs, user-owned photos, or images with clear permission.
+- Product images remain owned by their respective brands, manufacturers, retailers, reviewers, or original sources.
 - Color variants can be added using the Colors column in CSV.
 - Colors should use slash-separated values like `Black / Silver / Green`.
 
@@ -135,7 +165,7 @@ Manual workflow:
 6. Run `npm run process:images`.
 7. Put the generated `.webp` filename in `image_filename`.
 8. Run `npm run generate:data`.
-9. Check the image in card view, table view, details view, and comparison view.
+9. Check the image in card view, table view, and details view.
 
 Image optimizer:
 
@@ -157,20 +187,9 @@ Production URL: https://jrequiroso.github.io/dap-database/
 
 ## Future Plans
 
-- Compare mode for selecting 2 to 4 DAPs side by side.
-- Dedicated detail page or detail modal for each DAP.
-- Better mobile card layout with expandable spec groups.
-- Export filtered results to CSV or JSON.
-- Improved import/update workflow from Google Sheets export.
-- Better image handling with local optimized thumbnails, official image source tracking, user-owned image gallery, and image permission notes.
-- Advanced filters for price range, release year range, DAC chip, Android-based only, 4.4mm balanced output, color variant, verified official sources only, and active/discontinued/upcoming.
-- Source quality indicators.
-- Changelog page showing database updates.
-- Submit correction and missing DAP request links that open GitHub issue templates.
-- Optional dark mode.
-- Optional shareable filter URLs later.
-- Optional static generated JSON files for brands or models later.
-- Optional public contribution guide for people who want to help add or verify DAPs.
+See [ROADMAP.md](ROADMAP.md) for planned model additions, source rules, variant rules, and scope notes.
+
+Private feature planning is intentionally kept out of the public repository and website.
 
 ## Contributions and Corrections
 

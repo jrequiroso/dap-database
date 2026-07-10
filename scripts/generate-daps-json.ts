@@ -1,7 +1,7 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import type { Dap, MixedSpecValue } from '../src/types/dap';
+import type { BuyLink, Dap, MixedSpecValue } from '../src/types/dap';
 
 const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const csvPath = resolve(projectRoot, 'src/data/daps.csv');
@@ -94,6 +94,33 @@ function splitList(value: string): string[] {
     .split(/[;,/]/)
     .map((item) => item.trim())
     .filter(Boolean);
+}
+
+function isValidHttpUrl(value: string): boolean {
+  try {
+    const url = new URL(value);
+    return url.protocol === 'http:' || url.protocol === 'https:';
+  } catch {
+    return false;
+  }
+}
+
+function parseBuyLinks(value: string): BuyLink[] {
+  if (!value.trim()) return [];
+
+  return value
+    .split(';')
+    .map((item) => {
+      const separatorIndex = item.indexOf('|');
+      if (separatorIndex === -1) return null;
+
+      const label = item.slice(0, separatorIndex).trim();
+      const url = item.slice(separatorIndex + 1).trim();
+      if (!label || !isValidHttpUrl(url)) return null;
+
+      return { label, url };
+    })
+    .filter((link): link is BuyLink => Boolean(link));
 }
 
 function valueFromAny(row: Record<string, string>, columns: string[]): string {
@@ -216,6 +243,10 @@ function toDap(row: Record<string, string>): Dap {
     batteryLifeHours: row['Battery Life Hours'] ?? '',
     storageExpansionMax: row['Storage Expansion Max'] ?? '',
     officialUrl: isOfficialSource(sourceUrl, verificationStatus) ? sourceUrl : '',
+    officialStoreUrl: isValidHttpUrl(row.official_store_url ?? '') ? row.official_store_url : '',
+    buyLinks: parseBuyLinks(row.buy_links ?? ''),
+    affiliateLinks: parseBuyLinks(row.affiliate_links ?? ''),
+    buyNotes: row.buy_notes ?? '',
     sourceUrl,
     sourceType: inferSourceType(verificationStatus, sourceUrl),
     verificationStatus,

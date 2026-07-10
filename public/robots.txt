@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://jrequiroso.github.io/dap-database/sitemap.xml
+Sitemap: https://jreqtech.github.io/dap-database/sitemap.xml
+

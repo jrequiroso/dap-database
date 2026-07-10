@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted } from 'vue';
-import { ExternalLink, X } from 'lucide-vue-next';
+import { ChevronLeft, ChevronRight, ExternalLink, X } from 'lucide-vue-next';
 import type { Dap, MixedSpecValue } from '../types/dap';
 import { formatBattery, formatColors, formatPower, formatPrice, formatValue, hasValue } from '../utils/formatters';
 import { getStatusBadgeMeta, getVerificationBadgeMeta, imageUrlForDap, isAndroidBased } from '../utils/dapDisplay';
@@ -8,10 +8,13 @@ import DapPhoto from './DapPhoto.vue';
 
 const props = defineProps<{
   dap: Dap | null;
+  previousDap?: Dap | null;
+  nextDap?: Dap | null;
 }>();
 
 const emit = defineEmits<{
   close: [];
+  navigate: [dap: Dap];
 }>();
 
 interface DetailRow {
@@ -24,8 +27,13 @@ interface BuyGroup {
   links: Array<{ label: string; url: string; affiliate?: boolean }>;
 }
 
+const referenceLinkRel = 'noopener noreferrer nofollow';
+const affiliateLinkRel = 'noopener noreferrer nofollow sponsored';
+
 function handleKeydown(event: KeyboardEvent) {
   if (event.key === 'Escape' && props.dap) emit('close');
+  if (event.key === 'ArrowLeft' && props.previousDap) emit('navigate', props.previousDap);
+  if (event.key === 'ArrowRight' && props.nextDap) emit('navigate', props.nextDap);
 }
 
 function textValue(value: MixedSpecValue | boolean | undefined): string {
@@ -192,6 +200,16 @@ const hasBuyInfo = computed(() => {
   return Boolean(buyGroups.value.length || props.dap.buyNotes.trim());
 });
 
+const hasReviewInfo = computed(() => {
+  if (!props.dap) return false;
+  return Boolean(props.dap.reviewLinks.length || props.dap.reviewNotes.trim());
+});
+
+function compactDapName(dap: Dap | null | undefined): string {
+  if (!dap) return '';
+  return [dap.brand, dap.model, dap.variant].filter(Boolean).join(' ');
+}
+
 onMounted(() => {
   window.addEventListener('keydown', handleKeydown);
 });
@@ -229,7 +247,7 @@ onBeforeUnmount(() => {
                 class="source-link"
                 :href="dap.images[0].sourceUrl"
                 target="_blank"
-                rel="noopener noreferrer"
+                :rel="referenceLinkRel"
               >
                 <ExternalLink :size="15" aria-hidden="true" />
                 <span>Image source</span>
@@ -245,6 +263,18 @@ onBeforeUnmount(() => {
                   <dd class="spec-value">{{ row.value }}</dd>
                 </div>
               </dl>
+              <div v-if="hasReviewInfo" class="inline-review-block">
+                <p class="buy-group__label">Reviews</p>
+                <ul v-if="dap.reviewLinks.length" class="buy-link-list">
+                  <li v-for="link in dap.reviewLinks" :key="link.url">
+                    <a class="source-link" :href="link.url" target="_blank" :rel="referenceLinkRel">
+                      <ExternalLink :size="15" aria-hidden="true" />
+                      <span>{{ link.label }}</span>
+                    </a>
+                  </li>
+                </ul>
+                <p v-if="dap.reviewNotes" class="buy-notes">{{ dap.reviewNotes }}</p>
+              </div>
             </section>
           </div>
 
@@ -286,7 +316,7 @@ onBeforeUnmount(() => {
                 <div class="spec-row">
                   <dt class="spec-label">Source</dt>
                   <dd class="spec-value">
-                    <a v-if="dap.sourceUrl" class="source-link" :href="dap.sourceUrl" target="_blank" rel="noopener noreferrer">
+                    <a v-if="dap.sourceUrl" class="source-link" :href="dap.sourceUrl" target="_blank" :rel="referenceLinkRel">
                       <ExternalLink :size="15" aria-hidden="true" />
                       <span>{{ sourceTypeLabel }}</span>
                     </a>
@@ -303,7 +333,7 @@ onBeforeUnmount(() => {
                   <p class="buy-group__label">{{ group.label }}</p>
                   <ul class="buy-link-list">
                     <li v-for="link in group.links" :key="`${group.label}-${link.url}`">
-                      <a class="source-link" :href="link.url" target="_blank" rel="noopener noreferrer">
+                      <a class="source-link" :href="link.url" target="_blank" :rel="link.affiliate ? affiliateLinkRel : referenceLinkRel">
                         <ExternalLink :size="15" aria-hidden="true" />
                         <span>{{ link.label }}</span>
                       </a>
@@ -323,6 +353,42 @@ onBeforeUnmount(() => {
             </details>
           </div>
         </div>
+        <nav
+          v-if="previousDap || nextDap"
+          class="details-modal__nav"
+          :class="{
+            'details-modal__nav--single': !previousDap || !nextDap,
+            'details-modal__nav--next-only': !previousDap && nextDap,
+          }"
+          aria-label="Browse DAP details"
+        >
+          <button
+            v-if="previousDap"
+            class="btn btn-secondary modal-nav-button"
+            type="button"
+            :aria-label="`Previous DAP: ${compactDapName(previousDap)}`"
+            @click="$emit('navigate', previousDap)"
+          >
+            <ChevronLeft :size="17" aria-hidden="true" />
+            <span>
+              <small>Previous</small>
+              <strong>{{ compactDapName(previousDap) }}</strong>
+            </span>
+          </button>
+          <button
+            v-if="nextDap"
+            class="btn btn-secondary modal-nav-button modal-nav-button--next"
+            type="button"
+            :aria-label="`Next DAP: ${compactDapName(nextDap)}`"
+            @click="$emit('navigate', nextDap)"
+          >
+            <span>
+              <small>Next</small>
+              <strong>{{ compactDapName(nextDap) }}</strong>
+            </span>
+            <ChevronRight :size="17" aria-hidden="true" />
+          </button>
+        </nav>
       </section>
     </div>
   </Teleport>

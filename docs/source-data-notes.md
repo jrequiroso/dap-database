@@ -8,7 +8,7 @@ Specs are best-effort and source-backed where possible. Values may vary by regio
 
 Sources are used for specs, official references, and verification.
 
-Reviews may be used for further reading and subjective impressions if review links are added later.
+Reviews may be used for further reading and subjective impressions. Review links are not treated as source links unless the row's Source URL explicitly uses that review as its verification source.
 
 Buy links are optional official, retailer, or affiliate links for purchasing. These are not used as spec verification sources.
 

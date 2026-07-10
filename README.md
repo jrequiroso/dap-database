@@ -4,10 +4,10 @@ A community-friendly digital audio player database with specs, sources, and vali
 
 ## Links
 
-- Live site: https://jrequiroso.github.io/dap-database/
-- Repository: https://github.com/jrequiroso/dap-database
-- Request a missing DAP: https://github.com/jrequiroso/dap-database/issues/new?template=missing-dap.yml
-- Report a correction: https://github.com/jrequiroso/dap-database/issues/new?template=correction.yml
+- Live site: https://jreqtech.github.io/dap-database/
+- Repository: https://github.com/jreqtech/dap-database
+- Request a missing DAP: https://github.com/jreqtech/dap-database/issues/new?template=missing-dap.yml
+- Report a correction: https://github.com/jreqtech/dap-database/issues/new?template=correction.yml
 
 ## License And Attribution
 
@@ -32,7 +32,7 @@ A community-friendly digital audio player database with specs, sources, and vali
 - Filter by brand, status, source quality, Android-based devices, 4.4mm output, price, year, audio features, and connectivity.
 - Sort by brand, model, release year, MSRP, battery, SE power, and balanced power.
 - Open linkable detail modals for each DAP.
-- View official product links, source links, and notes when available.
+- View official product links, source links, review links, and notes when available.
 - View color variants when available.
 - Local product image support.
 - Mobile-friendly card view and optional power-user table view.
@@ -84,6 +84,19 @@ Label|URL; Label|URL
 ```
 
 Do not use buy links or affiliate links as spec sources.
+
+Optional review-link CSV fields are also supported:
+
+- `review_links`
+- `review_notes`
+
+Review links use the same labeled-link format:
+
+```text
+Label|URL; Label|URL
+```
+
+Review links are for further reading and subjective impressions. They are separate from source links used to verify specs.
 
 ## Local Development
 
@@ -183,7 +196,7 @@ npm run process:images -- --overwrite
 
 The Vite base path is configured as `/dap-database/`. The included GitHub Actions workflow builds on pushes to `main`, generates JSON from CSV, and deploys `dist` using GitHub Pages Actions. Set the repository Pages source to GitHub Actions.
 
-Production URL: https://jrequiroso.github.io/dap-database/
+Production URL: https://jreqtech.github.io/dap-database/
 
 ## Future Plans
 
@@ -195,9 +208,10 @@ Private feature planning is intentionally kept out of the public repository and 
 
 Corrections and missing DAP suggestions are welcome through GitHub issues. Please include a source link and notes that explain what should change.
 
-- Request a missing DAP: https://github.com/jrequiroso/dap-database/issues/new?template=missing-dap.yml
-- Report a correction: https://github.com/jrequiroso/dap-database/issues/new?template=correction.yml
+- Request a missing DAP: https://github.com/jreqtech/dap-database/issues/new?template=missing-dap.yml
+- Report a correction: https://github.com/jreqtech/dap-database/issues/new?template=correction.yml
 
 ## Credits
 
 Curated by JReqTech.
+

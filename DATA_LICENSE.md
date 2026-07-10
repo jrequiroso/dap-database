@@ -8,7 +8,7 @@ This license applies to the curated database structure, notes, and compiled data
 
 If you reference, adapt, or reuse the database data for non-commercial purposes, please credit JReqTech and link back to the project:
 
-https://github.com/jrequiroso/dap-database
+https://github.com/jreqtech/dap-database
 
 ## Images
 
@@ -17,3 +17,4 @@ Product images remain owned by their respective brands, manufacturers, retailers
 ## Disclaimer
 
 Specs are best-effort and source-backed where possible. Values may vary by region, firmware, revision, gain setting, output mode, or measurement method.
+

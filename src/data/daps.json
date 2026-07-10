@@ -54,6 +54,8 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [],
+    "reviewNotes": "",
     "sourceUrl": "https://www.astellnkern.com/en/product/view.php?idx=138",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -127,6 +129,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/astellkern-aultima-sp3000-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://www.astellnkern.com/en/product/view.php?idx=133",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -205,6 +214,8 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [],
+    "reviewNotes": "",
     "sourceUrl": "https://www.astellnkern.com/en/product/view.php?idx=153",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -279,6 +290,8 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [],
+    "reviewNotes": "",
     "sourceUrl": "https://www.astellnkern.com/en/product/view.php?idx=128",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -354,6 +367,8 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [],
+    "reviewNotes": "",
     "sourceUrl": "https://www.astellnkern.com/en/product/view.php?idx=145",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -424,6 +439,8 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [],
+    "reviewNotes": "",
     "sourceUrl": "https://www.fiio.com/jm21",
     "sourceType": "Official",
     "verificationStatus": "Partial - Official",
@@ -494,6 +511,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/fiio-jm21-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://www.fiio.com/jm21",
     "sourceType": "Official",
     "verificationStatus": "Partial - Official",
@@ -567,6 +591,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/fiio-m7-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://www.fiio.com/m7",
     "sourceType": "Official",
     "verificationStatus": "Partial - Official",
@@ -638,6 +669,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/fiio-m9-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://www.fiio.com/m9",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -706,6 +744,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/fiio-m11-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://www.fiio.com/m11",
     "sourceType": "Official",
     "verificationStatus": "Partial - Official",
@@ -774,6 +819,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/fiio-m11-plus-ess-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://www.fiio.com/m11plusess",
     "sourceType": "Official",
     "verificationStatus": "Partial - Official",
@@ -842,6 +894,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/fiio-m11-plus-ltd-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://www.fiio.com/m11plusltd",
     "sourceType": "Official",
     "verificationStatus": "Partial - Official",
@@ -910,6 +969,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/fiio-m11s-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://www.fiio.com/m11s",
     "sourceType": "Official",
     "verificationStatus": "Partial - Official",
@@ -978,6 +1044,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/fiio-m15-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://www.fiio.com/m15",
     "sourceType": "Official",
     "verificationStatus": "Partial - Official",
@@ -1065,6 +1138,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/fiio-m15s-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://www.fiio.com/m15s",
     "sourceType": "Official",
     "verificationStatus": "Partial - Official",
@@ -1151,6 +1231,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/fiio-m17-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://www.fiio.com/m17",
     "sourceType": "Official",
     "verificationStatus": "Partial - Official",
@@ -1231,6 +1318,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/fiio-m21-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://www.fiio.com/m21",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -1317,6 +1411,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/fiio-m23-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://www.fiio.com/m23",
     "sourceType": "Official",
     "verificationStatus": "Partial - Official",
@@ -1389,6 +1490,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/fiio-snowsky-disc-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://www.fiio.com/DISC",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -1457,6 +1565,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/fiio-snowsky-echo-mini-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://www.fiio.com/echomini",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -1525,6 +1640,8 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [],
+    "reviewNotes": "",
     "sourceUrl": "https://www.fiio.com/ECHONANO",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -1593,6 +1710,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/fiio-x5iii-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://www.fiio.com/x5iii",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -1661,6 +1785,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/fiio-x7-mark-ii-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://en.wikipedia.org/wiki/FiiO_X_Series",
     "sourceType": "Web",
     "verificationStatus": "Verified - Web",
@@ -1729,6 +1860,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/hiby-digital-m300-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://store.hiby.com/products/hiby-digital-m300",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -1801,6 +1939,8 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [],
+    "reviewNotes": "",
     "sourceUrl": "https://store.hiby.com/products/hiby-digital-m500",
     "sourceType": "Review",
     "verificationStatus": "Verified - Review",
@@ -1869,6 +2009,8 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [],
+    "reviewNotes": "",
     "sourceUrl": "https://store.hiby.com/products/hiby-digital-m500",
     "sourceType": "Review",
     "verificationStatus": "Verified - Review",
@@ -1937,6 +2079,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/hiby-r1-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://store.hiby.com/products/hiby-r1",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -2010,6 +2159,8 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [],
+    "reviewNotes": "",
     "sourceUrl": "https://store.hiby.com/products/hiby-r3-ii-2025",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -2082,6 +2233,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/hiby-r3-pro-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://headfonics.com/hiby-r3-pro-review/",
     "sourceType": "Review",
     "verificationStatus": "Verified - Review",
@@ -2150,6 +2308,8 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [],
+    "reviewNotes": "",
     "sourceUrl": "https://www.linsoul.com/products/hiby-r3-pro-saber",
     "sourceType": "Retail/Web",
     "verificationStatus": "Verified - Retail/Web",
@@ -2218,6 +2378,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/hiby-r4-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://store.hiby.com/products/hiby-r4",
     "sourceType": "Official",
     "verificationStatus": "Partial - Official",
@@ -2291,6 +2458,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/hiby-r5-gen-2-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://store.hiby.com/products/hiby-r5-gen-2",
     "sourceType": "Official",
     "verificationStatus": "Partial - Official",
@@ -2359,6 +2533,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/hiby-r6-iii-2025-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://store.hiby.com/products/hiby-r6-iii-2025",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -2430,6 +2611,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/hiby-r6-pro-ii-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://store.hiby.com/products/r6-pro-ii-gen-2",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -2501,6 +2689,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/hiby-r8-ii-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://store.hiby.com/products/hiby-r8-ii",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -2569,6 +2764,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/hiby-rs2-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://store.hiby.com/products/hiby-rs2",
     "sourceType": "Official",
     "verificationStatus": "Partial - Official",
@@ -2637,6 +2839,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/hiby-rs6-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://store.hiby.com/products/hiby-rs6",
     "sourceType": "Official",
     "verificationStatus": "Partial - Official",
@@ -2705,6 +2914,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/hiby-rs8-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://store.hiby.com/products/hiby-rs8",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -2775,6 +2991,8 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [],
+    "reviewNotes": "",
     "sourceUrl": "https://www.hidizs.net/products/hidizs-ap30-music-boy-the-truly-wearable-palm-sized-hi-res-music-player",
     "sourceType": "Official",
     "verificationStatus": "Partial - Official",
@@ -2850,6 +3068,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/hidizs-ap80-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://www.hidizs.net/products/ap80-high-resolution-portable-music-player",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -2925,6 +3150,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/hidizs-ap80-pro-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://www.hidizs.net/products/ap80-pro-fully-balanced-lossless-music-player",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -3009,6 +3241,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/hidizs-x-linsoul-ap80-pro-max-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match to Hidizs x Linsoul AP80 PRO MAX.",
     "sourceUrl": "https://www.hidizs.net/products/hidizs-ap80-pro-max-all-in-one-hi-res-streaming-music-player",
     "sourceType": "Official",
     "verificationStatus": "Partial - Official",
@@ -3085,6 +3324,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/hidizs-ap80-pro-x-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://www.hidizs.net/products/ap80-pro-x-fully-balanced-lossless-music-player-ayfk",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -3159,6 +3405,8 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [],
+    "reviewNotes": "",
     "sourceUrl": "https://hifiwalker.com/products/h2",
     "sourceType": "Official",
     "verificationStatus": "Partial - Official",
@@ -3232,6 +3480,8 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [],
+    "reviewNotes": "",
     "sourceUrl": "https://hifiwalker.com/products/h2-touch",
     "sourceType": "Official",
     "verificationStatus": "Partial - Official",
@@ -3302,6 +3552,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/ibasso-dx160-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://ibasso.com/product/dx160/",
     "sourceType": "Official Screenshot",
     "verificationStatus": "Verified - Official Screenshot",
@@ -3370,6 +3627,8 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [],
+    "reviewNotes": "",
     "sourceUrl": "https://ibasso.com/product/dx170/",
     "sourceType": "Official Screenshot",
     "verificationStatus": "Verified - Official Screenshot",
@@ -3438,6 +3697,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/ibasso-dx180-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://ibasso.com/product/dx180/",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -3510,6 +3776,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/ibasso-dx240-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://ibasso.com/product/dx240/",
     "sourceType": "Official Screenshot",
     "verificationStatus": "Verified - Official Screenshot",
@@ -3581,6 +3854,8 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [],
+    "reviewNotes": "",
     "sourceUrl": "https://ibasso.com/product/dx260/",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -3652,6 +3927,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/ibasso-dx300-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://ibasso.com/product/dx300/",
     "sourceType": "Official Screenshot",
     "verificationStatus": "Verified - Official Screenshot",
@@ -3723,6 +4005,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/ibasso-dx320-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://ibasso.com/product/dx320/",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -3797,6 +4086,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/ibasso-dx340-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://ibasso.com/product/dx340/",
     "sourceType": "Review",
     "verificationStatus": "Verified - Review",
@@ -3875,6 +4171,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/shanling-m0-pro-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://en.shanling.com/article-IntroM0Pro.html",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -3952,6 +4255,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/shanling-m0-pura-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://en.shanling.com/article-IntroM0Pura.html",
     "sourceType": "Official",
     "verificationStatus": "Partial - Official",
@@ -4029,6 +4339,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/shanling-m1-plus-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://en.shanling.com/article-IntroM1plus.html",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -4101,6 +4418,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/shanling-m2x-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://headfonics.com/shanling-m2x-review/",
     "sourceType": "Review",
     "verificationStatus": "Verified - Review",
@@ -4176,6 +4500,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/shanling-m3-plus-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://en.shanling.com/article-IntroM3Plus.html",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -4251,6 +4582,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/shanling-m3-ultra-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://en.shanling.com/article-IntroM3U.html",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -4319,6 +4657,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/shanling-m3x-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://headfonics.com/shanling-m3x-review/",
     "sourceType": "Review",
     "verificationStatus": "Verified - Review",
@@ -4394,6 +4739,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/shanling-m5-ultra-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://en.shanling.com/article-Introm5ultra.html",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -4468,6 +4820,8 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [],
+    "reviewNotes": "",
     "sourceUrl": "https://en.shanling.com/product/244",
     "sourceType": "Official Screenshot",
     "verificationStatus": "Verified - Official Screenshot",
@@ -4536,6 +4890,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/shanling-m6-pro-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://headfonics.com/shanling-m6-pro-review/",
     "sourceType": "Review",
     "verificationStatus": "Verified - Review",
@@ -4615,6 +4976,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/shanling-m6-ultra-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://en.shanling.com/article-IntroM6U.html",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -4696,6 +5064,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/shanling-m7-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://en.shanling.com/article-IntoM7.html",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -4764,6 +5139,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/shanling-m8-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://headfonics.com/shanling-m8-review/",
     "sourceType": "Review",
     "verificationStatus": "Verified - Review",
@@ -4840,6 +5222,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/shanling-m8t-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://en.shanling.com/article-IntroM8T.html",
     "sourceType": "Official",
     "verificationStatus": "Partial - Official",
@@ -4918,6 +5307,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/shanling-m9-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://en.shanling.com/article-shanling-m9.html",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -4994,6 +5390,8 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [],
+    "reviewNotes": "",
     "sourceUrl": "https://www.sony.com/electronics/support/digital-music-players-nw-nwz-a-series/nw-a306/specifications",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -5074,6 +5472,8 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [],
+    "reviewNotes": "",
     "sourceUrl": "https://www.sony.jp/walkman/products/NW-A300_series/spec.html",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -5154,6 +5554,8 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [],
+    "reviewNotes": "",
     "sourceUrl": "https://www.sony.com/electronics/support/digital-music-players-nw-wm-series/nw-wm1am2/specifications",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -5232,6 +5634,8 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [],
+    "reviewNotes": "",
     "sourceUrl": "https://www.sony.com/electronics/support/digital-music-players-nw-wm-series/nw-wm1zm2/specifications",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -5302,6 +5706,8 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [],
+    "reviewNotes": "",
     "sourceUrl": "https://www.sony.com/electronics/support/digital-music-players-nw-nwz-zx-series/nw-zx507/specifications",
     "sourceType": "Official",
     "verificationStatus": "Partial - Official",
@@ -5378,6 +5784,8 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [],
+    "reviewNotes": "",
     "sourceUrl": "https://www.sony.com/electronics/support/digital-music-players-nw-nwz-zx-series/nw-zx707/specifications",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -5450,6 +5858,8 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [],
+    "reviewNotes": "",
     "sourceUrl": "https://www.surfans.net/products/surfans-f20",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -5522,6 +5932,8 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [],
+    "reviewNotes": "",
     "sourceUrl": "https://www.surfans.net/products/surfans-f28",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -5595,6 +6007,8 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [],
+    "reviewNotes": "",
     "sourceUrl": "https://www.surfans.net/products/surfans-f35",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -5673,6 +6087,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/tempotec-v3-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://www.tempotec.net/products/tempotec-v3",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -5747,6 +6168,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/tempotec-v6-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://www.tempotec.net/products/tempotec-v6",
     "sourceType": "Official",
     "verificationStatus": "Partial - Official",
@@ -5827,6 +6255,8 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [],
+    "reviewNotes": "",
     "sourceUrl": "https://www.activostyle.com/p1",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -5901,6 +6331,8 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [],
+    "reviewNotes": "",
     "sourceUrl": "https://www.astellnkern.com/en/product/view.php?idx=150",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -5978,6 +6410,8 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [],
+    "reviewNotes": "",
     "sourceUrl": "https://www.astellnkern.com/cn/product/view.php?idx=159",
     "sourceType": "Official",
     "verificationStatus": "Partial - Official",
@@ -6059,6 +6493,8 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [],
+    "reviewNotes": "",
     "sourceUrl": "https://www.astellnkern.com/cn/product/view.php?idx=162",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -6136,6 +6572,8 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [],
+    "reviewNotes": "",
     "sourceUrl": "https://www.astellnkern.com/en/product/view.php?idx=171",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -6208,6 +6646,8 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [],
+    "reviewNotes": "",
     "sourceUrl": "https://store.hiby.com/pages/hiby-r3-pro-saber-2022-specifications",
     "sourceType": "Official",
     "verificationStatus": "Partial - Official",
@@ -6276,6 +6716,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/hiby-rs8-ii-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://store.hiby.com/products/hiby-rs8-ii",
     "sourceType": "Official",
     "verificationStatus": "Partial - Official",
@@ -6347,6 +6794,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/ibasso-dx270-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://ibasso.com/product/dx270/",
     "sourceType": "Official",
     "verificationStatus": "Partial - Official",
@@ -6418,6 +6872,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/onix-xm2-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match to ONIX XM2.",
     "sourceUrl": "https://onixhiend.co.uk/",
     "sourceType": "Review",
     "verificationStatus": "Verified - Review",
@@ -6488,6 +6949,8 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [],
+    "reviewNotes": "",
     "sourceUrl": "https://www.lotoo.cn/english/bottom/Service/Download/",
     "sourceType": "Review",
     "verificationStatus": "Verified - Review",
@@ -6556,6 +7019,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/cayin-n3ultra-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://en.cayin.cn/features/7/15/623.html",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -6638,6 +7108,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/cayin-n3pro-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://en.cayin.cn/features/7/15/340.html",
     "sourceType": "Review",
     "verificationStatus": "Verified - Review",
@@ -6712,6 +7189,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/cayin-n5ii-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://cayin.com/ca-inhalte/uploads/2018/08/Cayin_N5_MK2.pdf",
     "sourceType": "Review",
     "verificationStatus": "Verified - Review",
@@ -6785,6 +7269,8 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [],
+    "reviewNotes": "",
     "sourceUrl": "https://www.facebook.com/CayinAudio/photos/n5iis-with-a-new-ips-screen-2gb-ram-64gb-internal-storage-2xtf-cards-upto-400gb-/436195706791661/",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -6858,6 +7344,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/cayin-n6ii-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match to Cayin N6ii platform.",
     "sourceUrl": "https://en.cayin.cn/features/7/15/150/339.html",
     "sourceType": "Official",
     "verificationStatus": "Partial - Official",
@@ -6931,6 +7424,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/cayin-n6iii-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match to Cayin N6iii / C201.",
     "sourceUrl": "https://en.cayin.cn/features/7/15/685.html",
     "sourceType": "Review",
     "verificationStatus": "Verified - Review",
@@ -7009,6 +7509,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/cayin-n7-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://en.cayin.cn/features/7/15/592.html",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -7079,6 +7586,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/cayin-n8-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://en.cayin.cn/features/7/15/337.html",
     "sourceType": "Review",
     "verificationStatus": "Verified - Review",
@@ -7159,6 +7673,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/cayin-n8ii-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://en.cayin.cn/features/7/15/560.html",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -7231,6 +7752,8 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [],
+    "reviewNotes": "",
     "sourceUrl": "https://en.cayin.cn/newsDetails/10/24/738.html",
     "sourceType": "Official",
     "verificationStatus": "Partial - Official",
@@ -7301,6 +7824,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/cayin-i5-review/"
+      }
+    ],
+    "reviewNotes": "Headfonics review link added; clear model match.",
     "sourceUrl": "https://twister6.com/2017/03/03/cayin-i5/",
     "sourceType": "Review",
     "verificationStatus": "Verified - Review",

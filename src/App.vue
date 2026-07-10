@@ -114,6 +114,20 @@ const visibleDaps = computed(() => sortDaps(filterDaps(daps, filters.value), sor
 const visibleCardDaps = computed(() => visibleDaps.value.slice(0, cardLimit.value));
 const hasMoreCardDaps = computed(() => visibleCardDaps.value.length < visibleDaps.value.length);
 const dapBySlug = computed(() => new Map(daps.map((dap) => [dapSlug(dap), dap])));
+const selectedDapIndex = computed(() => {
+  if (!selectedDap.value) return -1;
+  return visibleDaps.value.findIndex((dap) => dap.id === selectedDap.value?.id);
+});
+const previousDap = computed(() => {
+  const index = selectedDapIndex.value;
+  if (index <= 0) return null;
+  return visibleDaps.value[index - 1] ?? null;
+});
+const nextDap = computed(() => {
+  const index = selectedDapIndex.value;
+  if (index < 0 || index >= visibleDaps.value.length - 1) return null;
+  return visibleDaps.value[index + 1] ?? null;
+});
 const sourcedCount = computed(() => daps.filter((dap) => !dap.verificationStatus.toLowerCase().includes('needs source')).length);
 const androidCount = computed(() => daps.filter(isAndroidBased).length);
 const balancedCount = computed(() => daps.filter((dap) => dap.has44mm).length);
@@ -212,6 +226,11 @@ function closeDapDetails() {
   if (window.location.hash.startsWith(detailHashPrefix)) {
     window.history.pushState('', document.title, `${window.location.pathname}${window.location.search}`);
   }
+}
+
+function openDapDetails(dap: Dap) {
+  selectedDap.value = dap;
+  window.history.pushState('', document.title, `${window.location.pathname}${window.location.search}#/dap/${encodeURIComponent(dapSlug(dap))}`);
 }
 
 function dapDisplayName(dap: Dap): string {
@@ -366,7 +385,7 @@ watch([filters, sortState], resetCardLimit, { deep: true });
             <nav class="header-actions" aria-label="Contribution links">
               <a
                 class="btn btn-primary"
-                href="https://github.com/jrequiroso/dap-database/issues/new?template=missing-dap.yml"
+                href="https://github.com/jreqtech/dap-database/issues/new?template=missing-dap.yml"
                 target="_blank"
                 rel="noreferrer"
               >
@@ -374,7 +393,7 @@ watch([filters, sortState], resetCardLimit, { deep: true });
               </a>
               <a
                 class="btn btn-primary-soft"
-                href="https://github.com/jrequiroso/dap-database/issues/new?template=correction.yml"
+                href="https://github.com/jreqtech/dap-database/issues/new?template=correction.yml"
                 target="_blank"
                 rel="noreferrer"
               >
@@ -470,7 +489,13 @@ watch([filters, sortState], resetCardLimit, { deep: true });
     </div>
   </main>
 
-  <DapDetailsModal :dap="selectedDap" @close="closeDapDetails" />
+  <DapDetailsModal
+    :dap="selectedDap"
+    :previous-dap="previousDap"
+    :next-dap="nextDap"
+    @close="closeDapDetails"
+    @navigate="openDapDetails"
+  />
 
   <footer class="site-footer">
     <div class="footer-copy">
@@ -485,25 +510,25 @@ watch([filters, sortState], resetCardLimit, { deep: true });
       </p>
       <p class="footer-contribute">Found an error or missing model? Submit a correction or request a DAP on GitHub.</p>
       <nav class="footer-actions" aria-label="Project links">
-        <a href="https://github.com/jrequiroso/dap-database" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://github.com/jreqtech/dap-database" target="_blank" rel="noopener noreferrer">GitHub</a>
         <a
-          href="https://github.com/jrequiroso/dap-database/issues/new?template=missing-dap.yml"
+          href="https://github.com/jreqtech/dap-database/issues/new?template=missing-dap.yml"
           target="_blank"
           rel="noopener noreferrer"
         >
           Request a missing DAP
         </a>
         <a
-          href="https://github.com/jrequiroso/dap-database/issues/new?template=correction.yml"
+          href="https://github.com/jreqtech/dap-database/issues/new?template=correction.yml"
           target="_blank"
           rel="noopener noreferrer"
         >
           Report a correction
         </a>
-        <a href="https://github.com/jrequiroso/dap-database/blob/main/docs/source-data-notes.md" target="_blank" rel="noopener noreferrer">
+        <a href="https://github.com/jreqtech/dap-database/blob/main/docs/source-data-notes.md" target="_blank" rel="noopener noreferrer">
           Source/data notes
         </a>
-        <a href="https://github.com/jrequiroso/dap-database/blob/main/ROADMAP.md" target="_blank" rel="noopener noreferrer">
+        <a href="https://github.com/jreqtech/dap-database/blob/main/ROADMAP.md" target="_blank" rel="noopener noreferrer">
           Roadmap
         </a>
       </nav>
@@ -511,7 +536,7 @@ watch([filters, sortState], resetCardLimit, { deep: true });
 
     <nav class="footer-social" aria-label="JReqTech social links">
       <a
-        href="https://github.com/jrequiroso/dap-database"
+        href="https://github.com/jreqtech/dap-database"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="GitHub"
@@ -588,3 +613,4 @@ watch([filters, sortState], resetCardLimit, { deep: true });
     </nav>
   </footer>
 </template>
+

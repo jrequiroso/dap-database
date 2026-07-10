@@ -27,6 +27,8 @@ export interface BuyLink {
   url: string;
 }
 
+export type ReviewLink = BuyLink;
+
 export interface Dap {
   id: string;
   brand: string;
@@ -79,6 +81,8 @@ export interface Dap {
   buyLinks: BuyLink[];
   affiliateLinks: BuyLink[];
   buyNotes: string;
+  reviewLinks: ReviewLink[];
+  reviewNotes: string;
   sourceUrl: string;
   sourceType: string;
   verificationStatus: VerificationStatus;

@@ -105,7 +105,7 @@ function isValidHttpUrl(value: string): boolean {
   }
 }
 
-function parseBuyLinks(value: string): BuyLink[] {
+function parseLabeledLinks(value: string): BuyLink[] {
   if (!value.trim()) return [];
 
   return value
@@ -122,6 +122,8 @@ function parseBuyLinks(value: string): BuyLink[] {
     })
     .filter((link): link is BuyLink => Boolean(link));
 }
+
+const parseBuyLinks = parseLabeledLinks;
 
 function valueFromAny(row: Record<string, string>, columns: string[]): string {
   for (const column of columns) {
@@ -247,6 +249,8 @@ function toDap(row: Record<string, string>): Dap {
     buyLinks: parseBuyLinks(row.buy_links ?? ''),
     affiliateLinks: parseBuyLinks(row.affiliate_links ?? ''),
     buyNotes: row.buy_notes ?? '',
+    reviewLinks: parseLabeledLinks(row.review_links ?? ''),
+    reviewNotes: row.review_notes ?? '',
     sourceUrl,
     sourceType: inferSourceType(verificationStatus, sourceUrl),
     verificationStatus,

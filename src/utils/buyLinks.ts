@@ -1,6 +1,6 @@
 import type { BuyLink } from '../types/dap';
 
-export function parseBuyLinks(value: string): BuyLink[] {
+export function parseLabeledLinks(value: string): BuyLink[] {
   if (!value.trim()) return [];
 
   return value
@@ -17,6 +17,8 @@ export function parseBuyLinks(value: string): BuyLink[] {
     })
     .filter((link): link is BuyLink => Boolean(link));
 }
+
+export const parseBuyLinks = parseLabeledLinks;
 
 export function isValidHttpUrl(value: string): boolean {
   try {

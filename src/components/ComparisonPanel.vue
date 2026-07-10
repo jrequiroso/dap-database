@@ -64,7 +64,7 @@ const rows: Array<{ label: string; value: (dap: Dap) => string }> = [
           <tr>
             <th>Source</th>
             <td v-for="dap in daps" :key="dap.id">
-              <a v-if="dap.sourceUrl" class="source-link" :href="dap.sourceUrl" target="_blank" rel="noopener noreferrer">
+              <a v-if="dap.sourceUrl" class="source-link" :href="dap.sourceUrl" target="_blank" rel="noopener noreferrer nofollow">
                 <ExternalLink :size="14" aria-hidden="true" />
                 <span>Open source</span>
               </a>

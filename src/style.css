@@ -349,7 +349,7 @@ select:focus-visible {
 
 .app-shell,
 .site-footer {
-  width: min(1500px, calc(100vw - 48px));
+  width: min(2200px, calc(100vw - 48px));
   margin: 0 auto;
 }
 
@@ -858,7 +858,7 @@ h1 {
 }
 
 .dap-table {
-  min-width: 1420px;
+  min-width: 1366px;
   table-layout: fixed;
 }
 
@@ -910,10 +910,6 @@ h1 {
   width: 176px;
 }
 
-.col-actions {
-  width: 54px;
-}
-
 .dap-table th,
 .dap-table td,
 .spec-compare-table th,
@@ -952,10 +948,6 @@ h1 {
   text-align: center;
 }
 
-.actions-col {
-  text-align: center;
-}
-
 .is-numeric {
   text-align: right;
 }
@@ -974,10 +966,6 @@ h1 {
 .pin-button,
 .details-icon-button {
   padding: 0;
-}
-
-.details-row-button {
-  white-space: nowrap;
 }
 
 .pin-button.is-pinned,
@@ -1038,8 +1026,7 @@ h1 {
 }
 
 .photo-button:hover,
-.dap-card__button:hover,
-.details-row-button:hover {
+.dap-card__button:hover {
   text-decoration: none;
 }
 

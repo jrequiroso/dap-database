@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ArrowDown, ArrowUp, ChevronsUpDown, Info } from 'lucide-vue-next';
+import { ArrowDown, ArrowUp, ChevronsUpDown } from 'lucide-vue-next';
 import type { Dap, SortKey, SortState } from '../types/dap';
 import { formatBattery, formatPrice, formatValue } from '../utils/formatters';
 import { getStatusBadgeMeta, getVerificationBadgeMeta } from '../utils/dapDisplay';
@@ -45,7 +45,6 @@ function sortLabel(key: SortKey, sortState: SortState): string {
         <col class="col-dac" />
         <col class="col-status" />
         <col class="col-verification" />
-        <col class="col-actions" />
       </colgroup>
       <thead>
         <tr>
@@ -105,7 +104,6 @@ function sortLabel(key: SortKey, sortState: SortState): string {
               </span>
             </button>
           </th>
-          <th class="actions-col"></th>
         </tr>
       </thead>
       <tbody>
@@ -139,16 +137,6 @@ function sortLabel(key: SortKey, sortState: SortState): string {
               :badge-class="getVerificationBadgeMeta(dap.verificationStatus).className"
               :title="getVerificationBadgeMeta(dap.verificationStatus).title"
             />
-          </td>
-          <td class="actions-col">
-            <a
-              class="btn btn-primary-soft btn-sm btn-icon details-row-button"
-              :href="dapDetailHash(dap)"
-              :aria-label="`Open details for ${dap.brand} ${dap.model}`"
-              :title="`Open details for ${dap.brand} ${dap.model}`"
-            >
-              <Info :size="16" aria-hidden="true" />
-            </a>
           </td>
         </tr>
       </tbody>

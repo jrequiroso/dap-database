@@ -1,6 +1,13 @@
 <script setup lang="ts">
 import { computed, onMounted, ref, watch } from 'vue';
-import { Github, Grid2X2, ListFilter, RotateCcw, Table2 } from 'lucide-vue-next';
+import {
+  Grid2X2,
+  Headphones,
+  ListFilter,
+  RotateCcw,
+  Table2,
+} from 'lucide-vue-next';
+import { siBlogger, siFacebook, siGithub, siReddit, siTiktok, siYoutube } from 'simple-icons';
 import rawDaps from './data/daps.json';
 import ComparisonPanel from './components/ComparisonPanel.vue';
 import ComparisonTray from './components/ComparisonTray.vue';
@@ -18,6 +25,14 @@ type ViewMode = 'cards' | 'table';
 const daps = rawDaps as Dap[];
 const viewStorageKey = 'dap-database-view-mode-v2';
 const pinsStorageKey = 'dap-database-pinned-ids';
+const socialIcons = {
+  github: siGithub.path,
+  blogger: siBlogger.path,
+  facebook: siFacebook.path,
+  reddit: siReddit.path,
+  youtube: siYoutube.path,
+  tiktok: siTiktok.path,
+};
 
 const filters = ref<DapFiltersType>({
   search: '',
@@ -154,6 +169,24 @@ watch(
       <div>
         <h1>DAP Database</h1>
         <p class="intro">Specs, sources, verification, and comparison for digital audio players.</p>
+        <nav class="header-actions" aria-label="Contribution links">
+          <a
+            class="btn btn-primary"
+            href="https://github.com/jrequiroso/dap-database/issues/new?template=missing-dap.yml"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Request a missing DAP
+          </a>
+          <a
+            class="btn btn-primary-soft"
+            href="https://github.com/jrequiroso/dap-database/issues/new?template=correction.yml"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Report a correction
+          </a>
+        </nav>
       </div>
       <dl class="stats-grid">
         <div><dt>Total DAPs</dt><dd>{{ daps.length }}</dd></div>
@@ -257,10 +290,81 @@ watch(
 
   <footer class="site-footer">
     <span>Curated by JReqTech.</span>
-    <nav class="footer-links" aria-label="Project links">
-      <a href="https://github.com/jrequiroso/dap-database" target="_blank" rel="noopener noreferrer">
-        <Github :size="16" aria-hidden="true" />
-        <span>GitHub</span>
+    <nav class="footer-links" aria-label="JReqTech links">
+      <a
+        href="https://github.com/jrequiroso/dap-database"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="GitHub"
+        title="GitHub"
+      >
+        <svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path :d="socialIcons.github" />
+        </svg>
+      </a>
+      <a
+        href="https://jreqtech.blogspot.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Blog"
+        title="Blog"
+      >
+        <svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path :d="socialIcons.blogger" />
+        </svg>
+      </a>
+      <a
+        href="https://www.facebook.com/jreqtech"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Facebook"
+        title="Facebook"
+      >
+        <svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path :d="socialIcons.facebook" />
+        </svg>
+      </a>
+      <a
+        href="https://www.head-fi.org/showcase/authors/jreqtech.584807/reviews"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Head-Fi reviews"
+        title="Head-Fi reviews"
+      >
+        <Headphones :size="17" aria-hidden="true" />
+      </a>
+      <a
+        href="https://www.reddit.com/user/jreqtech/submitted/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Reddit"
+        title="Reddit"
+      >
+        <svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path :d="socialIcons.reddit" />
+        </svg>
+      </a>
+      <a
+        href="https://www.youtube.com/@jreq_tech"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="YouTube"
+        title="YouTube"
+      >
+        <svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path :d="socialIcons.youtube" />
+        </svg>
+      </a>
+      <a
+        href="https://www.tiktok.com/@jreq_tech"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="TikTok"
+        title="TikTok"
+      >
+        <svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path :d="socialIcons.tiktok" />
+        </svg>
       </a>
     </nav>
   </footer>

@@ -11,3 +11,5 @@ src/types/*.js
 src/types/*.d.ts
 !src/vite-env.d.ts
 src/data/daps-updated.csv
+FEATURE_ROADMAP_PRIVATE.md
+docs/FEATURE_ROADMAP_PRIVATE.md

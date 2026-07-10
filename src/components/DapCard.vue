@@ -17,7 +17,6 @@ const isDiscontinued = (status: string) => status.toLowerCase().includes('discon
     <a
       class="dap-card__button"
       :href="dapDetailHash(dap)"
-      :aria-label="`Open details for ${dap.brand} ${dap.model}`"
     >
       <span class="dap-card__media">
         <DapPhoto :dap="dap" size="card" />

@@ -28,6 +28,8 @@ const viewStorageKey = 'dap-database-view-mode-v2';
 const detailHashPrefix = '#/dap/';
 const defaultDocumentTitle = 'DAP Database - Digital Audio Player Specs and Sources';
 const defaultMetaDescription = 'A searchable database of digital audio players with specs, source links, verification status, and filters.';
+const initialCardLimit = 24;
+const cardLimitStep = 24;
 const socialIcons = {
   github: siGithub.path,
   blogger: siBlogger.path,
@@ -59,6 +61,7 @@ const viewMode = ref<ViewMode>('cards');
 const selectedDap = ref<Dap | null>(null);
 const showMobileFilters = ref(false);
 const filterGestureStart = ref<{ x: number; y: number } | null>(null);
+const cardLimit = ref(initialCardLimit);
 
 const brands = computed(() => uniqueSorted(daps.map((dap) => dap.brand)));
 const statuses = computed(() => uniqueSorted(daps.map((dap) => dap.status)));
@@ -108,6 +111,8 @@ const yearBounds = computed(() => {
   return { min: Math.min(...years, currentYear), max: currentYear };
 });
 const visibleDaps = computed(() => sortDaps(filterDaps(daps, filters.value), sortState.value));
+const visibleCardDaps = computed(() => visibleDaps.value.slice(0, cardLimit.value));
+const hasMoreCardDaps = computed(() => visibleCardDaps.value.length < visibleDaps.value.length);
 const dapBySlug = computed(() => new Map(daps.map((dap) => [dapSlug(dap), dap])));
 const sourcedCount = computed(() => daps.filter((dap) => !dap.verificationStatus.toLowerCase().includes('needs source')).length);
 const androidCount = computed(() => daps.filter(isAndroidBased).length);
@@ -182,6 +187,14 @@ function removeFilter(key: keyof DapFiltersType) {
     ...filters.value,
     [key]: Array.isArray(currentValue) ? [] : typeof currentValue === 'boolean' ? false : '',
   };
+}
+
+function loadMoreCards() {
+  cardLimit.value = Math.min(cardLimit.value + cardLimitStep, visibleDaps.value.length);
+}
+
+function resetCardLimit() {
+  cardLimit.value = initialCardLimit;
 }
 
 function syncSelectedDapWithHash() {
@@ -273,6 +286,8 @@ watch(viewMode, (mode) => {
 watch(selectedDap, (dap) => {
   updatePageMeta(dap);
 });
+
+watch([filters, sortState], resetCardLimit, { deep: true });
 
 </script>
 
@@ -433,11 +448,18 @@ watch(selectedDap, (dap) => {
 
         <section v-else class="card-grid" aria-label="DAP cards">
           <DapCard
-            v-for="dap in visibleDaps"
+            v-for="dap in visibleCardDaps"
             :key="dap.id"
             :dap="dap"
           />
         </section>
+
+        <div v-if="viewMode === 'cards' && hasMoreCardDaps" class="load-more-row">
+          <button class="btn btn-secondary" type="button" @click="loadMoreCards">
+            Load more DAPs
+          </button>
+          <span>{{ visibleCardDaps.length }} of {{ visibleDaps.length }} shown</span>
+        </div>
 
         <p v-if="visibleDaps.length === 0" class="empty-state">
           <ListFilter :size="18" aria-hidden="true" />

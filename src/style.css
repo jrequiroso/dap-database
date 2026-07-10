@@ -1148,6 +1148,17 @@ h1 {
   align-items: stretch;
 }
 
+.load-more-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 18px;
+  color: #5f707a;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
 .dap-card {
   height: 100%;
   overflow: hidden;
@@ -2016,6 +2027,12 @@ dd {
 
   .card-grid {
     grid-template-columns: 1fr;
+  }
+
+  .load-more-row {
+    align-items: stretch;
+    flex-direction: column;
+    text-align: center;
   }
 
   .dap-card__media {

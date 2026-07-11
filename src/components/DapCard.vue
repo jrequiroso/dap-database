@@ -45,7 +45,7 @@ const isDiscontinued = (status: string) => status.toLowerCase().includes('discon
 
         <span class="chip-row catalog-badges">
           <span class="badge badge-neutral">{{ isAndroidBased(dap) ? 'Android' : 'Non-Android' }}</span>
-          <span v-if="dap.has44mm" class="badge badge-neutral">4.4mm</span>
+          <span v-if="dap.has44mm" class="badge badge-capability-balanced">4.4mm</span>
           <span
             class="badge"
             :class="getStatusBadgeMeta(dap.status).className"

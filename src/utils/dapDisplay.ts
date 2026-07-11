@@ -52,7 +52,7 @@ export function statusClass(status: string): string {
   const normalized = status.toLowerCase();
   if (normalized.includes('active')) return 'chip--green';
   if (normalized.includes('upcoming')) return 'chip--blue';
-  if (normalized.includes('discontinued')) return 'chip--muted';
+  if (normalized.includes('discontinued')) return 'chip--red';
   return 'chip--neutral';
 }
 

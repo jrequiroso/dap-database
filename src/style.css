@@ -300,9 +300,9 @@ select:focus-visible {
 }
 
 .badge-status-discontinued {
-  border-color: #d1dbe2;
-  background: #f0f3f5;
-  color: #4e5d67;
+  border-color: #fda4af;
+  background: #ffe4e6;
+  color: #9f1239;
 }
 
 .badge-status-upcoming {
@@ -345,6 +345,74 @@ select:focus-visible {
   border-color: #d1c7e8;
   background: #f3f0fa;
   color: #5a477c;
+}
+
+.badge-capability-balanced {
+  border-color: #b7dbc4;
+  background: #edf8f1;
+  color: #1f6b3c;
+}
+
+@media (prefers-color-scheme: dark) {
+  .badge-status-active {
+    border-color: #166534;
+    background: #052e16;
+    color: #86efac;
+  }
+
+  .badge-status-discontinued {
+    border-color: #9f1239;
+    background: #4c0519;
+    color: #fda4af;
+  }
+
+  .badge-status-upcoming {
+    border-color: #3730a3;
+    background: #1e1b4b;
+    color: #c7d2fe;
+  }
+
+  .badge-verify-official {
+    border-color: #155e75;
+    background: #083344;
+    color: #a5f3fc;
+  }
+
+  .badge-verify-review {
+    border-color: #4338ca;
+    background: #1e1b4b;
+    color: #c4b5fd;
+  }
+
+  .badge-verify-web {
+    border-color: #a16207;
+    background: #422006;
+    color: #fde68a;
+  }
+
+  .badge-verify-partial {
+    border-color: #b45309;
+    background: #451a03;
+    color: #fdba74;
+  }
+
+  .badge-verify-needs-source {
+    border-color: #991b1b;
+    background: #450a0a;
+    color: #fca5a5;
+  }
+
+  .badge-verify-community {
+    border-color: #6d28d9;
+    background: #2e1065;
+    color: #ddd6fe;
+  }
+
+  .badge-capability-balanced {
+    border-color: #166534;
+    background: #052e16;
+    color: #bbf7d0;
+  }
 }
 
 .app-shell,

@@ -268,12 +268,12 @@ function closeMobileFilters() {
 }
 
 function handleFilterPointerStart(event: PointerEvent) {
-  const target = event.currentTarget as HTMLElement | null;
-  target?.setPointerCapture?.(event.pointerId);
+  if (event.pointerType === 'mouse') return;
   filterGestureStart.value = { x: event.clientX, y: event.clientY };
 }
 
 function handleFilterPointerEnd(event: PointerEvent) {
+  if (event.pointerType === 'mouse') return;
   const start = filterGestureStart.value;
   filterGestureStart.value = null;
   if (!start) return;

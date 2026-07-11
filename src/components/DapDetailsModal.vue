@@ -372,7 +372,6 @@ onBeforeUnmount(() => {
           >
             <ChevronLeft :size="17" aria-hidden="true" />
             <span>
-              <small>Previous</small>
               <strong>{{ compactDapName(previousDap) }}</strong>
             </span>
           </button>
@@ -384,7 +383,6 @@ onBeforeUnmount(() => {
             @click="$emit('navigate', nextDap)"
           >
             <span>
-              <small>Next</small>
               <strong>{{ compactDapName(nextDap) }}</strong>
             </span>
             <ChevronRight :size="17" aria-hidden="true" />

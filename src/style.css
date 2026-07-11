@@ -1784,17 +1784,10 @@ dd {
   min-width: 0;
 }
 
-.modal-nav-button small {
-  color: #667985;
-  font-size: 0.72rem;
-  font-weight: 850;
-  line-height: 1.1;
-}
-
 .modal-nav-button strong {
   overflow: hidden;
   font-size: 0.86rem;
-  line-height: 1.2;
+  line-height: 1.25;
   text-overflow: ellipsis;
   white-space: nowrap;
 }

@@ -34,6 +34,13 @@ function featureText(dap: Dap): string {
   ].join(' ').toLowerCase();
 }
 
+function searchTokens(term: string): string[] {
+  return term
+    .split(/\s+/)
+    .map((token) => token.trim())
+    .filter(Boolean);
+}
+
 function numberFromFilter(value: string): number | null {
   if (!value.trim()) return null;
   const parsed = Number(value);
@@ -95,6 +102,7 @@ function compareDefaultOrder(a: Dap, b: Dap): number {
 
 export function filterDaps(daps: Dap[], filters: DapFilters): Dap[] {
   const term = filters.search.trim().toLowerCase();
+  const terms = searchTokens(term);
   const priceMin = numberFromFilter(filters.priceMin);
   const priceMax = numberFromFilter(filters.priceMax);
   const yearMin = numberFromFilter(filters.yearMin);
@@ -132,8 +140,9 @@ export function filterDaps(daps: Dap[], filters: DapFilters): Dap[] {
       if (yearMax !== null && year > yearMax) return false;
     }
 
-    if (!term) return true;
-    return featureText(dap).includes(term);
+    if (!terms.length) return true;
+    const text = featureText(dap);
+    return terms.every((token) => text.includes(token));
   });
 }
 

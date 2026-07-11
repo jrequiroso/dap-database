@@ -35,11 +35,11 @@ Spec source links, review links, and buying links are intentionally kept separat
 
 ## Review Credits
 
-Review links include Headfonics where available.
+Review links may include Headfonics, Headfonia, and Twister6 where exact model matches are available.
 
-[Headfonics](https://headfonics.com/) is an independent audio review publication and is credited as a review source, not as an official spec authority unless a row explicitly uses a Headfonics review as its Source URL.
+[Headfonics](https://headfonics.com/), [Headfonia](https://www.headfonia.com/), and [Twister6](https://twister6.com/) are independent audio review publications and are credited as review sources, not as official spec authorities unless a row explicitly uses one of their reviews as its Source URL.
 
-Thanks to independent review publications such as Headfonics for making detailed review archives publicly available.
+Thanks to independent review publications such as Headfonics, Headfonia, and Twister6 for making detailed review archives publicly available.
 
 ## Affiliate / Buying Links
 

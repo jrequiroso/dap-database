@@ -77,29 +77,6 @@ Until an aliases column exists, aliases may be documented in Notes, but they sho
 
 These are candidates for future source-backed rows. Before adding any row, check `src/data/daps.csv` first to avoid duplicates.
 
-### Lotoo
-
-- Lotoo PAW 5000
-- Lotoo PAW 5000 MKII
-- Lotoo PAW Pico
-
-Variant note:
-
-PAW Gold Touch may be abbreviated as PAW GT or LPGT. PAW Gold Touch 2 may be abbreviated as PAW GT2 or LPGT2. Do not add abbreviation-only duplicate rows.
-
-### Luxury & Precision
-
-- Luxury & Precision P6 Pro Ti99
-- Luxury & Precision LP6
-- Luxury & Precision LP6 Gold
-- Luxury & Precision LP6 Ti
-- Luxury & Precision E7
-- Luxury & Precision P1
-
-Variant note:
-
-Luxury & Precision limited material/color editions should only be added if hardware, chassis material, or specs meaningfully differ.
-
 ### Cowon / Plenue
 
 - Cowon Plenue J
@@ -129,23 +106,6 @@ Cowon variants are usually distinct enough when marked D2, R2, M2, MKII, etc. Co
 Variant note:
 
 Watch for regional naming and storage variants.
-
-### Questyle
-
-- Questyle QPM
-- Questyle QP3R
-
-Variant note:
-
-Skip limited color/material editions unless there are hardware or official spec differences.
-
-### HiBy
-
-- HiBy R2
-
-Naming note:
-
-Do not add `HiBy R6 Pro 2020` unless a clear official source proves it was a separately marketed model. Current evidence suggests it is informal wording for the original R6 Pro.
 
 ### Sony Walkman
 

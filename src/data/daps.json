@@ -54,7 +54,12 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
-    "reviewLinks": [],
+    "reviewLinks": [
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/astell-kern-sr35-review/"
+      }
+    ],
     "reviewNotes": "",
     "sourceUrl": "https://www.astellnkern.com/en/product/view.php?idx=138",
     "sourceType": "Official",
@@ -133,9 +138,17 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/astellkern-aultima-sp3000-review/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/astell-kern-sp3000-review/"
+      },
+      {
+        "label": "Twister6",
+        "url": "https://twister6.com/2022/09/12/astell-kern-ak-sp3000/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://www.astellnkern.com/en/product/view.php?idx=133",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -214,7 +227,12 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
-    "reviewLinks": [],
+    "reviewLinks": [
+      {
+        "label": "Twister6",
+        "url": "https://twister6.com/2024/12/29/astell-kern-ak-sp3000m/"
+      }
+    ],
     "reviewNotes": "",
     "sourceUrl": "https://www.astellnkern.com/en/product/view.php?idx=153",
     "sourceType": "Official",
@@ -515,9 +533,13 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/fiio-jm21-review/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/fiio-jm21-review/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://www.fiio.com/jm21",
     "sourceType": "Official",
     "verificationStatus": "Partial - Official",
@@ -597,7 +619,7 @@
         "url": "https://headfonics.com/fiio-m7-review/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://www.fiio.com/m7",
     "sourceType": "Official",
     "verificationStatus": "Partial - Official",
@@ -675,7 +697,7 @@
         "url": "https://headfonics.com/fiio-m9-review/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://www.fiio.com/m9",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -748,9 +770,13 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/fiio-m11-review/"
+      },
+      {
+        "label": "Twister6",
+        "url": "https://twister6.com/2019/06/28/fiio-m11/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://www.fiio.com/m11",
     "sourceType": "Official",
     "verificationStatus": "Partial - Official",
@@ -825,7 +851,7 @@
         "url": "https://headfonics.com/fiio-m11-plus-ess-review/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://www.fiio.com/m11plusess",
     "sourceType": "Official",
     "verificationStatus": "Partial - Official",
@@ -900,7 +926,7 @@
         "url": "https://headfonics.com/fiio-m11-plus-ltd-review/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://www.fiio.com/m11plusltd",
     "sourceType": "Official",
     "verificationStatus": "Partial - Official",
@@ -975,7 +1001,7 @@
         "url": "https://headfonics.com/fiio-m11s-review/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://www.fiio.com/m11s",
     "sourceType": "Official",
     "verificationStatus": "Partial - Official",
@@ -1050,7 +1076,7 @@
         "url": "https://headfonics.com/fiio-m15-review/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://www.fiio.com/m15",
     "sourceType": "Official",
     "verificationStatus": "Partial - Official",
@@ -1144,7 +1170,7 @@
         "url": "https://headfonics.com/fiio-m15s-review/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://www.fiio.com/m15s",
     "sourceType": "Official",
     "verificationStatus": "Partial - Official",
@@ -1237,7 +1263,7 @@
         "url": "https://headfonics.com/fiio-m17-review/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://www.fiio.com/m17",
     "sourceType": "Official",
     "verificationStatus": "Partial - Official",
@@ -1322,9 +1348,13 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/fiio-m21-review/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/fiio-m21-review/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://www.fiio.com/m21",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -1415,9 +1445,13 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/fiio-m23-review/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/fiio-m23-review/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://www.fiio.com/m23",
     "sourceType": "Official",
     "verificationStatus": "Partial - Official",
@@ -1496,7 +1530,7 @@
         "url": "https://headfonics.com/fiio-snowsky-disc-review/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://www.fiio.com/DISC",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -1571,7 +1605,7 @@
         "url": "https://headfonics.com/fiio-snowsky-echo-mini-review/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://www.fiio.com/echomini",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -1714,9 +1748,13 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/fiio-x5iii-review/"
+      },
+      {
+        "label": "Twister6",
+        "url": "https://twister6.com/2017/05/03/fiio-x5iii/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://www.fiio.com/x5iii",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -1791,7 +1829,7 @@
         "url": "https://headfonics.com/fiio-x7-mark-ii-review/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://en.wikipedia.org/wiki/FiiO_X_Series",
     "sourceType": "Web",
     "verificationStatus": "Verified - Web",
@@ -1866,7 +1904,7 @@
         "url": "https://headfonics.com/hiby-digital-m300-review/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://store.hiby.com/products/hiby-digital-m300",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -2085,7 +2123,7 @@
         "url": "https://headfonics.com/hiby-r1-review/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://store.hiby.com/products/hiby-r1",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -2237,9 +2275,17 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/hiby-r3-pro-review/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/hiby-r3-pro-review/"
+      },
+      {
+        "label": "Twister6",
+        "url": "https://twister6.com/2020/01/07/hiby-r3-pro/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://headfonics.com/hiby-r3-pro-review/",
     "sourceType": "Review",
     "verificationStatus": "Verified - Review",
@@ -2382,9 +2428,13 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/hiby-r4-review/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/hiby-r4-review/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://store.hiby.com/products/hiby-r4",
     "sourceType": "Official",
     "verificationStatus": "Partial - Official",
@@ -2462,9 +2512,13 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/hiby-r5-gen-2-review/"
+      },
+      {
+        "label": "Twister6",
+        "url": "https://twister6.com/2022/08/23/hiby-r5-gen-2/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://store.hiby.com/products/hiby-r5-gen-2",
     "sourceType": "Official",
     "verificationStatus": "Partial - Official",
@@ -2537,9 +2591,13 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/hiby-r6-iii-2025-review/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/hiby-r6-iii-2025-review/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://store.hiby.com/products/hiby-r6-iii-2025",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -2617,7 +2675,7 @@
         "url": "https://headfonics.com/hiby-r6-pro-ii-review/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://store.hiby.com/products/r6-pro-ii-gen-2",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -2693,9 +2751,13 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/hiby-r8-ii-review/"
+      },
+      {
+        "label": "Twister6",
+        "url": "https://twister6.com/2024/02/05/hiby-r8-ii-r8ii/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://store.hiby.com/products/hiby-r8-ii",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -2768,9 +2830,13 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/hiby-rs2-review/"
+      },
+      {
+        "label": "Twister6",
+        "url": "https://twister6.com/2023/02/14/hiby-rs2/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://store.hiby.com/products/hiby-rs2",
     "sourceType": "Official",
     "verificationStatus": "Partial - Official",
@@ -2843,9 +2909,13 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/hiby-rs6-review/"
+      },
+      {
+        "label": "Twister6",
+        "url": "https://twister6.com/2021/12/08/hiby-rs6/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://store.hiby.com/products/hiby-rs6",
     "sourceType": "Official",
     "verificationStatus": "Partial - Official",
@@ -2918,9 +2988,13 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/hiby-rs8-review/"
+      },
+      {
+        "label": "Twister6",
+        "url": "https://twister6.com/2022/12/18/hiby-rs8/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://store.hiby.com/products/hiby-rs8",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -3074,7 +3148,7 @@
         "url": "https://headfonics.com/hidizs-ap80-review/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://www.hidizs.net/products/ap80-high-resolution-portable-music-player",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -3156,7 +3230,7 @@
         "url": "https://headfonics.com/hidizs-ap80-pro-review/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://www.hidizs.net/products/ap80-pro-fully-balanced-lossless-music-player",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -3330,7 +3404,7 @@
         "url": "https://headfonics.com/hidizs-ap80-pro-x-review/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://www.hidizs.net/products/ap80-pro-x-fully-balanced-lossless-music-player-ayfk",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -3558,7 +3632,7 @@
         "url": "https://headfonics.com/ibasso-dx160-review/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://ibasso.com/product/dx160/",
     "sourceType": "Official Screenshot",
     "verificationStatus": "Verified - Official Screenshot",
@@ -3627,7 +3701,12 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
-    "reviewLinks": [],
+    "reviewLinks": [
+      {
+        "label": "Twister6",
+        "url": "https://twister6.com/2022/10/27/ibasso-dx170/"
+      }
+    ],
     "reviewNotes": "",
     "sourceUrl": "https://ibasso.com/product/dx170/",
     "sourceType": "Official Screenshot",
@@ -3701,9 +3780,17 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/ibasso-dx180-review/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/ibasso-dx180-review/"
+      },
+      {
+        "label": "Twister6",
+        "url": "https://twister6.com/2024/06/28/ibasso-dx180/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://ibasso.com/product/dx180/",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -3780,9 +3867,17 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/ibasso-dx240-review/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/ibasso-dx240-review/"
+      },
+      {
+        "label": "Twister6",
+        "url": "https://twister6.com/2022/02/05/ibasso-dx240/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://ibasso.com/product/dx240/",
     "sourceType": "Official Screenshot",
     "verificationStatus": "Verified - Official Screenshot",
@@ -3854,7 +3949,12 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
-    "reviewLinks": [],
+    "reviewLinks": [
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/ibasso-dx260-review/"
+      }
+    ],
     "reviewNotes": "",
     "sourceUrl": "https://ibasso.com/product/dx260/",
     "sourceType": "Official",
@@ -3931,9 +4031,17 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/ibasso-dx300-review/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/ibasso-dx300-review/"
+      },
+      {
+        "label": "Twister6",
+        "url": "https://twister6.com/2021/04/02/ibasso-dx300/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://ibasso.com/product/dx300/",
     "sourceType": "Official Screenshot",
     "verificationStatus": "Verified - Official Screenshot",
@@ -4009,9 +4117,17 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/ibasso-dx320-review/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/ibasso-dx320-review/"
+      },
+      {
+        "label": "Twister6",
+        "url": "https://twister6.com/2022/08/15/ibasso-dx320/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://ibasso.com/product/dx320/",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -4090,9 +4206,13 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/ibasso-dx340-review/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/ibasso-dx340-review/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://ibasso.com/product/dx340/",
     "sourceType": "Review",
     "verificationStatus": "Verified - Review",
@@ -4175,9 +4295,13 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/shanling-m0-pro-review/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/shanling-m0-pro-review/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://en.shanling.com/article-IntroM0Pro.html",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -4261,7 +4385,7 @@
         "url": "https://headfonics.com/shanling-m0-pura-review/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://en.shanling.com/article-IntroM0Pura.html",
     "sourceType": "Official",
     "verificationStatus": "Partial - Official",
@@ -4343,9 +4467,13 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/shanling-m1-plus-review/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/shanling-m1-plus-review/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://en.shanling.com/article-IntroM1plus.html",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -4422,9 +4550,13 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/shanling-m2x-review/"
+      },
+      {
+        "label": "Twister6",
+        "url": "https://twister6.com/2019/08/22/shanling-m2x-part-deux/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://headfonics.com/shanling-m2x-review/",
     "sourceType": "Review",
     "verificationStatus": "Verified - Review",
@@ -4504,9 +4636,13 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/shanling-m3-plus-review/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/shanling-m3-plus-review/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://en.shanling.com/article-IntroM3Plus.html",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -4588,7 +4724,7 @@
         "url": "https://headfonics.com/shanling-m3-ultra-review/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://en.shanling.com/article-IntroM3U.html",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -4663,7 +4799,7 @@
         "url": "https://headfonics.com/shanling-m3x-review/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://headfonics.com/shanling-m3x-review/",
     "sourceType": "Review",
     "verificationStatus": "Verified - Review",
@@ -4745,7 +4881,7 @@
         "url": "https://headfonics.com/shanling-m5-ultra-review/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://en.shanling.com/article-Introm5ultra.html",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -4820,7 +4956,12 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
-    "reviewLinks": [],
+    "reviewLinks": [
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/shanling-m6-review/"
+      }
+    ],
     "reviewNotes": "",
     "sourceUrl": "https://en.shanling.com/product/244",
     "sourceType": "Official Screenshot",
@@ -4896,7 +5037,7 @@
         "url": "https://headfonics.com/shanling-m6-pro-review/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://headfonics.com/shanling-m6-pro-review/",
     "sourceType": "Review",
     "verificationStatus": "Verified - Review",
@@ -4980,9 +5121,13 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/shanling-m6-ultra-review/"
+      },
+      {
+        "label": "Twister6",
+        "url": "https://twister6.com/2023/04/14/shanling-m6-ultra/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://en.shanling.com/article-IntroM6U.html",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -5070,7 +5215,7 @@
         "url": "https://headfonics.com/shanling-m7-review/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://en.shanling.com/article-IntoM7.html",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -5143,9 +5288,13 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/shanling-m8-review/"
+      },
+      {
+        "label": "Twister6",
+        "url": "https://twister6.com/2021/02/09/shanling-m8/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://headfonics.com/shanling-m8-review/",
     "sourceType": "Review",
     "verificationStatus": "Verified - Review",
@@ -5226,9 +5375,13 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/shanling-m8t-review/"
+      },
+      {
+        "label": "Twister6",
+        "url": "https://twister6.com/2025/04/05/shanling-m8t/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://en.shanling.com/article-IntroM8T.html",
     "sourceType": "Official",
     "verificationStatus": "Partial - Official",
@@ -5311,9 +5464,13 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/shanling-m9-review/"
+      },
+      {
+        "label": "Twister6",
+        "url": "https://twister6.com/2022/05/18/shanling-m9/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://en.shanling.com/article-shanling-m9.html",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -6093,7 +6250,7 @@
         "url": "https://headfonics.com/tempotec-v3-review/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://www.tempotec.net/products/tempotec-v3",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -6174,7 +6331,7 @@
         "url": "https://headfonics.com/tempotec-v6-review/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://www.tempotec.net/products/tempotec-v6",
     "sourceType": "Official",
     "verificationStatus": "Partial - Official",
@@ -6331,7 +6488,16 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
-    "reviewLinks": [],
+    "reviewLinks": [
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/astell-kern-sp3000t-review/"
+      },
+      {
+        "label": "Twister6",
+        "url": "https://twister6.com/2024/05/19/astell-kern-ak-sp3000t/"
+      }
+    ],
     "reviewNotes": "",
     "sourceUrl": "https://www.astellnkern.com/en/product/view.php?idx=150",
     "sourceType": "Official",
@@ -6410,7 +6576,12 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
-    "reviewLinks": [],
+    "reviewLinks": [
+      {
+        "label": "Twister6",
+        "url": "https://twister6.com/2025/08/19/astell-kern-ak-sp4000/"
+      }
+    ],
     "reviewNotes": "",
     "sourceUrl": "https://www.astellnkern.com/cn/product/view.php?idx=159",
     "sourceType": "Official",
@@ -6493,7 +6664,12 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
-    "reviewLinks": [],
+    "reviewLinks": [
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/astell-kern-pd10-review/"
+      }
+    ],
     "reviewNotes": "",
     "sourceUrl": "https://www.astellnkern.com/cn/product/view.php?idx=162",
     "sourceType": "Official",
@@ -6572,7 +6748,12 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
-    "reviewLinks": [],
+    "reviewLinks": [
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/astell-kern-pd20-review/"
+      }
+    ],
     "reviewNotes": "",
     "sourceUrl": "https://www.astellnkern.com/en/product/view.php?idx=171",
     "sourceType": "Official",
@@ -6720,9 +6901,13 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/hiby-rs8-ii-review/"
+      },
+      {
+        "label": "Twister6",
+        "url": "https://twister6.com/2026/01/23/hiby-rs8ii/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://store.hiby.com/products/hiby-rs8-ii",
     "sourceType": "Official",
     "verificationStatus": "Partial - Official",
@@ -6800,7 +6985,7 @@
         "url": "https://headfonics.com/ibasso-dx270-review/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://ibasso.com/product/dx270/",
     "sourceType": "Official",
     "verificationStatus": "Partial - Official",
@@ -7023,9 +7208,13 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/cayin-n3ultra-review/"
+      },
+      {
+        "label": "Twister6",
+        "url": "https://twister6.com/2024/05/05/cayin-n3ultra/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://en.cayin.cn/features/7/15/623.html",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -7112,9 +7301,13 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/cayin-n3pro-review/"
+      },
+      {
+        "label": "Twister6",
+        "url": "https://twister6.com/2020/10/09/cayin-n3pro/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://en.cayin.cn/features/7/15/340.html",
     "sourceType": "Review",
     "verificationStatus": "Verified - Review",
@@ -7193,9 +7386,13 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/cayin-n5ii-review/"
+      },
+      {
+        "label": "Twister6",
+        "url": "https://twister6.com/2018/02/10/cayin-n5ii/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://cayin.com/ca-inhalte/uploads/2018/08/Cayin_N5_MK2.pdf",
     "sourceType": "Review",
     "verificationStatus": "Verified - Review",
@@ -7269,7 +7466,12 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
-    "reviewLinks": [],
+    "reviewLinks": [
+      {
+        "label": "Twister6",
+        "url": "https://twister6.com/2018/08/08/cayin-n5iis-special-edition/"
+      }
+    ],
     "reviewNotes": "",
     "sourceUrl": "https://www.facebook.com/CayinAudio/photos/n5iis-with-a-new-ips-screen-2gb-ram-64gb-internal-storage-2xtf-cards-upto-400gb-/436195706791661/",
     "sourceType": "Official",
@@ -7428,6 +7630,10 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/cayin-n6iii-review/"
+      },
+      {
+        "label": "Twister6",
+        "url": "https://twister6.com/2025/02/05/cayin-n6iii-w-c201-and-e203/"
       }
     ],
     "reviewNotes": "Headfonics review link added; clear model match to Cayin N6iii / C201.",
@@ -7513,9 +7719,13 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/cayin-n7-review/"
+      },
+      {
+        "label": "Twister6",
+        "url": "https://twister6.com/2023/05/02/cayin-n7/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://en.cayin.cn/features/7/15/592.html",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -7590,9 +7800,13 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/cayin-n8-review/"
+      },
+      {
+        "label": "Twister6",
+        "url": "https://twister6.com/2018/11/09/cayin-n8-dap/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://en.cayin.cn/features/7/15/337.html",
     "sourceType": "Review",
     "verificationStatus": "Verified - Review",
@@ -7677,9 +7891,13 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/cayin-n8ii-review/"
+      },
+      {
+        "label": "Twister6",
+        "url": "https://twister6.com/2022/04/23/cayin-n8ii/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://en.cayin.cn/features/7/15/560.html",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -7752,7 +7970,12 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
-    "reviewLinks": [],
+    "reviewLinks": [
+      {
+        "label": "Twister6",
+        "url": "https://twister6.com/2026/05/06/cayin-n8iii/"
+      }
+    ],
     "reviewNotes": "",
     "sourceUrl": "https://en.cayin.cn/newsDetails/10/24/738.html",
     "sourceType": "Official",
@@ -7828,9 +8051,13 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/cayin-i5-review/"
+      },
+      {
+        "label": "Twister6",
+        "url": "https://twister6.com/2017/03/03/cayin-i5/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; clear model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://twister6.com/2017/03/03/cayin-i5/",
     "sourceType": "Review",
     "verificationStatus": "Verified - Review",
@@ -7907,9 +8134,13 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/lotoo-paw-gold-touch-review/"
+      },
+      {
+        "label": "Twister6",
+        "url": "https://twister6.com/2018/11/30/lotoo-paw-gold-touch-lpgt-dap/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; exact PAW Gold Touch model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://lotoo.cn/english/Hi_Fi_Player/PAW_GOLD_TOUCH/Specs/",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -7986,9 +8217,13 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/lotoo-paw-6000-review/"
+      },
+      {
+        "label": "Twister6",
+        "url": "https://twister6.com/2020/04/12/lotoo-paw-6000/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; exact PAW 6000 model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://www.lotoo.cn/english/Hi_Fi_Player/PAW_6000/Specs/",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -8065,9 +8300,17 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/luxury-precision-p6-review/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/luxury-precision-lp-p6-review/"
+      },
+      {
+        "label": "Twister6",
+        "url": "https://twister6.com/2020/11/20/luxury-precision-lp-p6/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; exact Luxury & Precision P6 model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://www.luxuryprecision.net/shangpin/bofangqi/2020-07-02/36.html",
     "sourceType": "Web",
     "verificationStatus": "Verified - Web",
@@ -8144,9 +8387,17 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/luxury-precision-p6-pro-review/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/luxury-precision-lp-p6-pro-review/"
+      },
+      {
+        "label": "Twister6",
+        "url": "https://twister6.com/2021/01/11/luxury-precision-lp-p6-pro/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; exact Luxury & Precision P6 Pro model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://www.luxuryprecision.net/shangpin/bofangqi/2020-12-30/39.html",
     "sourceType": "Review",
     "verificationStatus": "Verified - Review",
@@ -8225,7 +8476,7 @@
         "url": "https://headfonics.com/the-plenue-d-dap-by-cowon/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; exact Cowon Plenue D model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://support2.cowon.com/contents/dn2/data/C09/PLENUED/PLENUE_D_Manual_EN.pdf",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -8306,7 +8557,7 @@
         "url": "https://headfonics.com/cowon-plenue-d2-review/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; exact Cowon Plenue D2 model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://support2.cowon.com/contents/dn2/data/C09/PLENUED2/PLENUE_D2_Manual_EN.pdf",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -8543,7 +8794,7 @@
         "url": "https://headfonics.com/questyle-qp1r-review/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; exact Questyle QP1R model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://headfonics.com/questyle-qp1r-review/",
     "sourceType": "Review",
     "verificationStatus": "Verified - Review",
@@ -8623,7 +8874,7 @@
         "url": "https://headfonics.com/questyle-qp2r-review/"
       }
     ],
-    "reviewNotes": "Headfonics review link added; exact Questyle QP2R model match.",
+    "reviewNotes": "",
     "sourceUrl": "https://headfonics.com/questyle-qp2r-review/",
     "sourceType": "Review",
     "verificationStatus": "Verified - Review",
@@ -8701,7 +8952,7 @@
         "url": "https://headfonics.com/hiby-r2-ii-review/"
       }
     ],
-    "reviewNotes": "Exact R2 II review match.",
+    "reviewNotes": "",
     "sourceUrl": "https://store.hiby.com/blogs/r2-ii-review/hiby-r2-ii-review-headfonics",
     "sourceType": "Review",
     "verificationStatus": "Verified - Review",
@@ -8782,7 +9033,7 @@
         "url": "https://headfonics.com/hiby-music-r3-review/"
       }
     ],
-    "reviewNotes": "Exact original R3 review match; not R3 Pro or R3 II.",
+    "reviewNotes": "",
     "sourceUrl": "https://headfonics.com/hiby-music-r3-review/",
     "sourceType": "Review",
     "verificationStatus": "Verified - Review",
@@ -8862,9 +9113,13 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/hiby-r5-review/"
+      },
+      {
+        "label": "Twister6",
+        "url": "https://twister6.com/2019/09/10/hiby-r5/"
       }
     ],
-    "reviewNotes": "Exact original R5 review match.",
+    "reviewNotes": "",
     "sourceUrl": "https://headfonics.com/hiby-r5-review/",
     "sourceType": "Review",
     "verificationStatus": "Verified - Review",
@@ -8941,7 +9196,7 @@
         "url": "https://headfonics.com/hiby-r5-saber-review/"
       }
     ],
-    "reviewNotes": "Exact R5 Saber review match.",
+    "reviewNotes": "",
     "sourceUrl": "https://headfonics.com/hiby-r5-saber-review/",
     "sourceType": "Review",
     "verificationStatus": "Verified - Review",
@@ -9023,9 +9278,17 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/hiby-music-r6-review/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/review-hiby-r6/"
+      },
+      {
+        "label": "Twister6",
+        "url": "https://twister6.com/2018/03/17/hiby-r6/"
       }
     ],
-    "reviewNotes": "Exact original HiBy R6 review match; not R6 Pro or R6 2020.",
+    "reviewNotes": "",
     "sourceUrl": "https://guide.hiby.com/en/docs/products/audio_player/hiby_r6/spec",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -9100,9 +9363,13 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/hiby-r6-pro-review/"
+      },
+      {
+        "label": "Twister6",
+        "url": "https://twister6.com/2019/06/22/hiby-r6-pro/"
       }
     ],
-    "reviewNotes": "Exact original R6 Pro review match.",
+    "reviewNotes": "",
     "sourceUrl": "https://headfonics.com/hiby-r6-pro-review/",
     "sourceType": "Review",
     "verificationStatus": "Verified - Review",
@@ -9177,9 +9444,13 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/hiby-r6-2020-review/"
+      },
+      {
+        "label": "Twister6",
+        "url": "https://twister6.com/2021/04/28/hiby-r6-2020/"
       }
     ],
-    "reviewNotes": "Exact R6 2020 review match.",
+    "reviewNotes": "",
     "sourceUrl": "https://headfonics.com/hiby-r6-2020-review/",
     "sourceType": "Review",
     "verificationStatus": "Verified - Review",
@@ -9404,9 +9675,13 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/fiio-m11-pro-review/"
+      },
+      {
+        "label": "Twister6",
+        "url": "https://twister6.com/2019/12/08/fiio-m11-pro/"
       }
     ],
-    "reviewNotes": "Exact M11 Pro review match.",
+    "reviewNotes": "",
     "sourceUrl": "https://www.fiio.com/m11pro_parameters",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
@@ -9650,7 +9925,12 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
-    "reviewLinks": [],
+    "reviewLinks": [
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/review-sony-wm1a-walkman/"
+      }
+    ],
     "reviewNotes": "No exact Headfonics NW-WM1A review located.",
     "sourceUrl": "https://www.sony.com/electronics/support/res/manuals/W001/W0014622M.pdf",
     "sourceType": "Official",
@@ -9729,7 +10009,16 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
-    "reviewLinks": [],
+    "reviewLinks": [
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/review-sony-wm1z-splendid/"
+      },
+      {
+        "label": "Twister6",
+        "url": "https://twister6.com/2017/12/16/sony-nw-wm1z-dap/"
+      }
+    ],
     "reviewNotes": "No exact Headfonics NW-WM1Z review located.",
     "sourceUrl": "https://www.sony.com/electronics/support/digital-music-players-nw-wm-series/nw-wm1z/specifications",
     "sourceType": "Official",
@@ -9807,6 +10096,10 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/the-dx200-by-ibasso/"
+      },
+      {
+        "label": "Twister6",
+        "url": "https://twister6.com/2017/03/10/ibasso-dx200/"
       }
     ],
     "reviewNotes": "Exact DX200 review; row specifies stock AMP1 platform configuration.",
@@ -10098,7 +10391,12 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
-    "reviewLinks": [],
+    "reviewLinks": [
+      {
+        "label": "Twister6",
+        "url": "https://twister6.com/2017/02/19/lotoo-paw-pico/"
+      }
+    ],
     "reviewNotes": "",
     "sourceUrl": "https://www.lotoo.cn/english/Hi_Fi_Player/PAW_Pico/Specs/",
     "sourceType": "Official",
@@ -10537,6 +10835,10 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/hiby-r2-review/"
+      },
+      {
+        "label": "Twister6",
+        "url": "https://twister6.com/2020/12/16/hiby-r2-fd1-and-beans/"
       }
     ],
     "reviewNotes": "Exact Headfonics review for the original HiBy R2, published October 16, 2020.",

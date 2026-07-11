@@ -4,7 +4,7 @@ This is a working list of models planned for future addition.
 
 Inclusion depends on available sources and whether the device fits the DAP Database scope.
 
-The current database already has 100 DAPs. This roadmap avoids intentionally repeating models that are already in the database.
+The current database already has 110 DAPs. This roadmap avoids intentionally repeating models that are already in the database.
 
 ## Status Labels
 
@@ -81,11 +81,12 @@ Examples:
 
 Until an aliases column exists, aliases may be documented in Notes, but they should not create duplicate model rows.
 
-## High Priority: Brand Gaps
+## Recently Added
 
-These should be prioritized because they fill obvious brand gaps and make the database feel broader faster.
+These rows have been added and should not be duplicated in future passes.
 
 - Lotoo PAW Gold Touch
+- Lotoo PAW Gold Touch 2
 - Lotoo PAW 6000
 - Luxury & Precision P6
 - Luxury & Precision P6 Pro
@@ -120,10 +121,8 @@ These should be prioritized because they are commonly discussed, historically im
 
 ## Addition Wave: Lotoo
 
-Current database already includes one Lotoo model, so avoid duplicating that row.
+Current database already includes multiple Lotoo models, so avoid duplicating those rows.
 
-- Lotoo PAW Gold Touch
-- Lotoo PAW 6000
 - Lotoo PAW 5000
 - Lotoo PAW 5000 MKII
   - Separate row from PAW 5000
@@ -133,7 +132,13 @@ Current database already includes one Lotoo model, so avoid duplicating that row
 
 Already in database:
 
-- Lotoo PAW GT2 / PAW Gold Touch 2
+- Lotoo PAW Gold Touch
+- Lotoo PAW Gold Touch 2 / PAW GT2
+- Lotoo PAW 6000
+
+Naming note:
+
+PAW Gold Touch may be abbreviated as PAW GT or LPGT. PAW Gold Touch 2 may be abbreviated as PAW GT2 or LPGT2. Do not add abbreviation-only duplicate rows.
 
 Variant note:
 
@@ -141,11 +146,8 @@ Lotoo special editions should only be added if hardware, chassis material, or sp
 
 ## Addition Wave: Luxury & Precision
 
-Luxury & Precision is not currently represented in the database, so this is a major brand gap.
+Luxury & Precision is now represented in the database. Remaining additions should focus on clearly sourced models and meaningful variants.
 
-- Luxury & Precision P6
-- Luxury & Precision P6 Pro
-  - Separate row from P6
 - Luxury & Precision P6 Pro Ti99
   - Variant check: add separately if chassis/material/spec differences are meaningful
 - Luxury & Precision LP6
@@ -156,6 +158,11 @@ Luxury & Precision is not currently represented in the database, so this is a ma
 - Luxury & Precision E7
   - Variant check: modular amp/DAC cards may need notes or separate variant handling
 - Luxury & Precision P1
+
+Already in database:
+
+- Luxury & Precision P6
+- Luxury & Precision P6 Pro
 
 Excluded for now:
 
@@ -168,11 +175,8 @@ These are dongle DAC/amps, not standalone DAPs.
 
 ## Addition Wave: Cowon / Plenue Legacy
 
-Cowon/Plenue is not currently represented in the database and is important for legacy DAP coverage.
+Cowon/Plenue is now represented in the database. Remaining additions should fill the wider Plenue family.
 
-- Cowon Plenue D
-- Cowon Plenue D2
-  - Separate row from Plenue D
 - Cowon Plenue J
 - Cowon Plenue R
 - Cowon Plenue R2
@@ -188,24 +192,30 @@ Cowon/Plenue is not currently represented in the database and is important for l
 - Cowon Plenue L
 - Cowon Plenue V
 
+Already in database:
+
+- Cowon Plenue D
+- Cowon Plenue D2
+
 Variant note:
 
 Cowon variants are usually distinct enough when marked D2, R2, M2, MKII, etc. Color-only variants should be skipped.
 
 ## Addition Wave: Onkyo / Pioneer Android DAP Era
 
-Onkyo and Pioneer are not currently represented in the database. These are important older Android DAPs.
+Onkyo and Pioneer are now represented in the database. Remaining additions should fill the older Android DAP families.
 
 - Onkyo DP-S1
 - Onkyo DP-S1A
   - Separate row from DP-S1 if specs differ
 - Onkyo DP-X1
-- Onkyo DP-X1A
-  - Separate row from DP-X1
 - Pioneer XDP-30R
 - Pioneer XDP-100R
+
+Already in database:
+
+- Onkyo DP-X1A
 - Pioneer XDP-300R
-  - Separate row from XDP-100R
 
 Variant note:
 
@@ -213,14 +223,16 @@ Watch for regional naming and storage variants.
 
 ## Addition Wave: Questyle
 
-Questyle is not currently represented in the database and should be added for stronger high-end DAP coverage.
+Questyle is now represented in the database. Remaining additions should focus on later high-end models.
 
-- Questyle QP1R
-- Questyle QP2R
-  - Separate row from QP1R
 - Questyle QPM
 - Questyle QP3R
   - Needs source validation before adding
+
+Already in database:
+
+- Questyle QP1R
+- Questyle QP2R
 
 Variant note:
 

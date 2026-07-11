@@ -113,6 +113,14 @@ const yearBounds = computed(() => {
 const visibleDaps = computed(() => sortDaps(filterDaps(daps, filters.value), sortState.value));
 const visibleCardDaps = computed(() => visibleDaps.value.slice(0, cardLimit.value));
 const hasMoreCardDaps = computed(() => visibleCardDaps.value.length < visibleDaps.value.length);
+const remainingCardDaps = computed(() => Math.max(visibleDaps.value.length - visibleCardDaps.value.length, 0));
+const loadMoreLabel = computed(() => {
+  if (remainingCardDaps.value <= cardLimitStep) {
+    return remainingCardDaps.value === 1 ? 'Load remaining' : `Load ${remainingCardDaps.value} more`;
+  }
+
+  return `Load ${cardLimitStep} more`;
+});
 const dapBySlug = computed(() => new Map(daps.map((dap) => [dapSlug(dap), dap])));
 const selectedDapIndex = computed(() => {
   if (!selectedDap.value) return -1;
@@ -205,6 +213,10 @@ function removeFilter(key: keyof DapFiltersType) {
 
 function loadMoreCards() {
   cardLimit.value = Math.min(cardLimit.value + cardLimitStep, visibleDaps.value.length);
+}
+
+function loadAllCards() {
+  cardLimit.value = visibleDaps.value.length;
 }
 
 function resetCardLimit() {
@@ -474,10 +486,15 @@ watch([filters, sortState], resetCardLimit, { deep: true });
         </section>
 
         <div v-if="viewMode === 'cards' && hasMoreCardDaps" class="load-more-row">
-          <button class="btn btn-secondary" type="button" @click="loadMoreCards">
-            Load more DAPs
-          </button>
-          <span>{{ visibleCardDaps.length }} of {{ visibleDaps.length }} shown</span>
+          <span>Showing {{ visibleCardDaps.length }} of {{ visibleDaps.length }} DAPs</span>
+          <div class="load-more-actions">
+            <button class="btn btn-secondary" type="button" @click="loadMoreCards">
+              {{ loadMoreLabel }}
+            </button>
+            <button class="btn btn-ghost" type="button" @click="loadAllCards">
+              Show all
+            </button>
+          </div>
         </div>
 
         <p v-if="visibleDaps.length === 0" class="empty-state">
@@ -504,11 +521,6 @@ watch([filters, sortState], resetCardLimit, { deep: true });
         Specs are best-effort and source-backed where possible. Values may vary by region, firmware, revision, gain
         setting, output mode, or measurement method.
       </p>
-      <p class="footer-disclaimer">
-        Some buying links may be affiliate links. I may earn a small commission if you buy through them, at no extra
-        cost to you. Specs, review links, and source references are kept separate from affiliate links.
-      </p>
-      <p class="footer-contribute">Found an error or missing model? Submit a correction or request a DAP on GitHub.</p>
       <nav class="footer-actions" aria-label="Project links">
         <a href="https://github.com/jreqtech/dap-database" target="_blank" rel="noopener noreferrer">GitHub</a>
         <a
@@ -534,83 +546,86 @@ watch([filters, sortState], resetCardLimit, { deep: true });
       </nav>
     </div>
 
-    <nav class="footer-social" aria-label="JReqTech social links">
-      <a
-        href="https://github.com/jreqtech/dap-database"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="GitHub"
-        title="GitHub"
-      >
-        <svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true">
-          <path :d="socialIcons.github" />
-        </svg>
-      </a>
-      <a
-        href="https://jreqtech.blogspot.com/"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Blog"
-        title="Blog"
-      >
-        <svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true">
-          <path :d="socialIcons.blogger" />
-        </svg>
-      </a>
-      <a
-        href="https://www.facebook.com/jreqtech"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Facebook"
-        title="Facebook"
-      >
-        <svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true">
-          <path :d="socialIcons.facebook" />
-        </svg>
-      </a>
-      <a
-        href="https://www.head-fi.org/showcase/authors/jreqtech.584807/reviews"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Head-Fi reviews"
-        title="Head-Fi reviews"
-      >
-        <Headphones :size="17" aria-hidden="true" />
-      </a>
-      <a
-        href="https://www.reddit.com/user/jreqtech/submitted/"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Reddit"
-        title="Reddit"
-      >
-        <svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true">
-          <path :d="socialIcons.reddit" />
-        </svg>
-      </a>
-      <a
-        href="https://www.youtube.com/@jreq_tech"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="YouTube"
-        title="YouTube"
-      >
-        <svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true">
-          <path :d="socialIcons.youtube" />
-        </svg>
-      </a>
-      <a
-        href="https://www.tiktok.com/@jreq_tech"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="TikTok"
-        title="TikTok"
-      >
-        <svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true">
-          <path :d="socialIcons.tiktok" />
-        </svg>
-      </a>
-    </nav>
+    <section class="footer-follow" aria-labelledby="footer-follow-heading">
+      <h2 id="footer-follow-heading">Follow JReqTech</h2>
+      <nav class="footer-social" aria-label="JReqTech social links">
+        <a
+          href="https://github.com/jreqtech/dap-database"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub"
+          title="GitHub"
+        >
+          <svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path :d="socialIcons.github" />
+          </svg>
+        </a>
+        <a
+          href="https://jreqtech.blogspot.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Blog"
+          title="Blog"
+        >
+          <svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path :d="socialIcons.blogger" />
+          </svg>
+        </a>
+        <a
+          href="https://www.facebook.com/jreqtech"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Facebook"
+          title="Facebook"
+        >
+          <svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path :d="socialIcons.facebook" />
+          </svg>
+        </a>
+        <a
+          href="https://www.head-fi.org/showcase/authors/jreqtech.584807/reviews"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Head-Fi reviews"
+          title="Head-Fi reviews"
+        >
+          <Headphones :size="20" aria-hidden="true" />
+        </a>
+        <a
+          href="https://www.reddit.com/user/jreqtech/submitted/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Reddit"
+          title="Reddit"
+        >
+          <svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path :d="socialIcons.reddit" />
+          </svg>
+        </a>
+        <a
+          href="https://www.youtube.com/@jreq_tech"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="YouTube"
+          title="YouTube"
+        >
+          <svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path :d="socialIcons.youtube" />
+          </svg>
+        </a>
+        <a
+          href="https://www.tiktok.com/@jreq_tech"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="TikTok"
+          title="TikTok"
+        >
+          <svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path :d="socialIcons.tiktok" />
+          </svg>
+        </a>
+      </nav>
+    </section>
   </footer>
 </template>
 

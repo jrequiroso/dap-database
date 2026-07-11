@@ -202,7 +202,7 @@ const hasBuyInfo = computed(() => {
 
 const hasReviewInfo = computed(() => {
   if (!props.dap) return false;
-  return Boolean(props.dap.reviewLinks.length || props.dap.reviewNotes.trim());
+  return Boolean(props.dap.reviewLinks.length);
 });
 
 function compactDapName(dap: Dap | null | undefined): string {
@@ -226,8 +226,10 @@ onBeforeUnmount(() => {
         <header class="details-modal__header">
           <div>
             <p class="eyebrow">{{ dap.brand }}</p>
-            <h2>{{ dap.model }}</h2>
-            <p v-if="dap.variant" class="variant-text">{{ dap.variant }}</p>
+            <h2>
+              <span>{{ dap.model }}</span>
+              <span v-if="dap.variant" class="details-title-variant">{{ dap.variant }}</span>
+            </h2>
           </div>
           <button class="btn btn-ghost btn-icon details-icon-button" type="button" aria-label="Close details" @click="$emit('close')">
             <X :size="18" aria-hidden="true" />
@@ -273,7 +275,6 @@ onBeforeUnmount(() => {
                     </a>
                   </li>
                 </ul>
-                <p v-if="dap.reviewNotes" class="buy-notes">{{ dap.reviewNotes }}</p>
               </div>
             </section>
           </div>

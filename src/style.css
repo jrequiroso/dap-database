@@ -431,7 +431,7 @@ h1 {
 }
 
 .app-shell {
-  padding: 20px 0 96px;
+  padding: 20px 0 36px;
 }
 
 .catalog-layout {
@@ -1137,13 +1137,45 @@ h1 {
 
 .load-more-row {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 12px;
-  margin-top: 18px;
+  width: min(100%, 480px);
+  margin: 10px auto 0;
+  padding: 16px 18px;
+  border: 1px solid #d7e0e5;
+  border-radius: 14px;
+  background: #f8fbfc;
+  box-shadow: 0 1px 2px rgb(20 34 43 / 0.04);
   color: #5f707a;
   font-size: 0.9rem;
   font-weight: 700;
+  text-align: center;
+}
+
+.load-more-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.load-more-actions .btn {
+  min-width: 136px;
+}
+
+.load-more-actions .btn-ghost {
+  border-color: #c9d7df;
+  background: #ffffff;
+  color: #3b5665;
+}
+
+.load-more-actions .btn-ghost:hover {
+  border-color: var(--color-primary-border);
+  background: var(--color-primary-soft);
+  color: var(--color-primary-hover);
 }
 
 .dap-card {
@@ -1511,8 +1543,18 @@ dd {
 }
 
 .details-modal__header h2 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px;
   margin: 0;
   font-size: 1.75rem;
+}
+
+.details-title-variant {
+  color: #687983;
+  font-size: 0.95rem;
+  font-weight: 650;
 }
 
 .details-modal__body {
@@ -1793,10 +1835,10 @@ dd {
 
 .site-footer {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 1fr) max-content;
   align-items: start;
   justify-content: space-between;
-  gap: 24px;
+  gap: 36px;
   margin-bottom: 30px;
   border: 1px solid #d7e0e5;
   border-radius: 12px;
@@ -1810,6 +1852,7 @@ dd {
   display: grid;
   gap: 8px;
   min-width: 0;
+  max-width: 980px;
 }
 
 .footer-credit,
@@ -1863,10 +1906,24 @@ dd {
   text-decoration: underline;
 }
 
+.footer-follow {
+  display: grid;
+  justify-items: end;
+  gap: 8px;
+  min-width: 340px;
+}
+
+.footer-follow h2 {
+  margin: 0;
+  color: #263844;
+  font-size: 0.86rem;
+  font-weight: 850;
+}
+
 .footer-social {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 8px;
   justify-content: flex-end;
 }
 
@@ -1874,26 +1931,28 @@ dd {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
-  border: 1px solid var(--color-border-strong);
+  width: 38px;
+  height: 38px;
   border-radius: 999px;
-  background: #ffffff;
   color: #263844;
   text-decoration: none;
 }
 
 .footer-social a:hover,
 .footer-social a:focus-visible {
-  border-color: #8fb6c9;
+  background: #eef5f8;
   color: var(--color-primary);
   outline: 0;
+  text-decoration: none;
+}
+
+.footer-social a:focus-visible {
   box-shadow: 0 0 0 3px rgb(47 120 157 / 0.16);
 }
 
 .brand-icon {
-  width: 16px;
-  height: 16px;
+  width: 21px;
+  height: 21px;
   fill: currentColor;
 }
 
@@ -2045,6 +2104,13 @@ dd {
 
   .site-footer {
     grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .footer-follow {
+    justify-items: start;
+    min-width: 0;
+    max-width: none;
   }
 
   .footer-social {
@@ -2064,6 +2130,52 @@ dd {
 
   .catalog-hero {
     padding: 18px;
+  }
+
+  .site-footer {
+    gap: 14px;
+    margin-bottom: 70px;
+    padding: 16px;
+  }
+
+  .footer-copy {
+    gap: 9px;
+  }
+
+  .footer-disclaimer,
+  .footer-contribute {
+    font-size: 0.84rem;
+    line-height: 1.45;
+  }
+
+  .footer-actions {
+    gap: 6px 0;
+  }
+
+  .footer-actions a:not(:last-child)::after {
+    margin: 0 8px;
+  }
+
+  .footer-follow {
+    justify-items: center;
+    padding-left: 40px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+  }
+
+  .footer-social {
+    gap: 8px;
+    justify-content: center;
+  }
+
+  .footer-social a {
+    width: 36px;
+    height: 36px;
+  }
+
+  .brand-icon {
+    width: 20px;
+    height: 20px;
   }
 
   .detail-list,
@@ -2136,8 +2248,16 @@ dd {
 
   .load-more-row {
     align-items: stretch;
+    padding: 14px;
+  }
+
+  .load-more-actions {
+    align-items: stretch;
     flex-direction: column;
-    text-align: center;
+  }
+
+  .load-more-actions .btn {
+    width: 100%;
   }
 
   .dap-card__media {

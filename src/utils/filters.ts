@@ -107,6 +107,10 @@ export function filterDaps(daps: Dap[], filters: DapFilters): Dap[] {
   const priceMax = numberFromFilter(filters.priceMax);
   const yearMin = numberFromFilter(filters.yearMin);
   const yearMax = numberFromFilter(filters.yearMax);
+  const ramMin = numberFromFilter(filters.ramMin);
+  const ramMax = numberFromFilter(filters.ramMax);
+  const storageMin = numberFromFilter(filters.storageMin);
+  const storageMax = numberFromFilter(filters.storageMax);
 
   return daps.filter((dap) => {
     if (filters.brand.length && !filters.brand.includes(dap.brand)) return false;
@@ -138,6 +142,20 @@ export function filterDaps(daps: Dap[], filters: DapFilters): Dap[] {
       if (year === null) return false;
       if (yearMin !== null && year < yearMin) return false;
       if (yearMax !== null && year > yearMax) return false;
+    }
+
+    if (ramMin !== null || ramMax !== null) {
+      const ram = numberFromMixed(dap.ramGb);
+      if (ram === null) return false;
+      if (ramMin !== null && ram < ramMin) return false;
+      if (ramMax !== null && ram > ramMax) return false;
+    }
+
+    if (storageMin !== null || storageMax !== null) {
+      const storage = numberFromMixed(dap.storageGb);
+      if (storage === null) return false;
+      if (storageMin !== null && storage < storageMin) return false;
+      if (storageMax !== null && storage > storageMax) return false;
     }
 
     if (!terms.length) return true;

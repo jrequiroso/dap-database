@@ -16,6 +16,8 @@ defineProps<{
   quickFilterCounts: Record<string, number>;
   priceBounds: { min: number; max: number };
   yearBounds: { min: number; max: number };
+  ramBounds: { min: number; max: number };
+  storageBounds: { min: number; max: number };
 }>();
 
 const emit = defineEmits<{
@@ -72,6 +74,42 @@ function updateYearMax(filters: DapFilters, value: string, bounds: { min: number
   update(filters, {
     yearMin: String(Math.min(currentMin, nextMax)),
     yearMax: String(nextMax),
+  });
+}
+
+function updateRamMin(filters: DapFilters, value: string, bounds: { min: number; max: number }) {
+  const nextMin = clamp(numberOr(value, bounds.min), bounds.min, bounds.max);
+  const currentMax = clamp(numberOr(filters.ramMax, bounds.max), bounds.min, bounds.max);
+  update(filters, {
+    ramMin: String(nextMin),
+    ramMax: String(Math.max(currentMax, nextMin)),
+  });
+}
+
+function updateRamMax(filters: DapFilters, value: string, bounds: { min: number; max: number }) {
+  const nextMax = clamp(numberOr(value, bounds.max), bounds.min, bounds.max);
+  const currentMin = clamp(numberOr(filters.ramMin, bounds.min), bounds.min, bounds.max);
+  update(filters, {
+    ramMin: String(Math.min(currentMin, nextMax)),
+    ramMax: String(nextMax),
+  });
+}
+
+function updateStorageMin(filters: DapFilters, value: string, bounds: { min: number; max: number }) {
+  const nextMin = clamp(numberOr(value, bounds.min), bounds.min, bounds.max);
+  const currentMax = clamp(numberOr(filters.storageMax, bounds.max), bounds.min, bounds.max);
+  update(filters, {
+    storageMin: String(nextMin),
+    storageMax: String(Math.max(currentMax, nextMin)),
+  });
+}
+
+function updateStorageMax(filters: DapFilters, value: string, bounds: { min: number; max: number }) {
+  const nextMax = clamp(numberOr(value, bounds.max), bounds.min, bounds.max);
+  const currentMin = clamp(numberOr(filters.storageMin, bounds.min), bounds.min, bounds.max);
+  update(filters, {
+    storageMin: String(Math.min(currentMin, nextMax)),
+    storageMax: String(nextMax),
   });
 }
 
@@ -230,6 +268,116 @@ const connectivityOptions = ['Bluetooth', 'Wi-Fi', 'Cellular', '4G', '5G'];
             step="1"
             aria-label="Maximum release year"
             @input="updateYearMax(filters, ($event.target as HTMLInputElement).value, yearBounds)"
+          />
+        </div>
+      </fieldset>
+    </div>
+
+    <div class="filter-section">
+      <h3>Storage</h3>
+      <fieldset class="range-filter">
+        <legend class="sr-only">Storage range</legend>
+        <div class="range-inputs">
+        <label class="field range-field">
+          <span class="sr-only">Minimum storage in GB</span>
+          <input
+            :value="filters.storageMin || storageBounds.min"
+            type="number"
+            :min="storageBounds.min"
+            :max="storageBounds.max"
+            inputmode="decimal"
+            placeholder="Min GB"
+            @input="updateStorageMin(filters, ($event.target as HTMLInputElement).value, storageBounds)"
+          />
+        </label>
+        <span class="range-separator">-</span>
+        <label class="field range-field">
+          <span class="sr-only">Maximum storage in GB</span>
+          <input
+            :value="filters.storageMax || storageBounds.max"
+            type="number"
+            :min="storageBounds.min"
+            :max="storageBounds.max"
+            inputmode="decimal"
+            placeholder="Max GB"
+            @input="updateStorageMax(filters, ($event.target as HTMLInputElement).value, storageBounds)"
+          />
+        </label>
+        </div>
+        <div class="range-slider">
+          <input
+            :value="filters.storageMin || storageBounds.min"
+            type="range"
+            :min="storageBounds.min"
+            :max="storageBounds.max"
+            step="1"
+            aria-label="Minimum storage in GB"
+            @input="updateStorageMin(filters, ($event.target as HTMLInputElement).value, storageBounds)"
+          />
+          <input
+            :value="filters.storageMax || storageBounds.max"
+            type="range"
+            :min="storageBounds.min"
+            :max="storageBounds.max"
+            step="1"
+            aria-label="Maximum storage in GB"
+            @input="updateStorageMax(filters, ($event.target as HTMLInputElement).value, storageBounds)"
+          />
+        </div>
+      </fieldset>
+    </div>
+
+    <div class="filter-section">
+      <h3>RAM</h3>
+      <fieldset class="range-filter">
+        <legend class="sr-only">RAM range</legend>
+        <div class="range-inputs">
+        <label class="field range-field">
+          <span class="sr-only">Minimum RAM in GB</span>
+          <input
+            :value="filters.ramMin || ramBounds.min"
+            type="number"
+            :min="ramBounds.min"
+            :max="ramBounds.max"
+            step="0.5"
+            inputmode="decimal"
+            placeholder="Min GB"
+            @input="updateRamMin(filters, ($event.target as HTMLInputElement).value, ramBounds)"
+          />
+        </label>
+        <span class="range-separator">-</span>
+        <label class="field range-field">
+          <span class="sr-only">Maximum RAM in GB</span>
+          <input
+            :value="filters.ramMax || ramBounds.max"
+            type="number"
+            :min="ramBounds.min"
+            :max="ramBounds.max"
+            step="0.5"
+            inputmode="decimal"
+            placeholder="Max GB"
+            @input="updateRamMax(filters, ($event.target as HTMLInputElement).value, ramBounds)"
+          />
+        </label>
+        </div>
+        <div class="range-slider">
+          <input
+            :value="filters.ramMin || ramBounds.min"
+            type="range"
+            :min="ramBounds.min"
+            :max="ramBounds.max"
+            step="0.5"
+            aria-label="Minimum RAM in GB"
+            @input="updateRamMin(filters, ($event.target as HTMLInputElement).value, ramBounds)"
+          />
+          <input
+            :value="filters.ramMax || ramBounds.max"
+            type="range"
+            :min="ramBounds.min"
+            :max="ramBounds.max"
+            step="0.5"
+            aria-label="Maximum RAM in GB"
+            @input="updateRamMax(filters, ($event.target as HTMLInputElement).value, ramBounds)"
           />
         </div>
       </fieldset>

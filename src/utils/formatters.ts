@@ -21,7 +21,12 @@ export function formatBoolean(value: boolean | null | undefined): string {
 
 export function formatPrice(value: MixedSpecValue | undefined): string {
   if (value === null || value === undefined || value === '') return '-';
-  if (typeof value === 'number') return `$${value.toLocaleString('en-US')}`;
+  if (typeof value === 'number') {
+    return `$${value.toLocaleString('en-US', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    })}`;
+  }
   return String(value);
 }
 

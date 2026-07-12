@@ -51,7 +51,12 @@
     "storageExpansionMax": "1TB",
     "officialUrl": "https://www.astellnkern.com/en/product/view.php?idx=138",
     "officialStoreUrl": "",
-    "buyLinks": [],
+    "buyLinks": [
+      {
+        "label": "Amazon US",
+        "url": "https://www.amazon.com/dp/B0BZS29BVS"
+      }
+    ],
     "affiliateLinks": [],
     "buyNotes": "",
     "reviewLinks": [
@@ -557,7 +562,12 @@
     "storageExpansionMax": "2TB",
     "officialUrl": "https://www.fiio.com/jm21_parameters",
     "officialStoreUrl": "",
-    "buyLinks": [],
+    "buyLinks": [
+      {
+        "label": "Amazon US",
+        "url": "https://www.amazon.com/dp/B0F6VR9TF2"
+      }
+    ],
     "affiliateLinks": [],
     "buyNotes": "",
     "reviewLinks": [
@@ -1110,7 +1120,12 @@
     "storageExpansionMax": "2TB",
     "officialUrl": "https://www.fiio.com/m11s_parameters",
     "officialStoreUrl": "",
-    "buyLinks": [],
+    "buyLinks": [
+      {
+        "label": "Amazon US",
+        "url": "https://www.amazon.com/dp/B0B2RC74C8"
+      }
+    ],
     "affiliateLinks": [],
     "buyNotes": "",
     "reviewLinks": [
@@ -1302,6 +1317,10 @@
       {
         "label": "HiFiGo",
         "url": "https://hifigo.com/products/fiio-m15s"
+      },
+      {
+        "label": "Amazon US",
+        "url": "https://www.amazon.com/dp/B0BZCZV6C5"
       }
     ],
     "affiliateLinks": [
@@ -1407,6 +1426,10 @@
       {
         "label": "HiFiGo",
         "url": "https://hifigo.com/products/fiio-m17"
+      },
+      {
+        "label": "Amazon US",
+        "url": "https://www.amazon.com/dp/B09JWN12D5"
       }
     ],
     "affiliateLinks": [
@@ -1905,7 +1928,12 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
-    "reviewLinks": [],
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/fiio-snowsky-echo-nano-review/"
+      }
+    ],
     "reviewNotes": "",
     "sourceUrl": "https://www.fiio.com/ECHONANO",
     "sourceType": "Official",
@@ -2364,6 +2392,10 @@
       {
         "label": "Linsoul",
         "url": "https://www.linsoul.com/products/hiby-r1"
+      },
+      {
+        "label": "Amazon US",
+        "url": "https://www.amazon.com/dp/B0DKTF38HX"
       }
     ],
     "affiliateLinks": [
@@ -2700,6 +2732,10 @@
       {
         "label": "HiFiGo",
         "url": "https://hifigo.com/products/hiby-r4"
+      },
+      {
+        "label": "Amazon US",
+        "url": "https://www.amazon.com/dp/B0D9821S9D"
       }
     ],
     "affiliateLinks": [
@@ -2996,6 +3032,10 @@
       {
         "label": "HiFiGo",
         "url": "https://hifigo.com/products/hiby-r6-pro-ii"
+      },
+      {
+        "label": "Amazon US",
+        "url": "https://www.amazon.com/dp/B0CKM5XVLP"
       }
     ],
     "affiliateLinks": [
@@ -3772,6 +3812,10 @@
       {
         "label": "HiFiGo",
         "url": "https://hifigo.com/products/hidizs-ap80-pro-x-portable-balanced-mqa-music-player"
+      },
+      {
+        "label": "Amazon US",
+        "url": "https://www.amazon.com/dp/B0FFSGSC9V"
       }
     ],
     "affiliateLinks": [
@@ -3860,7 +3904,12 @@
     "storageExpansionMax": "512GB",
     "officialUrl": "https://hifiwalker.com/products/h2",
     "officialStoreUrl": "",
-    "buyLinks": [],
+    "buyLinks": [
+      {
+        "label": "Amazon US",
+        "url": "https://www.amazon.com/dp/B072C4YPCG"
+      }
+    ],
     "affiliateLinks": [],
     "buyNotes": "",
     "reviewLinks": [],
@@ -3935,7 +3984,12 @@
     "storageExpansionMax": "512GB",
     "officialUrl": "https://hifiwalker.com/products/h2-touch",
     "officialStoreUrl": "",
-    "buyLinks": [],
+    "buyLinks": [
+      {
+        "label": "Amazon US",
+        "url": "https://www.amazon.com/dp/B0GF7GS39W"
+      }
+    ],
     "affiliateLinks": [],
     "buyNotes": "",
     "reviewLinks": [],
@@ -4702,7 +4756,12 @@
     "storageExpansionMax": "2TB",
     "officialUrl": "https://en.shanling.com/article-IntroM0Pro.html",
     "officialStoreUrl": "",
-    "buyLinks": [],
+    "buyLinks": [
+      {
+        "label": "Amazon US",
+        "url": "https://www.amazon.com/dp/B0BPQTF39Q"
+      }
+    ],
     "affiliateLinks": [],
     "buyNotes": "",
     "reviewLinks": [
@@ -4794,6 +4853,10 @@
       {
         "label": "Linsoul",
         "url": "https://www.linsoul.com/products/shanling-m0-pura"
+      },
+      {
+        "label": "Amazon US",
+        "url": "https://www.amazon.com/dp/B0GYSTHXG2"
       }
     ],
     "affiliateLinks": [
@@ -4892,6 +4955,10 @@
       {
         "label": "Linsoul",
         "url": "https://www.linsoul.com/products/shanling-m1-plus"
+      },
+      {
+        "label": "Amazon US",
+        "url": "https://www.amazon.com/dp/B0DRSWJJCC"
       }
     ],
     "affiliateLinks": [
@@ -5354,6 +5421,10 @@
       {
         "label": "Linsoul",
         "url": "https://www.linsoul.com/products/shanling-m5-ultra"
+      },
+      {
+        "label": "Amazon US",
+        "url": "https://www.amazon.com/dp/B0F7DQCC1Q"
       }
     ],
     "affiliateLinks": [
@@ -6070,7 +6141,12 @@
     "storageExpansionMax": "1TB",
     "officialUrl": "https://www.sony.com/electronics/support/digital-music-players-nw-nwz-a-series/nw-a306/specifications",
     "officialStoreUrl": "",
-    "buyLinks": [],
+    "buyLinks": [
+      {
+        "label": "Amazon US",
+        "url": "https://www.amazon.com/dp/B0BS8493WY"
+      }
+    ],
     "affiliateLinks": [],
     "buyNotes": "",
     "reviewLinks": [],
@@ -6234,7 +6310,12 @@
     "storageExpansionMax": "1TB",
     "officialUrl": "https://www.sony.com/electronics/support/digital-music-players-nw-wm-series/nw-wm1am2/specifications",
     "officialStoreUrl": "",
-    "buyLinks": [],
+    "buyLinks": [
+      {
+        "label": "Amazon US",
+        "url": "https://www.amazon.com/dp/B0B354TW13"
+      }
+    ],
     "affiliateLinks": [],
     "buyNotes": "",
     "reviewLinks": [],
@@ -6538,7 +6619,12 @@
     "storageExpansionMax": "512GB",
     "officialUrl": "https://www.surfans.net/products/surfans-f20",
     "officialStoreUrl": "",
-    "buyLinks": [],
+    "buyLinks": [
+      {
+        "label": "Amazon US",
+        "url": "https://www.amazon.com/dp/B07VWK4FP3"
+      }
+    ],
     "affiliateLinks": [],
     "buyNotes": "",
     "reviewLinks": [],
@@ -6612,7 +6698,12 @@
     "storageExpansionMax": "512GB",
     "officialUrl": "https://www.surfans.net/products/surfans-f28",
     "officialStoreUrl": "",
-    "buyLinks": [],
+    "buyLinks": [
+      {
+        "label": "Amazon US",
+        "url": "https://www.amazon.com/dp/B0C86RZMX8"
+      }
+    ],
     "affiliateLinks": [],
     "buyNotes": "",
     "reviewLinks": [],
@@ -6768,7 +6859,12 @@
     "storageExpansionMax": "",
     "officialUrl": "https://www.tempotec.net/products/tempotec-v3",
     "officialStoreUrl": "",
-    "buyLinks": [],
+    "buyLinks": [
+      {
+        "label": "Amazon US",
+        "url": "https://www.amazon.com/dp/B0DM4SM46M"
+      }
+    ],
     "affiliateLinks": [],
     "buyNotes": "",
     "reviewLinks": [
@@ -10159,8 +10255,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
-    "reviewLinks": [],
-    "reviewNotes": "No exact Headfonics M1s review located.",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/shanling-m1s-review/"
+      }
+    ],
+    "reviewNotes": "",
     "sourceUrl": "https://en.shanling.com/article-IntroM1s.html",
     "sourceType": "Official",
     "verificationStatus": "Partial - Official",
@@ -10237,8 +10338,13 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
-    "reviewLinks": [],
-    "reviewNotes": "No exact Headfonics M6 review located.",
+    "reviewLinks": [
+      {
+        "label": "Headfonics",
+        "url": "https://headfonics.com/fiio-m6-review/"
+      }
+    ],
+    "reviewNotes": "",
     "sourceUrl": "https://www.fiio.com/m6_parameters",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",

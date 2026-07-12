@@ -16,8 +16,8 @@ const emit = defineEmits<{
   sort: [key: SortKey];
 }>();
 
-const sortableColumns: Array<{ key: SortKey; label: string; align?: 'right' }> = [
-  { key: 'brand', label: 'Brand' },
+const sortableColumns: Array<{ key: SortKey; label: string; align?: 'brand' | 'right' }> = [
+  { key: 'brand', label: 'Brand', align: 'brand' },
   { key: 'model', label: 'Model' },
   { key: 'releaseYear', label: 'Year', align: 'right' },
   { key: 'msrpUsd', label: 'MSRP', align: 'right' },
@@ -27,6 +27,27 @@ const sortableColumns: Array<{ key: SortKey; label: string; align?: 'right' }> =
 function sortLabel(key: SortKey, sortState: SortState): string {
   if (sortState.key !== key) return 'Sort';
   return sortState.direction === 'asc' ? 'Sorted ascending' : 'Sorted descending';
+}
+
+function shouldShowTableStatus(status: string): boolean {
+  return status.trim().toLowerCase() !== 'active';
+}
+
+function tableStatusLabel(status: string): string {
+  return status.trim().toLowerCase() === 'discontinued' ? 'Discont.' : getStatusBadgeMeta(status).label;
+}
+
+function formatMemorySpec(value: Dap['ramGb'] | Dap['storageGb']): string {
+  if (value === null || value === undefined || value === '') return '-';
+  if (typeof value === 'number') return `${value}GB`;
+  return String(value);
+}
+
+function formatMemoryPair(dap: Dap): string {
+  const ram = formatMemorySpec(dap.ramGb);
+  const storage = formatMemorySpec(dap.storageGb);
+  if (ram === '-' && storage === '-') return '-';
+  return `${ram} / ${storage}`;
 }
 </script>
 
@@ -42,8 +63,8 @@ function sortLabel(key: SortKey, sortState: SortState): string {
         <col class="col-battery" />
         <col class="col-balanced" />
         <col class="col-os" />
+        <col class="col-memory" />
         <col class="col-dac" />
-        <col class="col-status" />
         <col class="col-verification" />
       </colgroup>
       <thead>
@@ -52,7 +73,7 @@ function sortLabel(key: SortKey, sortState: SortState): string {
           <th
             v-for="column in sortableColumns"
             :key="column.key"
-            :class="{ 'is-numeric': column.align === 'right' }"
+            :class="{ 'is-numeric': column.align === 'right', 'is-brand': column.align === 'brand' }"
           >
             <button
               type="button"
@@ -71,23 +92,8 @@ function sortLabel(key: SortKey, sortState: SortState): string {
           </th>
           <th class="is-centered">4.4mm</th>
           <th>OS</th>
+          <th class="is-centered">RAM / Storage</th>
           <th>DAC</th>
-          <th>
-            <button
-              type="button"
-              class="sort-button"
-              :class="{ 'is-active': sortState.key === 'status' }"
-              :aria-label="`${sortLabel('status', sortState)} by Status`"
-              @click="emit('sort', 'status')"
-            >
-              <span>Status</span>
-              <span class="sort-glyph">
-                <ArrowUp v-if="sortState.key === 'status' && sortState.direction === 'asc'" :size="14" aria-hidden="true" />
-                <ArrowDown v-else-if="sortState.key === 'status'" :size="14" aria-hidden="true" />
-                <ChevronsUpDown v-else :size="14" aria-hidden="true" />
-              </span>
-            </button>
-          </th>
           <th>
             <button
               type="button"
@@ -113,24 +119,39 @@ function sortLabel(key: SortKey, sortState: SortState): string {
               <DapPhoto :dap="dap" size="thumb" />
             </a>
           </td>
-          <td>{{ dap.brand }}</td>
+          <td class="is-brand">{{ dap.brand }}</td>
           <td>
-            <a class="link-button" :href="dapDetailHash(dap)">{{ dap.model }}</a>
+            <span class="table-model-line">
+              <a class="link-button" :href="dapDetailHash(dap)">{{ dap.model }}</a>
+              <SpecChip
+                v-if="shouldShowTableStatus(dap.status)"
+                :label="tableStatusLabel(dap.status)"
+                :badge-class="getStatusBadgeMeta(dap.status).className"
+                :title="getStatusBadgeMeta(dap.status).title"
+              />
+            </span>
             <span v-if="dap.variant" class="muted-block">{{ dap.variant }}</span>
           </td>
           <td class="is-numeric">{{ formatValue(dap.releaseYear) }}</td>
           <td class="is-numeric">{{ formatPrice(dap.msrpUsd) }}</td>
           <td class="is-numeric">{{ formatBattery(dap.batteryMah) }}</td>
-          <td class="is-centered"><SpecChip :label="dap.has44mm ? 'Yes' : 'No'" :tone="dap.has44mm ? 'blue' : 'muted'" /></td>
-          <td><span class="table-ellipsis table-os" :title="formatValue(dap.os)">{{ formatValue(dap.os) }}</span></td>
-          <td><span class="table-ellipsis table-dac" :title="formatValue(dap.dac)">{{ formatValue(dap.dac) }}</span></td>
-          <td>
-            <SpecChip
-              :label="getStatusBadgeMeta(dap.status).label"
-              :badge-class="getStatusBadgeMeta(dap.status).className"
-              :title="getStatusBadgeMeta(dap.status).title"
-            />
+          <td class="is-centered">
+            <span
+              class="table-boolean"
+              :class="dap.has44mm ? 'table-boolean--yes' : 'table-boolean--no'"
+              :aria-label="dap.has44mm ? 'Has 4.4mm output' : 'No 4.4mm output'"
+              :title="dap.has44mm ? 'Has 4.4mm output' : 'No 4.4mm output'"
+            >
+              {{ dap.has44mm ? '✓' : '✕' }}
+            </span>
           </td>
+          <td><span class="table-ellipsis table-os" :title="formatValue(dap.os)">{{ formatValue(dap.os) }}</span></td>
+          <td class="is-centered">
+            <span class="table-ellipsis table-memory" :title="formatMemoryPair(dap)">
+              {{ formatMemoryPair(dap) }}
+            </span>
+          </td>
+          <td><span class="table-ellipsis table-dac" :title="formatValue(dap.dac)">{{ formatValue(dap.dac) }}</span></td>
           <td>
             <SpecChip
               :label="getVerificationBadgeMeta(dap.verificationStatus).label"

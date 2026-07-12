@@ -3,7 +3,7 @@ import { computed, onBeforeUnmount, onMounted } from 'vue';
 import { ChevronLeft, ChevronRight, ExternalLink, X } from 'lucide-vue-next';
 import type { Dap, MixedSpecValue } from '../types/dap';
 import { formatBattery, formatColors, formatPower, formatPrice, formatValue, hasValue } from '../utils/formatters';
-import { getStatusBadgeMeta, getVerificationBadgeMeta, imageUrlForDap, isAndroidBased } from '../utils/dapDisplay';
+import { getStatusBadgeMeta, getVerificationBadgeMeta, imageUrlForDap } from '../utils/dapDisplay';
 import DapPhoto from './DapPhoto.vue';
 
 const props = defineProps<{
@@ -61,20 +61,6 @@ function powerValue(power: MixedSpecValue | undefined, load: string): string {
 function addRow(rows: DetailRow[], label: string, value: string) {
   if (value) rows.push({ label, value });
 }
-
-const summaryItems = computed(() => {
-  if (!props.dap) return [];
-  const dap = props.dap;
-  const items = [
-    hasValue(dap.releaseYear) ? formatValue(dap.releaseYear) : '',
-    hasValue(dap.msrpUsd) ? formatPrice(dap.msrpUsd) : '',
-    hasValue(dap.status) ? getStatusBadgeMeta(dap.status).label : '',
-    hasValue(dap.verificationStatus) ? getVerificationBadgeMeta(dap.verificationStatus).label : '',
-    hasValue(dap.os) ? (isAndroidBased(dap) ? 'Android' : 'Non-Android') : '',
-    dap.has44mm ? '4.4mm' : '',
-  ];
-  return items.filter(Boolean);
-});
 
 const coreRows = computed<DetailRow[]>(() => {
   if (!props.dap) return [];
@@ -226,10 +212,20 @@ onBeforeUnmount(() => {
         <header class="details-modal__header">
           <div>
             <p class="eyebrow">{{ dap.brand }}</p>
-            <h2>
-              <span>{{ dap.model }}</span>
-              <span v-if="dap.variant" class="details-title-variant">{{ dap.variant }}</span>
-            </h2>
+            <div class="details-title-row">
+              <h2>
+                <span>{{ dap.model }}</span>
+                <span v-if="dap.variant" class="details-title-variant">{{ dap.variant }}</span>
+              </h2>
+              <span
+                v-if="hasValue(dap.status) && dap.status.trim().toLowerCase() !== 'active'"
+                class="badge details-title-status"
+                :class="getStatusBadgeMeta(dap.status).className"
+                :title="getStatusBadgeMeta(dap.status).title"
+              >
+                {{ getStatusBadgeMeta(dap.status).label }}
+              </span>
+            </div>
           </div>
           <button class="btn btn-ghost btn-icon details-icon-button" type="button" aria-label="Close details" @click="$emit('close')">
             <X :size="18" aria-hidden="true" />
@@ -237,10 +233,6 @@ onBeforeUnmount(() => {
         </header>
 
         <div class="details-modal__body">
-          <div v-if="summaryItems.length" class="details-summary" aria-label="DAP summary">
-            <span v-for="item in summaryItems" :key="item">{{ item }}</span>
-          </div>
-
           <div class="details-top">
             <aside class="details-photo-panel">
               <DapPhoto :dap="dap" size="large" />

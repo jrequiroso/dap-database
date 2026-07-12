@@ -86,7 +86,7 @@ export function getStatusBadgeMeta(status: string): BadgeMeta {
 
   return {
     label,
-    className: 'badge-status-discontinued',
+    className: 'badge-status-unknown',
     title: 'Product status is not categorized yet.',
   };
 }

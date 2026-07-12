@@ -311,6 +311,12 @@ select:focus-visible {
   color: #344b92;
 }
 
+.badge-status-unknown {
+  border-color: var(--color-neutral-border);
+  background: var(--color-neutral-bg);
+  color: var(--color-neutral-text);
+}
+
 .badge-verify-official {
   border-color: #abd8e8;
   background: #e8f5fa;
@@ -958,10 +964,6 @@ h1 {
   width: 124px;
 }
 
-.col-status {
-  width: 116px;
-}
-
 .col-verification {
   width: 124px;
 }
@@ -971,11 +973,15 @@ h1 {
 }
 
 .col-os {
-  width: 136px;
+  width: 128px;
+}
+
+.col-memory {
+  width: 118px;
 }
 
 .col-dac {
-  width: 176px;
+  width: 168px;
 }
 
 .dap-table th,
@@ -1016,12 +1022,67 @@ h1 {
   text-align: center;
 }
 
-.is-numeric {
+.is-numeric,
+.dap-table td.is-numeric,
+.dap-table th.is-numeric {
   text-align: right;
 }
 
-.is-centered {
+.is-brand,
+.dap-table td.is-brand,
+.dap-table th.is-brand {
+  text-align: right;
+}
+
+th.is-numeric .sort-button,
+th.is-brand .sort-button {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.is-centered,
+.dap-table td.is-centered,
+.dap-table th.is-centered {
   text-align: center;
+}
+
+.table-boolean {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.table-boolean--yes {
+  background: #dff7e9;
+  color: #166534;
+}
+
+.table-boolean--no {
+  background: #ffe4e6;
+  color: #9f1239;
+}
+
+.dap-table .badge-status-discontinued,
+.dap-table .badge-status-upcoming,
+.dap-table .badge-status-unknown {
+  min-height: 20px;
+  padding: 2px 7px;
+  font-size: 0.68rem;
+  font-weight: 500;
+}
+
+.table-model-line {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 100%;
 }
 
 .compact-th {
@@ -1610,6 +1671,13 @@ dd {
   padding: 18px;
 }
 
+.details-title-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
 .details-modal__header h2 {
   display: flex;
   flex-wrap: wrap;
@@ -1622,6 +1690,12 @@ dd {
 .details-title-variant {
   color: #687983;
   font-size: 0.95rem;
+  font-weight: 650;
+}
+
+.details-title-status {
+  flex: 0 0 auto;
+  font-size: 0.82rem;
   font-weight: 650;
 }
 

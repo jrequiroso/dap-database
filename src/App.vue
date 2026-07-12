@@ -49,6 +49,10 @@ const filters = ref<DapFiltersType>({
   priceMax: '',
   yearMin: '',
   yearMax: '',
+  ramMin: '',
+  ramMax: '',
+  storageMin: '',
+  storageMax: '',
   outputPorts: [],
   platform: [],
   connectivity: [],
@@ -111,6 +115,14 @@ const yearBounds = computed(() => {
     .filter((year): year is number => year !== null && year <= currentYear);
   return { min: Math.min(...years, currentYear), max: currentYear };
 });
+const ramBounds = computed(() => {
+  const ramValues = daps.map((dap) => numberFromMixed(dap.ramGb)).filter((ram): ram is number => ram !== null);
+  return { min: 0, max: Math.max(...ramValues, 0) };
+});
+const storageBounds = computed(() => {
+  const storageValues = daps.map((dap) => numberFromMixed(dap.storageGb)).filter((storage): storage is number => storage !== null);
+  return { min: 0, max: Math.max(...storageValues, 0) };
+});
 const visibleDaps = computed(() => sortDaps(filterDaps(daps, filters.value), sortState.value));
 const visibleCardDaps = computed(() => visibleDaps.value.slice(0, cardLimit.value));
 const hasMoreCardDaps = computed(() => visibleCardDaps.value.length < visibleDaps.value.length);
@@ -154,6 +166,12 @@ const activeFilterChips = computed(() => {
   if (filters.value.yearMin || filters.value.yearMax) {
     chips.push({ key: 'yearMin', label: `Year: ${filters.value.yearMin || 'oldest'}-${filters.value.yearMax || 'latest'}` });
   }
+  if (filters.value.storageMin || filters.value.storageMax) {
+    chips.push({ key: 'storageMin', label: `Storage: ${filters.value.storageMin || '0'}-${filters.value.storageMax || 'any'}GB` });
+  }
+  if (filters.value.ramMin || filters.value.ramMax) {
+    chips.push({ key: 'ramMin', label: `RAM: ${filters.value.ramMin || '0'}-${filters.value.ramMax || 'any'}GB` });
+  }
   if (filters.value.outputPorts.length) chips.push({ key: 'outputPorts', label: `Ports: ${filters.value.outputPorts.join(', ')}` });
   if (filters.value.platform.length) chips.push({ key: 'platform', label: `Platform: ${filters.value.platform.join(', ')}` });
   if (filters.value.connectivity.length) chips.push({ key: 'connectivity', label: `Connectivity: ${filters.value.connectivity.join(', ')}` });
@@ -186,6 +204,10 @@ function clearFilters() {
     priceMax: '',
     yearMin: '',
     yearMax: '',
+    ramMin: '',
+    ramMax: '',
+    storageMin: '',
+    storageMax: '',
     outputPorts: [],
     platform: [],
     connectivity: [],
@@ -202,6 +224,16 @@ function removeFilter(key: keyof DapFiltersType) {
 
   if (key === 'yearMin') {
     filters.value = { ...filters.value, yearMin: '', yearMax: '' };
+    return;
+  }
+
+  if (key === 'ramMin') {
+    filters.value = { ...filters.value, ramMin: '', ramMax: '' };
+    return;
+  }
+
+  if (key === 'storageMin') {
+    filters.value = { ...filters.value, storageMin: '', storageMax: '' };
     return;
   }
 
@@ -386,6 +418,8 @@ watch([filters, sortState], resetCardLimit, { deep: true });
           :quick-filter-counts="quickFilterCounts"
           :price-bounds="priceBounds"
           :year-bounds="yearBounds"
+          :ram-bounds="ramBounds"
+          :storage-bounds="storageBounds"
           @update:filters="filters = $event"
         />
       </aside>

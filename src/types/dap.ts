@@ -100,6 +100,10 @@ export interface DapFilters {
   priceMax: string;
   yearMin: string;
   yearMax: string;
+  ramMin: string;
+  ramMax: string;
+  storageMin: string;
+  storageMax: string;
   outputPorts: string[];
   platform: string[];
   connectivity: string[];

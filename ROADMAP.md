@@ -4,7 +4,7 @@ This roadmap tracks source-backed DAP model additions planned for the public DAP
 
 The database source of truth is `src/data/daps.csv`; `src/data/daps.json` is generated from it. Do not use this roadmap as a list of existing rows. Before adding any model, check the CSV first to avoid duplicates.
 
-The project is already suitable for public beta. More rows are useful, but completeness should be driven by major historical gaps and user requests rather than chasing every obscure model before launch.
+Only keep model names here when there is a reasonable public-source trail that the model exists as a standalone digital audio player. If a candidate cannot be verified, leave it out until a source is found.
 
 ## Scope
 
@@ -16,7 +16,15 @@ Do not add rows for:
 - desktop DACs or amps
 - Bluetooth receivers without standalone playback
 - accessories, docks, cables, or modules by themselves
+- smartphones or audio-focused phones
+- general consumer MP3 players such as iPod, Zune, Sansa, Creative Zen, and older mass-market flash/HDD players
 - color-only, bundle-only, or storage-only variants unless the model identity depends on that variant
+
+Scope note:
+
+The database focuses on dedicated audiophile and hi-res digital audio players.
+
+Audio-focused phones such as the Moondrop MIAD 01 and general consumer MP3 players such as iPod, Zune, Sansa, and Creative Zen are currently out of scope. They may be reconsidered only if the project later adds separate audio-phone or classic media-player categories.
 
 ## Source Rules
 
@@ -94,10 +102,26 @@ Until an aliases column exists, aliases may be documented in Notes, but they sho
 
 These should be filled before spending time on obscure long-tail models.
 
+### ACTIVO / iriver
+
+- ACTIVO CT10
+
+Naming note:
+
+Verify whether the best row branding is `ACTIVO CT10`, `Activo CT10`, or `iriver ACTIVO CT10`. Do not confuse it with the newer ACTIVO P1.
+
 ### Astell&Kern Core History
 
 This is the most visible remaining gap. The database has good modern Astell&Kern coverage, but several important historical models are still missing.
 
+- Astell&Kern AK100
+- Astell&Kern AK120
+- Astell&Kern AK100 II
+- Astell&Kern AK120 II
+- Astell&Kern AK240
+- Astell&Kern AK300
+- Astell&Kern AK320
+- Astell&Kern AK380
 - Astell&Kern A&norma SR15
 - Astell&Kern A&norma SR25
 - Astell&Kern A&norma SR25 MKII
@@ -123,7 +147,7 @@ Later Astell&Kern pass:
 
 Variant note:
 
-Astell&Kern often has limited material/color editions. Do not add those unless specs, chassis material, or major hardware meaningfully differ.
+Astell&Kern often has limited material/color editions. Do not add those unless specs, chassis material, or major hardware meaningfully differ. Skip AK CD rippers, amps, desktop servers, and IEM/headphone collaborations.
 
 ### iBasso MAX and Sony ZX
 
@@ -132,6 +156,9 @@ These are historically important or commonly searched models that should be hand
 - iBasso DX220 MAX
 - iBasso DX300 MAX
 - iBasso DX320 MAX Ti
+- Sony NW-ZX1
+- Sony NW-ZX2
+- Sony NW-ZX100
 - Sony NW-ZX300
 - Sony NW-ZX500 / NW-ZX505
 
@@ -145,6 +172,7 @@ FiiO legacy coverage is important because these models are common used-market re
 
 - FiiO M3
 - FiiO M3K
+- FiiO M3 Pro
 - FiiO M5
 - FiiO X1
 - FiiO X1 II
@@ -159,9 +187,46 @@ Variant note:
 
 Skip Stainless Steel, color, and bundle editions unless specs differ.
 
+### Cayin Early N-Series
+
+- Cayin N3
+- Cayin N5
+- Cayin N6
+
+Variant note:
+
+Do not confuse these with N3Pro/N3Ultra, N5ii/N5iiS, or N6ii/N6iii.
+
 ## Priority 2: Useful Historical Coverage
 
 These are valid additions, but they should come after the major-brand gaps above.
+
+### HiBy
+
+- HiBy R8
+
+Naming note:
+
+The current CSV has `R8 II`, but not the original `R8`. Recheck whether `R3 II 2025` should cover only the 2025 refresh or also the earlier R3 II / Gen 2 naming.
+
+### Hidizs
+
+- Hidizs AP60
+- Hidizs AP60 II
+- Hidizs AP100
+- Hidizs AP200
+
+Variant note:
+
+Skip AP80 cosmetic/material editions unless internals or core specs differ.
+
+### Questyle
+
+- Questyle QP1
+
+Naming note:
+
+Keep QP1 separate from QP1R only if sources verify a distinct non-R model. Do not add QP3R unless an official product page or reliable exact-model source is found.
 
 ### Cowon / Plenue
 
@@ -203,8 +268,6 @@ Watch for regional naming and storage variants.
 - Shanling Q1
 - Shanling M6 21
 - Shanling M6 Pro 21
-- Shanling M9 Plus
-- Shanling M7T
 
 Naming note:
 
@@ -214,27 +277,47 @@ Confirm whether `M6 Pro 21` and `M6 Pro 2021` refer to the same model before add
 
 These fit the broader DAP scope, but they should not block launch or higher-priority historical gaps.
 
-### Other Modern / Relevant DAPs
+### HiFiMAN
 
-- ONIX Overture XM5
+- HIFIMAN HM-801
+- HIFIMAN HM-802
+- HIFIMAN HM-901
 - HIFIMAN HM901R
 - HIFIMAN HM1000
+- HIFIMAN HM-700
 - HIFIMAN R2R2000
 - HiFiMAN SuperMini
 - HiFiMAN MegaMini
+
+Naming note:
+
+Confirm whether hyphenated and non-hyphenated names are aliases before adding. Do not create separate duplicate rows for `HM901` and `HM-901` unless sources prove different products.
+
+### xDuoo
+
+- xDuoo X2
 - xDuoo X2S
 - xDuoo X3
 - xDuoo X3 II
 - xDuoo X10
 - xDuoo X20
-- Colorfly C4
-- Colorfly U8
-- Colorfly U6
-- Phinistec S7
+- xDuoo Nano D3
+- xDuoo X10T
+- xDuoo X10T II
 
 Scope note:
 
-Some HIFIMAN and Colorfly models may need extra source checking because older product categories blur the line between pocket DAPs and transportable source devices.
+Confirm whether X10T / X10T II are standalone players or primarily digital transports before adding.
+
+### Other Modern / Relevant DAPs
+
+- Colorfly C4
+- Colorfly U8
+- Colorfly U6
+
+Scope note:
+
+Some Colorfly models may need extra source checking because older product categories blur the line between pocket DAPs and transportable source devices.
 
 ### Budget / AliExpress-Style DAPs
 
@@ -254,14 +337,3 @@ Some HIFIMAN and Colorfly models may need extra source checking because older pr
 Variant note:
 
 Budget DAPs often have inconsistent listings, relabels, and silent revisions. Add only when sources are clear enough. Avoid duplicate rows for obvious rebrands unless there is enough evidence that they are sold as meaningfully different models.
-
-## Launch Guidance
-
-For public beta, prioritize:
-
-1. Correct existing rows over adding more rows.
-2. Major Astell&Kern, iBasso MAX, Sony ZX, and FiiO historical gaps.
-3. User-requested missing models.
-4. Long-tail budget or obscure models only when sources are clear.
-
-Avoid implying the database is complete. Use language such as "public beta", "source-backed where possible", and "missing model requests welcome."

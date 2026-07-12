@@ -4,6 +4,12 @@
 
 Specs are best-effort and source-backed where possible. Values may vary by region, firmware, revision, gain setting, output mode, or measurement method.
 
+## Scope
+
+The DAP Database focuses on dedicated audiophile and hi-res digital audio players.
+
+General consumer MP3 players, smartphones, and audio-focused phones are currently out of scope unless the project later adds separate categories for them. Examples include iPod, Zune, Sansa, Creative Zen, and Moondrop MIAD 01.
+
 ## Verification Labels
 
 - Verified - Official: confirmed from an official brand page.

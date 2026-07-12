@@ -12,6 +12,10 @@ Live site: https://jreqtech.github.io/dap-database/
 - Source/data notes: [docs/source-data-notes.md](docs/source-data-notes.md)
 - Roadmap: [ROADMAP.md](ROADMAP.md)
 
+## Scope
+
+DAP Database focuses on dedicated audiophile and hi-res digital audio players. General consumer MP3 players, smartphones, and audio-focused phones are out of scope unless separate categories are added later.
+
 ## Features
 
 - Browse DAPs in card view or table view.

@@ -153,6 +153,7 @@ Astell&Kern often has limited material/color editions. Do not add those unless s
 
 These are historically important or commonly searched models that should be handled carefully.
 
+- iBasso DX260 MK2
 - iBasso DX220 MAX
 - iBasso DX300 MAX
 - iBasso DX320 MAX Ti
@@ -170,10 +171,12 @@ Sony model numbers often represent region/storage variants. Avoid duplicate rows
 
 FiiO legacy coverage is important because these models are common used-market references.
 
+- FiiO M33 R2R
 - FiiO M3
 - FiiO M3K
 - FiiO M3 Pro
 - FiiO M5
+- FiiO Snowsky ECHO
 - FiiO X1
 - FiiO X1 II
 - FiiO X3
@@ -185,7 +188,7 @@ FiiO legacy coverage is important because these models are common used-market re
 
 Variant note:
 
-Skip Stainless Steel, color, and bundle editions unless specs differ.
+Skip Stainless Steel, color, and bundle editions unless specs differ. Verify whether Snowsky ECHO is distinct from Snowsky Echo Mini before adding.
 
 ### Cayin Early N-Series
 
@@ -203,11 +206,14 @@ These are valid additions, but they should come after the major-brand gaps above
 
 ### HiBy
 
+- HiBy R3 Pro II / R3 Pro 2
+- HiBy R6 Gen III
+- HiBy R6 Pro Max
 - HiBy R8
 
 Naming note:
 
-The current CSV has `R8 II`, but not the original `R8`. Recheck whether `R3 II 2025` should cover only the 2025 refresh or also the earlier R3 II / Gen 2 naming.
+The current CSV has `R8 II`, but not the original `R8`. Recheck whether `R3 II 2025` should cover only the 2025 refresh or also the earlier R3 II / Gen 2 naming. Verify exact naming for R3 Pro II / R3 Pro 2 and do not mix it with R3 Pro, R3 II, or R3 Pro Saber.
 
 ### Hidizs
 
@@ -258,7 +264,7 @@ Variant note:
 
 Watch for regional naming and storage variants.
 
-### Older Shanling
+### Shanling Missing Models
 
 - Shanling M1
 - Shanling M2
@@ -268,10 +274,13 @@ Watch for regional naming and storage variants.
 - Shanling Q1
 - Shanling M6 21
 - Shanling M6 Pro 21
+- Shanling M7T
+- Shanling M9 Plus
+- Shanling M30 Pro
 
 Naming note:
 
-Confirm whether `M6 Pro 21` and `M6 Pro 2021` refer to the same model before adding. Do not duplicate.
+Confirm whether `M6 Pro 21` and `M6 Pro 2021` refer to the same model before adding. Do not duplicate. Confirm whether M7T and M30 Pro have standalone DAP product pages and are not retailer naming variants.
 
 ## Priority 3: Add by Request or When Sources Are Easy
 
@@ -299,25 +308,32 @@ Confirm whether hyphenated and non-hyphenated names are aliases before adding. D
 - xDuoo X2S
 - xDuoo X3
 - xDuoo X3 II
+- xDuoo X5
 - xDuoo X10
 - xDuoo X20
 - xDuoo Nano D3
+- xDuoo DP-10
 - xDuoo X10T
 - xDuoo X10T II
 
 Scope note:
 
-Confirm whether X10T / X10T II are standalone players or primarily digital transports before adding.
+Confirm whether DP-10, X10T, and X10T II are standalone players or primarily digital transports before adding.
 
 ### Other Modern / Relevant DAPs
 
 - Colorfly C4
 - Colorfly U8
 - Colorfly U6
+- ONIX Overture XM5
+- ONIX Waltz XM10 LTD
+- Oriolus DPS-L2
+- YinLvMei W1s
+- F.AUDIO FA4
 
 Scope note:
 
-Some Colorfly models may need extra source checking because older product categories blur the line between pocket DAPs and transportable source devices.
+Some Colorfly, ONIX, Oriolus, YinLvMei, and F.AUDIO models may need extra source checking because product categories can blur the line between standalone DAPs, transports, and desktop/portable source devices.
 
 ### Budget / AliExpress-Style DAPs
 

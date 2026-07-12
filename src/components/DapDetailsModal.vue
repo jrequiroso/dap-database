@@ -187,7 +187,7 @@ const buyGroups = computed<BuyGroup[]>(() => {
 
   if (dap.affiliateLinks.length) {
     groups.push({
-      label: 'Affiliate',
+      label: 'Support project',
       links: dap.affiliateLinks.map((link) => ({ ...link, affiliate: true })),
     });
   }
@@ -265,17 +265,21 @@ onBeforeUnmount(() => {
                   <dd class="spec-value">{{ row.value }}</dd>
                 </div>
               </dl>
-              <div v-if="hasReviewInfo" class="inline-review-block">
-                <p class="buy-group__label">Reviews</p>
-                <ul v-if="dap.reviewLinks.length" class="buy-link-list">
-                  <li v-for="link in dap.reviewLinks" :key="link.url">
-                    <a class="source-link" :href="link.url" target="_blank" :rel="referenceLinkRel">
-                      <ExternalLink :size="15" aria-hidden="true" />
-                      <span>{{ link.label }}</span>
-                    </a>
-                  </li>
-                </ul>
-              </div>
+              <dl v-if="hasReviewInfo" class="inline-review-block spec-grid spec-grid--single">
+                <div class="spec-row">
+                  <dt class="spec-label">Reviews</dt>
+                  <dd class="spec-value">
+                    <ul v-if="dap.reviewLinks.length" class="buy-link-list">
+                      <li v-for="link in dap.reviewLinks" :key="link.url">
+                        <a class="source-link" :href="link.url" target="_blank" :rel="referenceLinkRel">
+                          <ExternalLink :size="15" aria-hidden="true" />
+                          <span>{{ link.label }}</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </dd>
+                </div>
+              </dl>
             </section>
           </div>
 
@@ -311,6 +315,30 @@ onBeforeUnmount(() => {
               </dl>
             </section>
 
+            <section v-if="hasBuyInfo" class="details-section buy-section">
+              <h3>Buy / Availability</h3>
+              <dl class="spec-grid spec-grid--single">
+                <div v-for="group in buyGroups" :key="group.label" class="spec-row">
+                  <dt class="spec-label">{{ group.label }}</dt>
+                  <dd class="spec-value">
+                    <ul class="buy-link-list">
+                      <li v-for="link in group.links" :key="`${group.label}-${link.url}`">
+                        <a class="buy-link" :href="link.url" target="_blank" :rel="link.affiliate ? affiliateLinkRel : referenceLinkRel">
+                          <ExternalLink :size="15" aria-hidden="true" />
+                          <span>{{ link.label }}</span>
+                        </a>
+                        <span v-if="link.affiliate" class="affiliate-badge">Affiliate</span>
+                      </li>
+                    </ul>
+                  </dd>
+                </div>
+                <div v-if="dap.buyNotes" class="spec-row">
+                  <dt class="spec-label">Notes</dt>
+                  <dd class="spec-value buy-notes">{{ dap.buyNotes }}</dd>
+                </div>
+              </dl>
+            </section>
+
             <section class="details-section">
               <h3>Source</h3>
               <dl class="spec-grid spec-grid--single">
@@ -325,27 +353,6 @@ onBeforeUnmount(() => {
                   </dd>
                 </div>
               </dl>
-            </section>
-
-            <section v-if="hasBuyInfo" class="details-section buy-section">
-              <h3>Buy / Availability</h3>
-              <div class="buy-groups">
-                <div v-for="group in buyGroups" :key="group.label" class="buy-group">
-                  <p class="buy-group__label">{{ group.label }}</p>
-                  <ul class="buy-link-list">
-                    <li v-for="link in group.links" :key="`${group.label}-${link.url}`">
-                      <a class="source-link" :href="link.url" target="_blank" :rel="link.affiliate ? affiliateLinkRel : referenceLinkRel">
-                        <ExternalLink :size="15" aria-hidden="true" />
-                        <span>{{ link.label }}</span>
-                      </a>
-                      <span v-if="link.affiliate" class="affiliate-badge">Affiliate</span>
-                    </li>
-                  </ul>
-                </div>
-                <p v-if="dap.buyNotes" class="buy-notes">
-                  <strong>Notes:</strong> {{ dap.buyNotes }}
-                </p>
-              </div>
             </section>
 
             <details class="details-section notes-panel">
@@ -365,27 +372,29 @@ onBeforeUnmount(() => {
         >
           <button
             v-if="previousDap"
-            class="btn btn-secondary modal-nav-button"
+            class="modal-nav-link modal-nav-link--previous"
             type="button"
             :aria-label="`Previous DAP: ${compactDapName(previousDap)}`"
             @click="$emit('navigate', previousDap)"
           >
-            <ChevronLeft :size="17" aria-hidden="true" />
-            <span>
-              <strong>{{ compactDapName(previousDap) }}</strong>
+            <span class="modal-nav-link__eyebrow">
+              <ChevronLeft :size="16" aria-hidden="true" />
+              <span>Previous</span>
             </span>
+            <strong class="modal-nav-link__name">{{ compactDapName(previousDap) }}</strong>
           </button>
           <button
             v-if="nextDap"
-            class="btn btn-secondary modal-nav-button modal-nav-button--next"
+            class="modal-nav-link modal-nav-link--next"
             type="button"
             :aria-label="`Next DAP: ${compactDapName(nextDap)}`"
             @click="$emit('navigate', nextDap)"
           >
-            <span>
-              <strong>{{ compactDapName(nextDap) }}</strong>
+            <span class="modal-nav-link__eyebrow">
+              <span>Next</span>
+              <ChevronRight :size="16" aria-hidden="true" />
             </span>
-            <ChevronRight :size="17" aria-hidden="true" />
+            <strong class="modal-nav-link__name">{{ compactDapName(nextDap) }}</strong>
           </button>
         </nav>
       </section>

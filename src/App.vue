@@ -15,6 +15,7 @@ import DapCard from './components/DapCard.vue';
 import DapDetailsModal from './components/DapDetailsModal.vue';
 import DapFilters from './components/DapFilters.vue';
 import DapTable from './components/DapTable.vue';
+import jreqTechLogo from './assets/images/jreq-tech-logo.png';
 import SortControl from './components/SortControl.vue';
 import type { Dap, DapFilters as DapFiltersType, SortKey, SortState } from './types/dap';
 import { isAndroidBased } from './utils/dapDisplay';
@@ -516,10 +517,13 @@ watch([filters, sortState], resetCardLimit, { deep: true });
 
   <footer class="site-footer">
     <div class="footer-copy">
-      <p class="footer-credit">Curated by JReqTech.</p>
       <p class="footer-disclaimer">
         Specs are best-effort and source-backed where possible. Values may vary by region, firmware, revision, gain
         setting, output mode, or measurement method.
+      </p>
+      <p class="footer-disclaimer">
+        Some buying links may be affiliate links. I may earn a small commission at no extra cost to you. Specs, reviews,
+        and sources stay separate.
       </p>
       <nav class="footer-actions" aria-label="Project links">
         <a href="https://github.com/jreqtech/dap-database" target="_blank" rel="noopener noreferrer">GitHub</a>
@@ -546,8 +550,8 @@ watch([filters, sortState], resetCardLimit, { deep: true });
       </nav>
     </div>
 
-    <section class="footer-follow" aria-labelledby="footer-follow-heading">
-      <h2 id="footer-follow-heading">Follow JReqTech</h2>
+    <section class="footer-follow" aria-label="JReqTech links">
+      <img :src="jreqTechLogo" alt="JReqTech" class="footer-logo" loading="lazy" decoding="async" />
       <nav class="footer-social" aria-label="JReqTech social links">
         <a
           href="https://github.com/jreqtech/dap-database"

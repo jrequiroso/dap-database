@@ -313,7 +313,12 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
-    "reviewLinks": [],
+    "reviewLinks": [
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/astell-kern-kann-max-review/"
+      }
+    ],
     "reviewNotes": "",
     "sourceUrl": "https://www.astellnkern.com/en/product/view.php?idx=128",
     "sourceType": "Official",
@@ -664,6 +669,10 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/fiio-m7-review/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/review-fiio-m7/"
       }
     ],
     "reviewNotes": "",
@@ -756,6 +765,10 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/fiio-m9-review/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/review-fiio-m9/"
       }
     ],
     "reviewNotes": "",
@@ -942,6 +955,10 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/fiio-m11-plus-ess-review/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/fiio-m11-plus-ess-review/"
       }
     ],
     "reviewNotes": "",
@@ -1034,6 +1051,10 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/fiio-m11-plus-ltd-review/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/fiio-m11-plus-ltd-review/"
       }
     ],
     "reviewNotes": "",
@@ -1132,6 +1153,10 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/fiio-m11s-review/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/fiio-m11s-review/"
       }
     ],
     "reviewNotes": "",
@@ -1224,6 +1249,10 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/fiio-m15-review/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/fiio-m15-review/"
       }
     ],
     "reviewNotes": "",
@@ -1334,6 +1363,10 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/fiio-m15s-review/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/fiio-m15s-review/"
       }
     ],
     "reviewNotes": "",
@@ -1443,6 +1476,10 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/fiio-m17-review/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/fiio-m17-review/"
       }
     ],
     "reviewNotes": "",
@@ -1764,6 +1801,10 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/fiio-snowsky-disc-review/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/fiio-snowsky-disc-review/"
       }
     ],
     "reviewNotes": "",
@@ -1857,6 +1898,10 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/fiio-snowsky-echo-mini-review/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/fiio-snowsky-echo-mini-review/"
       }
     ],
     "reviewNotes": "",
@@ -1932,6 +1977,10 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/fiio-snowsky-echo-nano-review/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/fiio-snowsky-echo-nano-review/"
       }
     ],
     "reviewNotes": "",
@@ -2011,6 +2060,10 @@
       {
         "label": "Twister6",
         "url": "https://twister6.com/2017/05/03/fiio-x5iii/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/review-fiio-x5iii-3rd-generation-the-one-that-could/"
       }
     ],
     "reviewNotes": "",
@@ -2090,6 +2143,10 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/fiio-x7-mark-ii-review/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/fiio-x7ii-award-material/"
       }
     ],
     "reviewNotes": "",
@@ -2849,6 +2906,10 @@
       {
         "label": "Twister6",
         "url": "https://twister6.com/2022/08/23/hiby-r5-gen-2/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/hiby-r5-gen-2-review/"
       }
     ],
     "reviewNotes": "",
@@ -3049,6 +3110,10 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/hiby-r6-pro-ii-review/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/hiby-r6-pro-ii-review/"
       }
     ],
     "reviewNotes": "",
@@ -3141,6 +3206,10 @@
       {
         "label": "Twister6",
         "url": "https://twister6.com/2024/02/05/hiby-r8-ii-r8ii/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/hiby-r8-ii-review/"
       }
     ],
     "reviewNotes": "",
@@ -3220,6 +3289,10 @@
       {
         "label": "Twister6",
         "url": "https://twister6.com/2023/02/14/hiby-rs2/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/hiby-rs2-review/"
       }
     ],
     "reviewNotes": "",
@@ -3309,6 +3382,10 @@
       {
         "label": "Twister6",
         "url": "https://twister6.com/2021/12/08/hiby-rs6/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/hiby-rs6-review/"
       }
     ],
     "reviewNotes": "",
@@ -3388,6 +3465,10 @@
       {
         "label": "Twister6",
         "url": "https://twister6.com/2022/12/18/hiby-rs8/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/hiby-rs8-review/"
       }
     ],
     "reviewNotes": "",
@@ -3730,6 +3811,10 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/hidizs-x-linsoul-ap80-pro-max-review/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/hidizs-ap80-pro-max-review/"
       }
     ],
     "reviewNotes": "Headfonics review link added; clear model match to Hidizs x Linsoul AP80 PRO MAX.",
@@ -3829,6 +3914,10 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/hidizs-ap80-pro-x-review/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/hidizs-ap-80-pro-x-review/"
       }
     ],
     "reviewNotes": "",
@@ -4068,6 +4157,10 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/ibasso-dx160-review/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/ibasso-dx160-review/"
       }
     ],
     "reviewNotes": "",
@@ -5267,6 +5360,10 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/shanling-m3-ultra-review/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/shanling-m3-ultra-review/"
       }
     ],
     "reviewNotes": "",
@@ -5342,6 +5439,10 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/shanling-m3x-review/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/shanling-m3x-review/"
       }
     ],
     "reviewNotes": "",
@@ -5438,6 +5539,10 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/shanling-m5-ultra-review/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/shanling-m5-ultra-review/"
       }
     ],
     "reviewNotes": "",
@@ -5604,6 +5709,10 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/shanling-m6-pro-review/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/shanling-m6-pro-review/"
       }
     ],
     "reviewNotes": "",
@@ -5694,6 +5803,10 @@
       {
         "label": "Twister6",
         "url": "https://twister6.com/2023/04/14/shanling-m6-ultra/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/shanling-m6-ultra-review/"
       }
     ],
     "reviewNotes": "",
@@ -5800,6 +5913,10 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/shanling-m7-review/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/shanling-m7-review/"
       }
     ],
     "reviewNotes": "",
@@ -5879,6 +5996,10 @@
       {
         "label": "Twister6",
         "url": "https://twister6.com/2021/02/09/shanling-m8/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/shanling-m8-review/"
       }
     ],
     "reviewNotes": "",
@@ -6065,6 +6186,10 @@
       {
         "label": "Twister6",
         "url": "https://twister6.com/2022/05/18/shanling-m9/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/shanling-m9-review/"
       }
     ],
     "reviewNotes": "",
@@ -6955,6 +7080,10 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/tempotec-v6-review/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/tempotec-variations-v6-review/"
       }
     ],
     "reviewNotes": "",
@@ -7038,7 +7167,12 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
-    "reviewLinks": [],
+    "reviewLinks": [
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/activo-p1-review/"
+      }
+    ],
     "reviewNotes": "",
     "sourceUrl": "https://www.activostyle.com/p1",
     "sourceType": "Official",
@@ -7206,6 +7340,10 @@
       {
         "label": "Twister6",
         "url": "https://twister6.com/2025/08/19/astell-kern-ak-sp4000/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/astell-kern-sp4000-review/"
       }
     ],
     "reviewNotes": "",
@@ -7453,7 +7591,12 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
-    "reviewLinks": [],
+    "reviewLinks": [
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/hiby-r3-pro-saber-2022-review/"
+      }
+    ],
     "reviewNotes": "",
     "sourceUrl": "https://store.hiby.com/pages/hiby-r3-pro-saber-2022-specifications",
     "sourceType": "Official",
@@ -7531,6 +7674,10 @@
       {
         "label": "Twister6",
         "url": "https://twister6.com/2026/01/23/hiby-rs8ii/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/hiby-rs8-ii-review/"
       }
     ],
     "reviewNotes": "",
@@ -7619,6 +7766,10 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/ibasso-dx270-review/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/ibasso-dx270-review/"
       }
     ],
     "reviewNotes": "",
@@ -7697,6 +7848,10 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/onix-xm2-review/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/onix-xm2-review/"
       }
     ],
     "reviewNotes": "Headfonics review link added; clear model match to ONIX XM2.",
@@ -7770,7 +7925,12 @@
     "buyLinks": [],
     "affiliateLinks": [],
     "buyNotes": "",
-    "reviewLinks": [],
+    "reviewLinks": [
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/lotoo-paw-gold-touch-2-review/"
+      }
+    ],
     "reviewNotes": "",
     "sourceUrl": "https://www.lotoo.cn/english/bottom/Service/Download/",
     "sourceType": "Review",
@@ -7858,6 +8018,10 @@
       {
         "label": "Twister6",
         "url": "https://twister6.com/2024/05/05/cayin-n3ultra/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/cayin-n3ultra-review/"
       }
     ],
     "reviewNotes": "",
@@ -7951,6 +8115,10 @@
       {
         "label": "Twister6",
         "url": "https://twister6.com/2020/10/09/cayin-n3pro/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/cayin-n3pro-review/"
       }
     ],
     "reviewNotes": "",
@@ -8036,6 +8204,10 @@
       {
         "label": "Twister6",
         "url": "https://twister6.com/2018/02/10/cayin-n5ii/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/review-cayin-n5ii/"
       }
     ],
     "reviewNotes": "",
@@ -8196,6 +8368,10 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/cayin-n6ii-review/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/cayin-n6ii-review/"
       }
     ],
     "reviewNotes": "Headfonics review link added; clear model match to Cayin N6ii platform.",
@@ -8290,6 +8466,10 @@
       {
         "label": "Twister6",
         "url": "https://twister6.com/2025/02/05/cayin-n6iii-w-c201-and-e203/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/cayin-n6-iii-review/"
       }
     ],
     "reviewNotes": "Headfonics review link added; clear model match to Cayin N6iii / C201.",
@@ -8389,6 +8569,10 @@
       {
         "label": "Twister6",
         "url": "https://twister6.com/2023/05/02/cayin-n7/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/cayin-n7-review/"
       }
     ],
     "reviewNotes": "",
@@ -8480,6 +8664,10 @@
       {
         "label": "Twister6",
         "url": "https://twister6.com/2018/11/09/cayin-n8-dap/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/review-cayin-audio-n8/"
       }
     ],
     "reviewNotes": "",
@@ -8571,6 +8759,10 @@
       {
         "label": "Twister6",
         "url": "https://twister6.com/2022/04/23/cayin-n8ii/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/cayin-n8ii-review/"
       }
     ],
     "reviewNotes": "",
@@ -8731,6 +8923,10 @@
       {
         "label": "Twister6",
         "url": "https://twister6.com/2017/03/03/cayin-i5/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/review-cayin-i5-dap-the-do-it-all/"
       }
     ],
     "reviewNotes": "",
@@ -8814,6 +9010,10 @@
       {
         "label": "Twister6",
         "url": "https://twister6.com/2018/11/30/lotoo-paw-gold-touch-lpgt-dap/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/review-lotoo-paw-gold-touch/"
       }
     ],
     "reviewNotes": "",
@@ -8907,6 +9107,10 @@
       {
         "label": "Twister6",
         "url": "https://twister6.com/2020/04/12/lotoo-paw-6000/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/lotoo-paw-6000-review/"
       }
     ],
     "reviewNotes": "",
@@ -9261,6 +9465,10 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/cowon-plenue-d2-review/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/cowon-plenue-d2-review/"
       }
     ],
     "reviewNotes": "",
@@ -9757,6 +9965,10 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/hiby-music-r3-review/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/review-hiby-audio-r3/"
       }
     ],
     "reviewNotes": "",
@@ -9843,6 +10055,10 @@
       {
         "label": "Twister6",
         "url": "https://twister6.com/2019/09/10/hiby-r5/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/hiby-r5-review/"
       }
     ],
     "reviewNotes": "",
@@ -9920,6 +10136,10 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/hiby-r5-saber-review/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/hiby-r5-saber-review/"
       }
     ],
     "reviewNotes": "",
@@ -10093,6 +10313,10 @@
       {
         "label": "Twister6",
         "url": "https://twister6.com/2019/06/22/hiby-r6-pro/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/review-hiby-r6-pro/"
       }
     ],
     "reviewNotes": "",
@@ -10184,6 +10408,10 @@
       {
         "label": "Twister6",
         "url": "https://twister6.com/2021/04/28/hiby-r6-2020/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/hiby-r6-2020-review/"
       }
     ],
     "reviewNotes": "",
@@ -10259,6 +10487,10 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/shanling-m1s-review/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/shanling-m1s-review/"
       }
     ],
     "reviewNotes": "",
@@ -10342,6 +10574,10 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/fiio-m6-review/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/review-fiio-m6/"
       }
     ],
     "reviewNotes": "",
@@ -10434,6 +10670,10 @@
       {
         "label": "Twister6",
         "url": "https://twister6.com/2019/12/08/fiio-m11-pro/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/fiio-m11-pro-review/"
       }
     ],
     "reviewNotes": "",
@@ -10937,6 +11177,10 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/ibasso-dx220-review/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/ibasso-dx220-review/"
       }
     ],
     "reviewNotes": "Exact DX220 review; row specifies stock AMP1 MKII configuration.",
@@ -11306,7 +11550,12 @@
       }
     ],
     "buyNotes": "",
-    "reviewLinks": [],
+    "reviewLinks": [
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/luxury-precision-lp6-review/"
+      }
+    ],
     "reviewNotes": "",
     "sourceUrl": "https://www.headfonia.com/luxury-precision-lp6-review/",
     "sourceType": "Review",
@@ -11606,6 +11855,10 @@
       {
         "label": "Twister6",
         "url": "https://twister6.com/2020/12/16/hiby-r2-fd1-and-beans/"
+      },
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/hiby-r2-fd1-beans-review/"
       }
     ],
     "reviewNotes": "Exact Headfonics review for the original HiBy R2, published October 16, 2020.",

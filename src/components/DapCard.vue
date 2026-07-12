@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Dap } from '../types/dap';
-import { formatPrice, formatValue, hasValue } from '../utils/formatters';
-import { getStatusBadgeMeta, getVerificationBadgeMeta, isAndroidBased } from '../utils/dapDisplay';
+import { formatCompactPrice, formatValue, hasValue } from '../utils/formatters';
+import { getStatusBadgeMeta, isAndroidBased } from '../utils/dapDisplay';
 import { dapDetailHash } from '../utils/slugs';
 import DapPhoto from './DapPhoto.vue';
 
@@ -34,32 +34,15 @@ const isDiscontinued = (status: string) => status.toLowerCase().includes('discon
       </span>
 
       <span class="dap-card__body">
-        <span class="dap-card__heading">
-          <span class="dap-card__title-line">
-            <span class="brand">{{ dap.brand }}</span>
-            <span class="dap-card__title">{{ dap.model }}</span>
-            <span v-if="hasValue(dap.variant)" class="variant-text">{{ dap.variant }}</span>
-          </span>
-          <span v-if="hasValue(dap.msrpUsd)" class="catalog-price">{{ formatPrice(dap.msrpUsd) }}</span>
+        <span class="dap-card__title-line">
+          <span class="brand" :title="dap.brand">{{ dap.brand }}</span>
+          <span class="dap-card__title">{{ dap.model }}</span>
+          <span v-if="hasValue(dap.variant)" class="variant-text">{{ dap.variant }}</span>
+          <span v-if="hasValue(dap.msrpUsd)" class="catalog-price">{{ formatCompactPrice(dap.msrpUsd) }}</span>
         </span>
 
         <span class="chip-row catalog-badges">
           <span class="badge badge-neutral">{{ isAndroidBased(dap) ? 'Android' : 'Non-Android' }}</span>
-          <span v-if="dap.has44mm" class="badge badge-capability-balanced">4.4mm</span>
-          <span
-            class="badge"
-            :class="getStatusBadgeMeta(dap.status).className"
-            :title="getStatusBadgeMeta(dap.status).title"
-          >
-            {{ getStatusBadgeMeta(dap.status).label }}
-          </span>
-          <span
-            class="badge"
-            :class="getVerificationBadgeMeta(dap.verificationStatus).className"
-            :title="getVerificationBadgeMeta(dap.verificationStatus).title"
-          >
-            {{ getVerificationBadgeMeta(dap.verificationStatus).label }}
-          </span>
         </span>
       </span>
     </a>

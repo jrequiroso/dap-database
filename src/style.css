@@ -1401,29 +1401,28 @@ th.is-brand .sort-button {
 }
 
 .media-pill--status.badge-status-discontinued {
-  border-color: #d1dbe2;
-  background: #f0f3f5;
-  color: #4e5d67;
+  border-color: #fda4af;
+  background: #ffe4e6;
+  color: #9f1239;
+}
+
+.media-pill--status.badge-status-upcoming {
+  border-color: #c8d4f6;
+  background: #eef3ff;
+  color: #344b92;
 }
 
 .dap-card__body {
   display: flex;
   flex: 1;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
   padding: 16px;
-}
-
-.dap-card__heading {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 14px;
 }
 
 .dap-card__title-line {
   display: grid;
-  gap: 3px;
+  gap: 4px;
   min-width: 0;
   max-width: 100%;
 }
@@ -1435,6 +1434,8 @@ th.is-brand .sort-button {
   font-size: 0.76rem;
   font-weight: 850;
   text-transform: uppercase;
+  overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
 }
 
@@ -1468,11 +1469,11 @@ th.is-brand .sort-button {
 }
 
 .catalog-price {
-  flex: 0 0 auto;
-  margin: 2px 0 0;
+  display: block;
+  margin: 3px 0 0;
   color: #16232b;
-  font-size: 1rem;
-  font-weight: 850;
+  font-size: 1.03rem;
+  font-weight: 700;
   white-space: nowrap;
 }
 
@@ -2460,14 +2461,6 @@ dd {
 
   .dap-card__media {
     height: 235px;
-  }
-
-  .dap-card__heading {
-    display: grid;
-  }
-
-  .catalog-price {
-    margin-top: 0;
   }
 
   .details-modal {

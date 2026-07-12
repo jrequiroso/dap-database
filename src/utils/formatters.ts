@@ -30,6 +30,21 @@ export function formatPrice(value: MixedSpecValue | undefined): string {
   return String(value);
 }
 
+export function formatCompactPrice(value: MixedSpecValue | undefined): string {
+  if (value === null || value === undefined || value === '') return '-';
+  if (typeof value === 'number') {
+    const hasCents = !Number.isInteger(value);
+    return `$${value.toLocaleString('en-US', {
+      minimumFractionDigits: hasCents ? 2 : 0,
+      maximumFractionDigits: hasCents ? 2 : 0,
+    })}`;
+  }
+  const raw = String(value).trim();
+  const numericValue = Number(raw.replace(/[$,]/g, ''));
+  if (!Number.isNaN(numericValue)) return formatCompactPrice(numericValue);
+  return raw;
+}
+
 export function formatPower(value: MixedSpecValue | undefined): string {
   if (value === null || value === undefined || value === '') return '-';
   if (typeof value === 'number') return `${value.toLocaleString('en-US')} mW`;

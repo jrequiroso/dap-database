@@ -28,7 +28,7 @@ Audio-focused phones such as the Moondrop MIAD 01 and general consumer MP3 playe
 
 ## Current Data Status
 
-As of 2026-07-13, `src/data/daps.csv` contains 177 source-backed DAP rows, and every row has a local optimized image referenced through `image_filename`.
+As of 2026-07-13, `src/data/daps.csv` contains 188 source-backed DAP rows, and every row has a local optimized image referenced through `image_filename`.
 
 Latest local checks:
 
@@ -64,6 +64,7 @@ Currently accepted review-link sources:
 - Headfonics
 - Headfonia
 - Twister6
+- What Hi-Fi
 
 Rules:
 
@@ -113,19 +114,7 @@ These should be filled before spending time on obscure long-tail models.
 
 ### Astell&Kern Core History
 
-This is the most visible remaining gap. The database has good modern Astell&Kern coverage, but several important historical models are still missing.
-
-- Astell&Kern SR25
-- Astell&Kern SR25 MKII
-- Astell&Kern SE100
-- Astell&Kern SE200
-- Astell&Kern SP1000
-- Astell&Kern SP1000M
-- Astell&Kern SP2000
-- Astell&Kern SP2000T
-- Astell&Kern KANN
-- Astell&Kern KANN Cube
-- Astell&Kern KANN Alpha
+This is the most visible remaining gap. The database now has broad modern and historical Astell&Kern coverage, with a few remaining platform rows still to verify.
 
 Later Astell&Kern pass:
 

@@ -28,7 +28,7 @@ Audio-focused phones such as the Moondrop MIAD 01 and general consumer MP3 playe
 
 ## Current Data Status
 
-As of 2026-07-13, `src/data/daps.csv` contains 219 source-backed DAP rows, and every row has a local optimized image referenced through `image_filename`.
+As of 2026-07-13, `src/data/daps.csv` contains 230 source-backed DAP rows, and every row has a local optimized image referenced through `image_filename`.
 
 Latest local checks:
 
@@ -110,33 +110,7 @@ Long term, the CSV should include a dedicated aliases column so search can match
 
 Until an aliases column exists, aliases may be documented in Notes, but they should not create duplicate model rows.
 
-## Priority 1: Useful Historical Coverage
-
-These are the highest-value remaining historical additions.
-
-### Shanling Missing Models
-
-- Shanling M1
-- Shanling M2
-- Shanling M2s
-- Shanling M5
-- Shanling M5s
-- Shanling Q1
-- Shanling M6 21
-- Shanling M6 Pro 21
-- Shanling M7T
-- Shanling M9 Plus
-- Shanling M30 Pro
-
-Naming note:
-
-`M6 Pro 21`, `M6 Pro (21)`, and `M6 Pro 2021` refer to the same model. Add one row only.
-
-`M6 21` had 32GB and later 64GB internal-storage configurations with otherwise unchanged specifications. Do not create separate storage-only rows.
-
-M7T and M30 Pro are verified standalone player models.
-
-## Priority 2: Add by Request or When Sources Are Easy
+## Priority 1: Add by Request or When Sources Are Easy
 
 These fit the broader DAP scope, but they should not block launch or higher-priority historical gaps.
 

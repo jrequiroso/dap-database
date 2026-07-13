@@ -28,7 +28,7 @@ Audio-focused phones such as the Moondrop MIAD 01 and general consumer MP3 playe
 
 ## Current Data Status
 
-As of 2026-07-13, `src/data/daps.csv` contains 164 source-backed DAP rows, and every row has a local optimized image referenced through `image_filename`.
+As of 2026-07-13, `src/data/daps.csv` contains 177 source-backed DAP rows, and every row has a local optimized image referenced through `image_filename`.
 
 Latest local checks:
 
@@ -115,39 +115,26 @@ These should be filled before spending time on obscure long-tail models.
 
 This is the most visible remaining gap. The database has good modern Astell&Kern coverage, but several important historical models are still missing.
 
-- Astell&Kern AK100
-- Astell&Kern AK120
-- Astell&Kern AK100 II
-- Astell&Kern AK120 II
-- Astell&Kern AK240
-- Astell&Kern AK300
-- Astell&Kern AK320
-- Astell&Kern AK380
-- Astell&Kern A&norma SR15
-- Astell&Kern A&norma SR25
-- Astell&Kern A&norma SR25 MKII
-- Astell&Kern A&futura SE100
-- Astell&Kern A&futura SE200
-- Astell&Kern A&ultima SP1000
-- Astell&Kern A&ultima SP1000M
-- Astell&Kern A&ultima SP2000
-- Astell&Kern A&ultima SP2000T
+- Astell&Kern SR25
+- Astell&Kern SR25 MKII
+- Astell&Kern SE100
+- Astell&Kern SE200
+- Astell&Kern SP1000
+- Astell&Kern SP1000M
+- Astell&Kern SP2000
+- Astell&Kern SP2000T
 - Astell&Kern KANN
 - Astell&Kern KANN Cube
 - Astell&Kern KANN Alpha
-- Astell&Kern SA700
-- Astell&Kern AK70
-- Astell&Kern AK70 MKII
-- Astell&Kern AK Jr
 
 Later Astell&Kern pass:
 
-- Astell&Kern A&futura SE180
-- Astell&Kern A&futura SE300
+- Astell&Kern SE180
+- Astell&Kern SE300
 
 Variant note:
 
-Astell&Kern often has limited material/color editions. Do not add those unless core hardware or specifications meaningfully differ. Skip AK CD rippers, amps, desktop servers, and IEM/headphone collaborations.
+Astell&Kern line names such as A&norma, A&futura, and A&ultima should be kept as aliases/notes, not included in the `Model` value. Astell&Kern often has limited material/color editions. Do not add those unless core hardware or specifications meaningfully differ. Skip AK CD rippers, amps, desktop servers, and IEM/headphone collaborations.
 
 ### FiiO X-Series and Early M-Series
 

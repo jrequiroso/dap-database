@@ -28,7 +28,7 @@ Audio-focused phones such as the Moondrop MIAD 01 and general consumer MP3 playe
 
 ## Current Data Status
 
-As of 2026-07-13, `src/data/daps.csv` contains 230 source-backed DAP rows, and every row has a local optimized image referenced through `image_filename`.
+As of 2026-07-13, `src/data/daps.csv` contains 236 source-backed DAP rows, and every row has a local optimized image referenced through `image_filename`.
 
 Latest local checks:
 
@@ -140,6 +140,19 @@ Confirm whether hyphenated and non-hyphenated names are aliases before adding. D
 - xDuoo X10
 - xDuoo X20
 - xDuoo Nano D3
+
+
+### QLS / Quloos
+
+- QLS QA661
+- QLS QA662
+- QLS QA390
+- QLS QA390LE / MOD / QA390V2
+- QLS QA860
+
+Variant note:
+
+Investigate QA390LE, QA390 MOD, and QA390V2 before adding rows. QLS groups these names closely, so confirm whether each has meaningful hardware/spec differences or should be represented as one row with aliases/notes.
 
 ### Other Modern / Relevant DAPs
 

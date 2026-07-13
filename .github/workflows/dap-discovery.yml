@@ -1,0 +1,86 @@
+name: DAP Discovery Watch
+
+on:
+  schedule:
+    - cron: '21 9 * * 1'
+  workflow_dispatch:
+    inputs:
+      create_issue:
+        description: 'Create a GitHub issue when new actionable candidates are found'
+        required: true
+        default: 'true'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run discovery
+        id: discover
+        run: npm run discover:daps:ci
+
+      - name: Upload discovery report
+        uses: actions/upload-artifact@v4
+        with:
+          name: dap-discovery-report
+          path: |
+            tmp/dap-discovery-report.md
+            tmp/dap-discovery-result.json
+
+      - name: Read open discovery issues
+        if: steps.discover.outputs.has_candidates == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: >
+          gh issue list
+          --state open
+          --search '"[DAP Discovery]" in:title repo:${{ github.repository }}'
+          --json number,title,body
+          --limit 50
+          > tmp/dap-discovery-open-issues.json
+
+      - name: Check discovery issue dedupe
+        id: dedupe
+        if: steps.discover.outputs.has_candidates == 'true'
+        run: npm run discover:daps:dedupe -- --result tmp/dap-discovery-result.json --issues tmp/dap-discovery-open-issues.json --report tmp/dap-discovery-report.md
+
+      - name: Ensure discovery label
+        if: >
+          steps.discover.outputs.has_candidates == 'true' &&
+          steps.dedupe.outputs.should_create_issue == 'true' &&
+          (github.event_name != 'workflow_dispatch' || inputs.create_issue == 'true')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh label create discovery --description "Automated DAP discovery reports" --color 3d7898 --force
+
+      - name: Create discovery issue
+        if: >
+          steps.discover.outputs.has_candidates == 'true' &&
+          steps.dedupe.outputs.should_create_issue == 'true' &&
+          (github.event_name != 'workflow_dispatch' || inputs.create_issue == 'true')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: >
+          gh issue create
+          --title "[DAP Discovery] Possible new models found - $(date -u +%F)"
+          --body-file tmp/dap-discovery-report.md
+          --label discovery

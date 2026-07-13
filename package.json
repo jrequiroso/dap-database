@@ -8,7 +8,12 @@
     "build": "vue-tsc -b && vite build",
     "preview": "vite preview",
     "generate:data": "tsx scripts/generate-daps-json.ts",
-    "process:images": "tsx scripts/process-dap-images.ts"
+    "process:images": "tsx scripts/process-dap-images.ts",
+    "discover:daps": "tsx scripts/discovery/discover.ts",
+    "discover:daps:ci": "tsx scripts/discovery/discover.ts --no-exit-code",
+    "discover:daps:dry-run": "tsx scripts/discovery/discover.ts --dry-run",
+    "discover:daps:dedupe": "tsx scripts/discovery/dedupe-issues.ts",
+    "test:discovery": "tsx --test scripts/discovery/discovery.test.ts"
   },
   "dependencies": {
     "@vitejs/plugin-vue": "^6.0.0",

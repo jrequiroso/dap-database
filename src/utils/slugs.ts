@@ -4,7 +4,8 @@ function slugify(value: string): string {
   return value
     .normalize('NFKD')
     .replace(/&/g, ' and ')
-    .replace(/['’]/g, '')
+    .replace(/\+/g, ' plus ')
+    .replace(/'/g, '')
     .replace(/[^a-zA-Z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '')
     .toLowerCase();
@@ -21,4 +22,3 @@ export function dapDetailHash(dap: Dap): string {
 export function dapDetailUrl(dap: Dap): string {
   return `${import.meta.env.BASE_URL}${dapDetailHash(dap)}`;
 }
-

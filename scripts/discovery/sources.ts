@@ -1,0 +1,67 @@
+import type { DiscoverySource } from './types';
+
+export const discoverySources: DiscoverySource[] = [
+  {
+    brand: 'FiiO',
+    type: 'catalog',
+    url: 'https://www.fiio.com/category',
+    extractor: 'fiio',
+    enabled: true,
+  },
+  {
+    brand: 'Shanling',
+    type: 'catalog',
+    url: 'https://en.shanling.com/category/237',
+    extractor: 'shanling',
+    enabled: true,
+  },
+  {
+    brand: 'iBasso',
+    type: 'catalog',
+    url: 'https://ibasso.com/product-category/dap/',
+    extractor: 'ibasso',
+    enabled: true,
+  },
+  {
+    brand: 'Cayin',
+    type: 'catalog',
+    url: 'https://en.cayin.cn/features/7/15/717.html',
+    extractor: 'cayin',
+    enabled: true,
+  },
+  {
+    brand: 'HiBy',
+    type: 'catalog',
+    url: 'https://store.hiby.com/collections/music-player',
+    extractor: 'hiby',
+    enabled: true,
+  },
+  {
+    brand: 'Hidizs',
+    type: 'catalog',
+    url: 'https://www.hidizs.net/collections/portable-music-player',
+    extractor: 'hidizs',
+    enabled: true,
+  },
+  {
+    brand: 'QLS',
+    type: 'catalog',
+    url: 'https://www.qlshifi.com/en/?cate=2',
+    extractor: 'qls',
+    enabled: true,
+  },
+  {
+    brand: 'HiFiGo',
+    type: 'retailer',
+    url: 'https://hifigo.com/collections/portable-music-player',
+    extractor: 'retailer',
+    enabled: true,
+  },
+  {
+    brand: 'Linsoul',
+    type: 'retailer',
+    url: 'https://www.linsoul.com/collections/digital-audio-players',
+    extractor: 'retailer',
+    enabled: true,
+  },
+];

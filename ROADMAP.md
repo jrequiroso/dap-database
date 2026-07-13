@@ -163,6 +163,16 @@ Investigate QA390LE, QA390 MOD, and QA390V2 before adding rows. QLS groups these
 
 ### Other Modern / Relevant DAPs
 
+- Acoustic Research AR-M2
+- Acoustic Research AR-M20
+- Acoustic Research AR-M200
+- PonoMusic PonoPlayer
+- iBasso DX100
+- iBasso DX150
+- iBasso DX90
+- iBasso DX80
+- iBasso DX50
+- Shanling M3
 - Colorfly C4
 - Colorfly U8
 - Colorfly U6

@@ -144,11 +144,10 @@ Later Astell&Kern pass:
 
 - Astell&Kern A&futura SE180
 - Astell&Kern A&futura SE300
-- Astell&Kern A&futura SE300 Titan
 
 Variant note:
 
-Astell&Kern often has limited material/color editions. Do not add those unless specs, chassis material, or major hardware meaningfully differ. Skip AK CD rippers, amps, desktop servers, and IEM/headphone collaborations.
+Astell&Kern often has limited material/color editions. Do not add those unless core hardware or specifications meaningfully differ. Skip AK CD rippers, amps, desktop servers, and IEM/headphone collaborations.
 
 ### FiiO X-Series and Early M-Series
 
@@ -171,7 +170,7 @@ FiiO legacy coverage is important because these models are common used-market re
 
 Variant note:
 
-Skip Stainless Steel, color, and bundle editions unless specs differ. Verify whether Snowsky ECHO is distinct from Snowsky Echo Mini before adding.
+Skip Stainless Steel, color, material-only, and bundle editions unless core hardware or specifications differ. Snowsky ECHO is distinct from Snowsky Echo Mini.
 
 ## Priority 2: Useful Historical Coverage
 
@@ -211,7 +210,11 @@ Cowon variants are usually distinct enough when marked D2, R2, M2, MKII, etc. Co
 
 Naming note:
 
-Confirm whether `M6 Pro 21` and `M6 Pro 2021` refer to the same model before adding. Do not duplicate. Confirm whether M7T and M30 Pro have standalone DAP product pages and are not retailer naming variants.
+`M6 Pro 21`, `M6 Pro (21)`, and `M6 Pro 2021` refer to the same model. Add one row only.
+
+`M6 21` had 32GB and later 64GB internal-storage configurations with otherwise unchanged specifications. Do not create separate storage-only rows.
+
+M7T and M30 Pro are verified standalone player models.
 
 ## Priority 3: Add by Request or When Sources Are Easy
 

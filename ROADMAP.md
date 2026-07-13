@@ -28,7 +28,7 @@ Audio-focused phones such as the Moondrop MIAD 01 and general consumer MP3 playe
 
 ## Current Data Status
 
-As of 2026-07-13, `src/data/daps.csv` contains 208 source-backed DAP rows, and every row has a local optimized image referenced through `image_filename`.
+As of 2026-07-13, `src/data/daps.csv` contains 219 source-backed DAP rows, and every row has a local optimized image referenced through `image_filename`.
 
 Latest local checks:
 
@@ -113,24 +113,6 @@ Until an aliases column exists, aliases may be documented in Notes, but they sho
 ## Priority 1: Useful Historical Coverage
 
 These are the highest-value remaining historical additions.
-
-### Cowon / Plenue
-
-- Cowon Plenue J
-- Cowon Plenue R
-- Cowon Plenue R2
-- Cowon Plenue M
-- Cowon Plenue M2
-- Cowon Plenue 1
-- Cowon Plenue 2
-- Cowon Plenue 2 MKII
-- Cowon Plenue S
-- Cowon Plenue L
-- Cowon Plenue V
-
-Variant note:
-
-Cowon variants are usually distinct enough when marked D2, R2, M2, MKII, etc. Color-only variants should be skipped.
 
 ### Shanling Missing Models
 

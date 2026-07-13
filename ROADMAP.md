@@ -28,7 +28,7 @@ Audio-focused phones such as the Moondrop MIAD 01 and general consumer MP3 playe
 
 ## Current Data Status
 
-As of 2026-07-13, `src/data/daps.csv` contains 149 source-backed DAP rows and every row has a local optimized image referenced through `image_filename`.
+As of 2026-07-13, `src/data/daps.csv` contains 163 source-backed DAP rows and every row has a local optimized image referenced through `image_filename`.
 
 Latest local checks:
 
@@ -111,14 +111,6 @@ Until an aliases column exists, aliases may be documented in Notes, but they sho
 
 These should be filled before spending time on obscure long-tail models.
 
-### ACTIVO / iriver
-
-- ACTIVO CT10
-
-Naming note:
-
-Verify whether the best row branding is `ACTIVO CT10`, `Activo CT10`, or `iriver ACTIVO CT10`. Do not confuse it with the newer ACTIVO P1.
-
 ### Astell&Kern Core History
 
 This is the most visible remaining gap. The database has good modern Astell&Kern coverage, but several important historical models are still missing.
@@ -158,24 +150,6 @@ Variant note:
 
 Astell&Kern often has limited material/color editions. Do not add those unless specs, chassis material, or major hardware meaningfully differ. Skip AK CD rippers, amps, desktop servers, and IEM/headphone collaborations.
 
-### iBasso MAX and Sony ZX
-
-These are historically important or commonly searched models that should be handled carefully.
-
-- iBasso DX260 MK2
-- iBasso DX220 MAX
-- iBasso DX300 MAX
-- iBasso DX320 MAX Ti
-- Sony NW-ZX1
-- Sony NW-ZX2
-- Sony NW-ZX100
-- Sony NW-ZX300
-- Sony NW-ZX500 / NW-ZX505
-
-Variant note:
-
-Sony model numbers often represent region/storage variants. Avoid duplicate rows unless specs differ. For iBasso MAX models, do not merge specs into the non-MAX rows.
-
 ### FiiO X-Series and Early M-Series
 
 FiiO legacy coverage is important because these models are common used-market references.
@@ -202,17 +176,6 @@ Skip Stainless Steel, color, and bundle editions unless specs differ. Verify whe
 ## Priority 2: Useful Historical Coverage
 
 These are valid additions, but they should come after the major-brand gaps above.
-
-### HiBy
-
-- HiBy R3 Pro II / R3 Pro 2
-- HiBy R6 Gen III
-- HiBy R6 Pro Max
-- HiBy R8
-
-Naming note:
-
-The current CSV has `R8 II`, but not the original `R8`. Recheck whether `R3 II 2025` should cover only the 2025 refresh or also the earlier R3 II / Gen 2 naming. Verify exact naming for R3 Pro II / R3 Pro 2 and do not mix it with R3 Pro, R3 II, or R3 Pro Saber.
 
 ### Cowon / Plenue
 

@@ -28,7 +28,7 @@ Audio-focused phones such as the Moondrop MIAD 01 and general consumer MP3 playe
 
 ## Current Data Status
 
-As of 2026-07-13, `src/data/daps.csv` contains 190 source-backed DAP rows, and every row has a local optimized image referenced through `image_filename`.
+As of 2026-07-13, `src/data/daps.csv` contains 194 source-backed DAP rows, and every row has a local optimized image referenced through `image_filename`.
 
 Latest local checks:
 
@@ -54,6 +54,8 @@ If official sources are unavailable, add the row only when at least two reliable
 If only one secondary source is available, the row may be added as Partial or Unverified, with uncertain fields left blank.
 
 Do not guess specs from memory.
+
+Digital transport DAPs are in scope when they are standalone portable library players, but they must be clearly identified in Notes. Do not mark digital-output jacks as analog headphone outputs, and leave DAC, amp, and analog power fields blank unless an internal analog stage is verified.
 
 ## Review Link Rules
 
@@ -223,8 +225,6 @@ Confirm whether hyphenated and non-hyphenated names are aliases before adding. D
 - Colorfly C4
 - Colorfly U8
 - Colorfly U6
-- TempoTec Variations V1
-- TempoTec V3-D
 - ONIX Overture XM5
 - ONIX Waltz XM10 LTD
 - Oriolus DPS-L2

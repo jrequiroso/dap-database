@@ -28,7 +28,7 @@ Audio-focused phones such as the Moondrop MIAD 01 and general consumer MP3 playe
 
 ## Current Data Status
 
-As of 2026-07-13, `src/data/daps.csv` contains 188 source-backed DAP rows, and every row has a local optimized image referenced through `image_filename`.
+As of 2026-07-13, `src/data/daps.csv` contains 190 source-backed DAP rows, and every row has a local optimized image referenced through `image_filename`.
 
 Latest local checks:
 
@@ -114,12 +114,7 @@ These should be filled before spending time on obscure long-tail models.
 
 ### Astell&Kern Core History
 
-This is the most visible remaining gap. The database now has broad modern and historical Astell&Kern coverage, with a few remaining platform rows still to verify.
-
-Later Astell&Kern pass:
-
-- Astell&Kern SE180
-- Astell&Kern SE300
+This is the most visible remaining gap. The database now has broad modern and historical Astell&Kern coverage.
 
 Variant note:
 
@@ -228,6 +223,8 @@ Confirm whether hyphenated and non-hyphenated names are aliases before adding. D
 - Colorfly C4
 - Colorfly U8
 - Colorfly U6
+- TempoTec Variations V1
+- TempoTec V3-D
 - ONIX Overture XM5
 - ONIX Waltz XM10 LTD
 - Oriolus DPS-L2
@@ -236,7 +233,9 @@ Confirm whether hyphenated and non-hyphenated names are aliases before adding. D
 
 Scope note:
 
-Some Colorfly, ONIX, Oriolus, YinLvMei, and F.AUDIO models may need extra source checking because product categories can blur the line between standalone DAPs, transports, and desktop/portable source devices.
+Some Colorfly, TempoTec, ONIX, Oriolus, YinLvMei, and F.AUDIO models may need extra source checking because product categories can blur the line between standalone DAPs, transports, and desktop/portable source devices.
+
+TempoTec V3 Blaze appears to overlap with existing `V3` coverage unless sources prove meaningful hardware/spec differences. Do not add bundle rows such as V3 Blaze+IM01 unless the DAP itself differs.
 
 ### Budget / AliExpress-Style DAPs
 

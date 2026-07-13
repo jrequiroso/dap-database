@@ -16136,5 +16136,174 @@
         "type": ""
       }
     ]
+  },
+  {
+    "id": "astell-and-kern-se180",
+    "brand": "Astell&Kern",
+    "model": "SE180",
+    "variant": "",
+    "releaseYear": 2021,
+    "status": "Discontinued",
+    "msrpUsd": 1499,
+    "soc": "",
+    "os": "",
+    "ramGb": null,
+    "storageGb": 256,
+    "microSd": true,
+    "batteryMah": 3800,
+    "dac": "Interchangeable SEM module platform",
+    "amp": "",
+    "has25mm": true,
+    "has35mm": true,
+    "has44mm": true,
+    "has635mm": false,
+    "sePowerMw": null,
+    "balPowerMw": null,
+    "bluetooth": true,
+    "wifi": true,
+    "cellular": false,
+    "has4g": false,
+    "has5g": false,
+    "bluetoothVersion": "5.0",
+    "bluetoothCodecs": [
+      "aptX HD",
+      "LDAC"
+    ],
+    "usbDac": true,
+    "lineOut": null,
+    "coaxOut": null,
+    "opticalOut": null,
+    "balancedOutputType": "2.5mm/4.4mm",
+    "sePowerLoad": "",
+    "balPowerLoad": "",
+    "displaySize": "5.0in",
+    "weight": "",
+    "dimensions": "77 x 137.2 x 19.9 mm",
+    "pcmMax": "",
+    "dsdMax": "",
+    "mqa": true,
+    "streamingServices": [],
+    "wifiBands": "2.4GHz",
+    "usbPort": "USB-C",
+    "batteryLifeHours": "",
+    "storageExpansionMax": "1TB",
+    "officialUrl": "https://www.astellnkern.com/en/product/view.php?idx=1",
+    "officialStoreUrl": "",
+    "buyLinks": [],
+    "affiliateLinks": [],
+    "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/astell-kern-afutura-se180-review/"
+      },
+      {
+        "label": "Twister6",
+        "url": "https://twister6.com/2021/05/22/astell-kern-afutura-ak-se180/"
+      }
+    ],
+    "reviewNotes": "Review links cover the SE180 platform and bundled/module configurations; structured platform fields avoid combining module-specific DAC and decoding specifications.",
+    "sourceUrl": "https://www.astellnkern.com/en/product/view.php?idx=1",
+    "sourceType": "Official",
+    "verificationStatus": "Verified - Official",
+    "notes": "Verified - Official: Astell&Kern's SE180 product page identifies the SE180 as its first DAC-interchangeable DAP and confirms a 5.0in FHD display, 256GB NAND, microSD up to 1TB, 3800mAh battery, USB-C input, 2.4GHz Wi-Fi, Bluetooth 5.0 with aptX HD/LDAC, and 2.5mm/3.5mm/4.4mm outputs through the SEM module platform. This row intentionally represents the SE180 platform rather than merging module-specific hardware. The bundled SEM1 uses a single ES9038PRO and supports up to 32-bit/384kHz and DSD256, while later SEM modules change DAC, decoding ceiling, playback time, and module weight; those module-specific values are therefore not entered into shared structured DAC/PCM/DSD/battery-life/weight fields. Astell&Kern publishes module output in no-load Vrms, so structured mW fields remain blank. Exact specialist retailer lifecycle pages describe the SE180 as discontinued by the manufacturer.",
+    "colors": [
+      "Moon Silver"
+    ],
+    "images": [
+      {
+        "url": "",
+        "filename": "astell-and-kern-se180.webp",
+        "alt": "Astell&Kern SE180 digital audio player",
+        "credit": "",
+        "sourceUrl": "",
+        "type": ""
+      }
+    ]
+  },
+  {
+    "id": "astell-and-kern-se300",
+    "brand": "Astell&Kern",
+    "model": "SE300",
+    "variant": "",
+    "releaseYear": 2023,
+    "status": "Discontinued",
+    "msrpUsd": 1900,
+    "soc": "Quad-Core",
+    "os": "",
+    "ramGb": null,
+    "storageGb": 256,
+    "microSd": true,
+    "batteryMah": 5050,
+    "dac": "Full Discrete R-2R",
+    "amp": "Class A / Class AB",
+    "has25mm": true,
+    "has35mm": true,
+    "has44mm": true,
+    "has635mm": false,
+    "sePowerMw": null,
+    "balPowerMw": null,
+    "bluetooth": true,
+    "wifi": true,
+    "cellular": false,
+    "has4g": false,
+    "has5g": false,
+    "bluetoothVersion": "5.0",
+    "bluetoothCodecs": [
+      "aptX HD",
+      "LDAC"
+    ],
+    "usbDac": true,
+    "lineOut": null,
+    "coaxOut": null,
+    "opticalOut": true,
+    "balancedOutputType": "2.5mm/4.4mm",
+    "sePowerLoad": "",
+    "balPowerLoad": "",
+    "displaySize": "5.46in",
+    "weight": "317",
+    "dimensions": "76.45 x 139.45 x 17.6 mm",
+    "pcmMax": "32-bit/384kHz",
+    "dsdMax": "DSD256",
+    "mqa": true,
+    "streamingServices": [],
+    "wifiBands": "2.4GHz / 5GHz",
+    "usbPort": "USB-C",
+    "batteryLifeHours": "12",
+    "storageExpansionMax": "1TB",
+    "officialUrl": "https://www.astellnkern.com/en/product/view.php?idx=141",
+    "officialStoreUrl": "",
+    "buyLinks": [],
+    "affiliateLinks": [],
+    "buyNotes": "",
+    "reviewLinks": [
+      {
+        "label": "Headfonia",
+        "url": "https://www.headfonia.com/astell-kern-se300-review/"
+      },
+      {
+        "label": "Twister6",
+        "url": "https://twister6.com/2023/05/17/astell-kern-ak-se300/"
+      }
+    ],
+    "reviewNotes": "",
+    "sourceUrl": "https://www.astellnkern.com/en/product/view.php?idx=141",
+    "sourceType": "Official",
+    "verificationStatus": "Verified - Official",
+    "notes": "Verified - Official: Astell&Kern's SE300 page confirms a quad-core CPU, full-discrete R-2R DAC, selectable Class A and Class AB amplification, 256GB NAND, microSD up to 1TB, 5050mAh battery, about 12h playback, 5.46in display, 3.5mm unbalanced/optical plus 2.5mm and 4.4mm balanced outputs, Bluetooth 5.0 with aptX HD/LDAC, dual-band Wi-Fi, USB-C input/USB DAC use, PCM up to 32-bit/384kHz, native DSD256, MQA, 317g standard-model weight, and 76.45 x 139.45 x 17.6 mm dimensions. Output is published as no-load Vrms, so structured mW fields remain blank. The SE300 Titan shares the core SE300 platform and differs by titanium chassis, finish, weight, and price, so it is not split into a separate row under current variant rules. Exact specialist retailer lifecycle pages describe the SE300 as discontinued by the manufacturer.",
+    "colors": [
+      "Platinum Silver",
+      "Titan"
+    ],
+    "images": [
+      {
+        "url": "",
+        "filename": "astell-and-kern-se300.webp",
+        "alt": "Astell&Kern SE300 digital audio player",
+        "credit": "",
+        "sourceUrl": "",
+        "type": ""
+      }
+    ]
   }
 ]

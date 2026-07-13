@@ -14,6 +14,7 @@ Do not add rows for:
 
 - USB dongle DAC/amps
 - desktop DACs or amps
+- AC-powered desktop transports, music servers, or digital bridges
 - Bluetooth receivers without standalone playback
 - accessories, docks, cables, or modules by themselves
 - smartphones or audio-focused phones
@@ -119,6 +120,14 @@ These fit the broader DAP scope, but they should not block launch or higher-prio
 - HIFIMAN HM-801
 - HIFIMAN HM-802
 - HIFIMAN HM-901
+- HIFIMAN HM650
+- HIFIMAN HM901U
+- HIFIMAN HM802U
+- HIFIMAN HM802s
+- HIFIMAN HM901s
+- HIFIMAN HM-603
+- HIFIMAN HM-601
+- HIFIMAN HM-602 Slim
 - HIFIMAN HM901R
 - HIFIMAN HM1000
 - HIFIMAN HM-700
@@ -144,11 +153,9 @@ Confirm whether hyphenated and non-hyphenated names are aliases before adding. D
 
 ### QLS / Quloos
 
-- QLS QA661
-- QLS QA662
+- QLS QA660
 - QLS QA390
 - QLS QA390LE / MOD / QA390V2
-- QLS QA860
 
 Variant note:
 

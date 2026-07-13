@@ -28,7 +28,7 @@ Audio-focused phones such as the Moondrop MIAD 01 and general consumer MP3 playe
 
 ## Current Data Status
 
-As of 2026-07-13, `src/data/daps.csv` contains 165 source-backed DAP rows, and every row has a local optimized image referenced through `image_filename`.
+As of 2026-07-13, `src/data/daps.csv` contains 164 source-backed DAP rows, and every row has a local optimized image referenced through `image_filename`.
 
 Latest local checks:
 

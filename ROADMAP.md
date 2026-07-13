@@ -26,6 +26,15 @@ The database focuses on dedicated audiophile and hi-res digital audio players.
 
 Audio-focused phones such as the Moondrop MIAD 01 and general consumer MP3 players such as iPod, Zune, Sansa, and Creative Zen are currently out of scope. They may be reconsidered only if the project later adds separate audio-phone or classic media-player categories.
 
+## Current Data Status
+
+As of 2026-07-13, `src/data/daps.csv` contains 149 source-backed DAP rows and every row has a local optimized image referenced through `image_filename`.
+
+Latest local checks:
+
+- `npm run generate:data`
+- `npm run build`
+
 ## Source Rules
 
 Official sources are preferred.
@@ -190,16 +199,6 @@ Variant note:
 
 Skip Stainless Steel, color, and bundle editions unless specs differ. Verify whether Snowsky ECHO is distinct from Snowsky Echo Mini before adding.
 
-### Cayin Early N-Series
-
-- Cayin N3
-- Cayin N5
-- Cayin N6
-
-Variant note:
-
-Do not confuse these with N3Pro/N3Ultra, N5ii/N5iiS, or N6ii/N6iii.
-
 ## Priority 2: Useful Historical Coverage
 
 These are valid additions, but they should come after the major-brand gaps above.
@@ -214,25 +213,6 @@ These are valid additions, but they should come after the major-brand gaps above
 Naming note:
 
 The current CSV has `R8 II`, but not the original `R8`. Recheck whether `R3 II 2025` should cover only the 2025 refresh or also the earlier R3 II / Gen 2 naming. Verify exact naming for R3 Pro II / R3 Pro 2 and do not mix it with R3 Pro, R3 II, or R3 Pro Saber.
-
-### Hidizs
-
-- Hidizs AP60
-- Hidizs AP60 II
-- Hidizs AP100
-- Hidizs AP200
-
-Variant note:
-
-Skip AP80 cosmetic/material editions unless internals or core specs differ.
-
-### Questyle
-
-- Questyle QP1
-
-Naming note:
-
-Keep QP1 separate from QP1R only if sources verify a distinct non-R model. Do not add QP3R unless an official product page or reliable exact-model source is found.
 
 ### Cowon / Plenue
 
@@ -251,18 +231,6 @@ Keep QP1 separate from QP1R only if sources verify a distinct non-R model. Do no
 Variant note:
 
 Cowon variants are usually distinct enough when marked D2, R2, M2, MKII, etc. Color-only variants should be skipped.
-
-### Onkyo / Pioneer
-
-- Onkyo DP-S1
-- Onkyo DP-S1A
-- Onkyo DP-X1
-- Pioneer XDP-30R
-- Pioneer XDP-100R
-
-Variant note:
-
-Watch for regional naming and storage variants.
 
 ### Shanling Missing Models
 

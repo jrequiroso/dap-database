@@ -13038,7 +13038,7 @@
     "usbPort": "USB-C",
     "batteryLifeHours": "",
     "storageExpansionMax": "",
-    "officialUrl": "https://store.hiby.com/products/hiby-r6-iii-2025",
+    "officialUrl": "",
     "officialStoreUrl": "",
     "buyLinks": [
       {
@@ -13054,10 +13054,10 @@
       }
     ],
     "reviewNotes": "",
-    "sourceUrl": "https://store.hiby.com/products/hiby-r6-iii-2025",
-    "sourceType": "Official",
-    "verificationStatus": "Verified - Official",
-    "notes": "Verified - Official HiBy page retains the original R6III description and dates the platform to April 2023; exact 2023 R6 Gen III review confirms Snapdragon 665, Android 12, dual ES9038Q2M and Class A/AB. Kept separate from existing R6 III 2025 refresh.",
+    "sourceUrl": "https://headfonics.com/hiby-r6-iii-review/",
+    "sourceType": "Review",
+    "verificationStatus": "Verified - Review",
+    "notes": "Verified - Review: exact 2023 HiBy R6 III review confirms the original R6 Gen III as distinct from the 2025 refresh, with Snapdragon 665, Android 12, dual ES9038Q2M DACs, switchable Class A/AB amplification, 4GB RAM, 64GB storage, 4500mAh battery, 5.0in display, 3.5mm and 4.4mm outputs, PCM 32-bit/768kHz, DSD512, Bluetooth 5.0 codec support, dual-band Wi-Fi, MQA, and Class A/AB runtime context. HiBy now routes the 2023 and 2025 R6 III references to the same/current official product page, so this row uses exact 2023 review evidence while the 2025 refresh keeps the current official HiBy source.",
     "colors": [],
     "images": [
       {

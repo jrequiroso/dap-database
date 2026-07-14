@@ -8449,7 +8449,7 @@
     "balancedOutputType": "4.4mm",
     "sePowerLoad": "",
     "balPowerLoad": "",
-    "displaySize": "4.97in",
+    "displaySize": "5in",
     "weight": "350g",
     "dimensions": "126 x 77.8 x 23 mm",
     "pcmMax": "32-bit/768kHz",
@@ -8461,7 +8461,7 @@
     ],
     "wifiBands": "2.4GHz / 5GHz",
     "usbPort": "USB-C",
-    "batteryLifeHours": "",
+    "batteryLifeHours": "14.2",
     "storageExpansionMax": "2TB",
     "officialUrl": "",
     "officialStoreUrl": "",
@@ -8490,7 +8490,7 @@
     "sourceUrl": "https://en.cayin.cn/features/7/15/685.html",
     "sourceType": "Review",
     "verificationStatus": "Verified - Review",
-    "notes": "Partial - Official: Added as Variant C201 because the N6iii is a modular platform and the stock C201 motherboard materially determines its DAC, outputs, power, and runtime. Cayin confirms Snapdragon 665, Android 12, 6GB RAM, 128GB storage, microSD up to 2TB, and modular audio motherboards. Reliable launch/review sources confirm the stock C201 uses eight CS43198 DACs with 3.5mm and 4.4mm outputs, a 4.97in display, 9000mAh battery, 350g weight, and 126 x 77.8 x 23 mm dimensions. Structured power remains blank because it changes by gain/operation mode and future motherboards require separate Variant rows. Secondary source: https://headfonics.com/cayin-n6iii-review/ | Battery runtime detail from prior data: module-dependent. Structured Battery Life Hours left blank because no single numeric value was clear.",
+    "notes": "Partial - Official: Added as Variant C201 because the N6iii is a modular platform and the stock C201 motherboard materially determines its DAC, outputs, power, and runtime. Cayin confirms Snapdragon 665, Android 12, 6GB RAM, 128GB storage, microSD up to 2TB, and modular audio motherboards. Reliable launch/review sources confirm the stock C201 uses eight CS43198 DACs with 3.5mm and 4.4mm outputs, a 5in display, 9000mAh battery, 350g weight, 126 x 77.8 x 23 mm dimensions, and up to 14.2h playback with the C201 motherboard. Structured power remains blank because it changes by gain/operation mode and future motherboards require separate Variant rows. Secondary source: https://headfonics.com/cayin-n6iii-review/ | Battery runtime detail: official C201 runtime is up to 14.2h; future motherboard runtimes should be treated as separate variant-specific values. Structured Battery Life Hours left blank because no single numeric value was clear.",
     "colors": [
       "Black"
     ],
@@ -8799,7 +8799,7 @@
     "storageGb": 256,
     "microSd": true,
     "batteryMah": 13500,
-    "dac": "Flagship AKM DAC architecture",
+    "dac": "2x AK4191EQ + 4x AK4499EX",
     "amp": "Solid-state + Dual Korg Nutube 6P1; triple amplifier modes",
     "has25mm": null,
     "has35mm": true,
@@ -8848,7 +8848,7 @@
     "sourceUrl": "https://en.cayin.cn/newsDetails/10/24/738.html",
     "sourceType": "Official",
     "verificationStatus": "Partial - Official",
-    "notes": "Partial - Official: Cayin's April 17, 2026 launch confirms N8iii as an active flagship DAP with Snapdragon 665, Android-based streaming, 8GB RAM, 256GB storage, microSD up to 2TB, a flagship AKM DAC architecture, sixth-generation dual Nutube 6P1 circuit, triple timbre, triple amplifier modes, 13500mAh battery, 6in FHD+ display, 3.5mm SE and 4.4mm balanced outputs, line/pre-out, USB/S/PDIF/I2S digital outputs, Bluetooth 5.0, and dual-band Wi-Fi. MSRP, exact DAC part numbers, weight, dimensions, decoding limits, runtime, and colors remain blank pending the full official specification page. Headline power is not entered because the launch material does not provide the complete mode/gain/load mapping required by the schema.",
+    "notes": "Partial - Official: Cayin's April 17, 2026 launch confirms N8iii as an active flagship DAP with Snapdragon 665, Android-based streaming, 8GB RAM, 256GB storage, microSD up to 2TB, a flagship AKM DAC architecture, sixth-generation dual Nutube 6P1 circuit, triple timbre, triple amplifier modes, 13500mAh battery, 6in FHD+ display, 3.5mm SE and 4.4mm balanced outputs, line/pre-out, USB/S/PDIF/I2S digital outputs, Bluetooth 5.0, and dual-band Wi-Fi. MSRP, exact DAC part numbers, weight, dimensions, decoding limits, runtime, and colors remain blank pending the full official specification page. Headline power is not entered because the launch material does not provide the complete mode/gain/load mapping required by the schema.\nSource audit pass8 Cayin: official launch text names AK4191EQ x2 + AK4499EX x4, Snapdragon 665, 8GB/256GB, 2TB microSD, 6in FHD+ display, BT 5.0, dual-band Wi-Fi, 13500mAh battery and Android-based streaming; runtime, weight, dimensions, exact MSRP, decoding limits and complete output/load mapping remain unresolved until a full specification table is accessible.",
     "colors": [],
     "images": [
       {
@@ -19602,7 +19602,7 @@
     "sePowerLoad": "",
     "balPowerLoad": "",
     "displaySize": "6.0in",
-    "weight": "650",
+    "weight": "650g",
     "dimensions": "156 x 89 x 25 mm",
     "pcmMax": "",
     "dsdMax": "DSD512",
@@ -19672,20 +19672,25 @@
     "has4g": false,
     "has5g": false,
     "bluetoothVersion": "5.0",
-    "bluetoothCodecs": [],
+    "bluetoothCodecs": [
+      "LDAC",
+      "UAT",
+      "AAC",
+      "SBC"
+    ],
     "usbDac": true,
     "lineOut": true,
     "coaxOut": true,
     "opticalOut": false,
     "balancedOutputType": "4.4mm",
-    "sePowerLoad": "32Ω",
-    "balPowerLoad": "32Ω",
+    "sePowerLoad": "32 ohms",
+    "balPowerLoad": "32 ohms",
     "displaySize": "5.0in",
-    "weight": "",
-    "dimensions": "",
+    "weight": "370g",
+    "dimensions": "142 x 77.8 x 22.2 mm",
     "pcmMax": "32-bit/768kHz",
     "dsdMax": "DSD512",
-    "mqa": null,
+    "mqa": true,
     "streamingServices": [
       "Android apps",
       "Google Play"
@@ -19693,7 +19698,7 @@
     "wifiBands": "2.4GHz / 5GHz",
     "usbPort": "USB-C",
     "batteryLifeHours": "13",
-    "storageExpansionMax": "",
+    "storageExpansionMax": "1TB",
     "officialUrl": "https://en.cayin.cn/features/7/15/717.html",
     "officialStoreUrl": "https://en.cayin.cn/features/7/15/717.html",
     "buyLinks": [
@@ -19712,7 +19717,7 @@
     "sourceUrl": "https://en.cayin.cn/features/7/15/717.html",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
-    "notes": "Verified - Official/Exact Retail: Cayin's exact N7+ page classifies N7+ as a Pure 1-Bit Android-based Digital Audio Player and lists it separately from N7. The official English page exposes key specifications as product images, so exact current authorized-retailer documentation is used as secondary support for structured values: Snapdragon 665, Android 12, 4GB RAM, 64GB storage plus microSD, 9000mAh battery, 5.0in 1080p display, fully discrete 1-Bit DAC, fully discrete Class A/Class AB amplifier, 3.5mm SE and 4.4mm balanced headphone/line outputs, USB Audio and SPDIF digital connectivity. Exact N7+ listings document 330mW into 32Ω SE and 690mW into 32Ω balanced, with up to 13h playback. N7+ is materially distinct from N7 through revised output power, power management and output-stage implementation. MSRP is the exact-model original $1599 listing price.",
+    "notes": "Verified - Official/Exact Retail: Cayin's exact N7+ page classifies N7+ as a Pure 1-Bit Android-based Digital Audio Player and lists it separately from N7. The official English page exposes key specifications as product images, so exact current authorized-retailer documentation is used as secondary support for structured values: Snapdragon 665, Android 12, 4GB RAM, 64GB storage plus microSD, 9000mAh battery, 5.0in 1080p display, fully discrete 1-Bit DAC, fully discrete Class A/Class AB amplifier, 3.5mm SE and 4.4mm balanced headphone/line outputs, USB Audio and SPDIF digital connectivity. Exact N7+ listings document 330mW into 32Ω SE and 690mW into 32Ω balanced, with up to 13h playback. N7+ is materially distinct from N7 through revised output power, power management and output-stage implementation. MSRP is the exact-model original $1599 listing price. Source audit pass8 Cayin: exact MusicTeck/Bloom N7+ pages and an exact N7+ specification transcript support 370g weight, 142 x 77.8 x 22.2 mm dimensions, 1TB microSD, Bluetooth 5.0 with LDAC/UAT/AAC/SBC, MQA 16x, PCM 32-bit/768kHz USB DAC support, 330mW SE @32 ohms, 690mW BAL @32 ohms, and battery split of 13h SE Class AB / 11h SE Class A / 10h BAL Class AB / 9h BAL Class A.",
     "colors": [],
     "images": [
       {

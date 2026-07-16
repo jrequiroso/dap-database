@@ -24,6 +24,7 @@ const sortState = ref<SheetSort>({ columnIndex: null, direction: 'asc' });
 const columnWidths = ref<Record<number, number>>({});
 const resizingColumn = ref<{ index: number; startX: number; startWidth: number } | null>(null);
 const sheetScrollTop = ref(0);
+const sheetScrollPane = ref<HTMLElement | null>(null);
 const requiredAuditColumns = new Set([
   'Brand',
   'Model',
@@ -353,6 +354,12 @@ function stopResize() {
 function handleSheetScroll(event: Event) {
   sheetScrollTop.value = (event.currentTarget as HTMLElement).scrollTop;
 }
+
+function handlePinnedWheel(event: WheelEvent) {
+  if (!sheetScrollPane.value || event.deltaY === 0) return;
+  event.preventDefault();
+  sheetScrollPane.value.scrollTop += event.deltaY;
+}
 </script>
 
 <template>
@@ -386,7 +393,7 @@ function handleSheetScroll(event: Event) {
     </header>
 
     <section class="sheet-frame" aria-label="Raw CSV spreadsheet">
-      <div class="sheet-pinned-pane" aria-hidden="false">
+      <div class="sheet-pinned-pane" aria-hidden="false" @wheel="handlePinnedWheel">
         <table class="sheet-table sheet-table--pinned" :class="`sheet-table--${density}`">
           <thead>
             <tr>
@@ -455,7 +462,7 @@ function handleSheetScroll(event: Event) {
         </table>
       </div>
 
-      <div class="sheet-scroll-pane" @scroll.passive="handleSheetScroll">
+      <div ref="sheetScrollPane" class="sheet-scroll-pane" @scroll.passive="handleSheetScroll">
         <table class="sheet-table" :class="`sheet-table--${density}`">
           <thead>
             <tr>

@@ -13,7 +13,8 @@ const emit = defineEmits<{
 }>();
 
 type Density = 'compact' | 'comfortable';
-type SheetSort = { columnIndex: number | null; direction: 'asc' | 'desc' };
+type SheetSortKey = number | 'priority' | 'missing' | null;
+type SheetSort = { columnIndex: SheetSortKey; direction: 'asc' | 'desc' };
 type SheetRow = { cells: string[]; csvIndex: number };
 type Priority = 'High' | 'Medium' | 'Low' | 'OK';
 type Triage = { priority: Priority; missingCount: number; score: number };
@@ -67,6 +68,7 @@ const optionalBlankColumns = new Set([
   'review_links',
   'review_notes',
 ]);
+const hiddenSheetColumns = new Set(['affiliate_links']);
 const highValueAuditColumns = new Set([
   'Release Year',
   'Status',
@@ -138,6 +140,9 @@ function parseCsv(csv: string): string[][] {
 
 const csvRows = computed(() => parseCsv(props.csv.trimEnd()));
 const headers = computed(() => csvRows.value[0] ?? []);
+const visibleColumnIndices = computed(() =>
+  headers.value.map((header, index) => ({ header, index })).filter(({ header }) => !hiddenSheetColumns.has(header)).map(({ index }) => index),
+);
 const dataRows = computed<SheetRow[]>(() => csvRows.value.slice(1).map((cells, index) => ({ cells, csvIndex: index })));
 const normalizedSearch = computed(() => searchTerm.value.trim().toLowerCase());
 const isSorted = computed(() => sortState.value.columnIndex !== -1);
@@ -152,6 +157,8 @@ const displayedRows = computed(() => {
   const rows = [...filteredRows.value];
   if (columnIndex === null) return rows.sort(compareTriageRows);
   if (columnIndex === -1) return rows;
+  if (columnIndex === 'priority') return rows.sort(comparePriorityRows);
+  if (columnIndex === 'missing') return rows.sort(compareMissingRows);
 
   return rows.sort((a, b) => {
     const valueA = a.cells[columnIndex] ?? '';
@@ -167,12 +174,24 @@ const displayedRows = computed(() => {
 });
 
 const pinnedColumnCount = 3;
-const pinnedHeaders = computed(() => headers.value.slice(0, pinnedColumnCount));
-const scrollHeaders = computed(() => headers.value.slice(pinnedColumnCount));
+const pinnedColumnIndices = computed(() => visibleColumnIndices.value.slice(0, pinnedColumnCount));
+const scrollColumnIndices = computed(() => visibleColumnIndices.value.slice(pinnedColumnCount));
 
 function sortColumn(columnIndex: number) {
   if (sortState.value.columnIndex !== columnIndex) {
     sortState.value = { columnIndex, direction: 'asc' };
+    return;
+  }
+
+  sortState.value = {
+    columnIndex,
+    direction: sortState.value.direction === 'asc' ? 'desc' : 'asc',
+  };
+}
+
+function sortMetaColumn(columnIndex: 'priority' | 'missing') {
+  if (sortState.value.columnIndex !== columnIndex) {
+    sortState.value = { columnIndex, direction: columnIndex === 'priority' ? 'asc' : 'desc' };
     return;
   }
 
@@ -193,7 +212,10 @@ function openRow(csvIndex: number) {
 
 function focusCell(rowIndex: number, columnIndex: number) {
   const row = Math.min(Math.max(rowIndex, 0), displayedRows.value.length - 1);
-  const column = Math.min(Math.max(columnIndex, 0), headers.value.length - 1);
+  const visibleIndex = visibleColumnIndices.value.indexOf(columnIndex);
+  const fallbackIndex = visibleIndex === -1 ? 0 : visibleIndex;
+  const nextVisibleIndex = Math.min(Math.max(fallbackIndex, 0), visibleColumnIndices.value.length - 1);
+  const column = visibleColumnIndices.value[nextVisibleIndex] ?? 0;
   const selector = `[data-sheet-row="${row}"][data-sheet-column="${column}"]`;
   const nextCell = document.querySelector<HTMLElement>(selector);
   nextCell?.focus();
@@ -209,10 +231,12 @@ function handleCellKeydown(event: KeyboardEvent, rowIndex: number, columnIndex: 
     focusCell(rowIndex + 1, columnIndex);
   } else if (event.key === 'ArrowLeft') {
     event.preventDefault();
-    focusCell(rowIndex, columnIndex - 1);
+    const visibleIndex = visibleColumnIndices.value.indexOf(columnIndex);
+    focusCell(rowIndex, visibleColumnIndices.value[Math.max(visibleIndex - 1, 0)] ?? columnIndex);
   } else if (event.key === 'ArrowRight') {
     event.preventDefault();
-    focusCell(rowIndex, columnIndex + 1);
+    const visibleIndex = visibleColumnIndices.value.indexOf(columnIndex);
+    focusCell(rowIndex, visibleColumnIndices.value[Math.min(visibleIndex + 1, visibleColumnIndices.value.length - 1)] ?? columnIndex);
   } else if ((event.key === 'Enter' || event.key === ' ') && columnIndex === 1) {
     event.preventDefault();
     const row = displayedRows.value[rowIndex];
@@ -299,6 +323,31 @@ function compareTriageRows(a: SheetRow, b: SheetRow): number {
 
   const missingResult = triageB.missingCount - triageA.missingCount;
   if (missingResult) return missingResult;
+
+  return a.csvIndex - b.csvIndex;
+}
+
+function comparePriorityRows(a: SheetRow, b: SheetRow): number {
+  const priorityRank: Record<Priority, number> = { High: 0, Medium: 1, Low: 2, OK: 3 };
+  const triageA = triageForCells(a.cells);
+  const triageB = triageForCells(b.cells);
+  const baseResult = priorityRank[triageA.priority] - priorityRank[triageB.priority];
+  const result = sortState.value.direction === 'asc' ? baseResult : -baseResult;
+  if (result) return result;
+
+  const yearResult = (numberByHeader(b.cells, 'Release Year') ?? 0) - (numberByHeader(a.cells, 'Release Year') ?? 0);
+  if (yearResult) return yearResult;
+
+  return a.csvIndex - b.csvIndex;
+}
+
+function compareMissingRows(a: SheetRow, b: SheetRow): number {
+  const missingResult = triageForCells(a.cells).missingCount - triageForCells(b.cells).missingCount;
+  const result = sortState.value.direction === 'asc' ? missingResult : -missingResult;
+  if (result) return result;
+
+  const yearResult = (numberByHeader(b.cells, 'Release Year') ?? 0) - (numberByHeader(a.cells, 'Release Year') ?? 0);
+  if (yearResult) return yearResult;
 
   return a.csvIndex - b.csvIndex;
 }
@@ -397,11 +446,23 @@ function handlePinnedWheel(event: WheelEvent) {
         <table class="sheet-table sheet-table--pinned" :class="`sheet-table--${density}`">
           <thead>
             <tr>
-              <th class="sheet-meta-column sheet-meta-column--priority" scope="col">Priority</th>
-              <th class="sheet-meta-column sheet-meta-column--missing" scope="col">Missing</th>
+              <th class="sheet-meta-column sheet-meta-column--priority" scope="col">
+                <button class="sheet-sort-button" type="button" @click="sortMetaColumn('priority')">
+                  <span>Priority</span>
+                  <ArrowUp v-if="sortState.columnIndex === 'priority' && sortState.direction === 'asc'" :size="13" aria-hidden="true" />
+                  <ArrowDown v-else-if="sortState.columnIndex === 'priority'" :size="13" aria-hidden="true" />
+                </button>
+              </th>
+              <th class="sheet-meta-column sheet-meta-column--missing" scope="col">
+                <button class="sheet-sort-button" type="button" @click="sortMetaColumn('missing')">
+                  <span>Missing</span>
+                  <ArrowUp v-if="sortState.columnIndex === 'missing' && sortState.direction === 'asc'" :size="13" aria-hidden="true" />
+                  <ArrowDown v-else-if="sortState.columnIndex === 'missing'" :size="13" aria-hidden="true" />
+                </button>
+              </th>
               <th
-                v-for="(header, columnIndex) in pinnedHeaders"
-                :key="header"
+                v-for="columnIndex in pinnedColumnIndices"
+                :key="headers[columnIndex]"
                 :class="[
                   `sheet-sticky--${columnIndex}`,
                   columnIndex === 2 ? 'sheet-sticky--last' : '',
@@ -410,7 +471,7 @@ function handlePinnedWheel(event: WheelEvent) {
                 scope="col"
               >
                 <button class="sheet-sort-button" type="button" @click="sortColumn(columnIndex)">
-                  <span>{{ header }}</span>
+                  <span>{{ headers[columnIndex] }}</span>
                   <ArrowUp v-if="sortState.columnIndex === columnIndex && sortState.direction === 'asc'" :size="13" aria-hidden="true" />
                   <ArrowDown v-else-if="sortState.columnIndex === columnIndex" :size="13" aria-hidden="true" />
                 </button>
@@ -431,8 +492,8 @@ function handlePinnedWheel(event: WheelEvent) {
                 <span>{{ triageForCells(row.cells).missingCount || '' }}</span>
               </td>
               <td
-                v-for="(header, columnIndex) in pinnedHeaders"
-                :key="`${row.csvIndex}-${header}`"
+                v-for="columnIndex in pinnedColumnIndices"
+                :key="`${row.csvIndex}-${headers[columnIndex]}`"
                 :class="[
                   `sheet-sticky--${columnIndex}`,
                   columnIndex === 2 ? 'sheet-sticky--last' : '',
@@ -467,17 +528,17 @@ function handlePinnedWheel(event: WheelEvent) {
           <thead>
             <tr>
               <th
-                v-for="(header, relativeColumnIndex) in scrollHeaders"
-                :key="header"
-                :style="columnStyle(relativeColumnIndex + pinnedColumnCount)"
+                v-for="columnIndex in scrollColumnIndices"
+                :key="headers[columnIndex]"
+                :style="columnStyle(columnIndex)"
                 scope="col"
               >
-                <button class="sheet-sort-button" type="button" @click="sortColumn(relativeColumnIndex + pinnedColumnCount)">
-                  <span>{{ header }}</span>
-                  <ArrowUp v-if="sortState.columnIndex === relativeColumnIndex + pinnedColumnCount && sortState.direction === 'asc'" :size="13" aria-hidden="true" />
-                  <ArrowDown v-else-if="sortState.columnIndex === relativeColumnIndex + pinnedColumnCount" :size="13" aria-hidden="true" />
+                <button class="sheet-sort-button" type="button" @click="sortColumn(columnIndex)">
+                  <span>{{ headers[columnIndex] }}</span>
+                  <ArrowUp v-if="sortState.columnIndex === columnIndex && sortState.direction === 'asc'" :size="13" aria-hidden="true" />
+                  <ArrowDown v-else-if="sortState.columnIndex === columnIndex" :size="13" aria-hidden="true" />
                 </button>
-                <span class="sheet-resize-handle" aria-hidden="true" @pointerdown="startResize($event, relativeColumnIndex + pinnedColumnCount)"></span>
+                <span class="sheet-resize-handle" aria-hidden="true" @pointerdown="startResize($event, columnIndex)"></span>
               </th>
             </tr>
           </thead>
@@ -488,19 +549,19 @@ function handlePinnedWheel(event: WheelEvent) {
               :class="rowClass(row.cells)"
             >
               <td
-                v-for="(header, relativeColumnIndex) in scrollHeaders"
-                :key="`${row.csvIndex}-${header}`"
+                v-for="columnIndex in scrollColumnIndices"
+                :key="`${row.csvIndex}-${headers[columnIndex]}`"
                 :class="[
-                  cellState(row.cells[relativeColumnIndex + pinnedColumnCount], relativeColumnIndex + pinnedColumnCount, row.cells) === 'empty' ? 'is-empty' : '',
-                  cellState(row.cells[relativeColumnIndex + pinnedColumnCount], relativeColumnIndex + pinnedColumnCount, row.cells) === 'none' ? 'is-none' : '',
+                  cellState(row.cells[columnIndex], columnIndex, row.cells) === 'empty' ? 'is-empty' : '',
+                  cellState(row.cells[columnIndex], columnIndex, row.cells) === 'none' ? 'is-none' : '',
                 ]"
-                :style="columnStyle(relativeColumnIndex + pinnedColumnCount)"
+                :style="columnStyle(columnIndex)"
                 :data-sheet-row="rowIndex"
-                :data-sheet-column="relativeColumnIndex + pinnedColumnCount"
+                :data-sheet-column="columnIndex"
                 tabindex="0"
-                @keydown="handleCellKeydown($event, rowIndex, relativeColumnIndex + pinnedColumnCount)"
+                @keydown="handleCellKeydown($event, rowIndex, columnIndex)"
               >
-                <span>{{ displayCell(row.cells[relativeColumnIndex + pinnedColumnCount], relativeColumnIndex + pinnedColumnCount, row.cells) }}</span>
+                <span>{{ displayCell(row.cells[columnIndex], columnIndex, row.cells) }}</span>
               </td>
             </tr>
           </tbody>

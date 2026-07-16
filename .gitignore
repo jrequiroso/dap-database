@@ -14,5 +14,8 @@ src/utils/*.js
 src/utils/*.d.ts
 !src/vite-env.d.ts
 src/data/daps-updated.csv
+public/assets/images/daps-original/
+src/assets/images/daps-original/
+reports/*.csv
 FEATURE_ROADMAP_PRIVATE.md
 docs/FEATURE_ROADMAP_PRIVATE.md

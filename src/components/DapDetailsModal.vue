@@ -11,6 +11,8 @@ const props = defineProps<{
   dap: Dap | null;
   previousDap?: Dap | null;
   nextDap?: Dap | null;
+  sheetMode?: boolean;
+  rawFields?: Array<{ label: string; value: string }>;
 }>();
 
 const emit = defineEmits<{
@@ -29,10 +31,34 @@ interface BuyGroup {
   links: Array<{ label: string; url: string }>;
 }
 
+interface RawField {
+  label: string;
+  value: string;
+  displayValue: string;
+  state: 'empty' | 'none' | 'value';
+}
+
 const referenceLinkRel = 'noopener noreferrer nofollow';
 let previousBodyOverflow = '';
 let isBodyScrollLocked = false;
 const isDrawerScrolled = ref(false);
+const blankMeansNoneRawFields = new Set([
+  'Variant',
+  '2.5mm',
+  '6.35mm',
+  'Line Out',
+  'Coax Out',
+  'Optical Out',
+  'Cellular',
+  '4G',
+  '5G',
+  'Streaming Services',
+  'color_variants',
+  'official_store_url',
+  'affiliate_links',
+  'buy_notes',
+  'review_notes',
+]);
 
 function handleDrawerScroll(event: Event) {
   isDrawerScrolled.value = (event.currentTarget as HTMLElement).scrollTop > 24;
@@ -87,6 +113,30 @@ function powerValue(power: MixedSpecValue | undefined, load: string): string {
 function addRow(rows: DetailRow[], label: string, value: string, wide = false) {
   if (value) rows.push({ label, value, wide });
 }
+
+function rawFieldDisplayValue(label: string, value: string): string {
+  if (value === '') return blankMeansNoneRawFields.has(label) ? 'None' : '?';
+  if (value.trim().toUpperCase() === 'FALSE') return 'None';
+  return value;
+}
+
+function rawFieldState(label: string, value: string): RawField['state'] {
+  if (value === '') return blankMeansNoneRawFields.has(label) ? 'none' : 'empty';
+  if (value.trim().toUpperCase() === 'FALSE') return 'none';
+  return 'value';
+}
+
+const rawDetailFields = computed<RawField[]>(() => (props.rawFields ?? []).map((field) => ({
+  ...field,
+  displayValue: rawFieldDisplayValue(field.label, field.value),
+  state: rawFieldState(field.label, field.value),
+})));
+
+const rawSourceFields = computed(() => rawDetailFields.value.filter((field) => (
+  field.label.toLowerCase().includes('url')
+  || field.displayValue.toLowerCase().includes('http://')
+  || field.displayValue.toLowerCase().includes('https://')
+)));
 
 const summaryRows = computed<DetailRow[]>(() => {
   if (!props.dap) return [];
@@ -285,7 +335,40 @@ watch(() => props.dap, (dap) => {
           </button>
         </header>
 
-        <div class="details-modal__body">
+        <div v-if="sheetMode" class="details-modal__body details-modal__body--raw">
+          <section class="details-section raw-source-section">
+            <h3>Source URLs</h3>
+            <div v-if="rawSourceFields.length" class="raw-source-list">
+              <div v-for="field in rawSourceFields" :key="`source-${field.label}`" class="raw-source-item">
+                <span class="spec-label">{{ field.label }}</span>
+                <span class="raw-source-value">{{ field.displayValue }}</span>
+              </div>
+            </div>
+            <p v-else class="raw-empty-note">No source URL fields found for this row.</p>
+          </section>
+
+          <section class="details-section">
+            <h3>CSV fields</h3>
+            <div class="raw-fields-wrap">
+              <table class="raw-fields-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Field</th>
+                    <th scope="col">Value</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="field in rawDetailFields" :key="field.label" :class="`raw-field-row--${field.state}`">
+                    <th scope="row">{{ field.label }}</th>
+                    <td>{{ field.displayValue }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+
+        <div v-else class="details-modal__body">
           <div class="details-top">
             <aside class="details-photo-panel">
               <DapPhoto :dap="dap" size="large" />

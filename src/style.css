@@ -1993,6 +1993,10 @@ dd {
   padding: 0 22px 98px;
 }
 
+.details-modal__body--raw {
+  padding-top: 0;
+}
+
 .details-summary {
   display: flex;
   flex-wrap: wrap;
@@ -2515,7 +2519,13 @@ dd {
 }
 
 .sheet-table td.is-empty > span {
-  color: #98a0a5;
+  color: #9f1239;
+  font-style: italic;
+  font-weight: 750;
+}
+
+.sheet-table td.is-none > span {
+  color: #68737b;
   font-style: italic;
 }
 
@@ -2561,6 +2571,107 @@ thead .sheet-sticky {
 
 .sheet-resize-handle:hover {
   background: rgb(15 82 106 / 0.16);
+}
+
+.raw-source-section {
+  border-top: 0;
+}
+
+.raw-source-list {
+  display: grid;
+  gap: 8px;
+}
+
+.raw-source-item {
+  display: grid;
+  grid-template-columns: 170px minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+  border-bottom: 1px solid #ece9e2;
+  padding: 7px 0;
+}
+
+.raw-source-item:last-child {
+  border-bottom: 0;
+}
+
+.raw-source-value {
+  min-width: 0;
+  color: var(--color-text);
+  font-size: 0.84rem;
+  font-weight: 500;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+  user-select: text;
+}
+
+.raw-empty-note {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 0.88rem;
+  font-weight: 650;
+}
+
+.raw-fields-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+}
+
+.raw-fields-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 0.84rem;
+}
+
+.raw-fields-table th,
+.raw-fields-table td {
+  border-bottom: 1px solid #ece9e2;
+  padding: 7px 10px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.raw-fields-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: #f0f0eb;
+  color: var(--color-neutral-text);
+  font-size: 0.76rem;
+  font-weight: 850;
+}
+
+.raw-fields-table tbody th {
+  width: 190px;
+  background: #fbfbf8;
+  color: #68737b;
+  font-weight: 700;
+}
+
+.raw-fields-table td {
+  color: var(--color-text);
+  font-weight: 500;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+  user-select: text;
+}
+
+.raw-fields-table tbody tr:last-child th,
+.raw-fields-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.raw-field-row--empty td {
+  color: #9f1239;
+  font-style: italic;
+  font-weight: 750;
+}
+
+.raw-field-row--none td {
+  color: #68737b;
+  font-style: italic;
 }
 
 .notes-text {

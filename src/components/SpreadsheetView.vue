@@ -20,6 +20,23 @@ const density = ref<Density>('compact');
 const sortState = ref<SheetSort>({ columnIndex: null, direction: 'asc' });
 const columnWidths = ref<Record<number, number>>({});
 const resizingColumn = ref<{ index: number; startX: number; startWidth: number } | null>(null);
+const blankMeansNoneColumns = new Set([
+  'Variant',
+  '2.5mm',
+  '6.35mm',
+  'Line Out',
+  'Coax Out',
+  'Optical Out',
+  'Cellular',
+  '4G',
+  '5G',
+  'Streaming Services',
+  'color_variants',
+  'official_store_url',
+  'affiliate_links',
+  'buy_notes',
+  'review_notes',
+]);
 
 function parseCsv(csv: string): string[][] {
   const rows: string[][] = [];
@@ -75,7 +92,7 @@ const isSorted = computed(() => sortState.value.columnIndex !== null);
 
 const filteredRows = computed(() => {
   if (!normalizedSearch.value) return dataRows.value;
-  return dataRows.value.filter((row) => row.cells.some((cell) => cell.toLowerCase().includes(normalizedSearch.value)));
+  return dataRows.value.filter((row) => row.cells.some((cell, columnIndex) => displayCell(cell, columnIndex).toLowerCase().includes(normalizedSearch.value)));
 });
 
 const displayedRows = computed(() => {
@@ -132,8 +149,18 @@ function handleCellClick(event: MouseEvent, columnIndex: number, csvIndex: numbe
   openRow(csvIndex);
 }
 
-function displayCell(value: string | undefined): string {
-  return value ?? '';
+function displayCell(value: string | undefined, columnIndex: number): string {
+  const raw = value ?? '';
+  if (raw === '') return blankMeansNoneColumns.has(headers.value[columnIndex] ?? '') ? 'None' : '?';
+  if (raw.trim().toUpperCase() === 'FALSE') return 'None';
+  return raw;
+}
+
+function cellState(value: string | undefined, columnIndex: number): 'empty' | 'none' | 'value' {
+  const raw = value ?? '';
+  if (raw === '') return blankMeansNoneColumns.has(headers.value[columnIndex] ?? '') ? 'none' : 'empty';
+  if (raw.trim().toUpperCase() === 'FALSE') return 'none';
+  return 'value';
 }
 
 function columnStyle(columnIndex: number) {
@@ -248,12 +275,13 @@ function stopResize() {
                 columnIndex < 3 ? `sheet-sticky sheet-sticky--${columnIndex}` : '',
                 columnIndex === 2 ? 'sheet-sticky--last' : '',
                 columnIndex < 3 ? 'sheet-copy-cell' : '',
-                !displayCell(row.cells[columnIndex]) ? 'is-empty' : '',
+                cellState(row.cells[columnIndex], columnIndex) === 'empty' ? 'is-empty' : '',
+                cellState(row.cells[columnIndex], columnIndex) === 'none' ? 'is-none' : '',
               ]"
               :style="columnStyle(columnIndex)"
               @click="handleCellClick($event, columnIndex, row.csvIndex)"
             >
-              <span>{{ displayCell(row.cells[columnIndex]) || 'empty' }}</span>
+              <span>{{ displayCell(row.cells[columnIndex], columnIndex) }}</span>
             </td>
           </tr>
         </tbody>

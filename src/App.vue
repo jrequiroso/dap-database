@@ -83,6 +83,52 @@ let cardLoadObserver: IntersectionObserver | null = null;
 let cardResizeObserver: ResizeObserver | null = null;
 let gridMeasureFrame = 0;
 
+function parseCsv(csv: string): string[][] {
+  const rows: string[][] = [];
+  let row: string[] = [];
+  let cell = '';
+  let inQuotes = false;
+
+  for (let index = 0; index < csv.length; index += 1) {
+    const char = csv[index];
+    const nextChar = csv[index + 1];
+
+    if (char === '"') {
+      if (inQuotes && nextChar === '"') {
+        cell += '"';
+        index += 1;
+      } else {
+        inQuotes = !inQuotes;
+      }
+      continue;
+    }
+
+    if (char === ',' && !inQuotes) {
+      row.push(cell);
+      cell = '';
+      continue;
+    }
+
+    if ((char === '\n' || char === '\r') && !inQuotes) {
+      if (char === '\r' && nextChar === '\n') index += 1;
+      row.push(cell);
+      rows.push(row);
+      row = [];
+      cell = '';
+      continue;
+    }
+
+    cell += char;
+  }
+
+  if (cell.length || row.length) {
+    row.push(cell);
+    rows.push(row);
+  }
+
+  return rows;
+}
+
 const brands = computed(() => uniqueSorted(daps.map((dap) => dap.brand)));
 const statuses = computed(() => uniqueSorted(daps.map((dap) => dap.status)));
 const verificationStatuses = computed(() => uniqueSorted(daps.map((dap) => dap.verificationStatus)));
@@ -145,6 +191,14 @@ const storageBounds = computed(() => {
 });
 const visibleDaps = computed(() => sortDaps(filterDaps(daps, filters.value), sortState.value));
 const isSheetRoute = computed(() => currentHash.value === sheetHash);
+const rawCsvRows = computed(() => parseCsv(rawDapsCsv.trimEnd()));
+const rawCsvHeaders = computed(() => rawCsvRows.value[0] ?? []);
+const selectedRawFields = computed(() => {
+  if (!isSheetRoute.value || !selectedDap.value) return [];
+  const dapIndex = daps.findIndex((dap) => dap.id === selectedDap.value?.id);
+  const cells = rawCsvRows.value[dapIndex + 1] ?? [];
+  return rawCsvHeaders.value.map((label, index) => ({ label, value: cells[index] ?? '' }));
+});
 const visibleCardDaps = computed(() => visibleDaps.value.slice(0, cardLimit.value));
 const hasMoreCardDaps = computed(() => visibleCardDaps.value.length < visibleDaps.value.length);
 const remainingCardDaps = computed(() => Math.max(visibleDaps.value.length - visibleCardDaps.value.length, 0));
@@ -717,6 +771,8 @@ watch(hasMoreCardDaps, (hasMore) => {
     :dap="selectedDap"
     :previous-dap="previousDap"
     :next-dap="nextDap"
+    :sheet-mode="isSheetRoute"
+    :raw-fields="selectedRawFields"
     @close="closeDapDetails"
     @navigate="openDapDetails"
   />

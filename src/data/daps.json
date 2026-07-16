@@ -7413,7 +7413,16 @@
     "colors": [
       "Copper"
     ],
-    "images": []
+    "images": [
+      {
+        "url": "",
+        "filename": "astell-and-kern-sp4000-copper.webp",
+        "alt": "Astell&Kern SP4000 Copper digital audio player",
+        "credit": "",
+        "sourceUrl": "",
+        "type": ""
+      }
+    ]
   },
   {
     "id": "astell-and-kern-pd10",

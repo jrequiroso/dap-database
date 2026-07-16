@@ -42,21 +42,46 @@ const referenceLinkRel = 'noopener noreferrer nofollow';
 let previousBodyOverflow = '';
 let isBodyScrollLocked = false;
 const isDrawerScrolled = ref(false);
-const blankMeansNoneRawFields = new Set([
+const requiredRawAuditFields = new Set([
+  'Brand',
+  'Model',
+  'Release Year',
+  'Status',
+  'Source URL',
+  'Notes',
+  'image_filename',
+]);
+const optionalBlankRawFields = new Set([
   'Variant',
+  'MSRP USD',
+  'SoC',
+  'Amp',
+  'Image URL',
+  'Image Source URL',
+  'Image Credit',
+  'Image Type',
+  'image_url',
+  'image_source_url',
+  'image_credit',
+  'color_variants',
   '2.5mm',
   '6.35mm',
-  'Line Out',
-  'Coax Out',
-  'Optical Out',
   'Cellular',
   '4G',
   '5G',
+  'Bluetooth Version',
+  'Bluetooth Codecs',
+  'Line Out',
+  'Coax Out',
+  'Optical Out',
+  'SE Power Load',
+  'BAL Power Load',
   'Streaming Services',
-  'color_variants',
+  'Wi-Fi Bands',
   'official_store_url',
   'affiliate_links',
   'buy_notes',
+  'review_links',
   'review_notes',
 ]);
 
@@ -114,22 +139,41 @@ function addRow(rows: DetailRow[], label: string, value: string, wide = false) {
   if (value) rows.push({ label, value, wide });
 }
 
-function rawFieldDisplayValue(label: string, value: string): string {
-  if (value === '') return blankMeansNoneRawFields.has(label) ? 'None' : '?';
+function rawFieldValue(fields: Array<{ label: string; value: string }>, label: string): string {
+  return fields.find((field) => field.label === label)?.value ?? '';
+}
+
+function rawBlankMeansNone(fields: Array<{ label: string; value: string }>, label: string): boolean {
+  if (label === 'RAM GB') {
+    const os = rawFieldValue(fields, 'OS').toLowerCase();
+    return os.includes('snowsky') || os.includes('linux') || os.includes('hibyos') || os.includes('mtouch');
+  }
+
+  if (label === 'Storage GB') {
+    return rawFieldValue(fields, 'microSD').toUpperCase() === 'TRUE' || rawFieldValue(fields, 'Storage Expansion Max') !== '';
+  }
+
+  return optionalBlankRawFields.has(label) && !requiredRawAuditFields.has(label);
+}
+
+function rawFieldDisplayValue(fields: Array<{ label: string; value: string }>, label: string, value: string): string {
+  if (value === '') return rawBlankMeansNone(fields, label) ? 'None' : '?';
+  if (value.trim() === '0') return 'None';
   if (value.trim().toUpperCase() === 'FALSE') return 'None';
   return value;
 }
 
-function rawFieldState(label: string, value: string): RawField['state'] {
-  if (value === '') return blankMeansNoneRawFields.has(label) ? 'none' : 'empty';
+function rawFieldState(fields: Array<{ label: string; value: string }>, label: string, value: string): RawField['state'] {
+  if (value === '') return rawBlankMeansNone(fields, label) ? 'none' : 'empty';
+  if (value.trim() === '0') return 'none';
   if (value.trim().toUpperCase() === 'FALSE') return 'none';
   return 'value';
 }
 
 const rawDetailFields = computed<RawField[]>(() => (props.rawFields ?? []).map((field) => ({
   ...field,
-  displayValue: rawFieldDisplayValue(field.label, field.value),
-  state: rawFieldState(field.label, field.value),
+  displayValue: rawFieldDisplayValue(props.rawFields ?? [], field.label, field.value),
+  state: rawFieldState(props.rawFields ?? [], field.label, field.value),
 })));
 
 const rawSourceFields = computed(() => rawDetailFields.value.filter((field) => (

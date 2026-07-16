@@ -20,21 +20,47 @@ const density = ref<Density>('compact');
 const sortState = ref<SheetSort>({ columnIndex: null, direction: 'asc' });
 const columnWidths = ref<Record<number, number>>({});
 const resizingColumn = ref<{ index: number; startX: number; startWidth: number } | null>(null);
-const blankMeansNoneColumns = new Set([
+const sheetScrollTop = ref(0);
+const requiredAuditColumns = new Set([
+  'Brand',
+  'Model',
+  'Release Year',
+  'Status',
+  'Source URL',
+  'Notes',
+  'image_filename',
+]);
+const optionalBlankColumns = new Set([
   'Variant',
+  'MSRP USD',
+  'SoC',
+  'Amp',
+  'Image URL',
+  'Image Source URL',
+  'Image Credit',
+  'Image Type',
+  'image_url',
+  'image_source_url',
+  'image_credit',
+  'color_variants',
   '2.5mm',
   '6.35mm',
-  'Line Out',
-  'Coax Out',
-  'Optical Out',
   'Cellular',
   '4G',
   '5G',
+  'Bluetooth Version',
+  'Bluetooth Codecs',
+  'Line Out',
+  'Coax Out',
+  'Optical Out',
+  'SE Power Load',
+  'BAL Power Load',
   'Streaming Services',
-  'color_variants',
+  'Wi-Fi Bands',
   'official_store_url',
   'affiliate_links',
   'buy_notes',
+  'review_links',
   'review_notes',
 ]);
 
@@ -92,7 +118,7 @@ const isSorted = computed(() => sortState.value.columnIndex !== null);
 
 const filteredRows = computed(() => {
   if (!normalizedSearch.value) return dataRows.value;
-  return dataRows.value.filter((row) => row.cells.some((cell, columnIndex) => displayCell(cell, columnIndex).toLowerCase().includes(normalizedSearch.value)));
+  return dataRows.value.filter((row) => row.cells.some((cell, columnIndex) => displayCell(cell, columnIndex, row.cells).toLowerCase().includes(normalizedSearch.value)));
 });
 
 const displayedRows = computed(() => {
@@ -113,11 +139,9 @@ const displayedRows = computed(() => {
   });
 });
 
-const stickyLeftOffsets = computed(() => {
-  const brandWidth = columnWidths.value[0] ?? 150;
-  const modelWidth = columnWidths.value[1] ?? 170;
-  return [0, brandWidth, brandWidth + modelWidth];
-});
+const pinnedColumnCount = 3;
+const pinnedHeaders = computed(() => headers.value.slice(0, pinnedColumnCount));
+const scrollHeaders = computed(() => headers.value.slice(pinnedColumnCount));
 
 function sortColumn(columnIndex: number) {
   if (sortState.value.columnIndex !== columnIndex) {
@@ -140,27 +164,73 @@ function openRow(csvIndex: number) {
   if (dap) emit('openDap', dap);
 }
 
-function handleCellClick(event: MouseEvent, columnIndex: number, csvIndex: number) {
-  if (columnIndex < 3) {
-    event.stopPropagation();
-    return;
-  }
-
-  openRow(csvIndex);
+function focusCell(rowIndex: number, columnIndex: number) {
+  const row = Math.min(Math.max(rowIndex, 0), displayedRows.value.length - 1);
+  const column = Math.min(Math.max(columnIndex, 0), headers.value.length - 1);
+  const selector = `[data-sheet-row="${row}"][data-sheet-column="${column}"]`;
+  const nextCell = document.querySelector<HTMLElement>(selector);
+  nextCell?.focus();
+  nextCell?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
 }
 
-function displayCell(value: string | undefined, columnIndex: number): string {
+function handleCellKeydown(event: KeyboardEvent, rowIndex: number, columnIndex: number) {
+  if (event.key === 'ArrowUp') {
+    event.preventDefault();
+    focusCell(rowIndex - 1, columnIndex);
+  } else if (event.key === 'ArrowDown') {
+    event.preventDefault();
+    focusCell(rowIndex + 1, columnIndex);
+  } else if (event.key === 'ArrowLeft') {
+    event.preventDefault();
+    focusCell(rowIndex, columnIndex - 1);
+  } else if (event.key === 'ArrowRight') {
+    event.preventDefault();
+    focusCell(rowIndex, columnIndex + 1);
+  } else if ((event.key === 'Enter' || event.key === ' ') && columnIndex === 1) {
+    event.preventDefault();
+    const row = displayedRows.value[rowIndex];
+    if (row) openRow(row.csvIndex);
+  }
+}
+
+function cellByHeader(cells: string[], header: string): string {
+  const index = headers.value.indexOf(header);
+  return index === -1 ? '' : cells[index] ?? '';
+}
+
+function blankCellMeansNone(cells: string[], header: string): boolean {
+  if (header === 'RAM GB') {
+    const os = cellByHeader(cells, 'OS').toLowerCase();
+    return os.includes('snowsky') || os.includes('linux') || os.includes('hibyos') || os.includes('mtouch');
+  }
+
+  if (header === 'Storage GB') {
+    return cellByHeader(cells, 'microSD').toUpperCase() === 'TRUE' || cellByHeader(cells, 'Storage Expansion Max') !== '';
+  }
+
+  return optionalBlankColumns.has(header) && !requiredAuditColumns.has(header);
+}
+
+function displayCell(value: string | undefined, columnIndex: number, cells: string[]): string {
   const raw = value ?? '';
-  if (raw === '') return blankMeansNoneColumns.has(headers.value[columnIndex] ?? '') ? 'None' : '?';
+  const header = headers.value[columnIndex] ?? '';
+  if (raw === '') return blankCellMeansNone(cells, header) ? 'None' : '?';
+  if (raw.trim() === '0') return 'None';
   if (raw.trim().toUpperCase() === 'FALSE') return 'None';
   return raw;
 }
 
-function cellState(value: string | undefined, columnIndex: number): 'empty' | 'none' | 'value' {
+function cellState(value: string | undefined, columnIndex: number, cells: string[]): 'empty' | 'none' | 'value' {
   const raw = value ?? '';
-  if (raw === '') return blankMeansNoneColumns.has(headers.value[columnIndex] ?? '') ? 'none' : 'empty';
+  const header = headers.value[columnIndex] ?? '';
+  if (raw === '') return blankCellMeansNone(cells, header) ? 'none' : 'empty';
+  if (raw.trim() === '0') return 'none';
   if (raw.trim().toUpperCase() === 'FALSE') return 'none';
   return 'value';
+}
+
+function isCompleteAuditRow(cells: string[]): boolean {
+  return headers.value.every((_, columnIndex) => cellState(cells[columnIndex], columnIndex, cells) !== 'empty');
 }
 
 function columnStyle(columnIndex: number) {
@@ -172,10 +242,6 @@ function columnStyle(columnIndex: number) {
   if (resolvedWidth) {
     style.width = `${resolvedWidth}px`;
     style.minWidth = `${resolvedWidth}px`;
-  }
-
-  if (columnIndex < 3) {
-    style.left = `${stickyLeftOffsets.value[columnIndex]}px`;
   }
 
   return style;
@@ -204,6 +270,10 @@ function handleResize(event: PointerEvent) {
 function stopResize() {
   resizingColumn.value = null;
   window.removeEventListener('pointermove', handleResize);
+}
+
+function handleSheetScroll(event: Event) {
+  sheetScrollTop.value = (event.currentTarget as HTMLElement).scrollTop;
 }
 </script>
 
@@ -238,54 +308,111 @@ function stopResize() {
     </header>
 
     <section class="sheet-frame" aria-label="Raw CSV spreadsheet">
-      <table class="sheet-table" :class="`sheet-table--${density}`">
-        <thead>
-          <tr>
-            <th
-              v-for="(header, columnIndex) in headers"
-              :key="header"
-              :class="[
-                columnIndex < 3 ? `sheet-sticky sheet-sticky--${columnIndex}` : '',
-                columnIndex === 2 ? 'sheet-sticky--last' : '',
-              ]"
-              :style="columnStyle(columnIndex)"
-              scope="col"
+      <div class="sheet-pinned-pane" aria-hidden="false">
+        <table class="sheet-table sheet-table--pinned" :class="`sheet-table--${density}`">
+          <thead>
+            <tr>
+              <th
+                v-for="(header, columnIndex) in pinnedHeaders"
+                :key="header"
+                :class="[
+                  `sheet-sticky--${columnIndex}`,
+                  columnIndex === 2 ? 'sheet-sticky--last' : '',
+                ]"
+                :style="columnStyle(columnIndex)"
+                scope="col"
+              >
+                <button class="sheet-sort-button" type="button" @click="sortColumn(columnIndex)">
+                  <span>{{ header }}</span>
+                  <ArrowUp v-if="sortState.columnIndex === columnIndex && sortState.direction === 'asc'" :size="13" aria-hidden="true" />
+                  <ArrowDown v-else-if="sortState.columnIndex === columnIndex" :size="13" aria-hidden="true" />
+                </button>
+                <span class="sheet-resize-handle" aria-hidden="true" @pointerdown="startResize($event, columnIndex)"></span>
+              </th>
+            </tr>
+          </thead>
+          <tbody :style="{ transform: `translateY(-${sheetScrollTop}px)` }">
+            <tr
+              v-for="(row, rowIndex) in displayedRows"
+              :key="row.csvIndex"
+              :class="{ 'is-complete-row': isCompleteAuditRow(row.cells) }"
             >
-              <button class="sheet-sort-button" type="button" @click="sortColumn(columnIndex)">
-                <span>{{ header }}</span>
-                <ArrowUp v-if="sortState.columnIndex === columnIndex && sortState.direction === 'asc'" :size="13" aria-hidden="true" />
-                <ArrowDown v-else-if="sortState.columnIndex === columnIndex" :size="13" aria-hidden="true" />
-              </button>
-              <span class="sheet-resize-handle" aria-hidden="true" @pointerdown="startResize($event, columnIndex)"></span>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr
-            v-for="row in displayedRows"
-            :key="row.csvIndex"
-            tabindex="0"
-            @keydown.enter.prevent="openRow(row.csvIndex)"
-            @keydown.space.prevent="openRow(row.csvIndex)"
-          >
-            <td
-              v-for="(header, columnIndex) in headers"
-              :key="`${row.csvIndex}-${header}`"
-              :class="[
-                columnIndex < 3 ? `sheet-sticky sheet-sticky--${columnIndex}` : '',
-                columnIndex === 2 ? 'sheet-sticky--last' : '',
-                columnIndex < 3 ? 'sheet-copy-cell' : '',
-                cellState(row.cells[columnIndex], columnIndex) === 'empty' ? 'is-empty' : '',
-                cellState(row.cells[columnIndex], columnIndex) === 'none' ? 'is-none' : '',
-              ]"
-              :style="columnStyle(columnIndex)"
-              @click="handleCellClick($event, columnIndex, row.csvIndex)"
+              <td
+                v-for="(header, columnIndex) in pinnedHeaders"
+                :key="`${row.csvIndex}-${header}`"
+                :class="[
+                  `sheet-sticky--${columnIndex}`,
+                  columnIndex === 2 ? 'sheet-sticky--last' : '',
+                  'sheet-copy-cell',
+                  cellState(row.cells[columnIndex], columnIndex, row.cells) === 'empty' ? 'is-empty' : '',
+                  cellState(row.cells[columnIndex], columnIndex, row.cells) === 'none' ? 'is-none' : '',
+                ]"
+                :style="columnStyle(columnIndex)"
+                :data-sheet-row="rowIndex"
+                :data-sheet-column="columnIndex"
+                tabindex="0"
+                @keydown="handleCellKeydown($event, rowIndex, columnIndex)"
+              >
+                <button
+                  v-if="columnIndex === 1"
+                  class="sheet-model-button"
+                  type="button"
+                  tabindex="-1"
+                  @click="openRow(row.csvIndex)"
+                >
+                  {{ displayCell(row.cells[columnIndex], columnIndex, row.cells) }}
+                </button>
+                <span v-else>{{ displayCell(row.cells[columnIndex], columnIndex, row.cells) }}</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="sheet-scroll-pane" @scroll.passive="handleSheetScroll">
+        <table class="sheet-table" :class="`sheet-table--${density}`">
+          <thead>
+            <tr>
+              <th
+                v-for="(header, relativeColumnIndex) in scrollHeaders"
+                :key="header"
+                :style="columnStyle(relativeColumnIndex + pinnedColumnCount)"
+                scope="col"
+              >
+                <button class="sheet-sort-button" type="button" @click="sortColumn(relativeColumnIndex + pinnedColumnCount)">
+                  <span>{{ header }}</span>
+                  <ArrowUp v-if="sortState.columnIndex === relativeColumnIndex + pinnedColumnCount && sortState.direction === 'asc'" :size="13" aria-hidden="true" />
+                  <ArrowDown v-else-if="sortState.columnIndex === relativeColumnIndex + pinnedColumnCount" :size="13" aria-hidden="true" />
+                </button>
+                <span class="sheet-resize-handle" aria-hidden="true" @pointerdown="startResize($event, relativeColumnIndex + pinnedColumnCount)"></span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              v-for="(row, rowIndex) in displayedRows"
+              :key="row.csvIndex"
+              :class="{ 'is-complete-row': isCompleteAuditRow(row.cells) }"
             >
-              <span>{{ displayCell(row.cells[columnIndex], columnIndex) }}</span>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+              <td
+                v-for="(header, relativeColumnIndex) in scrollHeaders"
+                :key="`${row.csvIndex}-${header}`"
+                :class="[
+                  cellState(row.cells[relativeColumnIndex + pinnedColumnCount], relativeColumnIndex + pinnedColumnCount, row.cells) === 'empty' ? 'is-empty' : '',
+                  cellState(row.cells[relativeColumnIndex + pinnedColumnCount], relativeColumnIndex + pinnedColumnCount, row.cells) === 'none' ? 'is-none' : '',
+                ]"
+                :style="columnStyle(relativeColumnIndex + pinnedColumnCount)"
+                :data-sheet-row="rowIndex"
+                :data-sheet-column="relativeColumnIndex + pinnedColumnCount"
+                tabindex="0"
+                @keydown="handleCellKeydown($event, rowIndex, relativeColumnIndex + pinnedColumnCount)"
+              >
+                <span>{{ displayCell(row.cells[relativeColumnIndex + pinnedColumnCount], relativeColumnIndex + pinnedColumnCount, row.cells) }}</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </section>
   </main>
 </template>

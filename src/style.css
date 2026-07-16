@@ -2442,11 +2442,27 @@ dd {
 }
 
 .sheet-frame {
+  display: grid;
+  grid-template-columns: 470px minmax(0, 1fr);
   min-height: 0;
-  overflow: auto;
+  overflow: hidden;
   border: 1px solid var(--color-border);
   border-top: 0;
   border-radius: 0 0 12px 12px;
+  background: var(--color-surface);
+}
+
+.sheet-pinned-pane {
+  min-width: 0;
+  overflow: hidden;
+  border-right: 1px solid var(--color-border-strong);
+  background: var(--color-surface);
+  box-shadow: 8px 0 12px -14px rgb(23 25 28 / 0.5);
+}
+
+.sheet-scroll-pane {
+  min-width: 0;
+  overflow: auto;
   background: var(--color-surface);
 }
 
@@ -2458,6 +2474,11 @@ dd {
   color: var(--color-text);
   font-size: 0.78rem;
   table-layout: fixed;
+}
+
+.sheet-table--pinned {
+  width: 470px;
+  min-width: 470px;
 }
 
 .sheet-table th,
@@ -2488,12 +2509,18 @@ dd {
   font-weight: 850;
 }
 
+.sheet-table--pinned th {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+}
+
 .sheet-table td {
   line-height: 1.35;
 }
 
 .sheet-table tbody tr {
-  cursor: pointer;
+  cursor: default;
 }
 
 .sheet-table td.sheet-copy-cell {
@@ -2501,14 +2528,24 @@ dd {
   user-select: text;
 }
 
-.sheet-table tbody tr:hover td,
-.sheet-table tbody tr:focus-within td {
+.sheet-table tbody tr:hover td {
   background: #f8f8f4;
 }
 
-.sheet-table tbody tr:focus {
-  outline: 3px solid rgb(56 119 153 / 0.24);
-  outline-offset: -3px;
+.sheet-table tbody tr.is-complete-row td {
+  background: #f2faf4;
+}
+
+.sheet-table tbody tr.is-complete-row:hover td {
+  background: #eaf6ee;
+}
+
+.sheet-table td:focus {
+  position: relative;
+  z-index: 2;
+  outline: 2px solid #0f526a;
+  outline-offset: -2px;
+  background: #ffffff !important;
 }
 
 .sheet-table td > span {
@@ -2516,6 +2553,29 @@ dd {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.sheet-model-button {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  border: 0;
+  background: transparent;
+  color: #0f526a;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 800;
+  padding: 0;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sheet-model-button:hover,
+.sheet-model-button:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  outline: 0;
 }
 
 .sheet-table td.is-empty > span {
@@ -2529,19 +2589,21 @@ dd {
   font-style: italic;
 }
 
-.sheet-sticky {
-  position: sticky !important;
-  z-index: 3;
-  background: #ffffff !important;
-}
-
-thead .sheet-sticky {
-  z-index: 5;
-  background: #f0f0eb !important;
-}
-
 .sheet-sticky--last {
-  box-shadow: 8px 0 12px -12px rgb(23 25 28 / 0.45);
+  border-right-color: var(--color-border-strong);
+}
+
+.sheet-sticky--0 {
+  text-align: right;
+}
+
+.sheet-sticky--0 > span {
+  text-align: right;
+}
+
+.sheet-sticky--0 .sheet-sort-button {
+  justify-content: flex-end;
+  text-align: right;
 }
 
 .sheet-sort-button {

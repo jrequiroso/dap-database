@@ -103,6 +103,7 @@ export interface DapFilters {
   ramMax: string;
   storageMin: string;
   storageMax: string;
+  storageExpansion: string[];
   outputPorts: string[];
   platform: string[];
   connectivity: string[];
@@ -117,6 +118,10 @@ export type SortKey =
   | 'releaseYear'
   | 'msrpUsd'
   | 'batteryMah'
+  | 'has44mm'
+  | 'ramGb'
+  | 'storageGb'
+  | 'storageExpansionMax'
   | 'sePowerMw'
   | 'balPowerMw'
   | 'status'

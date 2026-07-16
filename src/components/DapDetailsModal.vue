@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted } from 'vue';
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 import { ChevronLeft, ChevronRight, ExternalLink, X } from 'lucide-vue-next';
 import type { Dap, MixedSpecValue } from '../types/dap';
 import { formatBattery, formatColors, formatCompactPrice, formatPower, formatValue, hasValue } from '../utils/formatters';
 import { getStatusBadgeMeta, getVerificationBadgeMeta } from '../utils/dapDisplay';
+import { formatStorageExpansion } from '../utils/storageDisplay';
 import DapPhoto from './DapPhoto.vue';
 
 const props = defineProps<{
@@ -20,6 +21,7 @@ const emit = defineEmits<{
 interface DetailRow {
   label: string;
   value: string;
+  wide?: boolean;
 }
 
 interface BuyGroup {
@@ -28,6 +30,13 @@ interface BuyGroup {
 }
 
 const referenceLinkRel = 'noopener noreferrer nofollow';
+let previousBodyOverflow = '';
+let isBodyScrollLocked = false;
+const isDrawerScrolled = ref(false);
+
+function handleDrawerScroll(event: Event) {
+  isDrawerScrolled.value = (event.currentTarget as HTMLElement).scrollTop > 24;
+}
 
 function handleKeydown(event: KeyboardEvent) {
   if (event.key === 'Escape' && props.dap) emit('close');
@@ -46,9 +55,27 @@ function listValue(values: string[] | null | undefined): string {
 
 function gbValue(value: MixedSpecValue | undefined): string {
   if (!hasValue(value)) return '';
-  if (typeof value === 'number') return `${value.toLocaleString('en-US')}GB`;
+  if (typeof value === 'number') return `${value.toLocaleString('en-US')} GB`;
   const raw = String(value).trim();
-  return /(?:gb|tb)$/i.test(raw) ? raw : `${raw}GB`;
+  const spaced = raw.replace(/(\d)\s*(GB|TB)\b/gi, '$1 $2');
+  return /(?:gb|tb)$/i.test(spaced) ? spaced : `${spaced} GB`;
+}
+
+function hoursValue(value: MixedSpecValue | undefined): string {
+  if (!hasValue(value)) return '';
+  const raw = String(value).trim();
+  if (/hours?|hrs?/i.test(raw)) return raw;
+  return `${raw} hours`;
+}
+
+function displaySizeValue(value: MixedSpecValue | undefined): string {
+  const raw = textValue(value);
+  return raw.replace(/\b(\d+(?:\.\d+)?)\s*in\b/i, '$1 inches');
+}
+
+function weightValue(value: MixedSpecValue | undefined): string {
+  const raw = textValue(value);
+  return raw.replace(/\b(\d+(?:\.\d+)?)\s*g\b/i, '$1 g');
 }
 
 function powerValue(power: MixedSpecValue | undefined, load: string): string {
@@ -57,8 +84,8 @@ function powerValue(power: MixedSpecValue | undefined, load: string): string {
   return hasValue(load) ? `${formattedPower} @ ${load}` : formattedPower;
 }
 
-function addRow(rows: DetailRow[], label: string, value: string) {
-  if (value) rows.push({ label, value });
+function addRow(rows: DetailRow[], label: string, value: string, wide = false) {
+  if (value) rows.push({ label, value, wide });
 }
 
 const summaryRows = computed<DetailRow[]>(() => {
@@ -67,7 +94,7 @@ const summaryRows = computed<DetailRow[]>(() => {
   const rows: DetailRow[] = [];
   addRow(rows, 'Year', textValue(dap.releaseYear));
   addRow(rows, 'MSRP', hasValue(dap.msrpUsd) ? formatCompactPrice(dap.msrpUsd) : '');
-  addRow(rows, 'Source Confidence', hasValue(dap.verificationStatus) ? getVerificationBadgeMeta(dap.verificationStatus).label : '');
+  addRow(rows, 'Source status', hasValue(dap.verificationStatus) ? getVerificationBadgeMeta(dap.verificationStatus).label : '');
   return rows;
 });
 
@@ -90,12 +117,12 @@ const audioRows = computed<DetailRow[]>(() => {
   if (!props.dap) return [];
   const dap = props.dap;
   const rows: DetailRow[] = [];
-  addRow(rows, 'DAC', textValue(dap.dac));
-  addRow(rows, 'Amp', textValue(dap.amp));
-  addRow(rows, 'Outputs', outputSummary.value);
-  addRow(rows, 'Balanced Output', textValue(dap.balancedOutputType));
+  addRow(rows, 'DAC', textValue(dap.dac), true);
+  addRow(rows, 'Amplifier', textValue(dap.amp), true);
+  addRow(rows, 'Outputs', outputSummary.value, true);
+  addRow(rows, 'Balanced output', textValue(dap.balancedOutputType));
   addRow(rows, 'SE Power', powerValue(dap.sePowerMw, dap.sePowerLoad));
-  addRow(rows, 'Balanced Power', powerValue(dap.balPowerMw, dap.balPowerLoad));
+  addRow(rows, 'Balanced power', powerValue(dap.balPowerMw, dap.balPowerLoad));
   return rows;
 });
 
@@ -107,15 +134,13 @@ const hardwareRows = computed<DetailRow[]>(() => {
   addRow(rows, 'RAM', gbValue(dap.ramGb));
   addRow(rows, 'OS', textValue(dap.os));
   addRow(rows, 'Battery', hasValue(dap.batteryMah) ? formatBattery(dap.batteryMah) : '');
-  addRow(rows, 'Battery Life', textValue(dap.batteryLifeHours));
-  addRow(rows, 'Display', textValue(dap.displaySize));
-  addRow(rows, 'Weight', textValue(dap.weight));
-  addRow(rows, 'Dimensions', textValue(dap.dimensions));
+  addRow(rows, 'Battery life', hoursValue(dap.batteryLifeHours));
+  addRow(rows, 'Display', displaySizeValue(dap.displaySize));
+  addRow(rows, 'Weight', weightValue(dap.weight));
+  addRow(rows, 'Dimensions', textValue(dap.dimensions), true);
   addRow(rows, 'Storage', gbValue(dap.storageGb));
-  if (dap.microSd === true) {
-    addRow(rows, 'Expansion', hasValue(dap.storageExpansionMax) ? `microSD up to ${dap.storageExpansionMax}` : 'microSD');
-  }
-  addRow(rows, 'Colors', listValue(dap.colors));
+  addRow(rows, 'Storage expansion', formatStorageExpansion(dap, { showNone: true, showUnknown: true }));
+  addRow(rows, 'Colors', listValue(dap.colors), true);
   return rows;
 });
 
@@ -124,7 +149,7 @@ const connectivityRows = computed<DetailRow[]>(() => {
   const dap = props.dap;
   const rows: DetailRow[] = [];
   if (dap.bluetooth === true) addRow(rows, 'Bluetooth', textValue(dap.bluetoothVersion) || 'Yes');
-  addRow(rows, 'Codecs', listValue(dap.bluetoothCodecs));
+  addRow(rows, 'Codecs', listValue(dap.bluetoothCodecs), true);
   if (dap.wifi === true) addRow(rows, 'Wi-Fi', textValue(dap.wifiBands) || 'Yes');
   if (dap.cellular === true) addRow(rows, 'Cellular', 'Yes');
   if (dap.has4g === true) addRow(rows, '4G', 'Yes');
@@ -132,7 +157,7 @@ const connectivityRows = computed<DetailRow[]>(() => {
 
   const usbParts = [textValue(dap.usbPort)];
   if (dap.usbDac === true) usbParts.push('USB DAC');
-  addRow(rows, 'USB', usbParts.filter(Boolean).join(', '));
+  addRow(rows, 'USB', usbParts.filter(Boolean).join(', '), true);
 
   const formats = [];
   if (hasValue(dap.pcmMax)) formats.push(`PCM ${dap.pcmMax}`);
@@ -140,15 +165,24 @@ const connectivityRows = computed<DetailRow[]>(() => {
   addRow(rows, 'Formats', formats.join(', '));
 
   if (dap.mqa === true) addRow(rows, 'MQA', 'Yes');
-  addRow(rows, 'Streaming', listValue(dap.streamingServices));
+  addRow(rows, 'Streaming', listValue(dap.streamingServices), true);
   return rows;
 });
 
-const sourceTypeLabel = computed(() => {
+const sourceStatusLabel = computed(() => {
   if (!props.dap) return '';
   const sourceType = getVerificationBadgeMeta(props.dap.verificationStatus).label;
-  if (props.dap.sourceUrl) return `${sourceType} - Open source`;
   return sourceType || 'Source not listed';
+});
+
+const primarySourceLabel = computed(() => {
+  if (!props.dap) return '';
+  if (!props.dap.sourceUrl) return sourceStatusLabel.value;
+  if (sourceStatusLabel.value === 'Official') return 'Official product page';
+  if (sourceStatusLabel.value === 'Review') return 'Review';
+  if (sourceStatusLabel.value === 'Retail/Web') return 'Retail or web source';
+  if (sourceStatusLabel.value === 'Partial') return 'Primary source';
+  return sourceStatusLabel.value || 'Primary source';
 });
 
 const buyGroups = computed<BuyGroup[]>(() => {
@@ -191,18 +225,48 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
   window.removeEventListener('keydown', handleKeydown);
+  if (isBodyScrollLocked) {
+    document.body.style.overflow = previousBodyOverflow;
+    isBodyScrollLocked = false;
+  }
 });
+
+watch(() => props.dap, (dap) => {
+  if (dap) {
+    if (!isBodyScrollLocked) {
+      previousBodyOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      isBodyScrollLocked = true;
+    }
+    isDrawerScrolled.value = false;
+    return;
+  }
+
+  if (isBodyScrollLocked) {
+    document.body.style.overflow = previousBodyOverflow;
+    isBodyScrollLocked = false;
+  }
+  isDrawerScrolled.value = false;
+}, { immediate: true });
 </script>
 
 <template>
   <Teleport to="body">
     <div v-if="dap" class="modal-backdrop" role="presentation" @click.self="$emit('close')">
-      <section class="details-modal" role="dialog" aria-modal="true" :aria-label="`${dap.brand} ${dap.model} details`">
+      <section
+        class="details-modal"
+        :class="{ 'is-scrolled': isDrawerScrolled }"
+        role="dialog"
+        aria-modal="true"
+        :aria-label="`${dap.brand} ${dap.model} details`"
+        @scroll.passive="handleDrawerScroll"
+      >
         <header class="details-modal__header">
           <div>
             <p class="eyebrow">{{ dap.brand }}</p>
             <div class="details-title-row">
               <h2>
+                <span class="details-title-brand">{{ dap.brand }}</span>
                 <span>{{ dap.model }}</span>
                 <span v-if="dap.variant" class="details-title-variant">{{ dap.variant }}</span>
               </h2>
@@ -230,7 +294,7 @@ onBeforeUnmount(() => {
             <section class="details-section details-section--core">
               <h3>Summary</h3>
               <dl class="spec-grid spec-grid--single">
-                <div v-for="row in summaryRows" :key="row.label" class="spec-row">
+                <div v-for="row in summaryRows" :key="row.label" class="spec-row" :class="{ 'spec-row--wide': row.wide }">
                   <dt class="spec-label">{{ row.label }}</dt>
                   <dd class="spec-value">{{ row.value }}</dd>
                 </div>
@@ -254,7 +318,7 @@ onBeforeUnmount(() => {
             <section v-if="audioRows.length" class="details-section">
               <h3>Audio</h3>
               <dl class="spec-grid">
-                <div v-for="row in audioRows" :key="row.label" class="spec-row">
+                <div v-for="row in audioRows" :key="row.label" class="spec-row" :class="{ 'spec-row--wide': row.wide }">
                   <dt class="spec-label">{{ row.label }}</dt>
                   <dd class="spec-value">{{ row.value }}</dd>
                 </div>
@@ -264,7 +328,7 @@ onBeforeUnmount(() => {
             <section v-if="hardwareRows.length" class="details-section">
               <h3>Hardware</h3>
               <dl class="spec-grid">
-                <div v-for="row in hardwareRows" :key="row.label" class="spec-row">
+                <div v-for="row in hardwareRows" :key="row.label" class="spec-row" :class="{ 'spec-row--wide': row.wide }">
                   <dt class="spec-label">{{ row.label }}</dt>
                   <dd class="spec-value">{{ row.value }}</dd>
                 </div>
@@ -274,7 +338,7 @@ onBeforeUnmount(() => {
             <section v-if="connectivityRows.length" class="details-section">
               <h3>Connectivity</h3>
               <dl class="spec-grid">
-                <div v-for="row in connectivityRows" :key="row.label" class="spec-row">
+                <div v-for="row in connectivityRows" :key="row.label" class="spec-row" :class="{ 'spec-row--wide': row.wide }">
                   <dt class="spec-label">{{ row.label }}</dt>
                   <dd class="spec-value">{{ row.value }}</dd>
                 </div>
@@ -282,7 +346,7 @@ onBeforeUnmount(() => {
             </section>
 
             <section v-if="hasBuyInfo" class="details-section buy-section">
-              <h3>Buy / Availability</h3>
+              <h3>Availability</h3>
               <dl class="spec-grid spec-grid--single">
                 <div v-for="group in buyGroups" :key="group.label" class="spec-row">
                   <dt class="spec-label">{{ group.label }}</dt>
@@ -305,16 +369,20 @@ onBeforeUnmount(() => {
             </section>
 
             <section class="details-section">
-              <h3>Source</h3>
+              <h3>Sources</h3>
               <dl class="spec-grid spec-grid--single">
                 <div class="spec-row">
-                  <dt class="spec-label">Source</dt>
+                  <dt class="spec-label">Source status</dt>
+                  <dd class="spec-value">{{ sourceStatusLabel }}</dd>
+                </div>
+                <div class="spec-row">
+                  <dt class="spec-label">Primary source</dt>
                   <dd class="spec-value">
                     <a v-if="dap.sourceUrl" class="source-link" :href="dap.sourceUrl" target="_blank" :rel="referenceLinkRel">
                       <ExternalLink :size="15" aria-hidden="true" />
-                      <span>{{ sourceTypeLabel }}</span>
+                      <span>{{ primarySourceLabel }}</span>
                     </a>
-                    <span v-else>{{ sourceTypeLabel }}</span>
+                    <span v-else>{{ primarySourceLabel }}</span>
                   </dd>
                 </div>
               </dl>

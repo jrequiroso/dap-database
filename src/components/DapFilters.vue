@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { Search } from 'lucide-vue-next';
 import type { DapFilters } from '../types/dap';
 
 defineProps<{
@@ -13,6 +12,7 @@ defineProps<{
   outputPortCounts: Record<string, number>;
   platformCounts: Record<string, number>;
   connectivityCounts: Record<string, number>;
+  storageExpansionCounts: Record<string, number>;
   quickFilterCounts: Record<string, number>;
   priceBounds: { min: number; max: number };
   yearBounds: { min: number; max: number };
@@ -22,6 +22,7 @@ defineProps<{
 
 const emit = defineEmits<{
   'update:filters': [filters: DapFilters];
+  clearFilters: [];
 }>();
 
 function update(filters: DapFilters, patch: Partial<DapFilters>) {
@@ -116,24 +117,19 @@ function updateStorageMax(filters: DapFilters, value: string, bounds: { min: num
 const outputPorts = ['2.5mm', '3.5mm', '4.4mm', '6.35mm'];
 const platforms = ['Android', 'Non-Android'];
 const connectivityOptions = ['Bluetooth', 'Wi-Fi', 'Cellular', '4G', '5G'];
+const storageExpansionOptions = [
+  { value: 'expandable', label: 'Expandable' },
+  { value: 'none', label: 'No expansion' },
+  { value: 'unknown', label: 'Unknown' },
+];
 </script>
 
 <template>
   <section class="filters" aria-label="DAP filters">
-    <div class="filter-section">
-      <label class="field field--search">
-        <span>Search</span>
-        <span class="input-with-icon">
-          <Search class="control-icon" :size="16" aria-hidden="true" />
-          <input
-            :value="filters.search"
-            type="search"
-            placeholder="Brand, model, DAC, SoC, OS, colors"
-            @input="update(filters, { search: ($event.target as HTMLInputElement).value })"
-          />
-        </span>
-      </label>
-    </div>
+    <header class="filters-header">
+      <h2>Filters</h2>
+      <button class="btn btn-secondary btn-sm" type="button" @click="emit('clearFilters')">Reset filters</button>
+    </header>
 
     <div class="filter-section">
       <h3>Brand</h3>
@@ -275,56 +271,72 @@ const connectivityOptions = ['Bluetooth', 'Wi-Fi', 'Cellular', '4G', '5G'];
 
     <div class="filter-section">
       <h3>Storage</h3>
-      <fieldset class="range-filter">
-        <legend class="sr-only">Storage range</legend>
-        <div class="range-inputs">
-        <label class="field range-field">
-          <span class="sr-only">Minimum storage in GB</span>
-          <input
-            :value="filters.storageMin || storageBounds.min"
-            type="number"
-            :min="storageBounds.min"
-            :max="storageBounds.max"
-            inputmode="decimal"
-            placeholder="Min GB"
-            @input="updateStorageMin(filters, ($event.target as HTMLInputElement).value, storageBounds)"
-          />
-        </label>
-        <span class="range-separator">-</span>
-        <label class="field range-field">
-          <span class="sr-only">Maximum storage in GB</span>
-          <input
-            :value="filters.storageMax || storageBounds.max"
-            type="number"
-            :min="storageBounds.min"
-            :max="storageBounds.max"
-            inputmode="decimal"
-            placeholder="Max GB"
-            @input="updateStorageMax(filters, ($event.target as HTMLInputElement).value, storageBounds)"
-          />
-        </label>
+      <div class="storage-filter-grid">
+        <fieldset class="range-filter">
+          <legend class="sr-only">Storage range</legend>
+          <div class="range-inputs">
+          <label class="field range-field">
+            <span class="sr-only">Minimum storage in GB</span>
+            <input
+              :value="filters.storageMin || storageBounds.min"
+              type="number"
+              :min="storageBounds.min"
+              :max="storageBounds.max"
+              inputmode="decimal"
+              placeholder="Min GB"
+              @input="updateStorageMin(filters, ($event.target as HTMLInputElement).value, storageBounds)"
+            />
+          </label>
+          <span class="range-separator">-</span>
+          <label class="field range-field">
+            <span class="sr-only">Maximum storage in GB</span>
+            <input
+              :value="filters.storageMax || storageBounds.max"
+              type="number"
+              :min="storageBounds.min"
+              :max="storageBounds.max"
+              inputmode="decimal"
+              placeholder="Max GB"
+              @input="updateStorageMax(filters, ($event.target as HTMLInputElement).value, storageBounds)"
+            />
+          </label>
+          </div>
+          <div class="range-slider">
+            <input
+              :value="filters.storageMin || storageBounds.min"
+              type="range"
+              :min="storageBounds.min"
+              :max="storageBounds.max"
+              step="1"
+              aria-label="Minimum storage in GB"
+              @input="updateStorageMin(filters, ($event.target as HTMLInputElement).value, storageBounds)"
+            />
+            <input
+              :value="filters.storageMax || storageBounds.max"
+              type="range"
+              :min="storageBounds.min"
+              :max="storageBounds.max"
+              step="1"
+              aria-label="Maximum storage in GB"
+              @input="updateStorageMax(filters, ($event.target as HTMLInputElement).value, storageBounds)"
+            />
+          </div>
+        </fieldset>
+        <div class="storage-expansion-filter">
+          <h4>Expansion</h4>
+          <div class="checkbox-group" aria-label="Storage expansion">
+            <label v-for="option in storageExpansionOptions" :key="option.value" class="filter-checkbox">
+              <input
+                type="checkbox"
+                :checked="filters.storageExpansion.includes(option.value)"
+                @change="update(filters, { storageExpansion: toggleFilterValue(filters.storageExpansion, option.value) })"
+              />
+              <span class="filter-label">{{ option.label }}</span>
+              <span class="filter-count">({{ storageExpansionCounts[option.value] ?? 0 }})</span>
+            </label>
+          </div>
         </div>
-        <div class="range-slider">
-          <input
-            :value="filters.storageMin || storageBounds.min"
-            type="range"
-            :min="storageBounds.min"
-            :max="storageBounds.max"
-            step="1"
-            aria-label="Minimum storage in GB"
-            @input="updateStorageMin(filters, ($event.target as HTMLInputElement).value, storageBounds)"
-          />
-          <input
-            :value="filters.storageMax || storageBounds.max"
-            type="range"
-            :min="storageBounds.min"
-            :max="storageBounds.max"
-            step="1"
-            aria-label="Maximum storage in GB"
-            @input="updateStorageMax(filters, ($event.target as HTMLInputElement).value, storageBounds)"
-          />
-        </div>
-      </fieldset>
+      </div>
     </div>
 
     <div class="filter-section">

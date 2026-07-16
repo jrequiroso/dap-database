@@ -1,5 +1,6 @@
 import type { Dap, DapFilters, MixedSpecValue, SortState } from '../types/dap';
 import { verificationGroup } from './dapDisplay';
+import { storageExpansionSortValue, storageExpansionState } from './storageDisplay';
 
 function searchable(value: unknown): string {
   if (Array.isArray(value)) return value.join(' ').toLowerCase();
@@ -76,6 +77,17 @@ function compareMixed(a: MixedSpecValue, b: MixedSpecValue, direction: 'asc' | '
   return direction === 'asc' ? textResult : -textResult;
 }
 
+function booleanRank(value: boolean | null): number {
+  if (value === true) return 1;
+  if (value === false) return 0;
+  return -1;
+}
+
+function compareBoolean(a: boolean | null, b: boolean | null, direction: 'asc' | 'desc'): number {
+  const result = booleanRank(a) - booleanRank(b);
+  return direction === 'asc' ? result : -result;
+}
+
 function statusRank(status: string): number {
   const normalized = status.toLowerCase();
   if (normalized === 'active') return 0;
@@ -129,6 +141,7 @@ export function filterDaps(daps: Dap[], filters: DapFilters): Dap[] {
     if (filters.connectivity.includes('Cellular') && dap.cellular !== true) return false;
     if (filters.connectivity.includes('4G') && dap.has4g !== true) return false;
     if (filters.connectivity.includes('5G') && dap.has5g !== true) return false;
+    if (filters.storageExpansion.length && !filters.storageExpansion.includes(storageExpansionState(dap))) return false;
 
     if (priceMin !== null || priceMax !== null) {
       const price = numberFromMixed(dap.msrpUsd);
@@ -187,6 +200,24 @@ export function sortDaps(daps: Dap[], sortState: SortState): Dap[] {
         return compareMixed(a.msrpUsd, b.msrpUsd, sortState.direction);
       case 'batteryMah':
         return compareMixed(a.batteryMah, b.batteryMah, sortState.direction);
+      case 'has44mm':
+        return compareBoolean(a.has44mm, b.has44mm, sortState.direction);
+      case 'ramGb':
+        return compareMixed(a.ramGb, b.ramGb, sortState.direction);
+      case 'storageGb':
+        return compareMixed(a.storageGb, b.storageGb, sortState.direction);
+      case 'storageExpansionMax': {
+        const aNumber = storageExpansionSortValue(a.storageExpansionMax);
+        const bNumber = storageExpansionSortValue(b.storageExpansionMax);
+        if (aNumber !== null && bNumber !== null) {
+          return sortState.direction === 'asc' ? aNumber - bNumber : bNumber - aNumber;
+        }
+        if (aNumber !== null) return -1;
+        if (bNumber !== null) return 1;
+        return sortState.direction === 'asc'
+          ? compareText(a.storageExpansionMax, b.storageExpansionMax)
+          : compareText(b.storageExpansionMax, a.storageExpansionMax);
+      }
       case 'sePowerMw':
         return compareMixed(a.sePowerMw, b.sePowerMw, sortState.direction);
       case 'balPowerMw':

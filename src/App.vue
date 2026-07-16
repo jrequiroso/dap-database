@@ -1,36 +1,43 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue';
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 import {
   Grid2X2,
   Headphones,
   ListFilter,
   Menu,
-  RotateCcw,
+  Search,
   Table2,
   X,
 } from 'lucide-vue-next';
 import { siBlogger, siFacebook, siGithub, siReddit, siTiktok, siYoutube } from 'simple-icons';
 import rawDaps from './data/daps.json';
+import rawDapsCsv from './data/daps.csv?raw';
 import DapCard from './components/DapCard.vue';
 import DapDetailsModal from './components/DapDetailsModal.vue';
 import DapFilters from './components/DapFilters.vue';
 import DapTable from './components/DapTable.vue';
+import SpreadsheetView from './components/SpreadsheetView.vue';
 import jreqTechLogo from './assets/images/jreq-tech-logo.png';
 import SortControl from './components/SortControl.vue';
 import type { Dap, DapFilters as DapFiltersType, SortKey, SortState } from './types/dap';
 import { isAndroidBased } from './utils/dapDisplay';
 import { filterDaps, numberFromMixed, sortDaps, uniqueSorted } from './utils/filters';
+import { storageExpansionState } from './utils/storageDisplay';
 import { dapSlug } from './utils/slugs';
 
 type ViewMode = 'cards' | 'table';
+type ActiveFilterChip = { key: keyof DapFiltersType; label: string; value?: string };
 
 const daps = rawDaps as Dap[];
 const viewStorageKey = 'dap-database-view-mode-v2';
 const detailHashPrefix = '#/dap/';
+const sheetHash = '#/sheet';
 const defaultDocumentTitle = 'DAP Database - Digital Audio Player Specs and Sources';
 const defaultMetaDescription = 'A searchable database of digital audio players with specs, source links, verification status, and filters.';
-const initialCardLimit = 24;
-const cardLimitStep = 24;
+const fallbackGridColumns = 4;
+const fallbackInitialRows = 4;
+const bufferRows = 1;
+const batchRows = 3;
 const socialIcons = {
   github: siGithub.path,
   blogger: siBlogger.path,
@@ -53,6 +60,7 @@ const filters = ref<DapFiltersType>({
   ramMax: '',
   storageMin: '',
   storageMax: '',
+  storageExpansion: [],
   outputPorts: [],
   platform: [],
   connectivity: [],
@@ -63,10 +71,17 @@ const filters = ref<DapFiltersType>({
 const defaultSortState: SortState = { key: 'default', direction: 'asc' };
 const sortState = ref<SortState>({ ...defaultSortState });
 const viewMode = ref<ViewMode>('cards');
+const currentHash = ref(window.location.hash);
 const selectedDap = ref<Dap | null>(null);
 const showMobileFilters = ref(false);
 const filterGestureStart = ref<{ x: number; y: number } | null>(null);
-const cardLimit = ref(initialCardLimit);
+const cardGrid = ref<HTMLElement | null>(null);
+const cardLoadSentinel = ref<HTMLElement | null>(null);
+const cardLimit = ref(fallbackGridColumns * fallbackInitialRows);
+const gridColumnCount = ref(fallbackGridColumns);
+let cardLoadObserver: IntersectionObserver | null = null;
+let cardResizeObserver: ResizeObserver | null = null;
+let gridMeasureFrame = 0;
 
 const brands = computed(() => uniqueSorted(daps.map((dap) => dap.brand)));
 const statuses = computed(() => uniqueSorted(daps.map((dap) => dap.status)));
@@ -99,6 +114,11 @@ const connectivityCounts = computed(() => ({
   '4G': daps.filter((dap) => dap.has4g).length,
   '5G': daps.filter((dap) => dap.has5g).length,
 }));
+const storageExpansionCounts = computed(() => ({
+  expandable: daps.filter((dap) => storageExpansionState(dap) === 'expandable').length,
+  none: daps.filter((dap) => storageExpansionState(dap) === 'none').length,
+  unknown: daps.filter((dap) => storageExpansionState(dap) === 'unknown').length,
+}));
 const quickFilterCounts = computed(() => ({
   has44mmOnly: daps.filter((dap) => dap.has44mm).length,
   androidOnly: daps.filter(isAndroidBased).length,
@@ -124,15 +144,17 @@ const storageBounds = computed(() => {
   return { min: 0, max: Math.max(...storageValues, 0) };
 });
 const visibleDaps = computed(() => sortDaps(filterDaps(daps, filters.value), sortState.value));
+const isSheetRoute = computed(() => currentHash.value === sheetHash);
 const visibleCardDaps = computed(() => visibleDaps.value.slice(0, cardLimit.value));
 const hasMoreCardDaps = computed(() => visibleCardDaps.value.length < visibleDaps.value.length);
 const remainingCardDaps = computed(() => Math.max(visibleDaps.value.length - visibleCardDaps.value.length, 0));
 const loadMoreLabel = computed(() => {
-  if (remainingCardDaps.value <= cardLimitStep) {
+  const step = Math.max(gridColumnCount.value * batchRows, gridColumnCount.value);
+  if (remainingCardDaps.value <= step) {
     return remainingCardDaps.value === 1 ? 'Load remaining' : `Load ${remainingCardDaps.value} more`;
   }
 
-  return `Load ${cardLimitStep} more`;
+  return `Load ${step} more`;
 });
 const dapBySlug = computed(() => new Map(daps.map((dap) => [dapSlug(dap), dap])));
 const selectedDapIndex = computed(() => {
@@ -153,13 +175,15 @@ const sourcedCount = computed(() => daps.filter((dap) => !dap.verificationStatus
 const androidCount = computed(() => daps.filter(isAndroidBased).length);
 const balancedCount = computed(() => daps.filter((dap) => dap.has44mm).length);
 const activeFilterChips = computed(() => {
-  const chips: Array<{ key: keyof DapFiltersType; label: string }> = [];
+  const chips: ActiveFilterChip[] = [];
+  const addValueChips = (key: keyof DapFiltersType, prefix: string, values: string[], labelForValue = (value: string) => value) => {
+    values.forEach((value) => chips.push({ key, value, label: `${prefix}: ${labelForValue(value)}` }));
+  };
+
   if (filters.value.search) chips.push({ key: 'search', label: `Search: ${filters.value.search}` });
-  if (filters.value.brand.length) chips.push({ key: 'brand', label: `Brand: ${filters.value.brand.join(', ')}` });
-  if (filters.value.status.length) chips.push({ key: 'status', label: `Status: ${filters.value.status.join(', ')}` });
-  if (filters.value.verificationStatus.length) {
-    chips.push({ key: 'verificationStatus', label: `Verification: ${filters.value.verificationStatus.join(', ')}` });
-  }
+  addValueChips('brand', 'Brand', filters.value.brand);
+  addValueChips('status', 'Status', filters.value.status);
+  addValueChips('verificationStatus', 'Verification', filters.value.verificationStatus);
   if (filters.value.priceMin || filters.value.priceMax) {
     chips.push({ key: 'priceMin', label: `Price: ${filters.value.priceMin || '0'}-${filters.value.priceMax || 'any'}` });
   }
@@ -169,12 +193,19 @@ const activeFilterChips = computed(() => {
   if (filters.value.storageMin || filters.value.storageMax) {
     chips.push({ key: 'storageMin', label: `Storage: ${filters.value.storageMin || '0'}-${filters.value.storageMax || 'any'}GB` });
   }
+  if (filters.value.storageExpansion.length) {
+    addValueChips('storageExpansion', 'Expansion', filters.value.storageExpansion, (value) => ({
+      expandable: 'Expandable',
+      none: 'No expansion',
+      unknown: 'Unknown',
+    }[value] ?? value));
+  }
   if (filters.value.ramMin || filters.value.ramMax) {
     chips.push({ key: 'ramMin', label: `RAM: ${filters.value.ramMin || '0'}-${filters.value.ramMax || 'any'}GB` });
   }
-  if (filters.value.outputPorts.length) chips.push({ key: 'outputPorts', label: `Ports: ${filters.value.outputPorts.join(', ')}` });
-  if (filters.value.platform.length) chips.push({ key: 'platform', label: `Platform: ${filters.value.platform.join(', ')}` });
-  if (filters.value.connectivity.length) chips.push({ key: 'connectivity', label: `Connectivity: ${filters.value.connectivity.join(', ')}` });
+  addValueChips('outputPorts', 'Port', filters.value.outputPorts);
+  addValueChips('platform', 'Platform', filters.value.platform);
+  addValueChips('connectivity', 'Connectivity', filters.value.connectivity);
   if (filters.value.has44mmOnly) chips.push({ key: 'has44mmOnly', label: '4.4mm only' });
   if (filters.value.androidOnly) chips.push({ key: 'androidOnly', label: 'Android-based' });
   return chips;
@@ -208,6 +239,7 @@ function clearFilters() {
     ramMax: '',
     storageMin: '',
     storageMax: '',
+    storageExpansion: [],
     outputPorts: [],
     platform: [],
     connectivity: [],
@@ -216,7 +248,7 @@ function clearFilters() {
   };
 }
 
-function removeFilter(key: keyof DapFiltersType) {
+function removeFilter(key: keyof DapFiltersType, value?: string) {
   if (key === 'priceMin') {
     filters.value = { ...filters.value, priceMin: '', priceMax: '' };
     return;
@@ -238,25 +270,110 @@ function removeFilter(key: keyof DapFiltersType) {
   }
 
   const currentValue = filters.value[key];
+  if (Array.isArray(currentValue) && value !== undefined) {
+    filters.value = {
+      ...filters.value,
+      [key]: currentValue.filter((item) => item !== value),
+    };
+    return;
+  }
+
   filters.value = {
     ...filters.value,
     [key]: Array.isArray(currentValue) ? [] : typeof currentValue === 'boolean' ? false : '',
   };
 }
 
+function completeRowsCount(count: number, columns = gridColumnCount.value): number {
+  return Math.max(columns, Math.ceil(count / columns) * columns);
+}
+
+function getGridColumnCount(): number {
+  const grid = cardGrid.value;
+  if (!grid) return fallbackGridColumns;
+
+  const columns = getComputedStyle(grid).gridTemplateColumns.split(' ').filter(Boolean).length;
+  return Math.max(columns || fallbackGridColumns, 1);
+}
+
+function calculateInitialCardLimit(): number {
+  const grid = cardGrid.value;
+  const columns = getGridColumnCount();
+  gridColumnCount.value = columns;
+
+  if (!grid) return completeRowsCount(columns * fallbackInitialRows, columns);
+
+  const firstCard = grid.querySelector<HTMLElement>('.dap-card');
+  if (!firstCard) return completeRowsCount(columns * fallbackInitialRows, columns);
+
+  const gridStyles = getComputedStyle(grid);
+  const rowGap = Number.parseFloat(gridStyles.rowGap || gridStyles.gap || '0') || 0;
+  const cardHeight = firstCard.getBoundingClientRect().height;
+  if (!cardHeight) return completeRowsCount(columns * fallbackInitialRows, columns);
+
+  const gridTop = grid.getBoundingClientRect().top;
+  const availableHeight = Math.max(window.innerHeight - gridTop, cardHeight);
+  const visibleRows = Math.max(Math.ceil((availableHeight + rowGap) / (cardHeight + rowGap)), 1);
+  return completeRowsCount((visibleRows + bufferRows) * columns, columns);
+}
+
+function setInitialCardLimit() {
+  cardLimit.value = Math.min(calculateInitialCardLimit(), visibleDaps.value.length);
+}
+
+function scheduleGridLimitIncrease() {
+  if (gridMeasureFrame) window.cancelAnimationFrame(gridMeasureFrame);
+  gridMeasureFrame = window.requestAnimationFrame(() => {
+    gridMeasureFrame = 0;
+    const nextLimit = calculateInitialCardLimit();
+    if (nextLimit > cardLimit.value) {
+      cardLimit.value = Math.min(nextLimit, visibleDaps.value.length);
+    }
+  });
+}
+
 function loadMoreCards() {
-  cardLimit.value = Math.min(cardLimit.value + cardLimitStep, visibleDaps.value.length);
+  const columns = getGridColumnCount();
+  gridColumnCount.value = columns;
+  const nextLimit = completeRowsCount(cardLimit.value + columns * batchRows, columns);
+  cardLimit.value = Math.min(nextLimit, visibleDaps.value.length);
 }
 
 function loadAllCards() {
   cardLimit.value = visibleDaps.value.length;
 }
 
-function resetCardLimit() {
-  cardLimit.value = initialCardLimit;
+async function resetCardLimit() {
+  await nextTick();
+  setInitialCardLimit();
+}
+
+function setupCardLoadObserver() {
+  cardLoadObserver?.disconnect();
+  if (!cardLoadSentinel.value) return;
+
+  cardLoadObserver = new IntersectionObserver(
+    (entries) => {
+      if (viewMode.value !== 'cards' || !hasMoreCardDaps.value) return;
+      if (entries.some((entry) => entry.isIntersecting)) loadMoreCards();
+    },
+    { root: null, rootMargin: '900px 0px 1200px', threshold: 0 },
+  );
+  cardLoadObserver.observe(cardLoadSentinel.value);
+}
+
+function setupCardResizeObserver() {
+  cardResizeObserver?.disconnect();
+  if (!cardGrid.value) return;
+
+  cardResizeObserver = new ResizeObserver(() => {
+    if (viewMode.value === 'cards') scheduleGridLimitIncrease();
+  });
+  cardResizeObserver.observe(cardGrid.value);
 }
 
 function syncSelectedDapWithHash() {
+  currentHash.value = window.location.hash;
   if (!window.location.hash.startsWith(detailHashPrefix)) {
     selectedDap.value = null;
     return;
@@ -264,6 +381,11 @@ function syncSelectedDapWithHash() {
 
   const slug = decodeURIComponent(window.location.hash.slice(detailHashPrefix.length));
   selectedDap.value = dapBySlug.value.get(slug) ?? null;
+}
+
+function handleHashChange() {
+  currentHash.value = window.location.hash;
+  syncSelectedDapWithHash();
 }
 
 function closeDapDetails() {
@@ -276,6 +398,10 @@ function closeDapDetails() {
 function openDapDetails(dap: Dap) {
   selectedDap.value = dap;
   window.history.pushState('', document.title, `${window.location.pathname}${window.location.search}#/dap/${encodeURIComponent(dapSlug(dap))}`);
+}
+
+function openSheetDapDetails(dap: Dap) {
+  selectedDap.value = dap;
 }
 
 function dapDisplayName(dap: Dap): string {
@@ -336,15 +462,35 @@ onMounted(() => {
   }
 
   syncSelectedDapWithHash();
-  window.addEventListener('hashchange', syncSelectedDapWithHash);
+  window.addEventListener('hashchange', handleHashChange);
+  window.addEventListener('resize', scheduleGridLimitIncrease);
+  nextTick(() => {
+    setInitialCardLimit();
+    setupCardLoadObserver();
+    setupCardResizeObserver();
+  });
 });
 
 onBeforeUnmount(() => {
-  window.removeEventListener('hashchange', syncSelectedDapWithHash);
+  window.removeEventListener('hashchange', handleHashChange);
+  window.removeEventListener('resize', scheduleGridLimitIncrease);
+  if (gridMeasureFrame) window.cancelAnimationFrame(gridMeasureFrame);
+  cardLoadObserver?.disconnect();
+  cardResizeObserver?.disconnect();
 });
 
 watch(viewMode, (mode) => {
   localStorage.setItem(viewStorageKey, mode);
+  if (mode === 'cards') {
+    nextTick(() => {
+      setInitialCardLimit();
+      setupCardLoadObserver();
+      setupCardResizeObserver();
+    });
+  } else {
+    cardLoadObserver?.disconnect();
+    cardResizeObserver?.disconnect();
+  }
 });
 
 watch(selectedDap, (dap) => {
@@ -353,10 +499,28 @@ watch(selectedDap, (dap) => {
 
 watch([filters, sortState], resetCardLimit, { deep: true });
 
+watch(visibleDaps, () => {
+  if (cardLimit.value > visibleDaps.value.length) {
+    cardLimit.value = visibleDaps.value.length;
+  }
+});
+
+watch(hasMoreCardDaps, (hasMore) => {
+  if (!hasMore || viewMode.value !== 'cards') return;
+  nextTick(setupCardLoadObserver);
+});
+
 </script>
 
 <template>
-  <main class="app-shell">
+  <SpreadsheetView
+    v-if="isSheetRoute"
+    :csv="rawDapsCsv"
+    :daps="daps"
+    @open-dap="openSheetDapDetails"
+  />
+
+  <main v-else class="app-shell">
     <div class="catalog-layout">
       <button
         class="mobile-filter-swipe-zone"
@@ -415,12 +579,14 @@ watch([filters, sortState], resetCardLimit, { deep: true });
           :output-port-counts="outputPortCounts"
           :platform-counts="platformCounts"
           :connectivity-counts="connectivityCounts"
+          :storage-expansion-counts="storageExpansionCounts"
           :quick-filter-counts="quickFilterCounts"
           :price-bounds="priceBounds"
           :year-bounds="yearBounds"
           :ram-bounds="ramBounds"
           :storage-bounds="storageBounds"
           @update:filters="filters = $event"
+          @clear-filters="clearFilters"
         />
       </aside>
 
@@ -458,20 +624,15 @@ watch([filters, sortState], resetCardLimit, { deep: true });
 
         <div class="toolbar-row">
           <div>
-            <p class="result-count">{{ visibleDaps.length }} of {{ daps.length }} DAPs</p>
-            <div v-if="activeFilterChips.length" class="active-filters" aria-label="Active filters">
-              <button
-                v-for="chip in activeFilterChips"
-                :key="chip.key"
-                class="filter-chip filter-chip--button"
-                type="button"
-                :aria-label="`Remove ${chip.label} filter`"
-                @click="removeFilter(chip.key)"
-              >
-                <span>{{ chip.label }}</span>
-                <span aria-hidden="true">x</span>
-              </button>
-            </div>
+            <label class="toolbar-search">
+              <Search :size="16" aria-hidden="true" />
+              <span class="sr-only">Search DAP database</span>
+              <input
+                v-model="filters.search"
+                type="search"
+                placeholder="Search brand, model, DAC, SoC, OS, colors"
+              />
+            </label>
           </div>
 
           <div class="toolbar-actions">
@@ -498,11 +659,21 @@ watch([filters, sortState], resetCardLimit, { deep: true });
                 <Table2 :size="16" aria-hidden="true" />
               </button>
             </div>
-            <button class="btn btn-secondary" type="button" @click="clearFilters">
-              <RotateCcw :size="16" aria-hidden="true" />
-              <span>Reset filters</span>
-            </button>
           </div>
+        </div>
+
+        <div v-if="activeFilterChips.length" class="active-filters" aria-label="Active filters">
+          <button
+            v-for="chip in activeFilterChips"
+            :key="`${chip.key}:${chip.value ?? chip.label}`"
+            class="filter-chip filter-chip--button"
+            type="button"
+            :aria-label="`Remove ${chip.label} filter`"
+            @click="removeFilter(chip.key, chip.value)"
+          >
+            <span>{{ chip.label }}</span>
+            <span aria-hidden="true">x</span>
+          </button>
         </div>
 
         <DapTable
@@ -512,7 +683,7 @@ watch([filters, sortState], resetCardLimit, { deep: true });
           @sort="cycleSort"
         />
 
-        <section v-else class="card-grid" aria-label="DAP cards">
+        <section v-else ref="cardGrid" class="card-grid" aria-label="DAP cards">
           <DapCard
             v-for="dap in visibleCardDaps"
             :key="dap.id"
@@ -521,6 +692,7 @@ watch([filters, sortState], resetCardLimit, { deep: true });
         </section>
 
         <div v-if="viewMode === 'cards' && hasMoreCardDaps" class="load-more-row">
+          <span ref="cardLoadSentinel" class="load-more-sentinel" aria-hidden="true"></span>
           <span>Showing {{ visibleCardDaps.length }} of {{ visibleDaps.length }} DAPs</span>
           <div class="load-more-actions">
             <button class="btn btn-secondary" type="button" @click="loadMoreCards">
@@ -549,7 +721,7 @@ watch([filters, sortState], resetCardLimit, { deep: true });
     @navigate="openDapDetails"
   />
 
-  <footer class="site-footer">
+  <footer v-if="!isSheetRoute" class="site-footer">
     <div class="footer-copy">
       <p class="footer-disclaimer">
         Specs are best-effort and source-backed where possible. Values may vary by region, firmware, revision, gain

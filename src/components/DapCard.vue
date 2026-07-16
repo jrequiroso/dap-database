@@ -3,6 +3,7 @@ import type { Dap } from '../types/dap';
 import { formatCompactPrice, formatValue, hasValue } from '../utils/formatters';
 import { getStatusBadgeMeta, isAndroidBased } from '../utils/dapDisplay';
 import { dapDetailHash } from '../utils/slugs';
+import { formatStorageSummary } from '../utils/storageDisplay';
 import DapPhoto from './DapPhoto.vue';
 
 defineProps<{
@@ -43,6 +44,10 @@ const isDiscontinued = (status: string) => status.toLowerCase().includes('discon
 
         <span class="chip-row catalog-badges">
           <span class="badge badge-neutral">{{ isAndroidBased(dap) ? 'Android' : 'Non-Android' }}</span>
+        </span>
+
+        <span v-if="formatStorageSummary(dap)" class="dap-card__storage">
+          {{ formatStorageSummary(dap) }}
         </span>
       </span>
     </a>

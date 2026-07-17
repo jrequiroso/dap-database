@@ -577,6 +577,7 @@ watch(hasMoreCardDaps, (hasMore) => {
   <main v-else class="app-shell">
     <div class="catalog-layout">
       <button
+        v-if="!selectedDap"
         class="mobile-filter-swipe-zone"
         type="button"
         aria-label="Swipe or tap to show filters"
@@ -586,7 +587,7 @@ watch(hasMoreCardDaps, (hasMore) => {
         @pointercancel.passive="handleFilterPointerCancel"
       />
       <button
-        v-if="!showMobileFilters"
+        v-if="!showMobileFilters && !selectedDap"
         class="mobile-filter-fab"
         type="button"
         aria-label="Show filters"

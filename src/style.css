@@ -2966,28 +2966,43 @@ dd {
     display: inline-flex;
     position: fixed;
     z-index: 39;
-    left: 14px;
-    bottom: max(18px, env(safe-area-inset-bottom));
+    top: calc(env(safe-area-inset-top) + 12px);
+    left: calc(env(safe-area-inset-left) + 12px);
     align-items: center;
     justify-content: center;
-    width: 52px;
-    height: 52px;
-    border: 1px solid var(--color-primary);
+    width: 44px;
+    min-width: 44px;
+    height: 44px;
+    border: 0;
     border-radius: 999px;
-    background: var(--color-primary);
-    color: #ffffff;
-    box-shadow: 0 12px 28px rgb(20 34 43 / 0.24);
+    background: transparent;
+    color: var(--color-text);
+    box-shadow: none;
     cursor: pointer;
+    padding: 0;
+    transition: opacity 150ms ease, visibility 150ms ease, background-color 150ms ease;
+  }
+
+  .mobile-filter-fab:hover,
+  .mobile-filter-fab:active {
+    background: rgb(0 0 0 / 0.06);
+  }
+
+  .mobile-filter-fab:focus-visible {
+    background: rgb(0 0 0 / 0.06);
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
   }
 
   .mobile-filter-fab strong {
     position: absolute;
-    top: -6px;
-    right: -4px;
+    top: -4px;
+    right: -3px;
     min-width: 21px;
     height: 21px;
-    border: 2px solid #eef4f6;
+    border: 2px solid var(--color-page);
     background: var(--color-primary);
+    color: #ffffff;
     padding: 0 6px;
     font-size: 0.72rem;
   }
@@ -3242,6 +3257,61 @@ dd {
     width: 100vw;
     height: min(92vh, 900px);
     border-radius: 18px 18px 0 0;
+  }
+
+  .details-modal__header {
+    position: sticky;
+    display: block;
+    padding: 24px 72px 22px 24px;
+  }
+
+  .details-modal__header > div {
+    min-width: 0;
+  }
+
+  .details-modal__header .eyebrow {
+    margin: 0 0 8px;
+    font-size: 0.95rem;
+    line-height: 1.2;
+  }
+
+  .details-title-row {
+    display: block;
+  }
+
+  .details-modal__header h2 {
+    display: block;
+    margin: 0;
+    font-size: clamp(2rem, 9vw, 2.5rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    overflow-wrap: anywhere;
+  }
+
+  .details-title-variant {
+    display: block;
+    margin-top: 4px;
+    font-size: 0.95rem;
+    line-height: 1.25;
+  }
+
+  .details-title-status {
+    display: inline-flex;
+    margin-top: 10px;
+  }
+
+  .details-modal__header .details-icon-button {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    min-width: 44px;
+    height: 44px;
+    padding: 0;
   }
 
   .modal-backdrop {

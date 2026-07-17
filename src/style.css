@@ -2363,7 +2363,7 @@ dd {
 
 .sheet-page {
   display: grid;
-  grid-template-rows: auto minmax(0, 1fr);
+  grid-template-rows: auto auto minmax(0, 1fr);
   width: 100vw;
   height: 100vh;
   overflow: hidden;
@@ -2439,6 +2439,53 @@ dd {
   width: auto;
   min-width: 108px;
   padding: 0 12px;
+}
+
+.sheet-metrics {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(130px, 1fr));
+  gap: 8px;
+  border-right: 1px solid var(--color-border);
+  border-left: 1px solid var(--color-border);
+  background: #fbfaf7;
+  padding: 10px 12px;
+}
+
+.sheet-metric-card {
+  min-width: 0;
+  border: 1px solid #e5e1d8;
+  border-radius: 9px;
+  background: var(--color-surface);
+  padding: 10px 11px;
+}
+
+.sheet-metric-card span,
+.sheet-metric-card small {
+  display: block;
+  overflow: hidden;
+  color: var(--color-muted);
+  font-size: 0.72rem;
+  font-weight: 800;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sheet-metric-card span {
+  color: #68737b;
+  text-transform: uppercase;
+}
+
+.sheet-metric-card strong {
+  display: block;
+  overflow: hidden;
+  margin: 4px 0 3px;
+  color: var(--color-text);
+  font-size: clamp(1.05rem, 1.4vw, 1.35rem);
+  font-weight: 850;
+  line-height: 1.05;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .sheet-frame {

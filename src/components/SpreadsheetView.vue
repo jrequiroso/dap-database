@@ -18,10 +18,11 @@ type SheetSort = { columnIndex: SheetSortKey; direction: 'asc' | 'desc' };
 type SheetRow = { cells: string[]; csvIndex: number };
 type Priority = 'High' | 'Medium' | 'Low' | 'OK';
 type Triage = { priority: Priority; missingCount: number; score: number };
+type SheetMetric = { label: string; value: string | number; detail: string };
 
 const searchTerm = ref('');
-const density = ref<Density>('compact');
-const sortState = ref<SheetSort>({ columnIndex: null, direction: 'asc' });
+const density = ref<Density>('comfortable');
+const sortState = ref<SheetSort>({ columnIndex: 'missing', direction: 'desc' });
 const columnWidths = ref<Record<number, number>>({});
 const resizingColumn = ref<{ index: number; startX: number; startWidth: number } | null>(null);
 const sheetScrollTop = ref(0);
@@ -182,6 +183,44 @@ const selectedMissingRow = computed(() => {
 });
 const selectedMissingHeaders = computed(() => (selectedMissingRow.value ? missingHeadersForCells(selectedMissingRow.value.cells) : []));
 
+const sheetMetrics = computed<SheetMetric[]>(() => {
+  const rows = filteredRows.value;
+  const missingByColumn = new Map<string, number>();
+  let incompleteRows = 0;
+  let completeRows = 0;
+  let missingFields = 0;
+  let highPriorityRows = 0;
+  let reviewRows = 0;
+
+  for (const row of rows) {
+    const missingHeaders = missingHeadersForCells(row.cells);
+    const triage = triageForCells(row.cells);
+
+    missingFields += missingHeaders.length;
+    if (missingHeaders.length) incompleteRows += 1;
+    else completeRows += 1;
+    if (triage.priority === 'High') highPriorityRows += 1;
+    if (needsManualReview(row.cells)) reviewRows += 1;
+
+    for (const header of missingHeaders) {
+      missingByColumn.set(header, (missingByColumn.get(header) ?? 0) + 1);
+    }
+  }
+
+  const [topMissingColumn, topMissingCount] =
+    [...missingByColumn.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))[0] ?? ['None', 0];
+  const totalRows = rows.length || 1;
+
+  return [
+    { label: 'Incomplete rows', value: incompleteRows, detail: `${Math.round((incompleteRows / totalRows) * 100)}% of current rows` },
+    { label: 'Complete rows', value: completeRows, detail: `${Math.round((completeRows / totalRows) * 100)}% clean` },
+    { label: 'Missing fields', value: missingFields, detail: 'Required blanks only' },
+    { label: 'High priority', value: highPriorityRows, detail: 'Newest or high-value gaps' },
+    { label: 'Needs review', value: reviewRows, detail: 'Source or note flags' },
+    { label: 'Top missing', value: topMissingColumn, detail: topMissingCount ? `${topMissingCount} rows` : 'No missing fields' },
+  ];
+});
+
 const pinnedColumnCount = 2;
 const pinnedColumnIndices = computed(() => visibleColumnIndices.value.slice(0, pinnedColumnCount));
 const scrollColumnIndices = computed(() => visibleColumnIndices.value.slice(pinnedColumnCount));
@@ -266,54 +305,212 @@ function numberByHeader(cells: string[], header: string): number | null {
   return Number.isFinite(parsed) ? parsed : null;
 }
 
+function normalizedCell(cells: string[], header: string): string {
+  return cellByHeader(cells, header).trim().toLowerCase();
+}
+
+function isTrueCell(cells: string[], header: string): boolean {
+  return normalizedCell(cells, header) === 'true';
+}
+
+function isFalseCell(cells: string[], header: string): boolean {
+  return normalizedCell(cells, header) === 'false';
+}
+
+function hasAnyCell(cells: string[], headersToCheck: string[]): boolean {
+  return headersToCheck.some((header) => cellByHeader(cells, header).trim() !== '');
+}
+
+function notesContainAny(notes: string, terms: string[]): boolean {
+  return terms.some((term) => notes.includes(term));
+}
+
+function hasLightweightOrClosedOs(os: string, notes: string): boolean {
+  return (
+    os.includes('proprietary') ||
+    os.includes('snowsky') ||
+    os.includes('linux') ||
+    os.includes('hibyos') ||
+    os.includes('mtouch') ||
+    os.includes('rtos') ||
+    notes.includes('proprietary os') ||
+    notes.includes('custom os') ||
+    notes.includes('non-android') ||
+    notes.includes('linux-based') ||
+    notes.includes('mtouch platform') ||
+    notes.includes('firmware upgrade') ||
+    notes.includes('firmware download') ||
+    notes.includes('rtos')
+  );
+}
+
 function blankCellMeansNone(cells: string[], header: string): boolean {
   const os = cellByHeader(cells, 'OS').toLowerCase();
   const notes = cellByHeader(cells, 'Notes').toLowerCase();
-  const brand = cellByHeader(cells, 'Brand').toLowerCase();
-  const model = cellByHeader(cells, 'Model').toLowerCase();
-  const isPawPico = brand === 'lotoo' && model === 'paw pico';
+  const has3_5mm = isTrueCell(cells, '3.5mm');
+  const has2_5mm = isTrueCell(cells, '2.5mm');
+  const has4_4mm = isTrueCell(cells, '4.4mm');
+  const has6_35mm = isTrueCell(cells, '6.35mm');
+  const hasBluetooth = isTrueCell(cells, 'Bluetooth');
+  const hasWifi = isTrueCell(cells, 'Wi-Fi');
+  const hasMicrosd = isTrueCell(cells, 'microSD');
   const hasBalancedOutput =
-    cellByHeader(cells, '2.5mm').toUpperCase() === 'TRUE' ||
-    cellByHeader(cells, '4.4mm').toUpperCase() === 'TRUE' ||
+    has2_5mm ||
+    has4_4mm ||
     cellByHeader(cells, 'Balanced Output Type').trim() !== '';
-
-  if (isPawPico && (header === 'OS' || header === 'DAC' || header === 'Display Size' || header === 'Colors')) {
-    return true;
-  }
+  const noBalancedEvidence =
+    isFalseCell(cells, '2.5mm') &&
+    isFalseCell(cells, '4.4mm') &&
+    !cellByHeader(cells, 'Balanced Output Type').trim();
 
   if (header === 'RAM GB') {
-    return os.includes('proprietary') || os.includes('snowsky') || os.includes('linux') || os.includes('hibyos') || os.includes('mtouch');
+    return hasLightweightOrClosedOs(os, notes);
   }
 
   if (header === 'Storage GB') {
-    return cellByHeader(cells, 'microSD').toUpperCase() === 'TRUE' || cellByHeader(cells, 'Storage Expansion Max') !== '';
-  }
-
-  if (header === 'SE Power mW' || header === 'BAL Power mW') {
-    if (header === 'BAL Power mW' && !hasBalancedOutput) return true;
-    return notes.includes('vrms') || notes.includes('output level') || notes.includes('mw power fields remain blank') || notes.includes('not converted to mw');
-  }
-
-  if (header === 'Bluetooth' || header === 'Wi-Fi' || header === 'USB DAC') {
-    if (header === 'Wi-Fi' && (notes.includes('ble wireless') || notes.includes('bluetooth') || notes.includes('no wi-fi'))) return true;
-    return os.includes('proprietary') && !notes.includes(header.toLowerCase());
-  }
-
-  if (header === 'Balanced Output Type') {
-    return !hasBalancedOutput;
-  }
-
-  if (header === '4.4mm') {
-    return !hasBalancedOutput;
-  }
-
-  if (header === 'MQA') {
-    return !notes.includes('mqa') && (os.includes('proprietary') || notes.includes('pcm') || notes.includes('dsd'));
+    return hasMicrosd || cellByHeader(cells, 'Storage Expansion Max') !== '' || notes.includes('no internal storage');
   }
 
   if (header === 'Storage Expansion Max') {
-    return notes.includes('no microsd') || notes.includes('built-in 32gb flash') || notes.includes('built-in flash');
+    return !hasMicrosd || notesContainAny(notes, ['no microsd', 'no micro sd', 'no tf', 'built-in flash', 'built-in 32gb flash']);
   }
+
+  if (header === 'SE Power mW') {
+    if (!has3_5mm && (isFalseCell(cells, '3.5mm') || hasBalancedOutput)) return true;
+    return notesContainAny(notes, ['vrms', 'output level', 'mw power fields remain blank', 'not converted to mw']);
+  }
+
+  if (header === 'BAL Power mW') {
+    if (!hasBalancedOutput || noBalancedEvidence) return true;
+    return notesContainAny(notes, ['vrms', 'output level', 'mw power fields remain blank', 'not converted to mw']);
+  }
+
+  if (header === 'Balanced Output Type') {
+    return !hasBalancedOutput || noBalancedEvidence;
+  }
+
+  if (header === '4.4mm') {
+    return noBalancedEvidence || (has2_5mm && !has4_4mm);
+  }
+
+  if (header === '2.5mm') {
+    return (has4_4mm && !has2_5mm) || noBalancedEvidence;
+  }
+
+  if (header === '6.35mm') {
+    return !has6_35mm && (has3_5mm || hasBalancedOutput || notes.includes('headphone output'));
+  }
+
+  if (header === 'Bluetooth') {
+    return isFalseCell(cells, 'Bluetooth') || notesContainAny(notes, ['no bluetooth', 'bluetooth false']);
+  }
+
+  if (header === 'Bluetooth Version' || header === 'Bluetooth Codecs') {
+    return !hasBluetooth || isFalseCell(cells, 'Bluetooth') || notesContainAny(notes, ['no bluetooth', 'bluetooth false']);
+  }
+
+  if (header === 'Wi-Fi') {
+    return isFalseCell(cells, 'Wi-Fi') || notesContainAny(notes, ['no wi-fi', 'no wifi', 'wi-fi false', 'wifi false', 'ble wireless']);
+  }
+
+  if (header === 'Wi-Fi Bands') {
+    return !hasWifi || isFalseCell(cells, 'Wi-Fi') || notesContainAny(notes, ['no wi-fi', 'no wifi', 'wi-fi false', 'wifi false']);
+  }
+
+  if (header === 'Cellular' || header === '4G' || header === '5G') {
+    return isFalseCell(cells, header) || notesContainAny(notes, ['no cellular', 'non-cellular', 'wifi row represents the non-cellular']);
+  }
+
+  if (header === 'USB DAC') {
+    return isFalseCell(cells, 'USB DAC') || notesContainAny(notes, ['no usb dac', 'usb dac false', 'usb dac not supported']);
+  }
+
+  if (header === 'Line Out') {
+    return isFalseCell(cells, 'Line Out') || notesContainAny(notes, ['no line out', 'line out false']);
+  }
+
+  if (header === 'Coax Out') {
+    return isFalseCell(cells, 'Coax Out') || notesContainAny(notes, ['no coax', 'coax out false']);
+  }
+
+  if (header === 'Optical Out') {
+    return isFalseCell(cells, 'Optical Out') || notesContainAny(notes, ['no optical', 'optical out false']);
+  }
+
+  if (header === 'MQA') {
+    return (
+      isFalseCell(cells, 'MQA') ||
+      notesContainAny(notes, ['no mqa', 'mqa false']) ||
+      (!notes.includes('mqa') && (hasLightweightOrClosedOs(os, notes) || notes.includes('pcm') || notes.includes('dsd')))
+    );
+  }
+
+  if (header === 'OS') {
+    return hasLightweightOrClosedOs(os, notes) || notesContainAny(notes, ['no os', 'os not listed', 'no operating system listed', 'firmware-based', 'simple player']);
+  }
+
+  if (header === 'SoC') {
+    return notesContainAny(notes, ['soc not listed', 'cpu not listed', 'processor not listed', 'no soc listed']);
+  }
+
+  if (header === 'DAC') {
+    return notesContainAny(notes, ['dac not listed', 'dac unspecified', 'no dac listed']);
+  }
+
+  if (header === 'Amp') {
+    return optionalBlankColumns.has(header) || notesContainAny(notes, ['amp not listed', 'amplifier not listed']);
+  }
+
+  if (header === 'Display Size') {
+    return notesContainAny(notes, ['no display', 'display not listed', 'screen not listed']);
+  }
+
+  if (header === 'Colors') {
+    return cellByHeader(cells, 'color_variants').trim() !== '' || notesContainAny(notes, ['colors not listed', 'color not listed', 'finish not listed', 'finishes not listed']);
+  }
+
+  if (header === 'Battery mAh') {
+    return notesContainAny(notes, ['battery capacity not listed', 'battery mah not listed']);
+  }
+
+  if (header === 'Battery Life Hours') {
+    return notesContainAny(notes, ['battery life not listed', 'runtime not listed', 'mode-specific figures remain in notes']);
+  }
+
+  if (header === 'Weight') {
+    return notesContainAny(notes, ['weight not listed']);
+  }
+
+  if (header === 'Dimensions') {
+    return notesContainAny(notes, ['dimensions not listed']);
+  }
+
+  if (header === 'PCM Max') {
+    return notesContainAny(notes, ['pcm max not listed', 'pcm not listed']) || (cellByHeader(cells, 'DSD Max') !== '' && notes.includes('dsd'));
+  }
+
+  if (header === 'DSD Max') {
+    return notesContainAny(notes, ['no dsd', 'dsd not supported', 'dsd max not listed']);
+  }
+
+  if (header === 'USB Port') {
+    return notesContainAny(notes, ['usb port not listed', 'usb not listed']);
+  }
+
+  if (header === 'Streaming Services') {
+    return hasLightweightOrClosedOs(os, notes) || notesContainAny(notes, ['no streaming', 'streaming not supported']);
+  }
+
+  if (header === 'official_store_url') {
+    return true;
+  }
+
+  if (header === 'buy_links') {
+    const status = cellByHeader(cells, 'Status').toLowerCase();
+    return status === 'discontinued' || status === 'prototype' || status === 'cancelled';
+  }
+
+  if (hasAnyCell(cells, ['Source URL', 'Notes']) && optionalBlankColumns.has(header)) return true;
 
   return optionalBlankColumns.has(header) && !requiredAuditColumns.has(header);
 }
@@ -561,6 +758,14 @@ function handlePinnedWheel(event: WheelEvent) {
         </button>
       </div>
     </header>
+
+    <section class="sheet-metrics" aria-label="Spreadsheet audit metrics">
+      <article v-for="metric in sheetMetrics" :key="metric.label" class="sheet-metric-card">
+        <span>{{ metric.label }}</span>
+        <strong>{{ metric.value }}</strong>
+        <small>{{ metric.detail }}</small>
+      </article>
+    </section>
 
     <section class="sheet-frame" aria-label="Raw CSV spreadsheet">
       <div class="sheet-pinned-pane" aria-hidden="false" @wheel="handlePinnedWheel">

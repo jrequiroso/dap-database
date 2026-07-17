@@ -13,7 +13,7 @@ const emit = defineEmits<{
 }>();
 
 type Density = 'compact' | 'comfortable';
-type SheetSortKey = number | 'priority' | 'missing' | null;
+type SheetSortKey = number | 'priority' | 'missing' | 'review' | null;
 type SheetSort = { columnIndex: SheetSortKey; direction: 'asc' | 'desc' };
 type SheetRow = { cells: string[]; csvIndex: number };
 type Priority = 'High' | 'Medium' | 'Low' | 'OK';
@@ -26,6 +26,8 @@ const columnWidths = ref<Record<number, number>>({});
 const resizingColumn = ref<{ index: number; startX: number; startWidth: number } | null>(null);
 const sheetScrollTop = ref(0);
 const sheetScrollPane = ref<HTMLElement | null>(null);
+const expandedMissingCsvIndex = ref<number | null>(null);
+const missingPopoverPosition = ref({ top: 0, left: 0 });
 const requiredAuditColumns = new Set([
   'Brand',
   'Model',
@@ -63,12 +65,13 @@ const optionalBlankColumns = new Set([
   'Streaming Services',
   'Wi-Fi Bands',
   'official_store_url',
+  'buy_links',
   'affiliate_links',
   'buy_notes',
   'review_links',
   'review_notes',
 ]);
-const hiddenSheetColumns = new Set(['affiliate_links']);
+const hiddenSheetColumns = new Set(['Variant', 'affiliate_links']);
 const highValueAuditColumns = new Set([
   'Release Year',
   'Status',
@@ -159,6 +162,7 @@ const displayedRows = computed(() => {
   if (columnIndex === -1) return rows;
   if (columnIndex === 'priority') return rows.sort(comparePriorityRows);
   if (columnIndex === 'missing') return rows.sort(compareMissingRows);
+  if (columnIndex === 'review') return rows.sort(compareReviewRows);
 
   return rows.sort((a, b) => {
     const valueA = a.cells[columnIndex] ?? '';
@@ -172,8 +176,13 @@ const displayedRows = computed(() => {
     return sortState.value.direction === 'asc' ? result : -result;
   });
 });
+const selectedMissingRow = computed(() => {
+  if (expandedMissingCsvIndex.value === null) return null;
+  return displayedRows.value.find((row) => row.csvIndex === expandedMissingCsvIndex.value) ?? null;
+});
+const selectedMissingHeaders = computed(() => (selectedMissingRow.value ? missingHeadersForCells(selectedMissingRow.value.cells) : []));
 
-const pinnedColumnCount = 3;
+const pinnedColumnCount = 2;
 const pinnedColumnIndices = computed(() => visibleColumnIndices.value.slice(0, pinnedColumnCount));
 const scrollColumnIndices = computed(() => visibleColumnIndices.value.slice(pinnedColumnCount));
 
@@ -189,7 +198,7 @@ function sortColumn(columnIndex: number) {
   };
 }
 
-function sortMetaColumn(columnIndex: 'priority' | 'missing') {
+function sortMetaColumn(columnIndex: 'priority' | 'missing' | 'review') {
   if (sortState.value.columnIndex !== columnIndex) {
     sortState.value = { columnIndex, direction: columnIndex === 'priority' ? 'asc' : 'desc' };
     return;
@@ -203,6 +212,7 @@ function sortMetaColumn(columnIndex: 'priority' | 'missing') {
 
 function restoreCsvOrder() {
   sortState.value = { columnIndex: -1, direction: 'asc' };
+  expandedMissingCsvIndex.value = null;
 }
 
 function openRow(csvIndex: number) {
@@ -257,13 +267,52 @@ function numberByHeader(cells: string[], header: string): number | null {
 }
 
 function blankCellMeansNone(cells: string[], header: string): boolean {
+  const os = cellByHeader(cells, 'OS').toLowerCase();
+  const notes = cellByHeader(cells, 'Notes').toLowerCase();
+  const brand = cellByHeader(cells, 'Brand').toLowerCase();
+  const model = cellByHeader(cells, 'Model').toLowerCase();
+  const isPawPico = brand === 'lotoo' && model === 'paw pico';
+  const hasBalancedOutput =
+    cellByHeader(cells, '2.5mm').toUpperCase() === 'TRUE' ||
+    cellByHeader(cells, '4.4mm').toUpperCase() === 'TRUE' ||
+    cellByHeader(cells, 'Balanced Output Type').trim() !== '';
+
+  if (isPawPico && (header === 'OS' || header === 'DAC' || header === 'Display Size' || header === 'Colors')) {
+    return true;
+  }
+
   if (header === 'RAM GB') {
-    const os = cellByHeader(cells, 'OS').toLowerCase();
-    return os.includes('snowsky') || os.includes('linux') || os.includes('hibyos') || os.includes('mtouch');
+    return os.includes('proprietary') || os.includes('snowsky') || os.includes('linux') || os.includes('hibyos') || os.includes('mtouch');
   }
 
   if (header === 'Storage GB') {
     return cellByHeader(cells, 'microSD').toUpperCase() === 'TRUE' || cellByHeader(cells, 'Storage Expansion Max') !== '';
+  }
+
+  if (header === 'SE Power mW' || header === 'BAL Power mW') {
+    if (header === 'BAL Power mW' && !hasBalancedOutput) return true;
+    return notes.includes('vrms') || notes.includes('output level') || notes.includes('mw power fields remain blank') || notes.includes('not converted to mw');
+  }
+
+  if (header === 'Bluetooth' || header === 'Wi-Fi' || header === 'USB DAC') {
+    if (header === 'Wi-Fi' && (notes.includes('ble wireless') || notes.includes('bluetooth') || notes.includes('no wi-fi'))) return true;
+    return os.includes('proprietary') && !notes.includes(header.toLowerCase());
+  }
+
+  if (header === 'Balanced Output Type') {
+    return !hasBalancedOutput;
+  }
+
+  if (header === '4.4mm') {
+    return !hasBalancedOutput;
+  }
+
+  if (header === 'MQA') {
+    return !notes.includes('mqa') && (os.includes('proprietary') || notes.includes('pcm') || notes.includes('dsd'));
+  }
+
+  if (header === 'Storage Expansion Max') {
+    return notes.includes('no microsd') || notes.includes('built-in 32gb flash') || notes.includes('built-in flash');
   }
 
   return optionalBlankColumns.has(header) && !requiredAuditColumns.has(header);
@@ -272,6 +321,9 @@ function blankCellMeansNone(cells: string[], header: string): boolean {
 function displayCell(value: string | undefined, columnIndex: number, cells: string[]): string {
   const raw = value ?? '';
   const header = headers.value[columnIndex] ?? '';
+  if (header === 'Model') {
+    return [raw, cellByHeader(cells, 'Variant')].filter(Boolean).join(' ');
+  }
   if (raw === '') return blankCellMeansNone(cells, header) ? 'None' : '?';
   if (raw.trim() === '0') return 'None';
   if (raw.trim().toUpperCase() === 'FALSE') return 'None';
@@ -291,10 +343,14 @@ function isActionableMissing(columnIndex: number, cells: string[]): boolean {
   return cellState(cells[columnIndex], columnIndex, cells) === 'empty';
 }
 
+function missingHeadersForCells(cells: string[]): string[] {
+  return headers.value.filter((_, columnIndex) => isActionableMissing(columnIndex, cells));
+}
+
 function triageForCells(cells: string[]): Triage {
   const year = numberByHeader(cells, 'Release Year') ?? 0;
   const status = cellByHeader(cells, 'Status').toLowerCase();
-  const missingHeaders = headers.value.filter((_, columnIndex) => isActionableMissing(columnIndex, cells));
+  const missingHeaders = missingHeadersForCells(cells);
   const highMissing = missingHeaders.filter((header) => highValueAuditColumns.has(header)).length;
   const recentWeight = year >= 2026 ? 18 : year === 2025 ? 12 : year === 2024 ? 7 : 0;
   const activeWeight = status === 'active' || status === 'upcoming' ? 6 : 0;
@@ -309,6 +365,60 @@ function triageForCells(cells: string[]): Triage {
           : 'OK';
 
   return { priority, missingCount: missingHeaders.length, score };
+}
+
+function manualReviewReasons(cells: string[]): string[] {
+  const reasons: string[] = [];
+  const notes = cellByHeader(cells, 'Notes').toLowerCase();
+  const reviewNotes = cellByHeader(cells, 'review_notes').toLowerCase();
+  const sourceUrl = cellByHeader(cells, 'Source URL').trim();
+
+  if (notes.startsWith('partial')) reasons.push('Partial verification');
+  if (!sourceUrl) reasons.push('Missing primary source');
+  if (
+    reviewNotes.includes('needs review') ||
+    reviewNotes.includes('unclear') ||
+    reviewNotes.includes('rejected') ||
+    reviewNotes.includes('not added') ||
+    reviewNotes.includes('not kept') ||
+    reviewNotes.includes('no exact')
+  ) {
+    reasons.push('Review/source note');
+  }
+  if (notes.includes('needs review') || notes.includes('pending') || notes.includes('re-verification')) reasons.push('Needs re-check');
+
+  return [...new Set(reasons)];
+}
+
+function needsManualReview(cells: string[]): boolean {
+  return manualReviewReasons(cells).length > 0;
+}
+
+function rowLabel(cells: string[]): string {
+  return [cellByHeader(cells, 'Brand'), cellByHeader(cells, 'Model'), cellByHeader(cells, 'Variant')].filter(Boolean).join(' ');
+}
+
+const missingPopoverStyle = computed(() => ({
+  top: `${missingPopoverPosition.value.top}px`,
+  left: `${missingPopoverPosition.value.left}px`,
+}));
+
+function toggleMissingRow(row: SheetRow, event: MouseEvent) {
+  const missingCount = triageForCells(row.cells).missingCount;
+  if (!missingCount) return;
+  if (expandedMissingCsvIndex.value === row.csvIndex) {
+    expandedMissingCsvIndex.value = null;
+    return;
+  }
+
+  const rect = (event.currentTarget as HTMLElement).getBoundingClientRect();
+  const popoverWidth = 340;
+  const left = Math.min(Math.max(rect.right + 8, 12), window.innerWidth - popoverWidth - 12);
+  missingPopoverPosition.value = {
+    top: Math.max(12, Math.min(rect.top, window.innerHeight - 320)),
+    left,
+  };
+  expandedMissingCsvIndex.value = row.csvIndex;
 }
 
 function compareTriageRows(a: SheetRow, b: SheetRow): number {
@@ -352,6 +462,17 @@ function compareMissingRows(a: SheetRow, b: SheetRow): number {
   return a.csvIndex - b.csvIndex;
 }
 
+function compareReviewRows(a: SheetRow, b: SheetRow): number {
+  const reviewResult = Number(needsManualReview(a.cells)) - Number(needsManualReview(b.cells));
+  const result = sortState.value.direction === 'asc' ? reviewResult : -reviewResult;
+  if (result) return result;
+
+  const missingResult = triageForCells(b.cells).missingCount - triageForCells(a.cells).missingCount;
+  if (missingResult) return missingResult;
+
+  return a.csvIndex - b.csvIndex;
+}
+
 function rowClass(cells: string[]) {
   const triage = triageForCells(cells);
   return {
@@ -363,8 +484,8 @@ function rowClass(cells: string[]) {
 
 function columnStyle(columnIndex: number) {
   const width = columnWidths.value[columnIndex];
-  const defaultStickyWidths = [150, 170, 150];
-  const resolvedWidth = width ?? (columnIndex < 3 ? defaultStickyWidths[columnIndex] : null);
+  const defaultStickyWidths = [170, 260];
+  const resolvedWidth = width ?? (columnIndex < 2 ? defaultStickyWidths[columnIndex] : null);
   const style: Record<string, string> = {};
 
   if (resolvedWidth) {
@@ -460,6 +581,13 @@ function handlePinnedWheel(event: WheelEvent) {
                   <ArrowDown v-else-if="sortState.columnIndex === 'missing'" :size="13" aria-hidden="true" />
                 </button>
               </th>
+              <th class="sheet-meta-column sheet-meta-column--review" scope="col">
+                <button class="sheet-sort-button" type="button" @click="sortMetaColumn('review')">
+                  <span>Review</span>
+                  <ArrowUp v-if="sortState.columnIndex === 'review' && sortState.direction === 'asc'" :size="13" aria-hidden="true" />
+                  <ArrowDown v-else-if="sortState.columnIndex === 'review'" :size="13" aria-hidden="true" />
+                </button>
+              </th>
               <th
                 v-for="columnIndex in pinnedColumnIndices"
                 :key="headers[columnIndex]"
@@ -489,7 +617,20 @@ function handlePinnedWheel(event: WheelEvent) {
                 <span>{{ triageForCells(row.cells).priority }}</span>
               </td>
               <td class="sheet-meta-cell sheet-meta-cell--missing">
-                <span>{{ triageForCells(row.cells).missingCount || '' }}</span>
+                <button
+                  v-if="triageForCells(row.cells).missingCount"
+                  class="sheet-missing-button"
+                  type="button"
+                  :aria-expanded="expandedMissingCsvIndex === row.csvIndex"
+                  :aria-label="`Show missing columns for ${rowLabel(row.cells)}`"
+                  @click="toggleMissingRow(row, $event)"
+                >
+                  {{ triageForCells(row.cells).missingCount }}
+                </button>
+                <span v-else></span>
+              </td>
+              <td class="sheet-meta-cell sheet-meta-cell--review" :title="manualReviewReasons(row.cells).join(', ')">
+                <span v-if="needsManualReview(row.cells)">Yes</span>
               </td>
               <td
                 v-for="columnIndex in pinnedColumnIndices"
@@ -568,5 +709,18 @@ function handlePinnedWheel(event: WheelEvent) {
         </table>
       </div>
     </section>
+
+    <aside v-if="selectedMissingRow" class="sheet-missing-popover" :style="missingPopoverStyle" aria-live="polite">
+      <div class="sheet-missing-panel__header">
+        <div>
+          <p>Missing columns</p>
+          <strong>{{ rowLabel(selectedMissingRow.cells) }}</strong>
+        </div>
+        <button type="button" aria-label="Close missing columns" @click="expandedMissingCsvIndex = null">×</button>
+      </div>
+      <ul>
+        <li v-for="header in selectedMissingHeaders" :key="header">{{ header }}</li>
+      </ul>
+    </aside>
   </main>
 </template>

@@ -2532,6 +2532,7 @@ dd {
 .sheet-table td {
   position: relative;
   min-width: 130px;
+  height: 45px;
   max-width: 420px;
   border-right: 1px solid #ece9e2;
   border-bottom: 1px solid #ece9e2;

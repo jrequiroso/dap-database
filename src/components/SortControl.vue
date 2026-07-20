@@ -10,12 +10,10 @@ defineEmits<{
 }>();
 
 const options: Array<{ value: string; label: string; state: SortState }> = [
-  { value: 'default:asc', label: 'Newest', state: { key: 'default', direction: 'asc' } },
-  { value: 'none', label: 'Original order', state: { key: null, direction: 'asc' } },
+  { value: 'releaseYear:desc', label: 'Newest', state: { key: 'releaseYear', direction: 'desc' } },
   { value: 'brand:asc', label: 'Brand A-Z', state: { key: 'brand', direction: 'asc' } },
   { value: 'brand:desc', label: 'Brand Z-A', state: { key: 'brand', direction: 'desc' } },
   { value: 'model:asc', label: 'Model A-Z', state: { key: 'model', direction: 'asc' } },
-  { value: 'releaseYear:desc', label: 'Release Year newest', state: { key: 'releaseYear', direction: 'desc' } },
   { value: 'releaseYear:asc', label: 'Release Year oldest', state: { key: 'releaseYear', direction: 'asc' } },
   { value: 'msrpUsd:asc', label: 'MSRP low-high', state: { key: 'msrpUsd', direction: 'asc' } },
   { value: 'msrpUsd:desc', label: 'MSRP high-low', state: { key: 'msrpUsd', direction: 'desc' } },
@@ -28,7 +26,7 @@ function valueForState(state: SortState): string {
 }
 
 function optionToState(value: string): SortState {
-  return options.find((option) => option.value === value)?.state ?? { key: null, direction: 'asc' };
+  return options.find((option) => option.value === value)?.state ?? options[0].state;
 }
 </script>
 

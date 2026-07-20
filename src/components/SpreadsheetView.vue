@@ -25,8 +25,8 @@ const density = ref<Density>('comfortable');
 const sortState = ref<SheetSort>({ columnIndex: 'missing', direction: 'desc' });
 const columnWidths = ref<Record<number, number>>({});
 const resizingColumn = ref<{ index: number; startX: number; startWidth: number } | null>(null);
-const sheetScrollTop = ref(0);
 const sheetScrollPane = ref<HTMLElement | null>(null);
+const sheetPinnedPane = ref<HTMLElement | null>(null);
 const expandedMissingCsvIndex = ref<number | null>(null);
 const missingPopoverPosition = ref({ top: 0, left: 0 });
 const requiredAuditColumns = new Set([
@@ -719,7 +719,10 @@ function stopResize() {
 }
 
 function handleSheetScroll(event: Event) {
-  sheetScrollTop.value = (event.currentTarget as HTMLElement).scrollTop;
+  const scrollTop = (event.currentTarget as HTMLElement).scrollTop;
+  if (sheetPinnedPane.value && sheetPinnedPane.value.scrollTop !== scrollTop) {
+    sheetPinnedPane.value.scrollTop = scrollTop;
+  }
 }
 
 function handlePinnedWheel(event: WheelEvent) {
@@ -768,7 +771,7 @@ function handlePinnedWheel(event: WheelEvent) {
     </section>
 
     <section class="sheet-frame" aria-label="Raw CSV spreadsheet">
-      <div class="sheet-pinned-pane" aria-hidden="false" @wheel="handlePinnedWheel">
+      <div ref="sheetPinnedPane" class="sheet-pinned-pane" aria-hidden="false" @wheel="handlePinnedWheel">
         <table class="sheet-table sheet-table--pinned" :class="`sheet-table--${density}`">
           <thead>
             <tr>
@@ -812,7 +815,7 @@ function handlePinnedWheel(event: WheelEvent) {
               </th>
             </tr>
           </thead>
-          <tbody :style="{ transform: `translateY(-${sheetScrollTop}px)` }">
+          <tbody>
             <tr
               v-for="(row, rowIndex) in displayedRows"
               :key="row.csvIndex"

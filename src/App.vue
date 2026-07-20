@@ -68,7 +68,7 @@ const filters = ref<DapFiltersType>({
   androidOnly: false,
 });
 
-const defaultSortState: SortState = { key: 'default', direction: 'asc' };
+const defaultSortState: SortState = { key: 'releaseYear', direction: 'desc' };
 const sortState = ref<SortState>({ ...defaultSortState });
 const viewMode = ref<ViewMode>('cards');
 const currentHash = ref(window.location.hash);

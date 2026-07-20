@@ -76,6 +76,8 @@ const optionalBlankRawFields = new Set([
   'Optical Out',
   'SE Power Load',
   'BAL Power Load',
+  'SE Output Impedance Ohm',
+  'BAL Output Impedance Ohm',
   'Streaming Services',
   'Wi-Fi Bands',
   'official_store_url',
@@ -131,8 +133,15 @@ function weightValue(value: MixedSpecValue | undefined): string {
 
 function powerValue(power: MixedSpecValue | undefined, load: string): string {
   if (!hasValue(power)) return '';
+  if (!hasValue(load)) return '';
   const formattedPower = formatPower(power);
-  return hasValue(load) ? `${formattedPower} @ ${load}` : formattedPower;
+  return `${formattedPower} @ ${load}`;
+}
+
+function impedanceValue(value: string): string {
+  if (!hasValue(value)) return '';
+  const raw = value.trim();
+  return /(?:ohm|\u03a9)$/i.test(raw) ? raw : `${raw} ohm`;
 }
 
 function addRow(rows: DetailRow[], label: string, value: string, wide = false) {
@@ -217,6 +226,8 @@ const audioRows = computed<DetailRow[]>(() => {
   addRow(rows, 'Balanced output', textValue(dap.balancedOutputType));
   addRow(rows, 'SE Power', powerValue(dap.sePowerMw, dap.sePowerLoad));
   addRow(rows, 'Balanced power', powerValue(dap.balPowerMw, dap.balPowerLoad));
+  addRow(rows, 'SE output impedance', impedanceValue(dap.seOutputImpedanceOhm));
+  addRow(rows, 'Balanced output impedance', impedanceValue(dap.balOutputImpedanceOhm));
   return rows;
 });
 

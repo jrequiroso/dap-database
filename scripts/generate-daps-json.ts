@@ -234,6 +234,8 @@ function toDap(row: Record<string, string>): Dap {
     balancedOutputType: row['Balanced Output Type'] ?? '',
     sePowerLoad: row['SE Power Load'] ?? '',
     balPowerLoad: row['BAL Power Load'] ?? '',
+    seOutputImpedanceOhm: row['SE Output Impedance Ohm'] ?? '',
+    balOutputImpedanceOhm: row['BAL Output Impedance Ohm'] ?? '',
     displaySize: row['Display Size'] ?? '',
     weight: row.Weight ?? '',
     dimensions: row.Dimensions ?? '',

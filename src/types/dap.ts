@@ -65,6 +65,8 @@ export interface Dap {
   balancedOutputType: string;
   sePowerLoad: string;
   balPowerLoad: string;
+  seOutputImpedanceOhm: string;
+  balOutputImpedanceOhm: string;
   displaySize: string;
   weight: string;
   dimensions: string;

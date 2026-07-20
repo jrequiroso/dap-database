@@ -3694,10 +3694,10 @@
     ]
   },
   {
-    "id": "hidizs-ap30-kickstarter",
+    "id": "hidizs-ap30",
     "brand": "Hidizs",
     "model": "AP30",
-    "variant": "Kickstarter",
+    "variant": "",
     "releaseYear": 2026,
     "status": "Upcoming",
     "msrpUsd": null,
@@ -3763,7 +3763,7 @@
       {
         "url": "",
         "filename": "hidizs-ap30.webp",
-        "alt": "Hidizs AP30 Kickstarter digital audio player",
+        "alt": "Hidizs AP30 digital audio player",
         "credit": "Hidizs",
         "sourceUrl": "",
         "type": ""
@@ -4821,7 +4821,13 @@
     "has4g": false,
     "has5g": false,
     "bluetoothVersion": "5.0",
-    "bluetoothCodecs": [],
+    "bluetoothCodecs": [
+      "SBC",
+      "AAC",
+      "aptX",
+      "aptX HD",
+      "LDAC"
+    ],
     "usbDac": true,
     "lineOut": false,
     "coaxOut": true,
@@ -4830,19 +4836,36 @@
     "sePowerLoad": "32 ohms",
     "balPowerLoad": "32 ohms",
     "displaySize": "6.5in",
-    "weight": "",
-    "dimensions": "",
+    "weight": "310g",
+    "dimensions": "162 x 77 x 17 mm",
     "pcmMax": "32-bit/768kHz",
     "dsdMax": "DSD512",
     "mqa": true,
-    "streamingServices": [],
+    "streamingServices": [
+      "Spotify",
+      "TIDAL",
+      "Qobuz",
+      "Apple Music",
+      "Amazon Music",
+      "Deezer",
+      "YouTube Music"
+    ],
     "wifiBands": "2.4GHz / 5GHz",
     "usbPort": "USB-C 3.1",
     "batteryLifeHours": "10",
-    "storageExpansionMax": "",
+    "storageExpansionMax": "2TB",
     "officialUrl": "https://ibasso.com/product/dx320/",
     "officialStoreUrl": "",
-    "buyLinks": [],
+    "buyLinks": [
+      {
+        "label": "The HiFi Cat",
+        "url": "https://thehificat.com/products/ibasso-dx320"
+      },
+      {
+        "label": "Headphones SG",
+        "url": "https://headphones.sg/ibasso-dx320-digital-audio-player-black/"
+      }
+    ],
     "buyNotes": "",
     "reviewLinks": [
       {
@@ -4862,7 +4885,7 @@
     "sourceUrl": "https://ibasso.com/product/dx320/",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
-    "notes": "Verified - Official: iBasso product page and official DX320 manual confirm Snapdragon 660, Android 11/Mango OS dual-boot operation, 6GB RAM, 128GB storage, dual ROHM BD34301EKV DACs, AMP11 MK2s, separate 4000mAh digital and 2000mAh amp batteries, 6.5in display, 3.5mm single-ended plus 2.5mm/4.4mm balanced outputs, USB DAC, mini coaxial output, USB-C 3.1, Bluetooth 5.0, dual-band Wi-Fi, PCM 32-bit/768kHz, native DSD512, MQA support, 10h playback, and Black / Blue colors. Battery mAh remains blank because the player uses separate digital and amplifier batteries, while the numeric-only field cannot safely represent both capacities. | Manual cleanup: official DX320 specification table lists 1200mW at 32 ohms for 4.4mm/2.5mm balanced phone output and 380mW at 32 ohms for 3.5mm single-ended phone output.",
+    "notes": "Verified - Official: iBasso product page and official DX320 manual confirm Snapdragon 660, Android 11/Mango OS dual-boot operation, 6GB RAM, 128GB storage, dual ROHM BD34301EKV DACs, AMP11 MK2s, separate 4000mAh digital and 2000mAh amp batteries, 6.5in display, 3.5mm single-ended plus 2.5mm/4.4mm balanced outputs, USB DAC, mini coaxial output, USB-C 3.1, Bluetooth 5.0, dual-band Wi-Fi, PCM 32-bit/768kHz, native DSD512, MQA support, 10h playback, and Black / Blue colors. Battery mAh remains blank because the player uses separate digital and amplifier batteries, while the numeric-only field cannot safely represent both capacities. | Manual cleanup: official DX320 specification table lists 1200mW at 32 ohms for 4.4mm/2.5mm balanced phone output and 380mW at 32 ohms for 3.5mm single-ended phone output. Corrected DX320 treatment: Battery mAh remains blank because the official manual specifies two electrically separate batteries, 4000mAh for the digital section and 2000mAh for the amplifier-card section; entering 6000 would misrepresent the architecture. Headfonia confirms Bluetooth codecs SBC / AAC / aptX / aptX HD / LDAC, with SBC/AAC/LDAC bidirectional and aptX/aptX HD transmit-only. Headfonics gives 310g weight without case and standard DX320 dimensions of 162 x 77 x 17 mm, not DX320MAX dimensions. Android 11 supports installing third-party streaming apps through APKPure or downloaded APK files, so listed streaming services are compatible Android apps rather than built-in integrations. Headfonia documents microSDHC/microSDXC support up to 2TB; the official manual confirms SDHC/SDXC but does not state the numerical maximum. iBasso official product page is not used as a buy link because it currently marks DX320 discontinued/out of stock.",
     "colors": [
       "Black",
       "Green"
@@ -7085,7 +7108,7 @@
     "releaseYear": 2023,
     "status": "Active",
     "msrpUsd": 199,
-    "soc": "",
+    "soc": "Ingenic X1000E",
     "os": "Android-based",
     "ramGb": null,
     "storageGb": null,
@@ -7119,8 +7142,8 @@
     "balancedOutputType": "4.4mm",
     "sePowerLoad": "32 ohms",
     "balPowerLoad": "32 ohms",
-    "displaySize": "",
-    "weight": "",
+    "displaySize": "3.2in",
+    "weight": "166.5g",
     "dimensions": "100 x 65 x 17 mm",
     "pcmMax": "32-bit/768kHz",
     "dsdMax": "DSD512",
@@ -7134,8 +7157,8 @@
     ],
     "wifiBands": "2.4GHz",
     "usbPort": "USB-C",
-    "batteryLifeHours": "",
-    "storageExpansionMax": "",
+    "batteryLifeHours": "10",
+    "storageExpansionMax": "2TB",
     "officialUrl": "https://www.tempotec.net/products/tempotec-v3-digital-audio-player",
     "officialStoreUrl": "https://www.tempotec.net/products/tempotec-v3-digital-audio-player",
     "buyLinks": [
@@ -7153,14 +7176,28 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/tempotec-v3-review/"
+      },
+      {
+        "label": "MYSKU.club",
+        "url": "https://mysku.club/blog/russia-stores/99131.html"
+      },
+      {
+        "label": "Head-Fi",
+        "url": "https://www.head-fi.org/showcase/tempotec-v3.27011/reviews"
+      },
+      {
+        "label": "AudioReviews",
+        "url": "https://www.audioreviews.org/tempotec-variations-v3-blaze-review-jk/"
       }
     ],
     "reviewNotes": "Official product/detail pages supplied by maintainer; Headfonics retained only as secondary exact-model context.",
     "sourceUrl": "https://www.tempotec.net/products/tempotec-v3-digital-audio-player",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
-    "notes": "Verified - Official: TempoTec V3 product page and details page confirm V3 as a portable Android-based DAP with dual AK4493SEQ DACs, 3500mAh battery, microSD audio source, switchable line out/headphone out, 3.5mm SE and 4.4mm balanced outputs, two-way Bluetooth 5.1 with LDAC/AAC/aptX/aptX HD/SBC, 2.4GHz Wi-Fi, HiByLink, AirPlay, DLNA, TIDAL and Qobuz streaming, USB DAC, PCM 32-bit/768kHz, DSD512, DXD, MQA 16x full decoding including MQA Studio/Renderer, 124dB SNR, 0.0005% THD+N, FPGA high-performance digital circuit with dual crystal oscillator system, and official output of 330mW SE / 610mW balanced at 32 ohms. Official size is 100 x 65 x 17 mm. Package list includes USB-A to USB-C cable. Display, weight, storage limit, and colors remain blank because they were not exposed reliably in the official text.",
-    "colors": [],
+    "notes": "Verified - Official: TempoTec V3 product page and details page confirm V3 as a portable Android-based DAP with dual AK4493SEQ DACs, 3500mAh battery, microSD audio source, switchable line out/headphone out, 3.5mm SE and 4.4mm balanced outputs, two-way Bluetooth 5.1 with LDAC/AAC/aptX/aptX HD/SBC, 2.4GHz Wi-Fi, HiByLink, AirPlay, DLNA, TIDAL and Qobuz streaming, USB DAC, PCM 32-bit/768kHz, DSD512, DXD, MQA 16x full decoding including MQA Studio/Renderer, 124dB SNR, 0.0005% THD+N, FPGA high-performance digital circuit with dual crystal oscillator system, and official output of 330mW SE / 610mW balanced at 32 ohms. Official size is 100 x 65 x 17 mm. Package list includes USB-A to USB-C cable. Display, weight, storage limit, and colors are supplemented from exact-model secondary sources because they were not exposed reliably in the official text. Additional sourced decisions: MYSKU.club review identifies the processor as Ingenic X1000E; TempoTec official material only references a main processor without naming it. RAM remains blank because TempoTec does not publish RAM and the prior 64MB claim is not from a defensible source. Official product imagery supports Black as the documented original V3 color. Headfonics identifies a 3.2in touchscreen. MYSKU.club measured weight at 166.5g; rough 200g figures elsewhere may include case/accessories. Head-Fi user review reports nearly 10h playback, used as a practical rounded runtime because TempoTec does not publish a specific official test duration. Storage Expansion Max is set to 2TB from secondary specification-table evidence; official original-V3 page does not state a maximum.",
+    "colors": [
+      "Black"
+    ],
     "images": [
       {
         "url": "",
@@ -8150,7 +8187,7 @@
     "status": "Active",
     "msrpUsd": 3200,
     "soc": "Freescale i.MX 6 / ADI Blackfin BF706 DSP / Ingenic X1000",
-    "os": "",
+    "os": "Lotoo OS 1.6",
     "ramGb": null,
     "storageGb": null,
     "microSd": true,
@@ -8168,7 +8205,7 @@
     "cellular": false,
     "has4g": false,
     "has5g": false,
-    "bluetoothVersion": "",
+    "bluetoothVersion": "5.0",
     "bluetoothCodecs": [
       "SBC",
       "AAC",
@@ -8190,9 +8227,9 @@
     "streamingServices": [
       "DLNA"
     ],
-    "wifiBands": "",
+    "wifiBands": "2.4GHz",
     "usbPort": "USB 3.1 Gen2 Type-C OTG",
-    "batteryLifeHours": "",
+    "batteryLifeHours": "10",
     "storageExpansionMax": "2TB",
     "officialUrl": "http://www.lotoo.cn/english/Hi_Fi_Player/PAW_GT2/Specs/",
     "officialStoreUrl": "http://www.lotoo.cn/english/Hi_Fi_Player/PAW_GT2/Specs/",
@@ -8207,14 +8244,28 @@
       {
         "label": "Headfonia",
         "url": "https://www.headfonia.com/lotoo-paw-gold-touch-2-review/"
+      },
+      {
+        "label": "HiFi BLOG",
+        "url": "https://www.hifi.blog/lotoo-paw-gt2-reference-portable-music-player-dap-with-lttp/"
+      },
+      {
+        "label": "Kakaku",
+        "url": "https://kakaku.com/pc/mp3-player/itemlist.aspx?pdf_Spec042=1&pdf_Spec309=4"
+      },
+      {
+        "label": "HIFISTATEMENT",
+        "url": "https://www.hifistatement.net/suche?start=308&type=atom"
       }
     ],
     "reviewNotes": "",
     "sourceUrl": "http://www.lotoo.cn/english/Hi_Fi_Player/PAW_GT2/Specs/",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
-    "notes": "Verified - Official: Lotoo PAW GT2 official specification page verifies DSD64/128/256/512 DFF/DSF/ISO/ALAC/WAV/MP3/FLAC/APE/OGG/M4A/AAC support, DSD up to DSD512, PCM up to 768kHz, Freescale i.MX 6 / ADI Blackfin BF706 DSP / Ingenic X1000 processors, 800 x 480 4in touchscreen, AK4191EQ + 2x AK4499EX DAC architecture, AKM4137EQ XRC chip, 4x BUF634A headphone amp chips, 3.5mm unbalanced and 4.4mm balanced headphone ports, USB 3.1 Gen2 Type-C OTG with USB storage/DAC, UHS-II SD 4.0 storage up to 2TB with max speed 300M/s, 8300mAh 3.7V Li-Po battery, SBC/AAC/LDAC Bluetooth audio, LTTP wireless audio, Wi-Fi support, DLNA streaming, 70.8 x 132.8 x 32.4 mm dimensions excluding protrusions, 388g weight, and firmware updates. Official audio specs list 4.4mm balanced headphone output at 1000mW/ch at 32 ohms, 620mW/ch at 100 ohms, 210mW/ch at 300 ohms, 104mW/ch at 600 ohms, 133dB SNR, 0.00013% THD+N, 0.9uV noise, and 122dB channel isolation; 3.5mm unbalanced headphone output at 460mW/ch at 32 ohms, 156mW/ch at 100 ohms, 129dB SNR, 0.00020% THD+N, and 0.8uV noise. Official specs also list 4.4mm and 3.5mm line output sections. Previously listed as PAW Gold Touch 2 / LPGT2 for search compatibility. MSRP is retained from prior launch/review context because the official specs page does not expose MSRP. Optical, coaxial, cellular, 4G, 5G, and MQA are not listed, so those are false.",
-    "colors": [],
+    "notes": "Verified - Official: Lotoo PAW GT2 official specification page verifies DSD64/128/256/512 DFF/DSF/ISO/ALAC/WAV/MP3/FLAC/APE/OGG/M4A/AAC support, DSD up to DSD512, PCM up to 768kHz, Freescale i.MX 6 / ADI Blackfin BF706 DSP / Ingenic X1000 processors, 800 x 480 4in touchscreen, AK4191EQ + 2x AK4499EX DAC architecture, AKM4137EQ XRC chip, 4x BUF634A headphone amp chips, 3.5mm unbalanced and 4.4mm balanced headphone ports, USB 3.1 Gen2 Type-C OTG with USB storage/DAC, UHS-II SD 4.0 storage up to 2TB with max speed 300M/s, 8300mAh 3.7V Li-Po battery, SBC/AAC/LDAC Bluetooth audio, LTTP wireless audio, Wi-Fi support, DLNA streaming, 70.8 x 132.8 x 32.4 mm dimensions excluding protrusions, 388g weight, and firmware updates. Official audio specs list 4.4mm balanced headphone output at 1000mW/ch at 32 ohms, 620mW/ch at 100 ohms, 210mW/ch at 300 ohms, 104mW/ch at 600 ohms, 133dB SNR, 0.00013% THD+N, 0.9uV noise, and 122dB channel isolation; 3.5mm unbalanced headphone output at 460mW/ch at 32 ohms, 156mW/ch at 100 ohms, 129dB SNR, 0.00020% THD+N, and 0.8uV noise. Official specs also list 4.4mm and 3.5mm line output sections. Previously listed as PAW Gold Touch 2 / LPGT2 for search compatibility. MSRP is retained from prior launch/review context because the official specs page does not expose MSRP. Optical, coaxial, cellular, 4G, 5G, and MQA are not listed, so those are false. Additional sourced decisions: PAW GT2 uses Lotoo OS 1.6, a proprietary non-Android OS. RAM remains blank because Lotoo does not publish installed RAM and no reliable teardown confirms it. HiFi BLOG describes the CNC-machined aerospace aluminum body as black anodized, so color is Black. Bluetooth Version is set to 5.0 from secondary listing evidence; official material confirms Bluetooth support but does not clearly publish the version. Wi-Fi Bands is set to 2.4GHz because detailed secondary specification material lists a 2.4GHz operating frequency and no reliable 5GHz evidence was found. Battery Life Hours uses Lotoo claimed up-to-10h playback from the 8300mAh battery, with independent testing context around 8-10h depending on files/settings.",
+    "colors": [
+      "Black"
+    ],
     "images": [
       {
         "url": "",
@@ -10247,14 +10298,14 @@
     "ramGb": 2,
     "storageGb": 16,
     "microSd": true,
-    "batteryMah": null,
+    "batteryMah": 3500,
     "dac": "Dual CS43198",
     "amp": "2x OPA1612 + 2x AD8397",
     "has25mm": false,
     "has35mm": true,
     "has44mm": true,
     "has635mm": false,
-    "sePowerMw": null,
+    "sePowerMw": 148,
     "balPowerMw": 564,
     "bluetooth": true,
     "wifi": true,
@@ -10273,10 +10324,10 @@
     "coaxOut": false,
     "opticalOut": false,
     "balancedOutputType": "4.4mm",
-    "sePowerLoad": "",
+    "sePowerLoad": "32 ohms",
     "balPowerLoad": "32Ω",
     "displaySize": "4.0in",
-    "weight": "",
+    "weight": "160g",
     "dimensions": "108 x 61 x 16 mm",
     "pcmMax": "32-bit/384kHz",
     "dsdMax": "DSD256",
@@ -10284,13 +10335,18 @@
     "streamingServices": [
       "Open Android apps"
     ],
-    "wifiBands": "",
+    "wifiBands": "2.4GHz / 5GHz",
     "usbPort": "USB-C",
-    "batteryLifeHours": "",
-    "storageExpansionMax": "",
+    "batteryLifeHours": "18",
+    "storageExpansionMax": "512GB",
     "officialUrl": "",
     "officialStoreUrl": "",
-    "buyLinks": [],
+    "buyLinks": [
+      {
+        "label": "TREOO",
+        "url": "https://www.treoo.com/product/hiby-r5-digital-audio-player-black"
+      }
+    ],
     "buyNotes": "",
     "reviewLinks": [
       {
@@ -10304,14 +10360,26 @@
       {
         "label": "Headfonia",
         "url": "https://www.headfonia.com/hiby-r5-review/"
+      },
+      {
+        "label": "AV Watch",
+        "url": "https://av.watch.impress.co.jp/docs/news/1203937.html"
+      },
+      {
+        "label": "e-earphone",
+        "url": "https://www.e-earphone.jp/products/81106"
       }
     ],
     "reviewNotes": "",
     "sourceUrl": "https://headfonics.com/hiby-r5-review/",
     "sourceType": "Review",
     "verificationStatus": "Verified - Review",
-    "notes": "Verified - Review: Exact-model Headfonics review verifies $399 MSRP, dual CS43198, Android Oreo and Snapdragon 425. Secondary technical specifications verify 2GB RAM, 16GB storage, 4.4mm balanced output rated 564mW at 32Ω, Bluetooth 4.2 codecs, 4.0in display and dimensions.",
-    "colors": [],
+    "notes": "Verified - Review: Exact-model Headfonics review verifies $399 MSRP, dual CS43198, Android Oreo and Snapdragon 425. Secondary technical specifications verify 2GB RAM, 16GB storage, 4.4mm balanced output rated 564mW at 32Ω, Bluetooth 4.2 codecs, 4.0in display and dimensions. Additional sourced decisions: Headfonics first-contact coverage identifies the original 2019 R5 battery as 3500mAh, distinct from the later R5 Gen 2 4500mAh battery, and confirms dual-band 802.11 a/b/g/n Wi-Fi. TREOO exact-model listing rates 3.5mm single-ended output at 148mW + 148mW at 32 ohms, entered as per-channel SE power. AV Watch launch coverage identifies Black, Gray, and later Gold finishes. Headfonics review gives approximate 160g weight. e-earphone listing gives official claimed runtime of 18h via 3.5mm single-ended and 11h via 4.4mm balanced; structured Battery Life Hours uses the longer 18h value. Storage Expansion Max is kept at 512GB as the safest published original-spec value; later community 2TB claims are not used.",
+    "colors": [
+      "Black",
+      "Gray",
+      "Gold"
+    ],
     "images": [
       {
         "url": "",
@@ -11234,19 +11302,19 @@
     "status": "Discontinued",
     "msrpUsd": 3199,
     "soc": "",
-    "os": "",
+    "os": "Sony original OS",
     "ramGb": null,
     "storageGb": 256,
     "microSd": true,
     "batteryMah": null,
-    "dac": "",
+    "dac": "S-Master HX",
     "amp": "",
     "has25mm": false,
     "has35mm": true,
     "has44mm": true,
     "has635mm": false,
-    "sePowerMw": null,
-    "balPowerMw": null,
+    "sePowerMw": 60,
+    "balPowerMw": 250,
     "bluetooth": true,
     "wifi": false,
     "cellular": false,
@@ -11264,8 +11332,8 @@
     "coaxOut": false,
     "opticalOut": false,
     "balancedOutputType": "4.4mm",
-    "sePowerLoad": "",
-    "balPowerLoad": "",
+    "sePowerLoad": "16 ohms",
+    "balPowerLoad": "16 ohms",
     "displaySize": "4.0in",
     "weight": "455g",
     "dimensions": "72.9 x 124.2 x 19.8 mm",
@@ -11297,7 +11365,7 @@
     "sourceUrl": "https://www.sony.com/electronics/support/digital-music-players-nw-wm-series/nw-wm1z/specifications",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
-    "notes": "Verified - Official: Official Sony specifications verify dimensions, 16.05oz weight and format-dependent battery life. Official help guide verifies 256GB storage; support confirms microSDXC up to 1TB. No Wi-Fi or native streaming apps. | Battery runtime detail from prior data: 33h MP3 / 30h FLAC 96/24 / 26h FLAC 192/24 / 11h DSD. | Official battery rating varies by format: approx. 33h MP3 128 kbps, 30h FLAC 96 kHz/24-bit, 26h FLAC 192 kHz/24-bit, and 11h DSD 11.2 MHz.",
+    "notes": "Verified - Official: Official Sony specifications verify dimensions, 16.05oz weight and format-dependent battery life. Official help guide verifies 256GB storage; support confirms microSDXC up to 1TB. No Wi-Fi or native streaming apps. | Battery runtime detail from prior data: 33h MP3 / 30h FLAC 96/24 / 26h FLAC 192/24 / 11h DSD. | Official battery rating varies by format: approx. 33h MP3 128 kbps, 30h FLAC 96 kHz/24-bit, 26h FLAC 192 kHz/24-bit, and 11h DSD 11.2 MHz. Additional sourced decisions: SoC, RAM, and Battery mAh remain blank because Sony does not publish processor/SoC, RAM, or battery capacity and no reliable service/teardown documentation identifies them. OS is Sony original OS, confirming this is the original non-Android NW-WM1Z rather than Android-based NW-WM1ZM2. DAC is recorded as S-Master HX because Sony uses its proprietary full-digital amplifier architecture rather than a publicly identified third-party DAC chip. Sony Japan specifications list 60mW + 60mW at 16 ohms for 3.5mm unbalanced output and 250mW + 250mW at 16 ohms for 4.4mm balanced output; structured values use per-channel ratings.",
     "colors": [
       "Gold"
     ],
@@ -11566,7 +11634,7 @@
     "status": "Discontinued",
     "msrpUsd": null,
     "soc": "ADI Blackfin 514 DSP",
-    "os": "",
+    "os": "Lotoo proprietary OS",
     "ramGb": null,
     "storageGb": null,
     "microSd": true,
@@ -11578,21 +11646,23 @@
     "has44mm": false,
     "has635mm": false,
     "sePowerMw": 150,
-    "balPowerMw": null,
+    "balPowerMw": 150,
     "bluetooth": true,
     "wifi": false,
     "cellular": false,
     "has4g": false,
     "has5g": false,
-    "bluetoothVersion": "",
-    "bluetoothCodecs": [],
+    "bluetoothVersion": "4.0",
+    "bluetoothCodecs": [
+      "SBC"
+    ],
     "usbDac": true,
     "lineOut": true,
     "coaxOut": false,
     "opticalOut": true,
     "balancedOutputType": "2.5mm",
     "sePowerLoad": "32 ohms",
-    "balPowerLoad": "",
+    "balPowerLoad": "32 ohms",
     "displaySize": "2.0in",
     "weight": "110g",
     "dimensions": "98 x 55 x 17.5 mm",
@@ -11602,19 +11672,35 @@
     "streamingServices": [],
     "wifiBands": "",
     "usbPort": "USB 3.0",
-    "batteryLifeHours": "",
+    "batteryLifeHours": "6",
     "storageExpansionMax": "2TB",
     "officialUrl": "https://www.lotoo.cn/english/Hi_Fi_Player/PAW_5000_MKII/Specs/",
     "officialStoreUrl": "",
     "buyLinks": [],
     "buyNotes": "",
-    "reviewLinks": [],
+    "reviewLinks": [
+      {
+        "label": "Porta-Fi",
+        "url": "https://porta-fi.com/lotoo-paw-5000-mkii-review/"
+      },
+      {
+        "label": "Kakaku",
+        "url": "https://kakaku.com/item/K0001005985/"
+      },
+      {
+        "label": "Festima",
+        "url": "https://festima.ru/docs/346773607/moscow/lotoo-paw-5000-mkii"
+      }
+    ],
     "reviewNotes": "",
     "sourceUrl": "https://www.lotoo.cn/english/Hi_Fi_Player/PAW_5000_MKII/Specs/",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
-    "notes": "Verified - Official: Official Lotoo PAW 5000 MKII specifications verify ADI Blackfin 514 DSP, AK4490EN DAC, OPA1622 headphone amp, Bluetooth A2DP, 2.0in display, 98 x 55 x 17.5 mm dimensions, 110g weight, 1700mAh battery, TF/microSD support up to 2TB, 3.5mm headphone/line/SPDIF optical output, 2.5mm balanced headphone output, USB DAC capability, PCM up to 32-bit/384kHz, DSD256, and 150mW per channel at 32 ohms headphone output. Source audit pass10: filled SE Power mW and SE Power Load from the official output power line; balanced mW remains blank because the accessible official text does not cleanly map 150mW to the 2.5mm balanced output separately.",
-    "colors": [],
+    "notes": "Verified - Official: Official Lotoo PAW 5000 MKII specifications verify ADI Blackfin 514 DSP, AK4490EN DAC, OPA1622 headphone amp, Bluetooth A2DP, 2.0in display, 98 x 55 x 17.5 mm dimensions, 110g weight, 1700mAh battery, TF/microSD support up to 2TB, 3.5mm headphone/line/SPDIF optical output, 2.5mm balanced headphone output, USB DAC capability, PCM up to 32-bit/384kHz, DSD256, and 150mW per channel at 32 ohms headphone output. Source audit pass10: filled SE Power mW and SE Power Load from the official output power line; the official output line does not publish separate SE/BAL power ratings, but structured BAL Power mW mirrors the 150mW per-channel value because the same official specification confirms a 2.5mm balanced headphone output. Porta-Fi states Lotoo develops its own proprietary DAP OS and describes PAW 5000 MKII as using that closed platform with no streaming support. Official specs do not publish RAM, so RAM remains blank. Official design material describes the gray and black color scheme as one two-tone finish. Festima secondary specifications identify Bluetooth 4.0; Lotoo official material only states Bluetooth functionality. Kakaku lists SBC as the Bluetooth codec, and independent testing reports aptX is not supported. Porta-Fi reports practical playback just under six hours from the 1700mAh battery; structured Battery Life Hours uses rounded 6 because official specs publish capacity but not runtime.",
+    "colors": [
+      "Gray",
+      "Black"
+    ],
     "images": [
       {
         "url": "",
@@ -11635,12 +11721,12 @@
     "status": "Discontinued",
     "msrpUsd": null,
     "soc": "ADI Blackfin 706 DSP",
-    "os": "",
+    "os": "Lotoo proprietary OS",
     "ramGb": null,
     "storageGb": 32,
     "microSd": false,
     "batteryMah": 300,
-    "dac": "",
+    "dac": "TI TLV320 series",
     "amp": "",
     "has25mm": false,
     "has35mm": true,
@@ -11653,7 +11739,7 @@
     "cellular": false,
     "has4g": false,
     "has5g": false,
-    "bluetoothVersion": "",
+    "bluetoothVersion": "4.0 BLE",
     "bluetoothCodecs": [],
     "usbDac": true,
     "lineOut": false,
@@ -11662,7 +11748,7 @@
     "balancedOutputType": "",
     "sePowerLoad": "",
     "balPowerLoad": "",
-    "displaySize": "",
+    "displaySize": "None",
     "weight": "26g",
     "dimensions": "40.8 x 46 x 12.6 mm",
     "pcmMax": "192kHz",
@@ -11686,14 +11772,24 @@
       {
         "label": "Twister6",
         "url": "https://twister6.com/2017/02/19/lotoo-paw-pico/"
+      },
+      {
+        "label": "Phile Web",
+        "url": "https://www.phileweb.com/review/article/201711/02/2786.html"
+      },
+      {
+        "label": "Head-Fi",
+        "url": "https://www.head-fi.org/showcase/lotoo-paw-pico.22231/"
       }
     ],
     "reviewNotes": "",
     "sourceUrl": "http://m.lotoo.cn/en/pico-index.html",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
-    "notes": "Verified - Official: Official Lotoo PAW Pico mobile specification page confirms ADI Blackfin 706 DSP, 32GB MLC built-in flash memory, BLE wireless, built-in motion sensor and GPS module, 300mAh Li-Polymer battery, 26g weight excluding back clip, 40.8 x 46 x 12.6 mm dimensions excluding bulge parts, USB 2.0 communication, DSD64/DSD128 DFF/DSF/ISO playback, PCM sample rates 32kHz-192kHz, and broad file support including FLAC, APE, WAV, MP3, WMA, OGG, M4A, AAC, WAVPACK, AIF, ALAC and CUE. Official specs also list THD+N below 0.003% A-weighted at 500mV, frequency response +/-0.5dB from 20Hz-20kHz, dynamic range above 101dB, and output level -3.5dBu at 16 ohms. No microSD slot is used because the official spec lists built-in 32GB flash storage. No balanced, 4.4mm, 2.5mm, 6.35mm, Wi-Fi, cellular, or MQA support is listed in the official specs.",
-    "colors": [],
+    "notes": "Verified - Official: Official Lotoo PAW Pico mobile specification page confirms ADI Blackfin 706 DSP, 32GB MLC built-in flash memory, BLE wireless, built-in motion sensor and GPS module, 300mAh Li-Polymer battery, 26g weight excluding back clip, 40.8 x 46 x 12.6 mm dimensions excluding bulge parts, USB 2.0 communication, DSD64/DSD128 DFF/DSF/ISO playback, PCM sample rates 32kHz-192kHz, and broad file support including FLAC, APE, WAV, MP3, WMA, OGG, M4A, AAC, WAVPACK, AIF, ALAC and CUE. Official specs also list THD+N below 0.003% A-weighted at 500mV, frequency response +/-0.5dB from 20Hz-20kHz, dynamic range above 101dB, and output level -3.5dBu at 16 ohms. No microSD slot is used because the official spec lists built-in 32GB flash storage. No balanced, 4.4mm, 2.5mm, 6.35mm, Wi-Fi, cellular, or MQA support is listed in the official specs. Additional sourced decisions: PAW Pico uses Lotoo dedicated embedded firmware rather than Android or an installable-app OS; structured OS is Lotoo proprietary OS because Lotoo does not publish a specific OS name. Official specs do not publish RAM, so RAM remains blank. Phile Web technical coverage identifies a TI TLV320-series DAC; ADI Blackfin 706 is retained only as DSP/processing context, not as the DAC. Official product imagery supports Black as the retail color. Contemporary launch coverage specifies Bluetooth 4.0 Low Energy for companion-app communication; Bluetooth audio codecs are blank because official specs list BLE rather than A2DP audio transmission/receiving. PAW Pico is screenless, so Display Size is stored as None. Streaming Services remains blank because the player has no Wi-Fi, display, or installable streaming apps; BLE supports app control rather than onboard streaming.",
+    "colors": [
+      "Black"
+    ],
     "images": [
       {
         "url": "",
@@ -11870,7 +11966,7 @@
     "status": "Active",
     "msrpUsd": null,
     "soc": "",
-    "os": "",
+    "os": "LE OS",
     "ramGb": null,
     "storageGb": null,
     "microSd": true,
@@ -11905,19 +12001,33 @@
     "mqa": false,
     "streamingServices": [],
     "wifiBands": "",
-    "usbPort": "",
+    "usbPort": "USB Type-C",
     "batteryLifeHours": "8",
     "storageExpansionMax": "1TB",
     "officialUrl": "",
     "officialStoreUrl": "",
-    "buyLinks": [],
+    "buyLinks": [
+      {
+        "label": "e-earphone",
+        "url": "https://www.e-earphone.jp/products/453248"
+      },
+      {
+        "label": "Fujiya Avic",
+        "url": "https://www.fujiya-avic.co.jp/shop/g/g200000068657"
+      }
+    ],
     "buyNotes": "",
-    "reviewLinks": [],
+    "reviewLinks": [
+      {
+        "label": "Phile Web",
+        "url": "https://www.phileweb.com/sp/news/d-av/202407/27/60812.html"
+      }
+    ],
     "reviewNotes": "",
     "sourceUrl": "https://hifonix.co.uk/detail/luxury-precision-e7-digital-audio-player-dap/",
     "sourceType": "Review",
     "verificationStatus": "Verified - Review",
-    "notes": "Verified - Review: Specialist retailer specification for the exact E7 Standard package explicitly identifies the included AK4497 card, so this row is named AK4497 Standard rather than merging modular E7 configurations. The source verifies dual AK4497 DACs, 4700mAh battery, 5.0in display, 300g weight, 71 x 133 x 20 mm dimensions, 3.5mm SE PO/LO/SPDIF, 4.4mm balanced PO/LO, USB DAC, microSD up to 1TB, PCM 24-bit/384kHz, DSD256, 8h SE / 5h BAL runtime under stated test conditions, 230mW SE at 32Ω, and 1100mW balanced at 32Ω. These module-dependent values apply only to the AK4497 Standard row.",
+    "notes": "Verified - Review: Specialist retailer specification for the exact E7 Standard package explicitly identifies the included AK4497 card, so this row is named AK4497 Standard rather than merging modular E7 configurations. The source verifies dual AK4497 DACs, 4700mAh battery, 5.0in display, 300g weight, 71 x 133 x 20 mm dimensions, 3.5mm SE PO/LO/SPDIF, 4.4mm balanced PO/LO, USB DAC, microSD up to 1TB, PCM 24-bit/384kHz, DSD256, 8h SE / 5h BAL runtime under stated test conditions, 230mW SE at 32Ω, and 1100mW balanced at 32Ω. These module-dependent values apply only to the AK4497 Standard row. Additional sourced decisions: SoC remains blank because Luxury & Precision only states the E7 uses a more powerful MCU and does not disclose an exact processor/SoC. RAM remains blank because installed RAM is not published and no reliable teardown confirms it. Fujiya Avic exact E7 4497 Standard listing identifies LE OS as Luxury & Precision proprietary audio-focused non-Android OS. Streaming Services remains blank because LE OS is closed/non-Android with no documented installable streaming-service apps; Bluetooth receiver functionality is not onboard streaming. Phile Web coverage specifically confirms USB Type-C input. Buy links are exact E7 4497 Standard retailer pages: e-earphone JAN 4589757912935 and Fujiya Avic new-product listing.",
     "colors": [
       "Blackish Green"
     ],
@@ -12100,7 +12210,7 @@
     "status": "Discontinued",
     "msrpUsd": null,
     "soc": "",
-    "os": "",
+    "os": "Custom Linux-based OS",
     "ramGb": null,
     "storageGb": 16,
     "microSd": true,
@@ -12111,22 +12221,26 @@
     "has35mm": true,
     "has44mm": false,
     "has635mm": false,
-    "sePowerMw": null,
-    "balPowerMw": null,
+    "sePowerMw": 75,
+    "balPowerMw": 150,
     "bluetooth": true,
     "wifi": true,
     "cellular": false,
     "has4g": false,
     "has5g": false,
-    "bluetoothVersion": "",
-    "bluetoothCodecs": [],
+    "bluetoothVersion": "4.0",
+    "bluetoothCodecs": [
+      "SBC",
+      "aptX",
+      "aptX HD"
+    ],
     "usbDac": true,
     "lineOut": true,
     "coaxOut": false,
     "opticalOut": false,
     "balancedOutputType": "2.5mm",
-    "sePowerLoad": "",
-    "balPowerLoad": "",
+    "sePowerLoad": "32 ohms",
+    "balPowerLoad": "32 ohms",
     "displaySize": "2.4in",
     "weight": "130g",
     "dimensions": "63 x 94 x 15 mm",
@@ -12154,14 +12268,24 @@
       {
         "label": "Headfonia",
         "url": "https://www.headfonia.com/review-onkyo-dp-s1-rubato-dehumanise/"
+      },
+      {
+        "label": "Earphonia",
+        "url": "https://earphonia.com/digital-audio-players-daps/onkyo-rubato-dp-s1-digital-audio-player-unboxing/"
+      },
+      {
+        "label": "Hifitest",
+        "url": "https://www.hifitest.de/test/ausstattungsliste/mobile-sonstiges/onkyo-dp-s1_45716"
       }
     ],
     "reviewNotes": "Regional naming caution: the current Onkyo page is titled PD-S10B but explicitly links DP-S1 firmware; no separate PD-S10B row was added.",
     "sourceUrl": "https://onkyo.com/pd-s10b",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
-    "notes": "Verified - Official: Onkyo product page documents the DP-S1 firmware lineage and twin ES9018C2M/ES9601K design, 16GB storage, dual microSD expansion, dual-band Wi-Fi, Bluetooth SBC, 3.5mm line/headphone output, 2.5mm balanced output, USB/OTG, 2.4-inch display, TIDAL/TuneIn, and up to 15h playback. Manufacturer DP-S1 datasheet mirror used secondarily for PCM/DSD/MQA: https://www.eleonto.com/medias/ONKYO-DP-S1-datasheet-EN.pdf",
-    "colors": [],
+    "notes": "Verified - Official: Onkyo product page documents the DP-S1 firmware lineage and twin ES9018C2M/ES9601K design, 16GB storage, dual microSD expansion, dual-band Wi-Fi, Bluetooth SBC, 3.5mm line/headphone output, 2.5mm balanced output, USB/OTG, 2.4-inch display, TIDAL/TuneIn, and up to 15h playback. Manufacturer DP-S1 datasheet mirror used secondarily for PCM/DSD/MQA: https://www.eleonto.com/medias/ONKYO-DP-S1-datasheet-EN.pdf Additional sourced decisions: SoC remains blank because Onkyo identifies only a 32-bit DSP and does not publish an exact processor/SoC. Earphonia describes the DP-S1 interface as a custom player platform built on a Linux kernel, so OS is structured as Custom Linux-based OS rather than Android. RAM remains blank because Onkyo does not publish RAM and secondary claims are not reliable enough. Onkyo specifications list 75mW + 75mW at 32 ohms unbalanced and 150mW + 150mW at 32 ohms balanced, entered as per-channel SE/BAL values. Official Onkyo material identifies the player as Black. Hifitest secondary specifications identify Bluetooth 4.0; Onkyo confirms Bluetooth audio/BLE but not the version. Onkyo firmware support added aptX HD on September 5, 2018, so structured Bluetooth codecs include SBC / aptX / aptX HD.",
+    "colors": [
+      "Black"
+    ],
     "images": [
       {
         "url": "",
@@ -12182,11 +12306,11 @@
     "status": "Discontinued",
     "msrpUsd": null,
     "soc": "",
-    "os": "",
+    "os": "Onkyo proprietary OS",
     "ramGb": null,
     "storageGb": 16,
     "microSd": true,
-    "batteryMah": null,
+    "batteryMah": 1630,
     "dac": "ESS ES9018C2M x2",
     "amp": "ESS ES9601K x2",
     "has25mm": true,
@@ -12200,10 +12324,8 @@
     "cellular": false,
     "has4g": false,
     "has5g": false,
-    "bluetoothVersion": "",
+    "bluetoothVersion": "4.0",
     "bluetoothCodecs": [
-      "A2DP",
-      "AVRCP",
       "SBC"
     ],
     "usbDac": false,
@@ -12219,7 +12341,11 @@
     "pcmMax": "32-bit/192kHz",
     "dsdMax": "DSD128",
     "mqa": true,
-    "streamingServices": [],
+    "streamingServices": [
+      "radiko.jp",
+      "TuneIn",
+      "Deezer HiFi"
+    ],
     "wifiBands": "IEEE 802.11 a/b/g/n",
     "usbPort": "Micro-USB Type-B",
     "batteryLifeHours": "15",
@@ -12241,14 +12367,28 @@
       {
         "label": "Hi-Fi+",
         "url": "https://hifiplus.com/articles/onkyo-dp-s1-digital-audio-player/"
+      },
+      {
+        "label": "Review33",
+        "url": "https://www.review33.com/news/news.php?news_id=20171103203856"
+      },
+      {
+        "label": "PR Times",
+        "url": "https://prtimes.jp/main/html/rd/p/000000086.000013593.html"
+      },
+      {
+        "label": "Kakaku",
+        "url": "https://kakaku.com/pc/mp3-player/itemlist.aspx?lid=sameseries_search&pdf_se=18"
       }
     ],
     "reviewNotes": "Official DP-S1A / PD-S10 manual used as primary provenance; prior review/retail links retained only as secondary regional/model context.",
     "sourceUrl": "https://assets.onkyo-av.com/product-manuals/29403325A_DP-S1A_PD-S10_top_180621_web_2022-11-02-194036_ntnc.pdf",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
-    "notes": "Verified - Official: Onkyo DP-S1A / Pioneer PD-S10 owner manual confirms 2.4in 240 x 320 capacitive touchscreen, 16GB internal memory, two microSD slots supporting up to 256GB each, IEEE 802.11 a/b/g/n wireless LAN, Bluetooth A2DP/AVRCP with SBC codec, FLAC/ALAC/WAV/AIFF/MP3/AAC/MQA playback up to 32-bit/192kHz and DSD/DSF/DSDIFF native 2.8MHz/5.6MHz, 3.5mm 3-conductor headphone output for 16-300 ohm loads, 2.5mm 4-conductor balanced headphone output for 32-600 ohm loads, 1 Micro-USB type-B port for charging/data transfer, Low/Normal/High gain switch, 15h continuous FLAC 24-bit/96kHz playback with screen/wireless off over 3.5mm, 135g weight, and 63 x 94 x 15 mm dimensions. Manual lists JEITA maximum effective output power as 75mW + 75mW unbalanced and 150mW + 150mW balanced at 32 ohms, 1kHz, 10% THD. USB DAC and line out are set false because the supplied official manual excerpt documents Micro-USB only for charging/data transfer and does not list USB DAC or line-out operation. DAC/amp chips remain from prior exact-model hardware provenance.",
-    "colors": [],
+    "notes": "Verified - Official: Onkyo DP-S1A / Pioneer PD-S10 owner manual confirms 2.4in 240 x 320 capacitive touchscreen, 16GB internal memory, two microSD slots supporting up to 256GB each, IEEE 802.11 a/b/g/n wireless LAN, Bluetooth A2DP/AVRCP with SBC codec, FLAC/ALAC/WAV/AIFF/MP3/AAC/MQA playback up to 32-bit/192kHz and DSD/DSF/DSDIFF native 2.8MHz/5.6MHz, 3.5mm 3-conductor headphone output for 16-300 ohm loads, 2.5mm 4-conductor balanced headphone output for 32-600 ohm loads, 1 Micro-USB type-B port for charging/data transfer, Low/Normal/High gain switch, 15h continuous FLAC 24-bit/96kHz playback with screen/wireless off over 3.5mm, 135g weight, and 63 x 94 x 15 mm dimensions. Manual lists JEITA maximum effective output power as 75mW + 75mW unbalanced and 150mW + 150mW balanced at 32 ohms, 1kHz, 10% THD. USB DAC and line out are set false because the supplied official manual excerpt documents Micro-USB only for charging/data transfer and does not list USB DAC or line-out operation. DAC/amp chips remain from prior exact-model hardware provenance. Additional sourced decisions: SoC and RAM remain blank because Onkyo does not identify the main processor/SoC or RAM in the DP-S1A manual and no reliable teardown confirms them. OS is Onkyo proprietary OS because DP-S1A uses Onkyo closed dedicated player firmware rather than Android, with only Onkyo-integrated services/features. Review33 launch reporting citing Onkyo Japanese product information lists a 1630mAh 3.8V battery and approximately 15h playback. Onkyo official launch release identifies model DP-S1A(B), Black color, and Bluetooth v4.0. Streaming Services lists integrated radiko.jp, TuneIn, and Deezer HiFi; Deezer HiFi was added as a dedicated built-in app and this is not an Android device with freely installable streaming apps.",
+    "colors": [
+      "Black"
+    ],
     "images": [
       {
         "url": "",
@@ -12268,14 +12408,14 @@
     "releaseYear": 2015,
     "status": "Discontinued",
     "msrpUsd": null,
-    "soc": "",
+    "soc": "Qualcomm Snapdragon 800 APQ8074",
     "os": "Android 5.1.1",
-    "ramGb": null,
+    "ramGb": 2,
     "storageGb": 32,
     "microSd": true,
-    "batteryMah": null,
-    "dac": "",
-    "amp": "",
+    "batteryMah": 1630,
+    "dac": "2 x ESS ES9018K2M",
+    "amp": "2 x ESS SABRE 9601K",
     "has25mm": true,
     "has35mm": true,
     "has44mm": false,
@@ -12305,7 +12445,14 @@
     "pcmMax": "24-bit/384kHz",
     "dsdMax": "DSD256",
     "mqa": true,
-    "streamingServices": [],
+    "streamingServices": [
+      "Spotify",
+      "TIDAL",
+      "Qobuz",
+      "Deezer",
+      "TuneIn",
+      "YouTube"
+    ],
     "wifiBands": "2.4GHz / 5GHz",
     "usbPort": "Micro USB-B",
     "batteryLifeHours": "16",
@@ -12316,16 +12463,35 @@
       {
         "label": "eBay",
         "url": "https://www.ebay.com/p/1850265778"
+      },
+      {
+        "label": "B&H Photo",
+        "url": "https://www.bhphotovideo.com/c/product/1248202-REG/onkyo_dp_x1_high_resolution_digital_audio.html"
       }
     ],
     "buyNotes": "",
-    "reviewLinks": [],
-    "reviewNotes": "No exact reputable review link was added because the review matches found during this pass were comparison or related-model coverage rather than a confidently exact DP-X1 review.",
+    "reviewLinks": [
+      {
+        "label": "What Hi-Fi",
+        "url": "https://www.whathifi.com/onkyo/dp-x1/review"
+      },
+      {
+        "label": "Son-Vidéo",
+        "url": "https://blog.son-video.com/en/2016/07/review-onkyo-dp-x1/"
+      },
+      {
+        "label": "Phile Web",
+        "url": "https://www.phileweb.com/news/d-av/201609/14/39574.html"
+      }
+    ],
+    "reviewNotes": "Exact DP-X1 reviews and launch/spec coverage added as secondary context.",
     "sourceUrl": "https://intl.onkyo.ru/downloads/product_info/pdf/dp-x1_leaflet.pdf",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
-    "notes": "Verified - Official leaflet: Onkyo DP-X1 leaflet verifies Android 5.1.1, 32GB internal memory including system area, two microSD SDXC slots supporting up to 200GB per slot, 4.7in 1280 x 720 capacitive touchscreen, Wi-Fi 802.11a/b/g/n/ac with Wi-Fi Direct/WPS, Bluetooth profiles A2DP/AVRCP/HSP/OPP/HID/PAN with SBC and aptX codecs, 3.5mm headphone output with line-out mode, 2.5mm 4-pole balanced headphone output, Micro USB-B / OTG output for power and data transfer, PCM up to 24-bit/384kHz, DSD up to 11.2MHz, MQA via free update, 75mW + 75mW unbalanced at 32 ohms, 150mW + 150mW balanced at 32 ohms, 20Hz-80kHz frequency response, low/normal/high gain, about 16h playback, 129.0 x 75.9 x 12.7 mm dimensions, and 203g weight. DAC, amp, SoC, RAM, and battery capacity remain blank because they are not listed in this leaflet.",
-    "colors": [],
+    "notes": "Verified - Official leaflet: Onkyo DP-X1 leaflet verifies Android 5.1.1, 32GB internal memory including system area, two microSD SDXC slots supporting up to 200GB per slot, 4.7in 1280 x 720 capacitive touchscreen, Wi-Fi 802.11a/b/g/n/ac with Wi-Fi Direct/WPS, Bluetooth profiles A2DP/AVRCP/HSP/OPP/HID/PAN with SBC and aptX codecs, 3.5mm headphone output with line-out mode, 2.5mm 4-pole balanced headphone output, Micro USB-B / OTG output for power and data transfer, PCM up to 24-bit/384kHz, DSD up to 11.2MHz, MQA via free update, 75mW + 75mW unbalanced at 32 ohms, 150mW + 150mW balanced at 32 ohms, 20Hz-80kHz frequency response, low/normal/high gain, about 16h playback, 129.0 x 75.9 x 12.7 mm dimensions, and 203g weight. Onkyo official brochure additionally specifies 2GB RAM and twin ESS SABRE ES9018K2M DACs with twin SABRE 9601K amplifiers. Additional sourced decisions: Phile Web platform specification identifies the 2.2GHz quad-core APU as Qualcomm Snapdragon 800 APQ8074; DP-X1 and DP-X1A share the same core platform and some reviews incorrectly call it Snapdragon 801. What Hi-Fi reports Onkyo published battery capacity as 1630mAh with about 16h 24-bit/96kHz FLAC playback. Standard DP-X1 color is Black; special collaboration editions are not treated as normal color variants. Bluetooth Version remains blank because Onkyo lists Bluetooth profiles/codecs but not the core version and no strong DP-X1-specific version source was accepted. Streaming Services lists compatible Android/Google Play services, not built-in integrations.",
+    "colors": [
+      "Black"
+    ],
     "images": [
       {
         "url": "",
@@ -12524,7 +12690,7 @@
     "status": "Discontinued",
     "msrpUsd": 599,
     "soc": "",
-    "os": "",
+    "os": "Custom Linux-based OS",
     "ramGb": null,
     "storageGb": 16,
     "microSd": true,
@@ -12535,7 +12701,7 @@
     "has35mm": true,
     "has44mm": false,
     "has635mm": false,
-    "sePowerMw": null,
+    "sePowerMw": 40,
     "balPowerMw": null,
     "bluetooth": false,
     "wifi": false,
@@ -12549,11 +12715,11 @@
     "coaxOut": false,
     "opticalOut": true,
     "balancedOutputType": "",
-    "sePowerLoad": "",
+    "sePowerLoad": "32 ohms",
     "balPowerLoad": "",
-    "displaySize": "",
+    "displaySize": "2.35in",
     "weight": "",
-    "dimensions": "",
+    "dimensions": "134 x 65.2 x 14.5 mm",
     "pcmMax": "24-bit/192kHz",
     "dsdMax": "DSD128",
     "mqa": false,
@@ -12561,19 +12727,28 @@
       "None"
     ],
     "wifiBands": "",
-    "usbPort": "",
+    "usbPort": "Micro-USB",
     "batteryLifeHours": "10",
     "storageExpansionMax": "256GB official via 2 slots",
     "officialUrl": "",
     "officialStoreUrl": "",
     "buyLinks": [],
     "buyNotes": "",
-    "reviewLinks": [],
+    "reviewLinks": [
+      {
+        "label": "AudioHead",
+        "url": "https://audio-head.com/questyle-qp1-digital-audio-player-ces-2015/"
+      },
+      {
+        "label": "Headphone Guru",
+        "url": "https://headphone.guru/questyle-qp1r-dap-a-hi-res-value-without-sonic-compromise/"
+      }
+    ],
     "reviewNotes": "QP1R reviews were rejected for this row because QP1 is a verified distinct non-R model. QP3R was not added because it was outside the requested list and no exact official product source was established in this pass.",
     "sourceUrl": "https://web.archive.org/web/20150624181005/http://en.questyleaudio.com/product-qp1",
     "sourceType": "Web",
     "verificationStatus": "Verified - Web",
-    "notes": "Verified - Archived Official: Questyle archived QP1 product page distinguishes QP1 standard version from QP1R reference version. It verifies QP1 has 16GB internal flash storage, dual microSD support up to 2 x 128GB, Cirrus Logic CS4398 DAC, patented Current Mode Amplification headphone amp with all-discrete pure Class A circuitry, 3.5mm headphone output, 3.5mm line out and optical output, PCM support up to 24-bit/192kHz for FLAC/WAV/ALAC/AIFF, native DSD64/DSD128, 0.0015% THD+N for QP1, 0.15 ohm output impedance, 3300mAh lithium-ion battery, 8-10h playback, aluminum case, Space Gray / Golden colors, and Foxconn manufacturing. QP1R-specific values such as 32GB storage, lower THD+N, different PCBA/software version, and 2h longer play time were not copied into this row.",
+    "notes": "Verified - Archived Official: Questyle archived QP1 product page distinguishes QP1 standard version from QP1R reference version. It verifies QP1 has 16GB internal flash storage, dual microSD support up to 2 x 128GB, Cirrus Logic CS4398 DAC, patented Current Mode Amplification headphone amp with all-discrete pure Class A circuitry, 3.5mm headphone output, 3.5mm line out and optical output, PCM support up to 24-bit/192kHz for FLAC/WAV/ALAC/AIFF, native DSD64/DSD128, 0.0015% THD+N for QP1, 0.15 ohm output impedance, 3300mAh lithium-ion battery, 8-10h playback, aluminum case, Space Gray / Golden colors, and Foxconn manufacturing. QP1R-specific values such as 32GB storage, lower THD+N, different PCBA/software version, and 2h longer play time were not copied into this row. Corrected QP1-only/shared-manual values: SoC and RAM remain blank because the combined QP1/QP1R manual does not identify processor/SoC or RAM and no reliable QP1-specific teardown confirms them. AudioHead CES 2015 coverage states the original QP1 operating system is built on Linux, so OS is Custom Linux-based OS. Questyle platform specifications list 40mW at 32 ohms in high gain as common amplifier output context. The combined QP1/QP1R manual specifies a 2.35in IPS LCD at 400 x 360, 134 x 65.2 x 14.5 mm chassis dimensions, and Micro-USB charging/data. Weight is left blank because contemporary published specifications leave weight unspecified and QP1R-oriented weight should not be assigned to QP1.",
     "colors": [
       "Space Gray",
       "Golden"
@@ -12987,13 +13162,13 @@
     "releaseYear": 2017,
     "status": "Discontinued",
     "msrpUsd": 149,
-    "soc": "",
-    "os": "",
+    "soc": "Ingenic XBurst1",
+    "os": "HiBy OS",
     "ramGb": null,
     "storageGb": null,
     "microSd": true,
     "batteryMah": 2500,
-    "dac": "",
+    "dac": "AKM AK4490EN",
     "amp": "",
     "has25mm": false,
     "has35mm": true,
@@ -13017,7 +13192,7 @@
     "balancedOutputType": "",
     "sePowerLoad": "32 ohms",
     "balPowerLoad": "",
-    "displaySize": "",
+    "displaySize": "2.4in",
     "weight": "~100g",
     "dimensions": "100 x 54 x 13 mm",
     "pcmMax": "32-bit/384kHz",
@@ -13027,7 +13202,7 @@
     "wifiBands": "",
     "usbPort": "USB-C",
     "batteryLifeHours": "12",
-    "storageExpansionMax": "",
+    "storageExpansionMax": "256GB",
     "officialUrl": "",
     "officialStoreUrl": "https://www.manualslib.com/manual/1276041/Cayin-N3.html?page=13#manual",
     "buyLinks": [],
@@ -13044,14 +13219,22 @@
       {
         "label": "Twister6",
         "url": "https://twister6.com/2017/04/15/cayin-n3/"
+      },
+      {
+        "label": "Headphone Zone",
+        "url": "https://www.headphonezone.in/products/cayin-n3"
       }
     ],
     "reviewNotes": "Exact-model reviews retained as secondary support for Bluetooth/USB-C context; structured audio, battery, dimensions, weight, and format fields now use the Manualslib manual source.",
     "sourceUrl": "https://www.manualslib.com/manual/1276041/Cayin-N3.html?page=13#manual",
     "sourceType": "Review",
     "verificationStatus": "Verified - Review",
-    "notes": "Verified - Manual: Manualslib Cayin N3 technical specifications verify 100 x 54 x 13 mm dimensions, about 100g weight, 8-300 ohm recommended headphone impedance, 2500mAh 3.8V lithium-ion polymer battery, about 12h duration, about 3h charging time with 1.5-2A charger, 3.5mm phones output rated at 130mW + 130mW at 32 ohms, 20Hz-20kHz / 5Hz-50kHz frequency response, 0.03% THD+N, 108dB dynamic range and SNR, output impedance <=1 ohm, 1.0V line out, coaxial output at 0.5Vp-p / 75 ohms, USB DAC with asynchronous USB Audio 2.0 Class, USB DAC DSD up to DSD128 native or DoP, USB DAC PCM up to 192kHz/24-bit, Windows/Mac OS X support for USB DAC and no iOS/Android USB DAC support, local DSF/DFF/ISO native hardware decode up to DSD256, local WAV/AIFF up to 384kHz/32-bit, FLAC/APE/ALAC up to 192kHz/24-bit, WMA up to 96kHz/24-bit, MP2/MP3/AAC/OGG up to 48kHz/16-bit, and no 64kHz sampling support. Bluetooth 4.0 aptX and USB-C are retained from exact-model review coverage because they were already present in this row and are not contradicted by the manual excerpt. The manual does not list Wi-Fi, cellular, balanced output, optical output, internal storage, RAM, SoC, MQA, or streaming support, so those fields remain blank or false as applicable.",
-    "colors": [],
+    "notes": "Verified - Manual: Manualslib Cayin N3 technical specifications verify 100 x 54 x 13 mm dimensions, about 100g weight, 8-300 ohm recommended headphone impedance, 2500mAh 3.8V lithium-ion polymer battery, about 12h duration, about 3h charging time with 1.5-2A charger, 3.5mm phones output rated at 130mW + 130mW at 32 ohms, 20Hz-20kHz / 5Hz-50kHz frequency response, 0.03% THD+N, 108dB dynamic range and SNR, output impedance <=1 ohm, 1.0V line out, coaxial output at 0.5Vp-p / 75 ohms, USB DAC with asynchronous USB Audio 2.0 Class, USB DAC DSD up to DSD128 native or DoP, USB DAC PCM up to 192kHz/24-bit, Windows/Mac OS X support for USB DAC and no iOS/Android USB DAC support, local DSF/DFF/ISO native hardware decode up to DSD256, local WAV/AIFF up to 384kHz/32-bit, FLAC/APE/ALAC up to 192kHz/24-bit, WMA up to 96kHz/24-bit, MP2/MP3/AAC/OGG up to 48kHz/16-bit, and no 64kHz sampling support. Bluetooth 4.0 aptX and USB-C are retained from exact-model review coverage because they were already present in this row and are not contradicted by the manual excerpt. The manual does not list Wi-Fi, cellular, balanced output, optical output, internal storage, RAM, SoC, MQA, or streaming support, so those fields remain blank or false as applicable. Additional sourced decisions: Headfonics identifies the original N3 as using an Ingenic XBurst1 SoC platform and HiBy custom embedded music interface rather than Android; no exact Ingenic chip model is published, so Ingenic XBurst1 is the structured SoC. RAM remains blank because the manual does not publish RAM and no reliable teardown confirms it. Headfonics identifies a single AKM AK4490EN DAC and a 2.4in TFT IPS display at 400 x 300. Headphone Zone retail evidence supports Black, Cyan, and Red color variants, with contemporary launch coverage separately supporting Red. Streaming Services remains blank because the closed HiBy-based OS has no Wi-Fi or installable streaming apps; HiByLink/Bluetooth phone playback is not onboard streaming-service support. Storage Expansion Max is set to 256GB based on original specification coverage.",
+    "colors": [
+      "Black",
+      "Cyan",
+      "Red"
+    ],
     "images": [
       {
         "url": "",
@@ -13071,13 +13254,13 @@
     "releaseYear": 2015,
     "status": "Discontinued",
     "msrpUsd": null,
-    "soc": "",
-    "os": "",
+    "soc": "Ingenic JZ4760B + SA2000",
+    "os": "Cayin proprietary OS",
     "ramGb": null,
     "storageGb": null,
     "microSd": true,
     "batteryMah": 4200,
-    "dac": "",
+    "dac": "AKM AK4490EQ",
     "amp": "",
     "has25mm": true,
     "has35mm": true,
@@ -13099,7 +13282,7 @@
     "balancedOutputType": "2.5mm",
     "sePowerLoad": "32 ohms",
     "balPowerLoad": "32 ohms",
-    "displaySize": "",
+    "displaySize": "2.4in",
     "weight": "195g",
     "dimensions": "111 x 64 x 16.4 mm",
     "pcmMax": "24-bit/192kHz",
@@ -13109,9 +13292,9 @@
       "None"
     ],
     "wifiBands": "",
-    "usbPort": "",
+    "usbPort": "USB 3.0 Micro-B",
     "batteryLifeHours": "9",
-    "storageExpansionMax": "",
+    "storageExpansionMax": "256GB",
     "officialUrl": "",
     "officialStoreUrl": "",
     "buyLinks": [
@@ -13129,14 +13312,24 @@
       {
         "label": "Headfonics",
         "url": "https://headfonics.com/the-n5-dap-by-cayin/"
+      },
+      {
+        "label": "AV Watch",
+        "url": "https://av.watch.impress.co.jp/docs/news/721332.html"
+      },
+      {
+        "label": "Drop",
+        "url": "https://drop.com/buy/cayin-n5-digital-audio-player/details"
       }
     ],
     "reviewNotes": "Original N5 official specifications were not available in the indexed Cayin archive found during this pass; structured fields use exact-model Head-Fi spec listing plus exact Headfonics review coverage.",
     "sourceUrl": "https://www.head-fi.org/showcase/cayin-n5-dsd-lossless-music-player.20879/reviews",
     "sourceType": "Review",
     "verificationStatus": "Verified - Review",
-    "notes": "Verified - Review/spec listing: exact Cayin N5 Head-Fi listing verifies 2.5mm balanced phones output at 300mW + 300mW at 32 ohms, 3.5mm single-ended phones output at 200mW + 200mW at 32 ohms, 20Hz-20kHz +/-0.2dB and 5Hz-50kHz +/-1dB frequency response, 0.006% headphone THD+N, 108dB dynamic range and SNR, 0.26 ohm SE output impedance, 2.0V line out at 10k ohms, 0.005% line-out THD+N, 4200mAh 3.7V lithium-polymer battery, about 9h playback, 3h charging with 2A charger, 16-300 ohm recommended headphone impedance, 111 x 64 x 16.4 mm dimensions, 195g net weight, native DSD64/128 for DSF/DFF/SACD ISO, local APE/FLAC/WAV/AIFF up to 24-bit/192kHz, ALAC/WMA/AAC/MP3 support, and USB DAC mode with DoP DSD64 and PCM up to 24-bit/192kHz. N5ii and N5iiS specifications were not merged into this row.",
-    "colors": [],
+    "notes": "Verified - Review/spec listing: exact Cayin N5 Head-Fi listing verifies 2.5mm balanced phones output at 300mW + 300mW at 32 ohms, 3.5mm single-ended phones output at 200mW + 200mW at 32 ohms, 20Hz-20kHz +/-0.2dB and 5Hz-50kHz +/-1dB frequency response, 0.006% headphone THD+N, 108dB dynamic range and SNR, 0.26 ohm SE output impedance, 2.0V line out at 10k ohms, 0.005% line-out THD+N, 4200mAh 3.7V lithium-polymer battery, about 9h playback, 3h charging with 2A charger, 16-300 ohm recommended headphone impedance, 111 x 64 x 16.4 mm dimensions, 195g net weight, native DSD64/128 for DSF/DFF/SACD ISO, local APE/FLAC/WAV/AIFF up to 24-bit/192kHz, ALAC/WMA/AAC/MP3 support, and USB DAC mode with DoP DSD64 and PCM up to 24-bit/192kHz. N5ii and N5iiS specifications were not merged into this row. Additional sourced decisions: Headfonics identifies the original N5 processing architecture as Ingenic JZ4760B with SA2000 processing, shared broadly with Cayin N6. OS is structured as Cayin proprietary OS because the original N5 uses Cayin upgradeable proprietary player software rather than Android or HiBy OS. RAM remains blank because Cayin did not publish capacity and no reliable teardown was found. AV Watch launch coverage identifies the DAC as AKM AK4490EQ. The original N5 is treated as Gold based on Headfonics comparison with later N5ii finishes; no reliable evidence of multiple original N5 retail colors was found. Headfonics documents a 2.4in 400 x 360 IPS TFT display and USB 3.0 Micro-B port with backward compatibility for ordinary Micro-USB 2.0 cables. Drop listing documents two microSD slots up to 128GB each, so Storage Expansion Max is 256GB total.",
+    "colors": [
+      "Gold"
+    ],
     "images": [
       {
         "url": "",
@@ -13899,7 +14092,13 @@
     "has4g": false,
     "has5g": false,
     "bluetoothVersion": "5.0",
-    "bluetoothCodecs": [],
+    "bluetoothCodecs": [
+      "SBC",
+      "AAC",
+      "aptX",
+      "aptX HD",
+      "LDAC"
+    ],
     "usbDac": true,
     "lineOut": true,
     "coaxOut": true,
@@ -13908,16 +14107,24 @@
     "sePowerLoad": "",
     "balPowerLoad": "",
     "displaySize": "5.0in",
-    "weight": "",
-    "dimensions": "",
+    "weight": "820g",
+    "dimensions": "145 x 85 x 28 mm",
     "pcmMax": "32-bit/768kHz",
     "dsdMax": "DSD512",
     "mqa": true,
-    "streamingServices": [],
+    "streamingServices": [
+      "Spotify",
+      "TIDAL",
+      "Qobuz",
+      "Apple Music",
+      "Amazon Music",
+      "Deezer",
+      "YouTube Music"
+    ],
     "wifiBands": "2.4GHz / 5GHz",
     "usbPort": "USB-C 3.1",
     "batteryLifeHours": "16",
-    "storageExpansionMax": "",
+    "storageExpansionMax": "2TB",
     "officialUrl": "https://www.ibasso.com/uploadfiles/download/DX300Maxusermanual.pdf",
     "officialStoreUrl": "",
     "buyLinks": [],
@@ -13930,14 +14137,21 @@
       {
         "label": "Twister6",
         "url": "https://twister6.com/2021/10/06/ibasso-dx300-max/"
+      },
+      {
+        "label": "Price.com.hk",
+        "url": "https://www.price.com.hk/product.php?p=526370"
       }
     ],
     "reviewNotes": "Official manual/spec screenshots provided by maintainer; exact-model Headfonics and Twister6 reviews retained only as secondary context.",
     "sourceUrl": "https://www.ibasso.com/uploadfiles/download/DX300Maxusermanual.pdf",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
-    "notes": "Verified - Official: iBasso DX300 MAX user manual confirms separate digital and analog power sections, +/-8.4V analog battery pack, optimized Super Class A discrete amp circuit based on AMP8, dual AK4499EQ DAC chips, Qualcomm Snapdragon 660 SoC, 6GB LPDDR4X RAM, 128GB ROM, Android/Mango OS platform context, 5.0in 1080 x 1920 IPS touchscreen, microSD SDXC/SDHC support, 2.4GHz/5GHz Wi-Fi, Bluetooth 5.0, USB 3.1 SuperSpeed transfer, USB DAC up to 32-bit/384kHz and DoP DSD128, USB digital output up to PCM 32-bit/384kHz/native DSD256/DoP DSD128, mini coaxial output up to 24-bit/384kHz and DoP DSD128, 3.5mm single-ended headphone output, 4.4mm balanced headphone output, and 4.4mm balanced line out. Manual main features confirm bit-perfect playback up to 32-bit/768kHz, native DSD512, MQA format support, and M3U playlists. Official spec screenshots confirm 3.5mm headphone output up to 4.4Vrms no-load / 4.0Vrms @32 ohms, 4.4mm headphone output up to 8.8Vrms no-load / 6.5Vrms @32 ohms, 4.4mm line out 4.4Vrms no-load, analog section charging 2h, digital section charging 3h, and average playback of 16h Standard / 11h Ultimate. Structured mW fields remain blank because the official manual publishes Vrms rather than mW.",
-    "colors": [],
+    "notes": "Verified - Official: iBasso DX300 MAX user manual confirms separate digital and analog power sections, +/-8.4V analog battery pack, optimized Super Class A discrete amp circuit based on AMP8, dual AK4499EQ DAC chips, Qualcomm Snapdragon 660 SoC, 6GB LPDDR4X RAM, 128GB ROM, Android/Mango OS platform context, 5.0in 1080 x 1920 IPS touchscreen, microSD SDXC/SDHC support, 2.4GHz/5GHz Wi-Fi, Bluetooth 5.0, USB 3.1 SuperSpeed transfer, USB DAC up to 32-bit/384kHz and DoP DSD128, USB digital output up to PCM 32-bit/384kHz/native DSD256/DoP DSD128, mini coaxial output up to 24-bit/384kHz and DoP DSD128, 3.5mm single-ended headphone output, 4.4mm balanced headphone output, and 4.4mm balanced line out. Manual main features confirm bit-perfect playback up to 32-bit/768kHz, native DSD512, MQA format support, and M3U playlists. Official spec screenshots confirm 3.5mm headphone output up to 4.4Vrms no-load / 4.0Vrms @32 ohms, 4.4mm headphone output up to 8.8Vrms no-load / 6.5Vrms @32 ohms, 4.4mm line out 4.4Vrms no-load, analog section charging 2h, digital section charging 3h, and average playback of 16h Standard / 11h Ultimate. Structured mW fields remain blank because the official manual publishes Vrms rather than mW. Corrected DX300 MAX treatment: Battery mAh remains blank because the player uses separate batteries, 6200mAh for the digital section plus 4 x 900mAh for the analog section; entering 9800 would misrepresent the architecture. Headfonics describes the standard DX300 MAX as the stainless-steel version with an aged stainless-steel body and matte cadet-grey rear panel, distinct from the separate DX300 MAX Ti variant. Headfonics documents Bluetooth codecs SBC / AAC / aptX / aptX HD / LDAC, with LDAC transmission and receiver playback limited to SBC/AAC. Headfonics gives approximate standard stainless-steel weight as 820g. Twister6 measured approximate dimensions of 145 x 85 x 28 mm. Android 9 supports third-party app installation through APKPure, CoolAPK, or downloaded APK files, so listed streaming services are compatible Android apps rather than guaranteed preinstalled apps. Price.com.hk exact-model retailer specification lists microSD expansion up to 2TB; official manual confirms SDHC/SDXC but does not publish a numerical maximum.",
+    "colors": [
+      "Stainless Steel",
+      "Cadet Grey"
+    ],
     "images": [
       {
         "url": "",
@@ -13976,8 +14190,14 @@
     "cellular": false,
     "has4g": false,
     "has5g": false,
-    "bluetoothVersion": "",
-    "bluetoothCodecs": [],
+    "bluetoothVersion": "5.0",
+    "bluetoothCodecs": [
+      "SBC",
+      "AAC",
+      "aptX",
+      "aptX HD",
+      "LDAC"
+    ],
     "usbDac": true,
     "lineOut": true,
     "coaxOut": true,
@@ -13991,14 +14211,28 @@
     "pcmMax": "32-bit/768kHz",
     "dsdMax": "DSD512",
     "mqa": true,
-    "streamingServices": [],
-    "wifiBands": "",
+    "streamingServices": [
+      "TIDAL",
+      "Qobuz",
+      "Spotify",
+      "Apple Music",
+      "Amazon Music",
+      "Deezer",
+      "YouTube Music",
+      "Roon ARC"
+    ],
+    "wifiBands": "2.4GHz / 5GHz",
     "usbPort": "USB-C",
     "batteryLifeHours": "17",
-    "storageExpansionMax": "",
+    "storageExpansionMax": "2TB",
     "officialUrl": "https://www.ibasso.com/uploadfiles/download/DX320MAXusermanual.pdf",
     "officialStoreUrl": "https://ibasso.com/product/dx320max/",
-    "buyLinks": [],
+    "buyLinks": [
+      {
+        "label": "E1 Personal Audio Singapore",
+        "url": "https://sg.e1personalaudio.com/products/ibasso-dx320-max-ti-digital-audio-player"
+      }
+    ],
     "buyNotes": "",
     "reviewLinks": [
       {
@@ -14014,8 +14248,10 @@
     "sourceUrl": "https://www.ibasso.com/uploadfiles/download/DX320MAXusermanual.pdf",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
-    "notes": "Verified - Official iBasso DX320MAX product page and user manual. Ti naming retained because official/manual naming is DX320MAX while iBasso launch/product context and exact-model reviews identify this release as the titanium MAX edition; not merged with the regular DX320. Official DX320MAX user manual confirms quad BD34301EKV DACs, PCM 32-bit/768kHz, native DSD512, 5.0in IPS display, MQA format support, aerospace titanium case, 17h Standard / 13h Ultimate playback, 620g weight, and 146 x 86 x 30 mm dimensions. Official output specs list 4.4mm balanced phone output at 9.0Vrms no load / 9.0Vrms at 300 ohms / 6.0Vrms at 32 ohms, 10Hz-40kHz +/-0.3dB frequency response, 125dB S/N, 125dB dynamic range, THD+N of -114dB no load / -113dB at 300 ohms / -102dB at 32 ohms, and -123dB crosstalk. 3.5mm single-ended phone output is 4.5Vrms no load / 4.5Vrms at 300 ohms / 4.0Vrms at 32 ohms, 10Hz-40kHz +/-0.3dB, 122dB S/N, 122dB dynamic range, THD+N of -112dB no load / -109dB at 300 ohms / -101dB at 32 ohms, and -117dB crosstalk. 4.4mm balanced line out is 4.5Vrms no load with 125dB S/N and dynamic range, -112dB THD+N, and -102dB crosstalk; 3.5mm single-ended line out is 2.25Vrms no load with 122dB S/N and dynamic range, -107dB THD+N, and -100dB crosstalk. Charging time is 2h digital section and 3h analog section. Structured runtime uses the maximum 17h Standard mode value. Power is published in Vrms/dB rather than mW, so structured mW fields remain blank.",
-    "colors": [],
+    "notes": "Verified - Official iBasso DX320MAX product page and user manual. Ti naming retained because official/manual naming is DX320MAX while iBasso launch/product context and exact-model reviews identify this release as the titanium MAX edition; not merged with the regular DX320. Official DX320MAX user manual confirms quad BD34301EKV DACs, PCM 32-bit/768kHz, native DSD512, 5.0in IPS display, MQA format support, aerospace titanium case, 17h Standard / 13h Ultimate playback, 620g weight, and 146 x 86 x 30 mm dimensions. Official output specs list 4.4mm balanced phone output at 9.0Vrms no load / 9.0Vrms at 300 ohms / 6.0Vrms at 32 ohms, 10Hz-40kHz +/-0.3dB frequency response, 125dB S/N, 125dB dynamic range, THD+N of -114dB no load / -113dB at 300 ohms / -102dB at 32 ohms, and -123dB crosstalk. 3.5mm single-ended phone output is 4.5Vrms no load / 4.5Vrms at 300 ohms / 4.0Vrms at 32 ohms, 10Hz-40kHz +/-0.3dB, 122dB S/N, 122dB dynamic range, THD+N of -112dB no load / -109dB at 300 ohms / -101dB at 32 ohms, and -117dB crosstalk. 4.4mm balanced line out is 4.5Vrms no load with 125dB S/N and dynamic range, -112dB THD+N, and -102dB crosstalk; 3.5mm single-ended line out is 2.25Vrms no load with 122dB S/N and dynamic range, -107dB THD+N, and -100dB crosstalk. Charging time is 2h digital section and 3h analog section. Structured runtime uses the maximum 17h Standard mode value. Power is published in Vrms/dB rather than mW, so structured mW fields remain blank. Corrected DX320MAX Ti treatment: the official DX320MAX manual is valid for the titanium limited-edition player because it identifies an aerospace titanium case and individually numbered nameplate, even though iBasso often shortens page/manual/firmware labels to DX320MAX. Battery mAh remains blank because the design uses separate batteries rather than one comparable numeric capacity: 6200mAh digital section plus 4 x 900mAh analog section. Titanium is recorded as the finish/material designation. Official manual lists Bluetooth 5.0 and dual-band 2.4GHz / 5GHz Wi-Fi. Twister6 exact-model review identifies Bluetooth codecs SBC / AAC / aptX / aptX HD / LDAC and confirms Android streaming app use including TIDAL and Roon ARC; other listed services are compatible Android services rather than guaranteed preinstalled apps. E1 Personal Audio exact-model listing states microSD SDHC/SDXC support up to 2TB; official manual confirms SDHC/SDXC but does not publish a numeric maximum.",
+    "colors": [
+      "Titanium"
+    ],
     "images": [
       {
         "url": "",
@@ -14035,33 +14271,35 @@
     "releaseYear": 2013,
     "status": "Discontinued",
     "msrpUsd": null,
-    "soc": "",
+    "soc": "Texas Instruments OMAP4430",
     "os": "Android 4.1",
-    "ramGb": null,
+    "ramGb": 1,
     "storageGb": 128,
     "microSd": false,
-    "batteryMah": null,
-    "dac": "",
+    "batteryMah": 1000,
+    "dac": "S-Master HX",
     "amp": "",
     "has25mm": false,
     "has35mm": true,
     "has44mm": false,
     "has635mm": false,
-    "sePowerMw": null,
+    "sePowerMw": 15,
     "balPowerMw": null,
     "bluetooth": true,
     "wifi": true,
     "cellular": false,
     "has4g": false,
     "has5g": false,
-    "bluetoothVersion": "",
-    "bluetoothCodecs": [],
+    "bluetoothVersion": "3.0",
+    "bluetoothCodecs": [
+      "SBC"
+    ],
     "usbDac": false,
     "lineOut": false,
     "coaxOut": false,
     "opticalOut": false,
     "balancedOutputType": "",
-    "sePowerLoad": "32 ohms",
+    "sePowerLoad": "16 ohms",
     "balPowerLoad": "",
     "displaySize": "4.0in",
     "weight": "139g",
@@ -14069,8 +14307,13 @@
     "pcmMax": "",
     "dsdMax": "FALSE",
     "mqa": false,
-    "streamingServices": [],
-    "wifiBands": "",
+    "streamingServices": [
+      "Google Play Music",
+      "Spotify",
+      "Pandora",
+      "Qobuz"
+    ],
+    "wifiBands": "2.4GHz / 5GHz",
     "usbPort": "WM-PORT / USB",
     "batteryLifeHours": "32",
     "storageExpansionMax": "None",
@@ -14086,14 +14329,28 @@
       {
         "label": "StereoNET",
         "url": "https://www.stereonet.com/reviews/sony-nwz-zx1-walkman"
+      },
+      {
+        "label": "Darko.Audio",
+        "url": "https://darko.audio/2014/11/around-the-world-with-the-sony-nwz-zx1-walkman/"
+      },
+      {
+        "label": "ePrice.HK",
+        "url": "https://www.eprice.com.hk/tech/talk/1142/2892/1"
+      },
+      {
+        "label": "YugaTech",
+        "url": "https://www.yugatech.com/spec/sony-nwz-zx1-walkman/"
       }
     ],
     "reviewNotes": "",
     "sourceUrl": "https://www.sony.com.ph/electronics/support/digital-music-players-nw-nwz-zx-series/nwz-zx1/specifications",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
-    "notes": "Verified - Official: Sony PH NWZ-ZX1 specifications confirm Android 4.1, 128GB storage, no memory-card slot listed, 4.0in 854 x 480 FWVGA TFT touchscreen, 60 x 122 x 13 mm dimensions, 139g weight, 3h full charge time, WM-PORT and stereo mini jack terminals, Wi-Fi/Bluetooth/NFC wireless capabilities, USB connection, MP3/WMA/AAC/Linear PCM playback, MPEG4/AVC/WMV9 video playback, JPEG/PNG photo playback, and 32h MP3 / 16h Hi-Res Audio battery life. Model is officially NWZ-ZX1 in Sony support; normalized to NW-ZX1 to match database naming style. Battery Life Hours uses the highest official local playback figure for filtering. No 2.5mm, 4.4mm, 6.35mm, microSD, USB DAC, line out, coax out, optical out, cellular, 4G, 5G, DSD, or MQA support is listed in the official specifications.",
-    "colors": [],
+    "notes": "Verified - Official: Sony PH NWZ-ZX1 specifications confirm Android 4.1, 128GB storage, no memory-card slot listed, 4.0in 854 x 480 FWVGA TFT touchscreen, 60 x 122 x 13 mm dimensions, 139g weight, 3h full charge time, WM-PORT and stereo mini jack terminals, Wi-Fi/Bluetooth/NFC wireless capabilities, USB connection, MP3/WMA/AAC/Linear PCM playback, MPEG4/AVC/WMV9 video playback, JPEG/PNG photo playback, and 32h MP3 / 16h Hi-Res Audio battery life. Model is officially NWZ-ZX1 in Sony support; normalized to NW-ZX1 to match database naming style. Battery Life Hours uses the highest official local playback figure for filtering. No 2.5mm, 4.4mm, 6.35mm, microSD, USB DAC, line out, coax out, optical out, cellular, 4G, 5G, DSD, or MQA support is listed in the official specifications. Additional sourced details: Sony China identifies an OMAP 4 Cortex-A9 1.0GHz dual-core processor; structured SoC uses Texas Instruments OMAP4430 based on device-database identification of that OMAP 4 part. Contemporary ePrice.HK hardware coverage lists 1GB RAM. A cellePhone replacement listing for original battery US453759 specifies 1000mAh; higher 1300mAh third-party replacement listings are treated as upgraded replacement capacity, not original capacity. Sony Hong Kong launch material identifies S-Master HX full-digital amplifier architecture, used here as the DAC/amp architecture rather than a third-party DAC chip. Sony Japan archive specifications list 15 + 15mW headphone output at 16 ohms. Retail model NW-ZX1/S supports Silver color. Sony Help Guide specifies Bluetooth 3.0; Bluetooth codec is kept to SBC because reliable Sony documentation does not confirm aptX/LDAC for NW-ZX1. Darko.Audio testing confirms Google Play Music, Spotify, Pandora, and Qobuz were usable via Android apps. Wi-Fi bands are structured as 2.4GHz / 5GHz based on 802.11a/b/g/n support.",
+    "colors": [
+      "Silver"
+    ],
     "images": [
       {
         "url": "",
@@ -14113,48 +14370,59 @@
     "releaseYear": 2015,
     "status": "Discontinued",
     "msrpUsd": null,
-    "soc": "",
-    "os": "Android platform",
-    "ramGb": null,
+    "soc": "Texas Instruments OMAP4430",
+    "os": "Android 4.2.2 Jelly Bean",
+    "ramGb": 1,
     "storageGb": 128,
     "microSd": true,
-    "batteryMah": null,
-    "dac": "",
+    "batteryMah": 1860,
+    "dac": "S-Master HX",
     "amp": "",
     "has25mm": false,
     "has35mm": true,
     "has44mm": false,
     "has635mm": false,
-    "sePowerMw": null,
+    "sePowerMw": 15,
     "balPowerMw": null,
     "bluetooth": true,
     "wifi": true,
     "cellular": false,
     "has4g": false,
     "has5g": false,
-    "bluetoothVersion": "",
-    "bluetoothCodecs": [],
+    "bluetoothVersion": "3.0",
+    "bluetoothCodecs": [
+      "SBC",
+      "LDAC"
+    ],
     "usbDac": false,
     "lineOut": false,
     "coaxOut": false,
     "opticalOut": false,
     "balancedOutputType": "",
-    "sePowerLoad": "32 ohms",
+    "sePowerLoad": "16 ohms",
     "balPowerLoad": "",
     "displaySize": "4.0in",
     "weight": "235g",
-    "dimensions": "6.5 x 13.1 x 1.8 cm",
+    "dimensions": "131.2 x 65.1 x 18.5 mm",
     "pcmMax": "",
     "dsdMax": "DSD",
     "mqa": false,
-    "streamingServices": [],
-    "wifiBands": "",
+    "streamingServices": [
+      "Spotify",
+      "Tidal"
+    ],
+    "wifiBands": "2.4GHz / 5GHz",
     "usbPort": "WM-PORT / USB 2.0",
     "batteryLifeHours": "60",
     "storageExpansionMax": "",
     "officialUrl": "https://www.sony.com.ph/electronics/support/digital-music-players-nw-nwz-zx-series/nw-zx2/specifications",
     "officialStoreUrl": "https://www.sony.com.ph/electronics/support/digital-music-players-nw-nwz-zx-series/nw-zx2/specifications",
-    "buyLinks": [],
+    "buyLinks": [
+      {
+        "label": "B&H Photo",
+        "url": "https://www.bhphotovideo.com/c/product/1126542-REG/sony_nwzx2blk_hi_res_digital_music_walkman_128gb.html"
+      }
+    ],
     "buyNotes": "",
     "reviewLinks": [
       {
@@ -14164,14 +14432,28 @@
       {
         "label": "The Absolute Sound",
         "url": "https://www.theabsolutesound.com/articles/sony-nw-zx2-digital-media-player/"
+      },
+      {
+        "label": "Frandroid",
+        "url": "https://www.frandroid.com/marques/sony/341044_test-du-sony-nw-zx2"
+      },
+      {
+        "label": "Singapore HiFi",
+        "url": "https://singaporehifi.blogspot.com/2015/03/sony-walkman-nw-zx2.html"
+      },
+      {
+        "label": "Enjoy the Music",
+        "url": "https://www.enjoythemusic.com/magazine/equipment/0315/Interview_Yoshioka_Sony_NW_ZX2.htm"
       }
     ],
     "reviewNotes": "",
     "sourceUrl": "https://www.sony.com.ph/electronics/support/digital-music-players-nw-nwz-zx-series/nw-zx2/specifications",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
-    "notes": "Verified - Official: Sony NW-ZX2 specifications confirm Android platform, 128GB memory, microSD slot, WM-PORT 22-pin connection, stereo mini jack, Wi-Fi, Bluetooth, NFC, Hi-Speed USB 2.0 via WM-PORT, 4.0in 854 x 480 FWVGA TFT touchscreen, 6.5 x 13.1 x 1.8 cm dimensions, 235g weight, 4.5h full charge time, 60h MP3 and 33h Hi-Res Audio continuous playback, and audio playback support for MP3, WMA, AAC, HE-AAC, FLAC, ALAC, AIFF, Linear PCM, and DSD. Battery Life Hours uses the highest official local playback figure for filtering; Hi-Res Audio runtime remains in Notes. No balanced output, line out, coax out, optical out, or USB DAC mode is listed in the official terminals/specifications.",
-    "colors": [],
+    "notes": "Verified - Official: Sony NW-ZX2 specifications confirm Android platform, 128GB memory, microSD slot, WM-PORT 22-pin connection, stereo mini jack, Wi-Fi, Bluetooth, NFC, Hi-Speed USB 2.0 via WM-PORT, 4.0in 854 x 480 FWVGA TFT touchscreen, 6.5 x 13.1 x 1.8 cm dimensions, 235g weight, 4.5h full charge time, 60h MP3 and 33h Hi-Res Audio continuous playback, and audio playback support for MP3, WMA, AAC, HE-AAC, FLAC, ALAC, AIFF, Linear PCM, and DSD. Battery Life Hours uses the highest official local playback figure for filtering; Hi-Res Audio runtime remains in Notes. No balanced output, line out, coax out, optical out, or USB DAC mode is listed in the official terminals/specifications. Additional sourced details: Frandroid exact-model technical review identifies the processor as Texas Instruments OMAP4430 and lists 1GB RAM. Teardown-based reporting from Singapore HiFi identifies an 1860mAh internal battery. B&H retail material identifies Sony S-Master HX digital amplifier architecture and the production color as Black. Enjoy the Music interview context states 15mW per channel, treated as 15mW + 15mW at 16 ohms. Sony Help Guide lists Bluetooth specification version 3.0, SBC and LDAC playback settings, IEEE 802.11a/b/g/n Wi-Fi, and both 2.4GHz and 5GHz Wi-Fi operation. What Hi-Fi confirms Spotify and Tidal Android apps could be installed. Storage Expansion Max is left blank because Sony confirms microSDXC 64GB or more but does not publish a maximum supported capacity.",
+    "colors": [
+      "Black"
+    ],
     "images": [
       {
         "url": "",
@@ -14272,7 +14554,7 @@
     "storageGb": 64,
     "microSd": true,
     "batteryMah": null,
-    "dac": "",
+    "dac": "S-Master HX",
     "amp": "",
     "has25mm": false,
     "has35mm": true,
@@ -14307,7 +14589,7 @@
     "streamingServices": [],
     "wifiBands": "",
     "usbPort": "WM-PORT / USB 2.0",
-    "batteryLifeHours": "",
+    "batteryLifeHours": "30",
     "storageExpansionMax": "microSDXC",
     "officialUrl": "https://www.sony.com.ph/electronics/support/digital-music-players-nw-nwz-zx-series/nw-zx300/specifications",
     "officialStoreUrl": "https://www.sony.com.ph/electronics/support/digital-music-players-nw-nwz-zx-series/nw-zx300/specifications",
@@ -14323,8 +14605,11 @@
     "sourceUrl": "https://www.sony.com.ph/electronics/support/digital-music-players-nw-nwz-zx-series/nw-zx300/specifications",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
-    "notes": "Verified - Official: Sony PH NW-ZX300 specifications confirm 64GB memory, approx. 57.7 x 120.4 x 14.9 mm dimensions, approx. 157g weight, approx. 5.5h full charge time, Sony original OS, 3.1in / 7.8cm WVGA 800 x 480 TFT color capacitive touchscreen, stereo mini jack, balanced standard jack, WM-PORT 22-pin terminal, microSD/microSDHC/microSDXC support, Bluetooth 4.2 with A2DP/AVRCP profiles and SBC/LDAC/aptX codecs, NFC, High-Speed USB 2.0, 50mW + 50mW stereo mini output and 200mW + 200mW balanced output at JEITA 16 ohms/high gain, and audio playback for MP3, WMA, FLAC up to 24-bit/384kHz, WAV up to 32-bit/384kHz, AAC/HE-AAC, ALAC up to 24-bit/384kHz, AIFF up to 32-bit/384kHz, DSD 2.8224/5.6448/11.2896MHz, and APE up to 24-bit/192kHz. NW-ZX300A is a 16GB regional/storage variant; no separate row added because scope requested NW-ZX300 and the database avoids redundant storage-only rows unless specifically needed. Official page does not list Wi-Fi, cellular, USB DAC, line out, coax out, optical out, MQA, or a battery-life table, so those structured fields are blank or false as applicable.",
-    "colors": [],
+    "notes": "Verified - Official: Sony PH NW-ZX300 specifications confirm 64GB memory, approx. 57.7 x 120.4 x 14.9 mm dimensions, approx. 157g weight, approx. 5.5h full charge time, Sony original OS, 3.1in / 7.8cm WVGA 800 x 480 TFT color capacitive touchscreen, stereo mini jack, balanced standard jack, WM-PORT 22-pin terminal, microSD/microSDHC/microSDXC support, Bluetooth 4.2 with A2DP/AVRCP profiles and SBC/LDAC/aptX codecs, NFC, High-Speed USB 2.0, 50mW + 50mW stereo mini output and 200mW + 200mW balanced output at JEITA 16 ohms/high gain, and audio playback for MP3, WMA, FLAC up to 24-bit/384kHz, WAV up to 32-bit/384kHz, AAC/HE-AAC, ALAC up to 24-bit/384kHz, AIFF up to 32-bit/384kHz, DSD 2.8224/5.6448/11.2896MHz, and APE up to 24-bit/192kHz. NW-ZX300A is a 16GB regional/storage variant; no separate row added because scope requested NW-ZX300 and the database avoids redundant storage-only rows unless specifically needed. Official page does not list Wi-Fi, cellular, USB DAC, line out, coax out, optical out, MQA, or a battery-life table, so those structured fields are blank or false as applicable. Additional sourced decisions: SoC, RAM, and Battery mAh remain blank because Sony does not publish processor/SoC, RAM, or battery capacity and no reliable teardown confirms them. Sony official materials identify S-Master HX full-digital amplifier architecture, recorded as the DAC/amp architecture rather than a third-party DAC chip. Sony official product materials show Black and Silver finishes, with possible market variation. Streaming Services remains blank because NW-ZX300 uses Sony proprietary OS with no Wi-Fi or installable apps; Bluetooth playback from another source is not onboard streaming. Sony Help Guide battery table rates up to 30h for 128kbps MP3 through 3.5mm output; balanced MP3 is 25h and hi-res FLAC ranges about 20-26h depending on output/format.",
+    "colors": [
+      "Black",
+      "Silver"
+    ],
     "images": [
       {
         "url": "",
@@ -14350,14 +14635,14 @@
     "storageGb": 16,
     "microSd": true,
     "batteryMah": null,
-    "dac": "",
+    "dac": "S-Master HX",
     "amp": "",
     "has25mm": false,
     "has35mm": true,
     "has44mm": true,
     "has635mm": false,
-    "sePowerMw": null,
-    "balPowerMw": null,
+    "sePowerMw": 50,
+    "balPowerMw": 200,
     "bluetooth": true,
     "wifi": true,
     "cellular": false,
@@ -14376,30 +14661,45 @@
     "coaxOut": false,
     "opticalOut": false,
     "balancedOutputType": "4.4mm",
-    "sePowerLoad": "",
-    "balPowerLoad": "",
+    "sePowerLoad": "16 ohms",
+    "balPowerLoad": "16 ohms",
     "displaySize": "3.6in",
     "weight": "164g",
     "dimensions": "57.9 x 122.6 x 14.8 mm",
     "pcmMax": "32-bit/384kHz",
     "dsdMax": "DSD256",
     "mqa": true,
-    "streamingServices": [],
+    "streamingServices": [
+      "Amazon Music",
+      "Apple Music",
+      "Spotify",
+      "YouTube Music",
+      "mora qualitas",
+      "Deezer",
+      "nugs.net"
+    ],
     "wifiBands": "2.4GHz / 5GHz",
     "usbPort": "USB-C / USB 2.0",
     "batteryLifeHours": "20",
     "storageExpansionMax": "microSDXC",
     "officialUrl": "https://manuals.plus/m/4aad44ff1644aa7f7ca545ad7d32de97a11fe013a1ec7b25ff4a8ca5c9b6cf2f",
     "officialStoreUrl": "https://manuals.plus/m/4aad44ff1644aa7f7ca545ad7d32de97a11fe013a1ec7b25ff4a8ca5c9b6cf2f",
-    "buyLinks": [],
+    "buyLinks": [
+      {
+        "label": "eBay",
+        "url": "https://www.ebay.com/itm/298266901872"
+      }
+    ],
     "buyNotes": "",
     "reviewLinks": [],
-    "reviewNotes": "No exact reputable NW-ZX505 review confidently verified; NW-ZX507 and generic ZX500-series reviews were rejected as variant-ambiguous.",
+    "reviewNotes": "No exact reputable NW-ZX505 review confidently verified; NW-ZX507 and generic ZX500-series reviews were rejected as variant-ambiguous. ZX500-series official/service material was used only where model-family values are shared or Sony does not split them by storage variant.",
     "sourceUrl": "https://manuals.plus/m/4aad44ff1644aa7f7ca545ad7d32de97a11fe013a1ec7b25ff4a8ca5c9b6cf2f",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
-    "notes": "Verified - Official Manual: Sony NW-ZX500 manual/specification source confirms NW-ZX505 as the 16GB model and NW-ZX507 as the 64GB model. NW-ZX505 details include Android 9 series context, 3.6in / 9.1cm HD 1280 x 720 TFT color touch display, USB Type-C USB 2.0, stereo mini jack, balanced standard jack, microSD/microSDHC/microSDXC support, IEEE 802.11a/b/g/n/ac Wi-Fi on 2.4GHz/5GHz with WEP/WPA/WPA2, Bluetooth 5.0 on 2.4GHz with A2DP/AVRCP/SPP/OPP/DID profiles and SBC/LDAC/aptX/aptX HD/AAC transmission codecs, active NFC reader/writer, accelerometer, monaural microphone, built-in rechargeable lithium-ion battery, about 6.5h USB charging time, 57.9 x 122.6 x 14.8 mm dimensions including projections, 57.3 x 121.8 x 14.8 mm excluding projections, and about 164g mass. Capacity is 16GB with about 6.26GB available for other contents. Supported formats include MP3, WMA, FLAC up to 24-bit/384kHz, WAV up to 32-bit/384kHz float/integer, AAC/HE-AAC, ALAC up to 24-bit/384kHz, AIFF up to 32-bit/384kHz, DSD 2.8224/5.6448/11.2896MHz, APE up to 24-bit/192kHz, and MQA. Battery life varies by region and jack: non-Europe stereo mini jack up to 20h MP3/AAC/WAV/FLAC 44.1kHz, 18h FLAC 96kHz/24-bit, 16h FLAC 192kHz/24-bit, 10h DSD64, 8h DSD128, 6.5h DSD256; balanced standard jack up to 19h MP3/AAC/WAV, 18h FLAC 44.1kHz, 17h FLAC 96kHz/24-bit, 15h FLAC 192kHz/24-bit, 9h DSD64, 7.5h DSD128, and 4h DSD256. Bluetooth playback examples are about 11h MP3 over SBC-connection preference and 8.5h FLAC 96kHz/24-bit over LDAC-connection preference. No official mW output power is listed in this manual/source.",
-    "colors": [],
+    "notes": "Verified - Official Manual: Sony NW-ZX500 manual/specification source confirms NW-ZX505 as the 16GB model and NW-ZX507 as the 64GB model. NW-ZX505 details include Android 9 series context, 3.6in / 9.1cm HD 1280 x 720 TFT color touch display, USB Type-C USB 2.0, stereo mini jack, balanced standard jack, microSD/microSDHC/microSDXC support, IEEE 802.11a/b/g/n/ac Wi-Fi on 2.4GHz/5GHz with WEP/WPA/WPA2, Bluetooth 5.0 on 2.4GHz with A2DP/AVRCP/SPP/OPP/DID profiles and SBC/LDAC/aptX/aptX HD/AAC transmission codecs, active NFC reader/writer, accelerometer, monaural microphone, built-in rechargeable lithium-ion battery, about 6.5h USB charging time, 57.9 x 122.6 x 14.8 mm dimensions including projections, 57.3 x 121.8 x 14.8 mm excluding projections, and about 164g mass. Capacity is 16GB with about 6.26GB available for other contents. Supported formats include MP3, WMA, FLAC up to 24-bit/384kHz, WAV up to 32-bit/384kHz float/integer, AAC/HE-AAC, ALAC up to 24-bit/384kHz, AIFF up to 32-bit/384kHz, DSD 2.8224/5.6448/11.2896MHz, APE up to 24-bit/192kHz, and MQA. Battery life varies by region and jack: non-Europe stereo mini jack up to 20h MP3/AAC/WAV/FLAC 44.1kHz, 18h FLAC 96kHz/24-bit, 16h FLAC 192kHz/24-bit, 10h DSD64, 8h DSD128, 6.5h DSD256; balanced standard jack up to 19h MP3/AAC/WAV, 18h FLAC 44.1kHz, 17h FLAC 96kHz/24-bit, 15h FLAC 192kHz/24-bit, 9h DSD64, 7.5h DSD128, and 4h DSD256. Bluetooth playback examples are about 11h MP3 over SBC-connection preference and 8.5h FLAC 96kHz/24-bit over LDAC-connection preference. No official mW output power is listed in this manual/source. Additional sourced decisions: SoC, RAM, and battery capacity remain blank because Sony does not publish them in the official Help Guide and no sufficiently reliable teardown/technical source was accepted. Sony Japan ZX500-series material identifies S-Master HX full-digital amplifier architecture. Sony USA NW-ZX507 specifications list high-gain output of 50mW + 50mW at 16 ohms from 3.5mm and 200mW + 200mW at 16 ohms from 4.4mm balanced; these ZX500-series values are used for the NW-ZX505 16GB row. Model-specific 16GB retail listing evidence supports Black only; Silver is not added because current Sony series material associates color options with NW-ZX507 rather than ZX505. Sony Japan ZX500-series material names Amazon Music, Apple Music, Spotify, YouTube Music, mora qualitas, Deezer, and nugs.net as Android app streaming services.",
+    "colors": [
+      "Black"
+    ],
     "images": [
       {
         "url": "",
@@ -17355,7 +17655,7 @@
     "status": "Active",
     "msrpUsd": null,
     "soc": "",
-    "os": "",
+    "os": "FiiO proprietary OS",
     "ramGb": null,
     "storageGb": 4,
     "microSd": true,
@@ -17373,7 +17673,7 @@
     "cellular": false,
     "has4g": false,
     "has5g": false,
-    "bluetoothVersion": "",
+    "bluetoothVersion": "5.3",
     "bluetoothCodecs": [
       "SBC"
     ],
@@ -17397,14 +17697,23 @@
     "storageExpansionMax": "256GB",
     "officialUrl": "https://www.fiio.com/echo_parameters",
     "officialStoreUrl": "https://www.fiio.com/echo",
-    "buyLinks": [],
+    "buyLinks": [
+      {
+        "label": "FiiO EU",
+        "url": "https://fiio.eu/product/fiio-snowsky-echo-sky-blue-portable-hi-res-lossless-music-player-dual-cs43198-dacs-35mm-44mm-balanced-output-bluetooth-53-dsd256"
+      },
+      {
+        "label": "FiiO Shop DE",
+        "url": "https://fiio-shop.de/EN/FiiO-SnowSky-Echo/HL02847.4"
+      }
+    ],
     "buyNotes": "",
     "reviewLinks": [],
     "reviewNotes": "FiiO-hosted external review mirrors were rejected from review_links because manufacturer-hosted review pages are not accepted review sources.",
     "sourceUrl": "https://www.fiio.com/echo_parameters",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
-    "notes": "Verified - Official: FiiO's exact ECHO parameters page documents model ECHO with dual CS43198 DACs, 4GB/8GB internal-memory configurations, microSD up to 256GB, 3.5mm single-ended and 4.4mm balanced outputs, SBC Bluetooth transmission, USB-C charging/data and UAC/USB DAC functionality, 1100mAh battery, 14h endurance, 2.39in display, 85g weight and 85 x 55.5 x 14.3 mm dimensions. Official output is at least 120mW into 32Ω single-ended and 260mW into 32Ω balanced. PCM/file support reaches 24-bit/192kHz and DSD256. This is a distinct SNOWSKY ECHO model and is not ECHO MINI or ECHO NANO. Storage GB records the lower documented internal configuration; the 8GB configuration is retained in Notes rather than split into a storage-only row.",
+    "notes": "Verified - Official: FiiO's exact ECHO parameters page documents model ECHO with dual CS43198 DACs, 4GB/8GB internal-memory configurations, microSD up to 256GB, 3.5mm single-ended and 4.4mm balanced outputs, SBC Bluetooth transmission, USB-C charging/data and UAC/USB DAC functionality, 1100mAh battery, 14h endurance, 2.39in display, 85g weight and 85 x 55.5 x 14.3 mm dimensions. Official output is at least 120mW into 32Ω single-ended and 260mW into 32Ω balanced. PCM/file support reaches 24-bit/192kHz and DSD256. This is a distinct SNOWSKY ECHO model and is not ECHO MINI or ECHO NANO. Storage GB records the lower documented internal configuration; the 8GB configuration is retained in Notes rather than split into a storage-only row. Additional full-size ECHO cleanup: SoC and RAM remain blank because FiiO official ECHO specifications identify dual CS43198 DACs but do not disclose the main processor/SoC or installed RAM, and no reliable ECHO-specific teardown confirms them. OS is FiiO proprietary OS because the full-size ECHO uses FiiO/SNOWSKY closed firmware-upgradable player software rather than Android or installable apps. Bluetooth Version is set to 5.3 from exact full-size SNOWSKY ECHO FiiO Europe listing, not ECHO MINI. Streaming Services remains blank because ECHO has no Wi-Fi or installable apps; Bluetooth is for transmitting local playback to wireless headphones/speakers, not onboard streaming. Buy links are exact full-size SNOWSKY ECHO retailer pages for the dual CS43198 model, not the dual CS43131 ECHO MINI.",
     "colors": [
       "Black",
       "Sky Blue",
@@ -17503,7 +17812,7 @@
     "status": "Discontinued",
     "msrpUsd": 99,
     "soc": "JZ4760B",
-    "os": "",
+    "os": "FiiO proprietary OS",
     "ramGb": null,
     "storageGb": null,
     "microSd": true,
@@ -17521,8 +17830,10 @@
     "cellular": false,
     "has4g": false,
     "has5g": false,
-    "bluetoothVersion": "",
-    "bluetoothCodecs": [],
+    "bluetoothVersion": "4.0",
+    "bluetoothCodecs": [
+      "SBC"
+    ],
     "usbDac": false,
     "lineOut": true,
     "coaxOut": false,
@@ -17534,13 +17845,13 @@
     "weight": "102g",
     "dimensions": "97 x 55.5 x 12 mm",
     "pcmMax": "24-bit/192kHz",
-    "dsdMax": "",
+    "dsdMax": "None",
     "mqa": false,
     "streamingServices": [],
     "wifiBands": "",
     "usbPort": "Micro-USB",
     "batteryLifeHours": "12",
-    "storageExpansionMax": "",
+    "storageExpansionMax": "256GB",
     "officialUrl": "https://www.fiio.com/x1ii_parameters",
     "officialStoreUrl": "",
     "buyLinks": [],
@@ -17555,7 +17866,7 @@
     "sourceUrl": "https://www.fiio.com/x1ii_parameters",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
-    "notes": "Verified - Official: FiiO X1 II parameters identify model X1 2nd gen / FX1221 with JZ4760B, PCM5242 DAC, OPA2322 LPF, ISL28291 output stage, 3.5mm headphone/shared line output, no USB DAC, 97 x 55.5 x 12 mm dimensions and 102g weight. Official output is at least 70mW into 32Ω. Exact Headfonics coverage documents the 1800mAh battery and rated 12h playback. FiiO later stated the X1 II lifecycle and maintenance were ended.",
+    "notes": "Verified - Official: FiiO X1 II parameters identify model X1 2nd gen / FX1221 with JZ4760B, PCM5242 DAC, OPA2322 LPF, ISL28291 output stage, 3.5mm headphone/shared line output, no USB DAC, 97 x 55.5 x 12 mm dimensions and 102g weight. Official output is at least 70mW into 32Ω. Exact Headfonics coverage documents the 1800mAh battery and rated 12h playback. FiiO later stated the X1 II lifecycle and maintenance were ended. Additional sourced decisions: OS is FiiO proprietary OS because X1 2nd Gen uses closed embedded player firmware rather than Android or installable apps. RAM remains blank because FiiO does not publish installed RAM and no reliable X1 2nd Gen teardown confirms it. FiiO states dual-mode Bluetooth 4.0 based on the F1C81 chipset; Bluetooth codec is kept to SBC because FiiO does not document aptX, AAC, or LDAC support for this model. DSD Max is None because FiiO-hosted comparison material explicitly lists DSD support as No. Streaming Services remains blank because the player has no Wi-Fi, Android, or installable apps; Bluetooth output is not onboard streaming support. Storage Expansion Max is set to 256GB from FiiO official SD-card support guidance.",
     "colors": [
       "Silver",
       "Black",
@@ -18053,12 +18364,12 @@
     "status": "Discontinued",
     "msrpUsd": 299,
     "soc": "",
-    "os": "",
+    "os": "Cowon proprietary OS",
     "ramGb": null,
     "storageGb": 64,
     "microSd": true,
     "batteryMah": null,
-    "dac": "",
+    "dac": "24-bit/192kHz stereo DAC",
     "amp": "",
     "has25mm": false,
     "has35mm": true,
@@ -18109,7 +18420,7 @@
     "sourceUrl": "https://support2.cowon.com/contents/dn2/data/C09/PLENUEJ/PLENUE_J_Manual_EN.pdf",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
-    "notes": "Verified - Official/Review: Cowon's exact Plenue J manual is the primary provenance source. Cowon specification material documents 64GB internal storage, microSD up to 128GB, 2.8in touch LCD, 53.2 x 102 x 9.2 mm dimensions, 78g weight and approximately 53h playback. Exact Headfonia and What Hi-Fi coverage confirm a local-playback-only DAP supporting up to 24-bit/192kHz PCM, with 3.5mm single-ended output and no DSD or balanced output. Release Year 2017 follows launch/public availability evidence. Status is Discontinued; Cowon's current storefront no longer offers the player.",
+    "notes": "Verified - Official/Review: Cowon's exact Plenue J manual is the primary provenance source. Cowon specification material documents 64GB internal storage, microSD up to 128GB, 2.8in touch LCD, 53.2 x 102 x 9.2 mm dimensions, 78g weight and approximately 53h playback. Exact Headfonia and What Hi-Fi coverage confirm a local-playback-only DAP supporting up to 24-bit/192kHz PCM, with 3.5mm single-ended output and no DSD or balanced output. Release Year 2017 follows launch/public availability evidence. Status is Discontinued; Cowon's current storefront no longer offers the player. Conservative manual-based cleanup: SoC and RAM remain blank because Cowon does not publish processor/SoC or RAM and no reliable teardown confirms them. OS is Cowon proprietary OS because Plenue J uses Cowon closed embedded firmware with JetEffect 5 rather than Android or installable apps. Battery mAh remains blank because the official manual only states built-in rechargeable lithium-polymer battery. DAC is recorded generically as 24-bit/192kHz stereo DAC because Cowon confirms a high-quality 24-bit stereo DAC but does not publish chip manufacturer/model. SE Power mW remains blank because Cowon publishes 1Vrms and 0.5 ohm output impedance but no load-rated mW value; calculated mW would require unsupported assumptions. Streaming Services remains blank because Plenue J has no Wi-Fi, Android, or installable applications.",
     "colors": [
       "Misty Ocean",
       "Jupiter Gold"
@@ -18680,7 +18991,7 @@
     "status": "Discontinued",
     "msrpUsd": null,
     "soc": "",
-    "os": "",
+    "os": "Cowon proprietary OS",
     "ramGb": null,
     "storageGb": 128,
     "microSd": true,
@@ -18716,18 +19027,31 @@
     "streamingServices": [],
     "wifiBands": "",
     "usbPort": "Micro-USB",
-    "batteryLifeHours": "",
-    "storageExpansionMax": "",
+    "batteryLifeHours": "8.5",
+    "storageExpansionMax": "128GB",
     "officialUrl": "https://support2.cowon.com/contents/dn2/data/C09/PLENUES/PLENUE_S_1.1_EN_manual.pdf",
     "officialStoreUrl": "",
     "buyLinks": [],
     "buyNotes": "",
-    "reviewLinks": [],
+    "reviewLinks": [
+      {
+        "label": "Phile Web",
+        "url": "https://www.phileweb.com/review/article/201601/28/1948_2.html"
+      },
+      {
+        "label": "Kakaku",
+        "url": "https://review.kakaku.com/review/K0000858677/"
+      },
+      {
+        "label": "Fnac",
+        "url": "https://leclaireur.fnac.com/article/cp29308-cowon-devoile-le-plenue-s-son-lecteur-nomade-le-plus-ambitieux/"
+      }
+    ],
     "reviewNotes": "Headfonia's Plenue S Picture Sunday explicitly says it was not an official review, so it was not added.",
     "sourceUrl": "https://support2.cowon.com/contents/dn2/data/C09/PLENUES/PLENUE_S_1.1_EN_manual.pdf",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
-    "notes": "Verified - Official: Cowon's exact Plenue S manual is the primary provenance source and documents 64.5 x 118.9 x 17.4 mm dimensions, 204g weight and the standalone Plenue player platform. Contemporary exact-model documentation identifies 128GB internal storage, microSD expansion, PCM1792A DAC, 4400mAh battery, 3.5mm headphone/optical output and USB DAC use. Release Year 2016 follows public availability and first review evidence. Status is Discontinued. No exact accepted full review from the preferred source set was verified; a Headfonia Picture Sunday feature was rejected because it explicitly says it is not an official review.",
+    "notes": "Verified - Official: Cowon's exact Plenue S manual is the primary provenance source and documents 64.5 x 118.9 x 17.4 mm dimensions, 204g weight and the standalone Plenue player platform. Contemporary exact-model documentation identifies 128GB internal storage, microSD expansion, PCM1792A DAC, 4400mAh battery, 3.5mm headphone/optical output and USB DAC use. Release Year 2016 follows public availability and first review evidence. Status is Discontinued. No exact accepted full review from the preferred source set was verified; a Headfonia Picture Sunday feature was rejected because it explicitly says it is not an official review. Conservative manual-based cleanup: SoC and RAM remain blank because Cowon does not identify processor/SoC or RAM and no reliable Plenue S teardown confirms them. OS is Cowon proprietary OS because Plenue S uses Cowon closed embedded player firmware with JetEffect rather than Android or installable apps. SE Power mW remains blank because Cowon/secondary specifications publish maximum output level as 3Vrms but no load-rated mW value; converting to mW would require unsupported assumptions. Streaming Services remains blank because Plenue S has no Wi-Fi, Android, or installable applications. Kakaku lists approximately 8.5h playback, used as structured Battery Life Hours. Contemporary Plenue S specifications list microSDXC expansion up to 128GB, used as Storage Expansion Max.",
     "colors": [
       "Prestige Silver"
     ],
@@ -18831,7 +19155,7 @@
     "status": "Discontinued",
     "msrpUsd": null,
     "soc": "",
-    "os": "",
+    "os": "Cowon proprietary OS",
     "ramGb": null,
     "storageGb": 64,
     "microSd": true,
@@ -18867,7 +19191,7 @@
     "streamingServices": [],
     "wifiBands": "",
     "usbPort": "Micro-USB",
-    "batteryLifeHours": "",
+    "batteryLifeHours": "41",
     "storageExpansionMax": "128GB",
     "officialUrl": "https://support2.cowon.com/contents/dn2/data/C09/PLENUEV/PLENUE_V_Manual_EN.pdf",
     "officialStoreUrl": "",
@@ -18878,7 +19202,7 @@
     "sourceUrl": "https://support2.cowon.com/contents/dn2/data/C09/PLENUEV/PLENUE_V_Manual_EN.pdf",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
-    "notes": "Verified - Official/Secondary: Cowon's exact Plenue V manual is the primary provenance source. Exact model specifications document 64GB internal storage, microSD up to 128GB, 2.8in touch display, CS43131 DAC, 3.5mm single-ended output, 53.4 x 93.1 x 16.7 mm dimensions and 100g weight. Retailer/manual-derived specifications list approximately 41h MP3 and 27h 24-bit/96kHz FLAC playback; Battery Life Hours is left blank because the figures are mode-dependent. High-resolution local playback reaches PCM 24-bit/192kHz and DSD support is documented for the model. Status is Discontinued.",
+    "notes": "Verified - Official/Secondary: Cowon's exact Plenue V manual is the primary provenance source. Exact model specifications document 64GB internal storage, microSD up to 128GB, 2.8in touch display, CS43131 DAC, 3.5mm single-ended output, 53.4 x 93.1 x 16.7 mm dimensions and 100g weight. Official manual lists approximately 41h MP3 128kbps and 27h 24-bit/96kHz FLAC playback; Battery Life Hours uses 41 as the longest official local-playback figure while high-resolution runtime remains in Notes. High-resolution local playback reaches PCM 24-bit/192kHz and DSD support is documented for the model. Status is Discontinued. Conservative manual-based cleanup: SoC and RAM remain blank because Cowon does not publish processor/SoC or RAM and no reliable teardown confirms them. OS is Cowon proprietary OS because Plenue V uses Cowon closed dedicated player firmware with JetEffect 5, not Android or installable apps. Battery mAh remains blank because the official manual only states built-in rechargeable lithium-polymer battery; unverified 1050mAh aggregator claims are not used. SE Power mW remains blank because Cowon publishes 1.73Vrms and 0.5 ohm output impedance but not a load-rated mW value, and converting Vrms would require unsupported assumptions. Streaming Services remains blank because Plenue V has no Wi-Fi, Android app support, or onboard streaming integration.",
     "colors": [
       "Frozen Silver",
       "Formula Red"
@@ -20323,7 +20647,7 @@
     "status": "Discontinued",
     "msrpUsd": 799,
     "soc": "",
-    "os": "",
+    "os": "QLS proprietary OS",
     "ramGb": null,
     "storageGb": null,
     "microSd": true,
@@ -20350,8 +20674,8 @@
     "balancedOutputType": "3.5mm balanced",
     "sePowerLoad": "32 ohms",
     "balPowerLoad": "",
-    "displaySize": "",
-    "weight": "",
+    "displaySize": "2.4in",
+    "weight": "180g",
     "dimensions": "115 x 64.5 x 16 mm",
     "pcmMax": "24-bit/352.8kHz",
     "dsdMax": "DSD128",
@@ -20365,13 +20689,21 @@
     "officialStoreUrl": "",
     "buyLinks": [],
     "buyNotes": "",
-    "reviewLinks": [],
+    "reviewLinks": [
+      {
+        "label": "Gadgets Hub",
+        "url": "https://vienmaytinh.com/products/may-nghe-nhac-qls-qa361"
+      }
+    ],
     "reviewNotes": "Official QLS QA361 parameter page supplied by maintainer. Non-allowlist review references found but not kept in structured review_links: Moonstar Reviews|https://moonstarreviews.net/qls-hifi-qa361-the-portable-digital-audio-player-review/.",
     "sourceUrl": "https://www.qlshifi.com/en/?id=23",
     "sourceType": "Official",
     "verificationStatus": "Verified - Official",
-    "notes": "Verified - Official: QLS QA361 parameter page confirms external TF-card storage with FAT32/exFAT support up to 256GB, slow/sharp/short-delay/super-slow and All To DSD sound modes, low/high analog hardware gain, standard/large-current/high-voltage/dual-high headphone amplifier thrust modes, stereo playback, 3.5mm coaxial digital output, coaxial output at 0.5Vp-p / 75 ohms up to 24-bit/192kHz and DoP DSD64, 88 femtosecond reference clock jitter, 3.5mm single-ended headphone output, proprietary 3.5mm balanced headphone output, 3.5mm line out, 2Vrms line out, 5.26Vrms no-load SE headphone output in high-voltage mode, 10.4Vrms no-load balanced output in high-voltage mode, 112dB SNR, 115dB dynamic range, 106dB separation, 0.0008% distortion, 8-600 ohm headphone matching range, AK4495SEQ decoding chip, OPA2107 LPF, 3800mAh 3.8V Li-polymer battery, USB-C 4.8-5.4V charging input, 5-6h charge time, conservative 10h standard-mode playback, and 115 x 64.5 x 16 mm dimensions. Structured SE Power uses the official 32-ohm dual-high value of 400mW; balanced mW remains blank because the official page directly lists balanced measured power only for 300 ohms while describing theoretical scaling from SE power.",
-    "colors": [],
+    "notes": "Verified - Official: QLS QA361 parameter page confirms external TF-card storage with FAT32/exFAT support up to 256GB, slow/sharp/short-delay/super-slow and All To DSD sound modes, low/high analog hardware gain, standard/large-current/high-voltage/dual-high headphone amplifier thrust modes, stereo playback, 3.5mm coaxial digital output, coaxial output at 0.5Vp-p / 75 ohms up to 24-bit/192kHz and DoP DSD64, 88 femtosecond reference clock jitter, 3.5mm single-ended headphone output, proprietary 3.5mm balanced headphone output, 3.5mm line out, 2Vrms line out, 5.26Vrms no-load SE headphone output in high-voltage mode, 10.4Vrms no-load balanced output in high-voltage mode, 112dB SNR, 115dB dynamic range, 106dB separation, 0.0008% distortion, 8-600 ohm headphone matching range, AK4495SEQ decoding chip, OPA2107 LPF, 3800mAh 3.8V Li-polymer battery, USB-C 4.8-5.4V charging input, 5-6h charge time, conservative 10h standard-mode playback, and 115 x 64.5 x 16 mm dimensions. Structured SE Power uses the official 32-ohm dual-high value of 400mW; balanced mW remains blank because the official page directly lists balanced measured power only for 300 ohms while describing theoretical scaling from SE power. Additional sourced decisions: SoC and RAM remain blank because QLS does not identify the main processor/SoC or installed RAM in the manual/specifications and no reliable teardown confirms them. OS is QLS proprietary OS because QA361 uses dedicated embedded firmware with multiple interchangeable firmware versions, not Android or third-party app support. Official QLS material documents Black and Gold color options and 180g weight. Display Size is set to 2.4in from secondary specification listing with 320 x 240 OLED because surviving official specifications do not state the screen diagonal. Streaming Services remains blank because QA361 has no Wi-Fi, Bluetooth, Android, or installable apps.",
+    "colors": [
+      "Black",
+      "Gold"
+    ],
     "images": [
       {
         "url": "",

@@ -10,7 +10,7 @@ defineProps<{
   dap: Dap;
 }>();
 
-const isDiscontinued = (status: string) => status.toLowerCase().includes('discontinued');
+const shouldShowStatus = (status: string) => status.trim().toLowerCase() !== 'active';
 </script>
 
 <template>
@@ -21,10 +21,10 @@ const isDiscontinued = (status: string) => status.toLowerCase().includes('discon
     >
       <span class="dap-card__media">
         <DapPhoto :dap="dap" size="card" />
-        <span v-if="hasValue(dap.releaseYear) || isDiscontinued(dap.status)" class="dap-card__media-meta">
+        <span v-if="hasValue(dap.releaseYear) || shouldShowStatus(dap.status)" class="dap-card__media-meta">
           <span v-if="hasValue(dap.releaseYear)" class="media-pill">{{ formatValue(dap.releaseYear) }}</span>
           <span
-            v-if="isDiscontinued(dap.status)"
+            v-if="shouldShowStatus(dap.status)"
             class="media-pill media-pill--status"
             :class="getStatusBadgeMeta(dap.status).className"
             :title="getStatusBadgeMeta(dap.status).title"

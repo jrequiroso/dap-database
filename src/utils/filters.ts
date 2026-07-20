@@ -77,6 +77,13 @@ function compareMixed(a: MixedSpecValue, b: MixedSpecValue, direction: 'asc' | '
   return direction === 'asc' ? textResult : -textResult;
 }
 
+function statusPriority(status: Dap['status']): number {
+  if (status === 'Upcoming') return 0;
+  if (status === 'Active') return 1;
+  if (status === 'Discontinued') return 2;
+  return 3;
+}
+
 function booleanRank(value: boolean | null): number {
   if (value === true) return 1;
   if (value === false) return 0;
@@ -183,8 +190,21 @@ export function sortDaps(daps: Dap[], sortState: SortState): Dap[] {
         return sortState.direction === 'asc'
           ? compareText(`${a.model} ${a.brand}`, `${b.model} ${b.brand}`)
           : compareText(`${b.model} ${b.brand}`, `${a.model} ${a.brand}`);
-      case 'releaseYear':
-        return compareMixed(a.releaseYear, b.releaseYear, sortState.direction);
+      case 'releaseYear': {
+        const yearResult = compareMixed(a.releaseYear, b.releaseYear, sortState.direction);
+        if (yearResult !== 0) return yearResult;
+
+        const statusResult = statusPriority(a.status) - statusPriority(b.status);
+        if (statusResult !== 0) return statusResult;
+
+        const brandResult = compareText(a.brand, b.brand);
+        if (brandResult !== 0) return brandResult;
+
+        const modelResult = compareText(a.model, b.model);
+        if (modelResult !== 0) return modelResult;
+
+        return compareText(a.variant, b.variant);
+      }
       case 'msrpUsd':
         return compareMixed(a.msrpUsd, b.msrpUsd, sortState.direction);
       case 'batteryMah':

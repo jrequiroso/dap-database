@@ -1,7 +1,19 @@
-<script setup lang="ts">
-import { computed, ref } from 'vue';
+﻿<script setup lang="ts">
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 import { ArrowDown, ArrowUp, RotateCcw, Search } from 'lucide-vue-next';
 import type { Dap } from '../types/dap';
+import {
+  buildRows,
+  calculateCoverage,
+  coreFieldDefinitions,
+  displayForState,
+  resolveFieldState,
+  rowCoverage,
+  technicalFieldDefinitions,
+  type CsvRow,
+  type FieldState,
+  type Priority,
+} from '../utils/coverage';
 
 const props = defineProps<{
   csv: string;
@@ -16,9 +28,9 @@ type Density = 'compact' | 'comfortable';
 type SheetSortKey = number | 'priority' | 'missing' | 'review' | null;
 type SheetSort = { columnIndex: SheetSortKey; direction: 'asc' | 'desc' };
 type SheetRow = { cells: string[]; csvIndex: number };
-type Priority = 'High' | 'Medium' | 'Low' | 'OK';
 type Triage = { priority: Priority; missingCount: number; score: number };
 type SheetMetric = { label: string; value: string | number; detail: string };
+type SecondaryMetric = { label: string; value: string | number };
 
 const searchTerm = ref('');
 const density = ref<Density>('comfortable');
@@ -27,6 +39,7 @@ const columnWidths = ref<Record<number, number>>({});
 const resizingColumn = ref<{ index: number; startX: number; startWidth: number } | null>(null);
 const sheetScrollPane = ref<HTMLElement | null>(null);
 const sheetPinnedPane = ref<HTMLElement | null>(null);
+const missingPopover = ref<HTMLElement | null>(null);
 const expandedMissingCsvIndex = ref<number | null>(null);
 const missingPopoverPosition = ref({ top: 0, left: 0 });
 const requiredAuditColumns = new Set([
@@ -148,12 +161,13 @@ const visibleColumnIndices = computed(() =>
   headers.value.map((header, index) => ({ header, index })).filter(({ header }) => !hiddenSheetColumns.has(header)).map(({ index }) => index),
 );
 const dataRows = computed<SheetRow[]>(() => csvRows.value.slice(1).map((cells, index) => ({ cells, csvIndex: index })));
+const csvDataObjects = computed<CsvRow[]>(() => buildRows(headers.value, csvRows.value.slice(1)));
 const normalizedSearch = computed(() => searchTerm.value.trim().toLowerCase());
 const isSorted = computed(() => sortState.value.columnIndex !== -1);
 
 const filteredRows = computed(() => {
   if (!normalizedSearch.value) return dataRows.value;
-  return dataRows.value.filter((row) => row.cells.some((cell, columnIndex) => displayCell(cell, columnIndex, row.cells).toLowerCase().includes(normalizedSearch.value)));
+  return dataRows.value.filter((row) => row.cells.some((cell) => cell.toLowerCase().includes(normalizedSearch.value)));
 });
 
 const displayedRows = computed(() => {
@@ -181,45 +195,36 @@ const selectedMissingRow = computed(() => {
   if (expandedMissingCsvIndex.value === null) return null;
   return displayedRows.value.find((row) => row.csvIndex === expandedMissingCsvIndex.value) ?? null;
 });
-const selectedMissingHeaders = computed(() => (selectedMissingRow.value ? missingHeadersForCells(selectedMissingRow.value.cells) : []));
+const selectedMissingHeaders = computed(() => (selectedMissingRow.value ? missingHeadersForCells(selectedMissingRow.value.cells, selectedMissingRow.value.csvIndex) : []));
+const filteredCoverage = computed(() =>
+  calculateCoverage(
+    filteredRows.value.map((row) => rowObject(row.cells, row.csvIndex)),
+    needsManualReviewObject,
+  ),
+);
 
 const sheetMetrics = computed<SheetMetric[]>(() => {
   const rows = filteredRows.value;
-  const missingByColumn = new Map<string, number>();
-  let incompleteRows = 0;
-  let completeRows = 0;
-  let missingFields = 0;
-  let highPriorityRows = 0;
-  let reviewRows = 0;
-
-  for (const row of rows) {
-    const missingHeaders = missingHeadersForCells(row.cells);
-    const triage = triageForCells(row.cells);
-
-    missingFields += missingHeaders.length;
-    if (missingHeaders.length) incompleteRows += 1;
-    else completeRows += 1;
-    if (triage.priority === 'High') highPriorityRows += 1;
-    if (needsManualReview(row.cells)) reviewRows += 1;
-
-    for (const header of missingHeaders) {
-      missingByColumn.set(header, (missingByColumn.get(header) ?? 0) + 1);
-    }
-  }
-
-  const [topMissingColumn, topMissingCount] =
-    [...missingByColumn.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))[0] ?? ['None', 0];
   const totalRows = rows.length || 1;
+  const coverage = filteredCoverage.value;
 
   return [
-    { label: 'Incomplete rows', value: incompleteRows, detail: `${Math.round((incompleteRows / totalRows) * 100)}% of current rows` },
-    { label: 'Complete rows', value: completeRows, detail: `${Math.round((completeRows / totalRows) * 100)}% clean` },
-    { label: 'Missing fields', value: missingFields, detail: 'Required blanks only' },
-    { label: 'High priority', value: highPriorityRows, detail: 'Newest or high-value gaps' },
-    { label: 'Needs review', value: reviewRows, detail: 'Source or note flags' },
-    { label: 'Top missing', value: topMissingColumn, detail: topMissingCount ? `${topMissingCount} rows` : 'No missing fields' },
+    { label: 'Total rows', value: coverage.totalRows, detail: `${coverage.totalRows} CSV rows shown` },
+    { label: 'Core complete', value: coverage.coreCompleteRows, detail: `${Math.round((coverage.coreCompleteRows / totalRows) * 100)}% of current rows` },
+    { label: 'Core incomplete', value: coverage.coreIncompleteRows, detail: `${Math.round((coverage.coreIncompleteRows / totalRows) * 100)}% with actionable gaps` },
+    { label: 'Actionable missing', value: coverage.actionableMissingFields, detail: 'Applicable blank core fields' },
+    { label: 'Current models incomplete', value: coverage.currentModelsIncomplete, detail: 'Active or upcoming with core gaps' },
+    { label: 'Needs review', value: coverage.needsReviewRows, detail: 'Source or note flags' },
+    { label: 'Top actionable missing', value: coverage.topActionableMissing.field, detail: coverage.topActionableMissing.count ? `${coverage.topActionableMissing.count} rows` : 'No actionable blanks' },
   ];
 });
+
+const secondaryMetrics = computed<SecondaryMetric[]>(() => [
+  { label: 'Applicable field coverage', value: `${filteredCoverage.value.applicableCoveragePct}%` },
+  { label: 'Undisclosed fields', value: filteredCoverage.value.undisclosedFields },
+  { label: 'Not applicable fields', value: filteredCoverage.value.notApplicableFields },
+  { label: 'Needs verification fields', value: filteredCoverage.value.needsVerificationFields },
+]);
 
 const pinnedColumnCount = 2;
 const pinnedColumnIndices = computed(() => visibleColumnIndices.value.slice(0, pinnedColumnCount));
@@ -296,6 +301,10 @@ function handleCellKeydown(event: KeyboardEvent, rowIndex: number, columnIndex: 
 function cellByHeader(cells: string[], header: string): string {
   const index = headers.value.indexOf(header);
   return index === -1 ? '' : cells[index] ?? '';
+}
+
+function rowObject(cells: string[], csvIndex: number): CsvRow {
+  return csvDataObjects.value[csvIndex] ?? Object.fromEntries(headers.value.map((header, index) => [header, cells[index] ?? '']));
 }
 
 function numberByHeader(cells: string[], header: string): number | null {
@@ -515,53 +524,47 @@ function blankCellMeansNone(cells: string[], header: string): boolean {
   return optionalBlankColumns.has(header) && !requiredAuditColumns.has(header);
 }
 
-function displayCell(value: string | undefined, columnIndex: number, cells: string[]): string {
+function stateForColumn(columnIndex: number, cells: string[], csvIndex: number): FieldState {
+  const header = headers.value[columnIndex] ?? '';
+  const row = rowObject(cells, csvIndex);
+  const definition = [...coreFieldDefinitions, ...technicalFieldDefinitions].find((field) => field.field === header);
+  if (definition) return resolveFieldState(row, definition).state;
+
+  if ((cells[columnIndex] ?? '') !== '') return 'known';
+  return blankCellMeansNone(cells, header) ? 'not_applicable' : 'missing';
+}
+
+function displayCell(value: string | undefined, columnIndex: number, cells: string[], csvIndex: number): string {
   const raw = value ?? '';
   const header = headers.value[columnIndex] ?? '';
   if (header === 'Model') {
     return [raw, cellByHeader(cells, 'Variant')].filter(Boolean).join(' ');
   }
-  if (raw === '') return blankCellMeansNone(cells, header) ? 'None' : '?';
+  if (raw === '') return displayForState(stateForColumn(columnIndex, cells, csvIndex));
   if (raw.trim() === '0') return 'None';
   if (raw.trim().toUpperCase() === 'FALSE') return 'None';
   return raw;
 }
 
-function cellState(value: string | undefined, columnIndex: number, cells: string[]): 'empty' | 'none' | 'value' {
+function cellState(value: string | undefined, columnIndex: number, cells: string[], csvIndex: number): FieldState {
   const raw = value ?? '';
-  const header = headers.value[columnIndex] ?? '';
-  if (raw === '') return blankCellMeansNone(cells, header) ? 'none' : 'empty';
-  if (raw.trim() === '0') return 'none';
-  if (raw.trim().toUpperCase() === 'FALSE') return 'none';
-  return 'value';
+  if (raw === '') return stateForColumn(columnIndex, cells, csvIndex);
+  if (raw.trim() === '0') return 'not_applicable';
+  if (raw.trim().toUpperCase() === 'FALSE') return 'not_applicable';
+  return 'known';
 }
 
-function isActionableMissing(columnIndex: number, cells: string[]): boolean {
-  return cellState(cells[columnIndex], columnIndex, cells) === 'empty';
+function missingHeadersForCells(cells: string[], csvIndex: number): string[] {
+  return rowCoverage(rowObject(cells, csvIndex)).actionableMissing;
 }
 
-function missingHeadersForCells(cells: string[]): string[] {
-  return headers.value.filter((_, columnIndex) => isActionableMissing(columnIndex, cells));
-}
-
-function triageForCells(cells: string[]): Triage {
+function triageForCells(cells: string[], csvIndex: number): Triage {
   const year = numberByHeader(cells, 'Release Year') ?? 0;
-  const status = cellByHeader(cells, 'Status').toLowerCase();
-  const missingHeaders = missingHeadersForCells(cells);
-  const highMissing = missingHeaders.filter((header) => highValueAuditColumns.has(header)).length;
-  const recentWeight = year >= 2026 ? 18 : year === 2025 ? 12 : year === 2024 ? 7 : 0;
-  const activeWeight = status === 'active' || status === 'upcoming' ? 6 : 0;
-  const score = recentWeight + activeWeight + highMissing * 3 + missingHeaders.length;
-  const priority: Priority =
-    score >= 44 || (year >= 2025 && highMissing >= 5)
-      ? 'High'
-      : score >= 28 || (year >= 2024 && highMissing >= 3)
-        ? 'Medium'
-        : missingHeaders.length > 0
-          ? 'Low'
-          : 'OK';
+  const coverage = rowCoverage(rowObject(cells, csvIndex));
+  const missingHeaders = coverage.actionableMissing;
+  const score = missingHeaders.length * 10 + (year >= 2020 ? 5 : 0);
 
-  return { priority, missingCount: missingHeaders.length, score };
+  return { priority: coverage.priority, missingCount: missingHeaders.length, score };
 }
 
 function manualReviewReasons(cells: string[]): string[] {
@@ -591,6 +594,10 @@ function needsManualReview(cells: string[]): boolean {
   return manualReviewReasons(cells).length > 0;
 }
 
+function needsManualReviewObject(row: CsvRow): boolean {
+  return manualReviewReasons(headers.value.map((header) => row[header] ?? '')).length > 0;
+}
+
 function rowLabel(cells: string[]): string {
   return [cellByHeader(cells, 'Brand'), cellByHeader(cells, 'Model'), cellByHeader(cells, 'Variant')].filter(Boolean).join(' ');
 }
@@ -601,7 +608,7 @@ const missingPopoverStyle = computed(() => ({
 }));
 
 function toggleMissingRow(row: SheetRow, event: MouseEvent) {
-  const missingCount = triageForCells(row.cells).missingCount;
+  const missingCount = triageForCells(row.cells, row.csvIndex).missingCount;
   if (!missingCount) return;
   if (expandedMissingCsvIndex.value === row.csvIndex) {
     expandedMissingCsvIndex.value = null;
@@ -618,10 +625,33 @@ function toggleMissingRow(row: SheetRow, event: MouseEvent) {
   expandedMissingCsvIndex.value = row.csvIndex;
 }
 
+function closeMissingPopover() {
+  expandedMissingCsvIndex.value = null;
+}
+
+function handleMissingPopoverPointerDown(event: PointerEvent) {
+  if (expandedMissingCsvIndex.value === null) return;
+
+  const target = event.target;
+  if (!(target instanceof Element)) return;
+  if (missingPopover.value?.contains(target)) return;
+  if (target.closest('.sheet-missing-button')) return;
+
+  closeMissingPopover();
+}
+
+onMounted(() => {
+  document.addEventListener('pointerdown', handleMissingPopoverPointerDown);
+});
+
+onBeforeUnmount(() => {
+  document.removeEventListener('pointerdown', handleMissingPopoverPointerDown);
+});
+
 function compareTriageRows(a: SheetRow, b: SheetRow): number {
-  const priorityRank: Record<Priority, number> = { High: 0, Medium: 1, Low: 2, OK: 3 };
-  const triageA = triageForCells(a.cells);
-  const triageB = triageForCells(b.cells);
+  const priorityRank: Record<Priority, number> = { High: 0, Medium: 1, Low: 2, Complete: 3 };
+  const triageA = triageForCells(a.cells, a.csvIndex);
+  const triageB = triageForCells(b.cells, b.csvIndex);
   const priorityResult = priorityRank[triageA.priority] - priorityRank[triageB.priority];
   if (priorityResult) return priorityResult;
 
@@ -635,9 +665,9 @@ function compareTriageRows(a: SheetRow, b: SheetRow): number {
 }
 
 function comparePriorityRows(a: SheetRow, b: SheetRow): number {
-  const priorityRank: Record<Priority, number> = { High: 0, Medium: 1, Low: 2, OK: 3 };
-  const triageA = triageForCells(a.cells);
-  const triageB = triageForCells(b.cells);
+  const priorityRank: Record<Priority, number> = { High: 0, Medium: 1, Low: 2, Complete: 3 };
+  const triageA = triageForCells(a.cells, a.csvIndex);
+  const triageB = triageForCells(b.cells, b.csvIndex);
   const baseResult = priorityRank[triageA.priority] - priorityRank[triageB.priority];
   const result = sortState.value.direction === 'asc' ? baseResult : -baseResult;
   if (result) return result;
@@ -649,7 +679,7 @@ function comparePriorityRows(a: SheetRow, b: SheetRow): number {
 }
 
 function compareMissingRows(a: SheetRow, b: SheetRow): number {
-  const missingResult = triageForCells(a.cells).missingCount - triageForCells(b.cells).missingCount;
+  const missingResult = triageForCells(a.cells, a.csvIndex).missingCount - triageForCells(b.cells, b.csvIndex).missingCount;
   const result = sortState.value.direction === 'asc' ? missingResult : -missingResult;
   if (result) return result;
 
@@ -664,16 +694,16 @@ function compareReviewRows(a: SheetRow, b: SheetRow): number {
   const result = sortState.value.direction === 'asc' ? reviewResult : -reviewResult;
   if (result) return result;
 
-  const missingResult = triageForCells(b.cells).missingCount - triageForCells(a.cells).missingCount;
+  const missingResult = triageForCells(b.cells, b.csvIndex).missingCount - triageForCells(a.cells, a.csvIndex).missingCount;
   if (missingResult) return missingResult;
 
   return a.csvIndex - b.csvIndex;
 }
 
-function rowClass(cells: string[]) {
-  const triage = triageForCells(cells);
+function rowClass(row: SheetRow) {
+  const triage = triageForCells(row.cells, row.csvIndex);
   return {
-    'is-complete-row': triage.priority === 'OK',
+    'is-complete-row': triage.priority === 'Complete',
     'is-priority-high': triage.priority === 'High',
     'is-priority-medium': triage.priority === 'Medium',
   };
@@ -770,6 +800,13 @@ function handlePinnedWheel(event: WheelEvent) {
       </article>
     </section>
 
+    <section class="sheet-coverage-summary" aria-label="Coverage state summary">
+      <span v-for="metric in secondaryMetrics" :key="metric.label" :title="metric.label">
+        <strong>{{ metric.value }}</strong>
+        {{ metric.label }}
+      </span>
+    </section>
+
     <section class="sheet-frame" aria-label="Raw CSV spreadsheet">
       <div ref="sheetPinnedPane" class="sheet-pinned-pane" aria-hidden="false" @wheel="handlePinnedWheel">
         <table class="sheet-table sheet-table--pinned" :class="`sheet-table--${density}`">
@@ -819,21 +856,21 @@ function handlePinnedWheel(event: WheelEvent) {
             <tr
               v-for="(row, rowIndex) in displayedRows"
               :key="row.csvIndex"
-              :class="rowClass(row.cells)"
+              :class="rowClass(row)"
             >
-              <td class="sheet-meta-cell sheet-meta-cell--priority" :class="`sheet-priority--${triageForCells(row.cells).priority.toLowerCase()}`">
-                <span>{{ triageForCells(row.cells).priority }}</span>
+              <td class="sheet-meta-cell sheet-meta-cell--priority" :class="`sheet-priority--${triageForCells(row.cells, row.csvIndex).priority.toLowerCase()}`">
+                <span>{{ triageForCells(row.cells, row.csvIndex).priority }}</span>
               </td>
               <td class="sheet-meta-cell sheet-meta-cell--missing">
                 <button
-                  v-if="triageForCells(row.cells).missingCount"
+                  v-if="triageForCells(row.cells, row.csvIndex).missingCount"
                   class="sheet-missing-button"
                   type="button"
                   :aria-expanded="expandedMissingCsvIndex === row.csvIndex"
                   :aria-label="`Show missing columns for ${rowLabel(row.cells)}`"
                   @click="toggleMissingRow(row, $event)"
                 >
-                  {{ triageForCells(row.cells).missingCount }}
+                  {{ triageForCells(row.cells, row.csvIndex).missingCount }}
                 </button>
                 <span v-else></span>
               </td>
@@ -847,8 +884,10 @@ function handlePinnedWheel(event: WheelEvent) {
                   `sheet-sticky--${columnIndex}`,
                   columnIndex === 2 ? 'sheet-sticky--last' : '',
                   'sheet-copy-cell',
-                  cellState(row.cells[columnIndex], columnIndex, row.cells) === 'empty' ? 'is-empty' : '',
-                  cellState(row.cells[columnIndex], columnIndex, row.cells) === 'none' ? 'is-none' : '',
+                  cellState(row.cells[columnIndex], columnIndex, row.cells, row.csvIndex) === 'missing' ? 'is-empty' : '',
+                  cellState(row.cells[columnIndex], columnIndex, row.cells, row.csvIndex) === 'undisclosed' ? 'is-undisclosed' : '',
+                  cellState(row.cells[columnIndex], columnIndex, row.cells, row.csvIndex) === 'not_applicable' ? 'is-none' : '',
+                  cellState(row.cells[columnIndex], columnIndex, row.cells, row.csvIndex) === 'needs_verification' ? 'is-verification' : '',
                 ]"
                 :style="columnStyle(columnIndex)"
                 :data-sheet-row="rowIndex"
@@ -863,9 +902,9 @@ function handlePinnedWheel(event: WheelEvent) {
                   tabindex="-1"
                   @click="openRow(row.csvIndex)"
                 >
-                  {{ displayCell(row.cells[columnIndex], columnIndex, row.cells) }}
+                  {{ displayCell(row.cells[columnIndex], columnIndex, row.cells, row.csvIndex) }}
                 </button>
-                <span v-else>{{ displayCell(row.cells[columnIndex], columnIndex, row.cells) }}</span>
+                <span v-else>{{ displayCell(row.cells[columnIndex], columnIndex, row.cells, row.csvIndex) }}</span>
               </td>
             </tr>
           </tbody>
@@ -895,14 +934,16 @@ function handlePinnedWheel(event: WheelEvent) {
             <tr
               v-for="(row, rowIndex) in displayedRows"
               :key="row.csvIndex"
-              :class="rowClass(row.cells)"
+              :class="rowClass(row)"
             >
               <td
                 v-for="columnIndex in scrollColumnIndices"
                 :key="`${row.csvIndex}-${headers[columnIndex]}`"
                 :class="[
-                  cellState(row.cells[columnIndex], columnIndex, row.cells) === 'empty' ? 'is-empty' : '',
-                  cellState(row.cells[columnIndex], columnIndex, row.cells) === 'none' ? 'is-none' : '',
+                  cellState(row.cells[columnIndex], columnIndex, row.cells, row.csvIndex) === 'missing' ? 'is-empty' : '',
+                  cellState(row.cells[columnIndex], columnIndex, row.cells, row.csvIndex) === 'undisclosed' ? 'is-undisclosed' : '',
+                  cellState(row.cells[columnIndex], columnIndex, row.cells, row.csvIndex) === 'not_applicable' ? 'is-none' : '',
+                  cellState(row.cells[columnIndex], columnIndex, row.cells, row.csvIndex) === 'needs_verification' ? 'is-verification' : '',
                 ]"
                 :style="columnStyle(columnIndex)"
                 :data-sheet-row="rowIndex"
@@ -910,7 +951,7 @@ function handlePinnedWheel(event: WheelEvent) {
                 tabindex="0"
                 @keydown="handleCellKeydown($event, rowIndex, columnIndex)"
               >
-                <span>{{ displayCell(row.cells[columnIndex], columnIndex, row.cells) }}</span>
+                <span>{{ displayCell(row.cells[columnIndex], columnIndex, row.cells, row.csvIndex) }}</span>
               </td>
             </tr>
           </tbody>
@@ -918,13 +959,13 @@ function handlePinnedWheel(event: WheelEvent) {
       </div>
     </section>
 
-    <aside v-if="selectedMissingRow" class="sheet-missing-popover" :style="missingPopoverStyle" aria-live="polite">
+    <aside v-if="selectedMissingRow" ref="missingPopover" class="sheet-missing-popover" :style="missingPopoverStyle" aria-live="polite">
       <div class="sheet-missing-panel__header">
         <div>
           <p>Missing columns</p>
           <strong>{{ rowLabel(selectedMissingRow.cells) }}</strong>
         </div>
-        <button type="button" aria-label="Close missing columns" @click="expandedMissingCsvIndex = null">×</button>
+        <button type="button" aria-label="Close missing columns" @click="closeMissingPopover">×</button>
       </div>
       <ul>
         <li v-for="header in selectedMissingHeaders" :key="header">{{ header }}</li>

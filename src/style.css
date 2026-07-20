@@ -2443,12 +2443,36 @@ dd {
 
 .sheet-metrics {
   display: grid;
-  grid-template-columns: repeat(6, minmax(130px, 1fr));
+  grid-template-columns: repeat(7, minmax(120px, 1fr));
   gap: 8px;
   border-right: 1px solid var(--color-border);
   border-left: 1px solid var(--color-border);
   background: #fbfaf7;
   padding: 10px 12px;
+}
+
+.sheet-coverage-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  align-items: center;
+  border-right: 1px solid var(--color-border);
+  border-left: 1px solid var(--color-border);
+  border-top: 1px solid #ece8df;
+  background: #fbfaf7;
+  padding: 8px 12px 10px;
+  color: #68737b;
+  font-size: 0.78rem;
+  font-weight: 750;
+}
+
+.sheet-coverage-summary span {
+  white-space: nowrap;
+}
+
+.sheet-coverage-summary strong {
+  margin-right: 4px;
+  color: var(--color-text);
 }
 
 .sheet-metric-card {
@@ -2653,6 +2677,17 @@ dd {
   font-style: italic;
 }
 
+.sheet-table td.is-undisclosed > span {
+  color: #7b7480;
+  font-style: italic;
+}
+
+.sheet-table td.is-verification > span {
+  color: #8a5a00;
+  font-style: italic;
+  font-weight: 750;
+}
+
 .sheet-table th.sheet-meta-column,
 .sheet-table td.sheet-meta-cell {
   min-width: 86px;
@@ -2754,6 +2789,7 @@ dd {
   font-size: 1.15rem;
   line-height: 1;
   padding: 0;
+  user-select: none;
 }
 
 .sheet-missing-panel__header button:hover,
@@ -2794,7 +2830,7 @@ dd {
   color: #68737b;
 }
 
-.sheet-priority--ok > span {
+.sheet-priority--complete > span {
   color: #1f7a3f;
 }
 
